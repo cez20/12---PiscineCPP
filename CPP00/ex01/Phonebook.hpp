@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 08:39:12 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/01/31 16:16:11 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/02/01 11:03:56 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ public: // Mais il est suppose etre private
 	std::string	first_name;
 	std::string	last_name;
 	std::string	nickname;
-	int			phone_number[10];
+	std::string	phone_number;
 	std::string	darkest_secret;
 };
 
