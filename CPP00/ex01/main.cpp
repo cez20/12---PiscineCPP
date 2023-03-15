@@ -6,83 +6,53 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 08:51:11 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/02/01 11:34:13 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/03/15 17:14:20 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string>
-#include "phonebook.hpp"
+#include <iostream>  // Permet d'utiliser cout/cin
+#include <string>    // Permet d'utiliser le type de variable string 
+#include "phonebook.hpp"  // Header de la classe phonebook.hpp
+#include "contact.hpp"   // Header de la classe contact.hpp
 
-// void	if_empty(std::string string)
-// {
-// 	if (string.empty())
-		
-	
-// }
+// A) Implementer 2 classes: PhoneBook et Contact 
+// Classe PhoneBook:
+// 1- Represente le repertoire telephonique qui sera utilise
+// 2- Contient un tableau de contacts
+// 3- Peut enregistrer 8 contacts maximum. Si l'utilisateur essaie d'en rentrer un 9e, remplacer le plus ancien par celui-ci
+// 4- Allocation dynamique interdite 
+// Class Contact
+//	1- Represente un contact dans le repetoire
+// B) Objet nomme "repertoire" doit etre une instance de la classe PhoneBook
+// C) objets "contacts" doivent etre une instance de la classe Contact 
+// D) Rappel : Ce qui est utilise dans une classe seulement est "private", ce qui peut etre utilise a l'exterieur est public
+
 
 int main()
 {
-	std::string	choice;
-	Contact		person;
-	PhoneBook	repertoire;
-	int			nbr_contacts;
+	//std::string	choice;  Would no longer be necessary if variable is inside member function
+	Contact		person;  // Create an instance/object of class Contact named Person 
+	PhoneBook	phonebook; // Create an instance/object of class PhoneBook named repertoire 
+	int			nbr_contacts; // Integer named nbr_contact 
 
 	nbr_contacts = 0;
 	while (1)
-	{
-		std::cout << "\033[1;32mPlease enter ADD, SEARCH OR EXIT to use this PHONEBOOK: \033[0m" << std::endl;
-		std::cout << "ADD ----------> Allows you to enter a new contact in this PHONEBOOK" << std::endl;
-		std::cout << "SEARCH -------> Allows you to search one contact in this PHONEBOOK" << std::endl;
-		std::cout << "EXIT ---------> Allows you to quit the current PHONEBOOK\n" << std::endl;
-
-		std::cout << "\033[1;32mYour choice: \033[0m";
-		
-		
-	//"Please enter one of the following options: ADD, SEARCH or EXIT : " << std::endl;
-		std::getline(std::cin, choice);
-
-		if (choice == "EXIT") // We can also use "relational operators" such as "=" and "!=", but this has to be used with std::string. 
-		{
-			std::cout << "Je suis dans la condition EXIT" << std::endl;
-			repertoire.EXIT();
-		}
-		else if (choice.compare("ADD") == 0)
+	{	
+		phonebook.display_menu_options();
+		//std::getline(std::cin, choice);
+		if (phonebook.choice.compare("ADD") == 0) // Maybe I can use a switch and the case 1, case 2 , etc)
 		{	
 			if (nbr_contacts == 8)
 				nbr_contacts = 0;
-			repertoire.ADD(nbr_contacts);
+			phonebook.ADD(nbr_contacts);
 			nbr_contacts++;
-			// while(person.first_name.empty())
-			// {
-			// 	std::cout << "Please enter first name: ";
-			// 	std::getline(std::cin, person.first_name);
-			// }
-			// while(person.last_name.empty())
-			// {
-			// 	std::cout << "Please enter last name: ";
-			// 	std::getline(std::cin, person.last_name);
-			// }
-			// while(person.nickname.empty())
-			// {
-			// 	std::cout << "Please enter nickname: ";
-			// 	std::getline(std::cin, person.nickname);
-			// }
-			// while(person.phone_number.empty())
-			// {
-			// 	std::cout << "Please enter phone_number: ";
-			// 	std::getline(std::cin, person.phone_number);
-			// }
-			// while(person.darkest_secret.empty())
-			// {
-			// 	std::cout << "Please enter darkest secret: ";
-			// 	std::getline(std::cin, person.darkest_secret);
-			// }
-			// std::cout << std::endl;
-			// std::cout << "\033[1;34mCONTACT HAS BEEN SUCCESSFULLY ENTERED IN PHONEBOOK !!!\033[0m\n" << std::endl;
 		}
-		else if (choice == "SEARCH")
-			std::cout << "I am freaking tired my friend\n" << std::endl;
-	}
+		else if (phonebook.choice == "SEARCH")
+			std::cout << "We are in the SEARCH option!\n" << std::endl;
+		else if (phonebook.choice == "EXIT") // We can also use "relational operators" such as "=" and "!=", but this has to be used with std::string. 
+		 	phonebook.EXIT();
+		else
+			std::cout << "\033[31mThis choice is not valid! Please re-enter a valid choice!\033[0m\n" << std::endl;
+	}		
 	return 0;
 }

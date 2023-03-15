@@ -1,43 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phonebook.hpp                                      :+:      :+:    :+:   */
+/*   phonebook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 08:39:12 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/02/01 11:16:33 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/03/15 17:04:13 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_H
 # define PHONEBOOK_H
 
-#include <string>  // Permet d'utiliser l'element string de la librarie std:
+#include <string>
+#include "contact.hpp"
 
-class	Contact{
-
-public: // Mais il est suppose etre private ????
-
-	std::string	first_name;
-	std::string	last_name;
-	std::string	nickname;
-	std::string	phone_number;
-	std::string	darkest_secret;
-};
-
-
+// Est-ce que j'ai besoin d'un constructeur et d'un destructeur ici? 
+// In the public section, we find function members and the attributes these functions takes. How the function works will be declared in PhoneBook.cpp
+//
 class	PhoneBook{
 
 public:
 
-	void	ADD(int index);
-	void	SEARCH(void);
-	void	EXIT(void);
+	std::string choice;
+	void		display_menu_options(void);
+	void		ADD(int index);
+	void		SEARCH(void);
+	void		EXIT(void);
 
 private:
 
-	Contact	contact[8]; // M on tableau de 8 contact doit etre private, car on ne doit pas etre en mesure de pouvoir changerr
+	Contact	contact[8]; //Array of 8 of class Contact 
 };
 
 #endif
