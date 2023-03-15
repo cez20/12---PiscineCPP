@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 08:51:11 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/15 17:14:20 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/03/15 17:22:16 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 // D) Rappel : Ce qui est utilise dans une classe seulement est "private", ce qui peut etre utilise a l'exterieur est public
 
 
+//Creer un constructeur pour initialiser choice a NULL et ventuellement nbr_contact a 0.
 int main()
 {
 	//std::string	choice;  Would no longer be necessary if variable is inside member function
