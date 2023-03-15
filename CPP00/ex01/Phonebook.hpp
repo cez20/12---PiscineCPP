@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 08:39:12 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/02/01 11:03:56 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/02/01 11:16:33 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 class	Contact{
 
-public: // Mais il est suppose etre private 
+public: // Mais il est suppose etre private ????
 
 	std::string	first_name;
 	std::string	last_name;
@@ -31,7 +31,7 @@ class	PhoneBook{
 
 public:
 
-	void	ADD(void);
+	void	ADD(int index);
 	void	SEARCH(void);
 	void	EXIT(void);
 
