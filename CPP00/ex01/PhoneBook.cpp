@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 15:50:56 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/16 15:06:54 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/03/16 15:08:31 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ PhoneBook::PhoneBook(void){
 	this->choice = ""; // Create an empty string
 }
 
-void	PhoneBook::display_menu_options(void)
+void	PhoneBook::display_phonebook_options(void)
 {
 	std::cout << "\033[1;32mPlease enter ADD, SEARCH OR EXIT to use this PHONEBOOK: \033[0m" << std::endl;
 	std::cout << "ADD ----------> Allows you to enter a new contact in this PHONEBOOK" << std::endl;
@@ -107,7 +107,7 @@ void	PhoneBook::SEARCH(void)
 	   			<< std::setw(10) << contact[i].nickname << "|" << std::endl;
     }
 
-	std::cout << "Which entry would you like to see? Please enter index number: " << 
+	std::cout << "Which entry would you like to see? Please enter index number: ";
 
 
 	//std::cout << "First name: " << contact[this->choice1].first_name << std::endl;
