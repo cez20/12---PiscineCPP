@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 08:51:11 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/15 17:22:16 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/03/16 10:40:46 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,26 +28,19 @@
 // D) Rappel : Ce qui est utilise dans une classe seulement est "private", ce qui peut etre utilise a l'exterieur est public
 
 
-//Creer un constructeur pour initialiser choice a NULL et ventuellement nbr_contact a 0.
+// Lorsque j'atteins 8 contacts, je dois efface le contenu du premier contact, car sinon il considere que le contenu n'est pas empty
+// Accepter que des chiffres dans phone number
+// Optionnel, si ce qui est ecrit a deja ete utilise ailleurs, ecrire un messafge 
 int main()
 {
-	//std::string	choice;  Would no longer be necessary if variable is inside member function
-	Contact		person;  // Create an instance/object of class Contact named Person 
+	//Contact		person;  // Create an instance/object of class Contact named Person 
 	PhoneBook	phonebook; // Create an instance/object of class PhoneBook named repertoire 
-	int			nbr_contacts; // Integer named nbr_contact 
-
-	nbr_contacts = 0;
+	
 	while (1)
 	{	
 		phonebook.display_menu_options();
-		//std::getline(std::cin, choice);
 		if (phonebook.choice.compare("ADD") == 0) // Maybe I can use a switch and the case 1, case 2 , etc)
-		{	
-			if (nbr_contacts == 8)
-				nbr_contacts = 0;
-			phonebook.ADD(nbr_contacts);
-			nbr_contacts++;
-		}
+			phonebook.ADD();
 		else if (phonebook.choice == "SEARCH")
 			std::cout << "We are in the SEARCH option!\n" << std::endl;
 		else if (phonebook.choice == "EXIT") // We can also use "relational operators" such as "=" and "!=", but this has to be used with std::string. 

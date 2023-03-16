@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 08:39:12 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/15 17:04:13 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/03/16 10:29:52 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,18 @@ class	PhoneBook{
 
 public:
 
+	PhoneBook(void);
+	//~PhoneBook(void);
 	std::string choice;
 	void		display_menu_options(void);
-	void		ADD(int index);
+	void		ADD(void);
 	void		SEARCH(void);
 	void		EXIT(void);
 
 private:
 
-	Contact	contact[8]; //Array of 8 of class Contact 
+	int			nbr_of_contact;
+	Contact		contact[8]; //Array of 8 of class Contact 
 };
 
 #endif
