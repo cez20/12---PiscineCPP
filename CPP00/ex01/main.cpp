@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 08:51:11 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/16 10:40:46 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/03/16 13:28:27 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,11 @@
 // C) objets "contacts" doivent etre une instance de la classe Contact 
 // D) Rappel : Ce qui est utilise dans une classe seulement est "private", ce qui peut etre utilise a l'exterieur est public
 
-
-// Lorsque j'atteins 8 contacts, je dois efface le contenu du premier contact, car sinon il considere que le contenu n'est pas empty
-// Accepter que des chiffres dans phone number
 // Optionnel, si ce qui est ecrit a deja ete utilise ailleurs, ecrire un messafge 
+// Accepter que des lettres dans nom, nom de famille, nickname.
+// Travailler sur l'option SEARCH qui montre le contenu du PHONEBOOK
 int main()
 {
-	//Contact		person;  // Create an instance/object of class Contact named Person 
 	PhoneBook	phonebook; // Create an instance/object of class PhoneBook named repertoire 
 	
 	while (1)
@@ -42,11 +40,15 @@ int main()
 		if (phonebook.choice.compare("ADD") == 0) // Maybe I can use a switch and the case 1, case 2 , etc)
 			phonebook.ADD();
 		else if (phonebook.choice == "SEARCH")
-			std::cout << "We are in the SEARCH option!\n" << std::endl;
+			phonebook.SEARCH();
 		else if (phonebook.choice == "EXIT") // We can also use "relational operators" such as "=" and "!=", but this has to be used with std::string. 
 		 	phonebook.EXIT();
 		else
-			std::cout << "\033[31mThis choice is not valid! Please re-enter a valid choice!\033[0m\n" << std::endl;
+		{
+			std::cout << "\033[31mThis choice is invalid! Press ENTER to continue\033[0m" << std::endl;
+			std::cin.get();
+			//std::cout << "\033[2J\033[1;1H"; // Escape sequence to erase everything
+		}
 	}		
 	return 0;
 }
