@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 08:51:11 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/16 15:07:59 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/03/17 00:06:58 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 // Optionnel, si ce qui est ecrit a deja ete utilise ailleurs, ecrire un messafge 
 // Accepter que des lettres dans nom, nom de famille, nickname.
 // Travailler sur l'option SEARCH qui montre le contenu du PHONEBOOK
+// J'ai declare ma fonction normale dans phonebook.cpp
 int main()
 {
 	PhoneBook	phonebook; // Create an instance/object of class PhoneBook named repertoire 

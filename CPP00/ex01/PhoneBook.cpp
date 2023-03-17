@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 15:50:56 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/16 15:08:31 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/03/17 00:28:10 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,16 @@
 #include <iomanip>
 #include "contact.hpp"
 #include "phonebook.hpp"
+
+std::string truncate_str(std::string str, size_t size) 
+{
+    if (str.size() > size) 
+	{
+        str.resize(size);
+        str.replace(size - 1, 1, ".");
+    }
+    return str;
+}
 
 PhoneBook::PhoneBook(void){
 
@@ -93,6 +103,11 @@ void	PhoneBook::ADD()
 
 void	PhoneBook::SEARCH(void)
 {
+	std::string copy_first_name;  // Is it a good practice to declare new variable here 
+	std::string copy_last_name;
+	std::string copy_nickname;
+	std::string choice1;
+	int		index;
 	
 	std::cout << std::setfill(' ') << std::setw(10) << "INDEX" << "|"
 			  << std::setfill(' ') << std::setw(10) << "FIRST NAME" << "|"
@@ -101,20 +116,25 @@ void	PhoneBook::SEARCH(void)
 	
 	for (int i = 0; i < 8; i++)
     {
-       std::cout<< std::setw(10) << i << "|"
-	   			<< std::setw(10) << contact[i].first_name << "|"
-	   			<< std::setw(10) << contact[i].last_name << "|"
-	   			<< std::setw(10) << contact[i].nickname << "|" << std::endl;
+	   copy_first_name = truncate_str(contact[i].first_name, 10);
+	   copy_last_name = truncate_str(contact[i].last_name, 10);
+	   copy_nickname = truncate_str(contact[i].nickname, 10);
+	   std::cout<< std::setw(10) << i << "|"
+	   			<< std::setw(10) << copy_first_name << "|"
+	   			<< std::setw(10) << copy_last_name << "|"
+	   			<< std::setw(10) << copy_nickname << "|" << std::endl;
     }
 
-	std::cout << "Which entry would you like to see? Please enter index number: ";
+	std::cout << "Which entry would you like to see? Please enter index number: ";  //Manage entry errors here 
+	std::getline(std::cin, choice1);
+	index = std::stoi(choice1);
+	
 
-
-	//std::cout << "First name: " << contact[this->choice1].first_name << std::endl;
-	// std::cout << "Last name: " << contact[choice].last_name << std::endl;
-	// std::cout << "Nickname: " << contact[choice].nickname << std::endl;
-	// std::cout << "Phone number: " << contact[choice].phone_number << std::endl;
-	// std::cout << "Darkest secret: " << contact[choice].darkest_secret << std::endl;
+	std::cout << "First name: " << contact[index].first_name << std::endl;
+	std::cout << "Last name: " << contact[index].last_name << std::endl;
+	std::cout << "Nickname: " << contact[index].nickname << std::endl;
+	std::cout << "Phone number: " << contact[index].phone_number << std::endl;
+	std::cout << "Darkest secret: " << contact[index].darkest_secret << std::endl;
 }
 
 void	PhoneBook::EXIT(void)
