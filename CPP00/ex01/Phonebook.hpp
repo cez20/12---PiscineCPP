@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 08:39:12 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/16 15:08:05 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/03/16 15:11:17 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ public:
 
 	PhoneBook(void);
 	//~PhoneBook(void); // Est-ce que j'ai besoin d'ajoute un destructeur 
-	int			choice1;
 	std::string choice;
 	void		display_phonebook_options(void);
 	void		ADD(void);
