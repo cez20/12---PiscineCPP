@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 14:45:34 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/19 15:14:36 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/03/19 17:17:50 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ std::string truncate_str(std::string str, size_t size)
     return str;
 }
 
-PhoneBook::PhoneBook(void): choice(""), nbr_of_contact(0) {}
+PhoneBook::PhoneBook(void): choice(""), _nbrOfContact(0) {}
 
-void	PhoneBook::display_options(void)
+void	PhoneBook::menu_options(void)
 {
 	std::cout << "\033[1;32mPlease enter ADD, SEARCH OR EXIT to use this PHONEBOOK: \033[0m" << std::endl;
 	std::cout << "ADD ----------> Allows you to enter a new contact in this PHONEBOOK" << std::endl;
@@ -42,56 +42,55 @@ void	PhoneBook::display_options(void)
 
 void	PhoneBook::ADD()
 {
-	std::cout << "The value of this->nbr_of_contact is: " << this->nbr_of_contact << std::endl;
-	if (this->nbr_of_contact == 8)
+	std::cout << "The value of this->_nbrOfContact is: " << this->_nbrOfContact << std::endl;
+	if (this->_nbrOfContact == 8)
 	{
 		std::cout << "\033[31mWARNING! THIS PHONEBOOK IS ALREADY FULL. THIS ACTION WILL ERASE A PREVIOUS ENTRY IN THE PHONEBOOK.\033[0m" << std::endl;
-		this->nbr_of_contact = 0;
+		this->_nbrOfContact = 0;
 	}
-	if (!contact[this->nbr_of_contact].first_name.empty())
+	if (!contact[this->_nbrOfContact]._firstName.empty())
 	{
-		contact[this->nbr_of_contact].first_name.clear();
-		contact[this->nbr_of_contact].last_name.clear();
-		contact[this->nbr_of_contact].nickname.clear();
-		contact[this->nbr_of_contact].phone_number.clear();
-		contact[this->nbr_of_contact].darkest_secret.clear();
-		
+		contact[this->_nbrOfContact]._firstName.clear();
+		contact[this->_nbrOfContact]._lastName.clear();
+		contact[this->_nbrOfContact]._nickname.clear();
+		contact[this->_nbrOfContact]._phoneNumber.clear();
+		contact[this->_nbrOfContact]._darkestSecret.clear();
 	}
-	while(contact[this->nbr_of_contact].first_name.empty())
+	while(contact[this->_nbrOfContact]._firstName.empty())
 	{
 		std::cout << "Please enter first name: ";
-		std::getline(std::cin, contact[this->nbr_of_contact].first_name);
+		std::getline(std::cin, contact[this->_nbrOfContact]._firstName);
 	}
-	while(contact[this->nbr_of_contact].last_name.empty())
+	while(contact[this->_nbrOfContact]._lastName.empty())
 	{
 		std::cout << "Please enter last name: ";
-		std::getline(std::cin, contact[this->nbr_of_contact].last_name);
+		std::getline(std::cin, contact[this->_nbrOfContact]._lastName);
 	}
-	while(contact[this->nbr_of_contact].nickname.empty())
+	while(contact[this->_nbrOfContact]._nickname.empty())
 	{
-		std::cout << "Please enter nickname: ";
-		std::getline(std::cin, contact[this->nbr_of_contact].nickname);
+		std::cout << "Please enter _nickname: ";
+		std::getline(std::cin, contact[this->_nbrOfContact]._nickname);
 	}
-	while(contact[this->nbr_of_contact].phone_number.empty())
+	while(contact[this->_nbrOfContact]._phoneNumber.empty())
 	{
-		std::cout << "Please enter phone_number: ";
-		std::getline(std::cin, contact[this->nbr_of_contact].phone_number);
-		for(size_t i = 0; i < contact[this->nbr_of_contact].phone_number.size(); i++)
+		std::cout << "Please enter _phoneNumber: ";
+		std::getline(std::cin, contact[this->_nbrOfContact]._phoneNumber);
+		for(size_t i = 0; i < contact[this->_nbrOfContact]._phoneNumber.size(); i++)
 		{
-			if (!isdigit(contact[this->nbr_of_contact].phone_number[i]))
+			if (!isdigit(contact[this->_nbrOfContact]._phoneNumber[i]))
 			{
-				contact[this->nbr_of_contact].phone_number.clear();
+				contact[this->_nbrOfContact]._phoneNumber.clear();
 				std::cout << "\033[31mPlease enter a phone number ONLY composed of digits!\033[0m" << std::endl;
 				break;
 			}
 		}
 	}
-	while(contact[this->nbr_of_contact].darkest_secret.empty())
+	while(contact[this->_nbrOfContact]._darkestSecret.empty())
 	{
 		std::cout << "Please enter darkest secret: ";
-		std::getline(std::cin, contact[this->nbr_of_contact].darkest_secret);
+		std::getline(std::cin, contact[this->_nbrOfContact]._darkestSecret);
 	}
-	this->nbr_of_contact++;
+	this->_nbrOfContact++;
 	std::cout << std::endl;
 	std::cout << "\033[1;34mCONTACT HAS BEEN SUCCESSFULLY ENTERED IN PHONEBOOK! PRESS -ENTER- TO CONTINUE !!!\033[0m" << std::endl;
 	std::cin.get();
@@ -99,27 +98,27 @@ void	PhoneBook::ADD()
 
 void	PhoneBook::SEARCH(void)
 {
-	std::string copy_first_name;  // Is it a good practice to declare new variable here 
-	std::string copy_last_name;
-	std::string copy_nickname;
+	std::string copy__firstName;  // Is it a good practice to declare new variable here 
+	std::string copy__lastName;
+	std::string copy__nickname;
 	std::string choice1;
 	int		index;
 	
 	std::cout << "\n" << std::setfill('.') << std::setw(10) << "INDEX" << "|"
 			  << std::setfill('.') << std::setw(10) << "FIRST NAME" << "|"
 			  << std::setfill('.') << std::setw(10) << "LAST NAME" << "|"
-			  << std::setfill('.') << std::setw(10) << "NICKNAME" << "|" << std::endl;
+			  << std::setfill('.') << std::setw(10) << "_nickname" << "|" << std::endl;
 
 
 	for (int i = 0; i < 8; i++)
     {
-	   copy_first_name = truncate_str(contact[i].first_name, 10);
-	   copy_last_name = truncate_str(contact[i].last_name, 10);
-	   copy_nickname = truncate_str(contact[i].nickname, 10);
+	   copy__firstName = truncate_str(contact[i]._firstName, 10);
+	   copy__lastName = truncate_str(contact[i]._lastName, 10);
+	   copy__nickname = truncate_str(contact[i]._nickname, 10);
 	   std::cout<< std::setw(10) << i << "|"
-	   			<< std::setw(10) << copy_first_name << "|"
-	   			<< std::setw(10) << copy_last_name << "|"
-	   			<< std::setw(10) << copy_nickname << "|" << std::endl;
+	   			<< std::setw(10) << copy__firstName << "|"
+	   			<< std::setw(10) << copy__lastName << "|"
+	   			<< std::setw(10) << copy__nickname << "|" << std::endl;
     }
 
 	std::cout << "\nWhich entry would you like to see? Please enter index number: ";  //Manage entry errors here 
@@ -127,11 +126,11 @@ void	PhoneBook::SEARCH(void)
 	index = std::stoi(choice1);
 	std::cout << std::endl;
 	
-	std::cout << "First name: " << contact[index].first_name << std::endl;
-	std::cout << "Last name: " << contact[index].last_name << std::endl;
-	std::cout << "Nickname: " << contact[index].nickname << std::endl;
-	std::cout << "Phone number: " << contact[index].phone_number << std::endl;
-	std::cout << "Darkest secret: " << contact[index].darkest_secret << "\n" << std::endl;
+	std::cout << "First name: " << contact[index]._firstName << std::endl;
+	std::cout << "Last name: " << contact[index]._lastName << std::endl;
+	std::cout << "_nickname: " << contact[index]._nickname << std::endl;
+	std::cout << "Phone number: " << contact[index]._phoneNumber << std::endl;
+	std::cout << "Darkest secret: " << contact[index]._darkestSecret << "\n" << std::endl;
 }
 
 void	PhoneBook::EXIT(void)
