@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.cpp                                      :+:      :+:    :+:   */
+/*   phoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 15:50:56 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/17 00:28:10 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/03/19 13:01:49 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,11 +109,12 @@ void	PhoneBook::SEARCH(void)
 	std::string choice1;
 	int		index;
 	
-	std::cout << std::setfill(' ') << std::setw(10) << "INDEX" << "|"
-			  << std::setfill(' ') << std::setw(10) << "FIRST NAME" << "|"
-			  << std::setfill(' ') << std::setw(10) << "LAST NAME" << "|"
-			  << std::setfill(' ') << std::setw(10) << "NICKNAME" << "|" << std::endl;
-	
+	std::cout << "\n" << std::setfill('.') << std::setw(10) << "INDEX" << "|"
+			  << std::setfill('.') << std::setw(10) << "FIRST NAME" << "|"
+			  << std::setfill('.') << std::setw(10) << "LAST NAME" << "|"
+			  << std::setfill('.') << std::setw(10) << "NICKNAME" << "|" << std::endl;
+
+
 	for (int i = 0; i < 8; i++)
     {
 	   copy_first_name = truncate_str(contact[i].first_name, 10);
@@ -125,16 +126,16 @@ void	PhoneBook::SEARCH(void)
 	   			<< std::setw(10) << copy_nickname << "|" << std::endl;
     }
 
-	std::cout << "Which entry would you like to see? Please enter index number: ";  //Manage entry errors here 
+	std::cout << "\nWhich entry would you like to see? Please enter index number: ";  //Manage entry errors here 
 	std::getline(std::cin, choice1);
 	index = std::stoi(choice1);
+	std::cout << std::endl;
 	
-
 	std::cout << "First name: " << contact[index].first_name << std::endl;
 	std::cout << "Last name: " << contact[index].last_name << std::endl;
 	std::cout << "Nickname: " << contact[index].nickname << std::endl;
 	std::cout << "Phone number: " << contact[index].phone_number << std::endl;
-	std::cout << "Darkest secret: " << contact[index].darkest_secret << std::endl;
+	std::cout << "Darkest secret: " << contact[index].darkest_secret << "\n" << std::endl;
 }
 
 void	PhoneBook::EXIT(void)
