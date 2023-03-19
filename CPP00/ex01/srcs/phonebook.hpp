@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 08:39:12 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/19 14:33:20 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/03/19 15:12:13 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ class	PhoneBook{
 public:
 
 	PhoneBook(void);
-	std::string choice;
-	void		display_phonebook_options(void);
+	std::string	choice;
+	void		display_options(void);
 	void		ADD(void);
 	void		SEARCH(void);
 	void		EXIT(void);

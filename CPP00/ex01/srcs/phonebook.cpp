@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 14:45:34 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/19 14:45:37 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/03/19 15:14:36 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,9 @@ std::string truncate_str(std::string str, size_t size)
     return str;
 }
 
-PhoneBook::PhoneBook(void){
+PhoneBook::PhoneBook(void): choice(""), nbr_of_contact(0) {}
 
-	this->nbr_of_contact = 0;
-	this->choice = ""; // Create an empty string
-}
-
-void	PhoneBook::display_phonebook_options(void)
+void	PhoneBook::display_options(void)
 {
 	std::cout << "\033[1;32mPlease enter ADD, SEARCH OR EXIT to use this PHONEBOOK: \033[0m" << std::endl;
 	std::cout << "ADD ----------> Allows you to enter a new contact in this PHONEBOOK" << std::endl;
