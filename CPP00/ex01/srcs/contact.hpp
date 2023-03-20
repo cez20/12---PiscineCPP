@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:13:10 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/19 17:17:14 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/03/20 14:58:41 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 
 class	Contact{
 
-// public:
+public:
 
-// 	Contact(void);
+	Contact(void);
 	
-public: // Mais il est suppose etre private. Pourquoi? 
+private: // Mais il est suppose etre private. Pourquoi? 
 
 	std::string _firstName;  // variable de type string nomme first_name
 	std::string	_lastName;   // variable de type string nomme last_name
