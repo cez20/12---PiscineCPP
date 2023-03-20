@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 08:39:12 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/19 17:47:48 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/03/20 15:15:24 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ public:
 	void		ADD(void);
 	void		SEARCH(void);
 	void		EXIT(void);
+	void		create_contact(void);
 
 private:
 
