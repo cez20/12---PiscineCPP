@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 14:45:34 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/21 14:41:51 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/03/21 14:52:54 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,6 @@
 #include <iomanip>
 #include "contact.hpp"
 #include "phonebook.hpp"
-
-std::string truncate_str(std::string str, size_t size) 
-{
-    if (str.size() > size) 
-	{
-        str.resize(size);
-        str.replace(size - 1, 1, ".");
-    }
-    return str;
-}
-
-int 	is_all_digits(std::string phoneNumber)
-{
-	for(size_t i = 0; i < phoneNumber.size(); i++)
-	{
-		if (!isdigit(phoneNumber[i]))
-		{
-			phoneNumber.clear();
-			std::cout << "\033[31mPlease enter a phone number ONLY composed of digits!\033[0m" << std::endl;
-			return(0);
-		}
-	}
-	return (1);
-}
 
 PhoneBook::PhoneBook(void): choice(""), _nbrOfContact(0) {}
 
@@ -55,7 +31,7 @@ void	PhoneBook::display_options(void)
 		return ;
 }
 
-void	PhoneBook::ADD()
+void	PhoneBook::add()
 {
 	std::string firstName;
 	std::string lastName;
@@ -106,7 +82,7 @@ void	PhoneBook::ADD()
  	this->_nbrOfContact++;
 }
 
-void	PhoneBook::SEARCH(void)
+void	PhoneBook::search(void)
 {
 	std::string firstName;
 	std::string lastName;
@@ -144,8 +120,33 @@ void	PhoneBook::SEARCH(void)
 	std::cout << "Darkest secret: " << _contact[index].getDarkestSecret() << "\n" << std::endl;
 }
 
-void	PhoneBook::EXIT(void)
+// void	PhoneBook::exit(void)
+// {
+// 	std::cout << "Quitting the phonebook! See you soon!" << std::endl;
+// 	exit(0);
+// }
+
+
+std::string truncate_str(std::string str, size_t size) 
 {
-	std::cout << "Quitting the phonebook! See you soon!" << std::endl;
-	exit(0);
+    if (str.size() > size) 
+	{
+        str.resize(size);
+        str.replace(size - 1, 1, ".");
+    }
+    return str;
+}
+
+int	is_all_digits(std::string phoneNumber)
+{
+	for(size_t i = 0; i < phoneNumber.size(); i++)
+	{
+		if (!isdigit(phoneNumber[i]))
+		{
+			phoneNumber.clear();
+			std::cout << "\033[31mPlease enter a phone number ONLY composed of digits!\033[0m" << std::endl;
+			return(0);
+		}
+	}
+	return (1);
 }

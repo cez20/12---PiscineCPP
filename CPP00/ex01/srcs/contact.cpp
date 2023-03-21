@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 14:46:03 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/21 14:26:58 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/03/21 14:53:43 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,6 @@
 Contact::Contact(void): _firstName(""), _lastName(""), _nickname(""), _phoneNumber(""),_darkestSecret("")
 {
 	std::cout << "Je suis dans le constructeur de Contact" << std::endl;
-	// if (_firstName.empty())
-	// 	std::cout << "First name est vide" << std::endl;
-	// if (_lastName.empty())
-	// 	std::cout << "Last name est vide" << std::endl;
-	// if (_nickname.empty())
-	// 	std::cout << "Nickname est vide" << std::endl;
-	// if (_phoneNumber.empty())
-	// 	std::cout << "Phonenumber est vide" << std::endl;
-	// if (_darkestSecret.empty())
-	// 	std::cout << "Darkestsecret est vide" << std::endl;
 }
 
 void	Contact::addContact(std::string first, std::string last, std::string nick, std::string phone, std::string secret)
@@ -67,11 +57,4 @@ std::string	Contact::getPhoneNumber(){
 std::string	Contact::getDarkestSecret(){
 
 	return _darkestSecret;
-}
-
-void	Contact::printContact(int index){
-	
-	
-
-
 }
