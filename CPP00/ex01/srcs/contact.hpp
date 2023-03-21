@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:13:10 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/20 16:49:29 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/03/21 13:57:03 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ public:
 
 	Contact(void);
 	
-	void		setContact(std::string first, std::string last, std::string nick, std::string phone, std::string secret);
+	void		addContact(std::string first, std::string last, std::string nick, std::string phone, std::string secret);
+	void		printContact(int index);
 	std::string getFirstName();
 	std::string getLastName();
 	std::string getNickName();

@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 14:46:18 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/20 17:39:20 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/03/21 13:57:39 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int main()
 	
 	while (!std::cin.eof())
 	{	
-		phonebook.menu_options();
+		phonebook.display_options();
 		if (phonebook.choice.compare("ADD") == 0) // Maybe I can use a switch and the case 1, case 2 , etc)
 			phonebook.ADD();
 		else if (phonebook.choice == "SEARCH")

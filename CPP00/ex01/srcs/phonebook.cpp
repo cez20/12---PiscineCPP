@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 14:45:34 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/20 18:08:13 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/03/21 13:53:49 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,23 @@ std::string truncate_str(std::string str, size_t size)
     return str;
 }
 
+int 	is_all_digits(std::string phoneNumber)
+{
+	for(size_t i = 0; i < phoneNumber.size(); i++)
+	{
+		if (!isdigit(phoneNumber[i]))
+		{
+			phoneNumber.clear();
+			std::cout << "\033[31mPlease enter a phone number ONLY composed of digits!\033[0m" << std::endl;
+			return(0);
+		}
+	}
+	return (1);
+}
+
 PhoneBook::PhoneBook(void): choice(""), _nbrOfContact(0) {}
 
-void	PhoneBook::menu_options(void)
+void	PhoneBook::display_options(void)
 {
 	std::cout << "\033[1;32mPlease enter ADD, SEARCH OR EXIT to use this PHONEBOOK: \033[0m" << std::endl;
 	std::cout << "ADD ----------> Allows you to enter a new contact in this PHONEBOOK" << std::endl;
@@ -50,10 +64,7 @@ void	PhoneBook::ADD()
 	std::string darkestSecret; 
 	
 	if (this->_nbrOfContact == 8)
-	{
-		std::cout << "\033[31mWARNING! THIS PHONEBOOK IS ALREADY FULL. THIS ACTION WILL ERASE A PREVIOUS ENTRY IN THE PHONEBOOK.\033[0m" << std::endl;
 		this->_nbrOfContact = 0;
-	}
 	while (firstName.empty())
 	{
 		std::cout << "Please enter first name: ";
@@ -81,15 +92,8 @@ void	PhoneBook::ADD()
 		std::getline(std::cin, phoneNumber);
 		if (std::cin.eof())
 			return ;
-		for(size_t i = 0; i < phoneNumber.size(); i++)
-		{
-			if (!isdigit(phoneNumber[i]))
-			{
-				phoneNumber.clear();
-				std::cout << "\033[31mPlease enter a phone number ONLY composed of digits!\033[0m" << std::endl;
-				break;
-			}
-		}
+		if(is_all_digits(phoneNumber) == 0)
+			phoneNumber.clear();
 	}
 	while(darkestSecret.empty())
 	{
@@ -98,12 +102,8 @@ void	PhoneBook::ADD()
 		if (std::cin.eof())
 			return ;
 	}
-
-	_contact[this->_nbrOfContact].setContact(firstName, lastName, nickname, phoneNumber, darkestSecret);
-
+	_contact[this->_nbrOfContact].addContact(firstName, lastName, nickname, phoneNumber, darkestSecret);
  	this->_nbrOfContact++;
-	std::cout << std::endl;
-	std::cout << "\033[1;34mCONTACT HAS BEEN SUCCESSFULLY ENTERED IN PHONEBOOK!\n\033[0m" << std::endl;
 }
 
 void	PhoneBook::SEARCH(void)
@@ -114,6 +114,7 @@ void	PhoneBook::SEARCH(void)
 	std::string choice;
 	int			index;
 	
+	// Print content phonebook
 	std::cout << "\n" << std::setfill(' ') << std::setw(10) << "INDEX" << "|"
 			  << std::setfill(' ') << std::setw(10) << "FIRST NAME" << "|"
 			  << std::setfill(' ') << std::setw(10) << "LAST NAME" << "|"
@@ -130,6 +131,7 @@ void	PhoneBook::SEARCH(void)
 	   			<< std::setw(10) << nickname << "|" << std::endl;
     }
 
+	// GEt entry and change it into index.
 	std::cout << "\nWhich entry would you like to see? Please enter index number: ";  //Manage entry errors here 
 	std::getline(std::cin, choice);
 	if (std::cin.eof())
@@ -137,6 +139,7 @@ void	PhoneBook::SEARCH(void)
 	index = std::stoi(choice);
 	std::cout << std::endl;
 	
+	// Print detailed contact 
 	std::cout << "First name: " << _contact[index].getFirstName() << std::endl;
 	std::cout << "Last name: " << _contact[index].getLastName() << std::endl;
 	std::cout << "Nickname: " << _contact[index].getNickName() << std::endl;
