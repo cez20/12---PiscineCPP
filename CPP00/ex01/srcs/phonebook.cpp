@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 14:45:34 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/21 13:53:49 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/03/21 14:41:51 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,6 @@ void	PhoneBook::SEARCH(void)
 	std::string choice;
 	int			index;
 	
-	// Print content phonebook
 	std::cout << "\n" << std::setfill(' ') << std::setw(10) << "INDEX" << "|"
 			  << std::setfill(' ') << std::setw(10) << "FIRST NAME" << "|"
 			  << std::setfill(' ') << std::setw(10) << "LAST NAME" << "|"
@@ -131,15 +130,13 @@ void	PhoneBook::SEARCH(void)
 	   			<< std::setw(10) << nickname << "|" << std::endl;
     }
 
-	// GEt entry and change it into index.
 	std::cout << "\nWhich entry would you like to see? Please enter index number: ";  //Manage entry errors here 
 	std::getline(std::cin, choice);
 	if (std::cin.eof())
 		return ;
 	index = std::stoi(choice);
 	std::cout << std::endl;
-	
-	// Print detailed contact 
+
 	std::cout << "First name: " << _contact[index].getFirstName() << std::endl;
 	std::cout << "Last name: " << _contact[index].getLastName() << std::endl;
 	std::cout << "Nickname: " << _contact[index].getNickName() << std::endl;
@@ -151,5 +148,4 @@ void	PhoneBook::EXIT(void)
 {
 	std::cout << "Quitting the phonebook! See you soon!" << std::endl;
 	exit(0);
-	return;
 }

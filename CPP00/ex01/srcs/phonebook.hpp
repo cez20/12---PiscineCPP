@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 08:39:12 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/21 13:56:45 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/03/21 14:42:10 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ public:
 	void		ADD(void);
 	void		SEARCH(void);
 	void		EXIT(void);
-	void		printPhonebook(void);
-
 
 private:
 

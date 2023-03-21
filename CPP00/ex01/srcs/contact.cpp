@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 14:46:03 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/21 13:55:24 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/03/21 14:26:58 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,11 @@ std::string	Contact::getPhoneNumber(){
 std::string	Contact::getDarkestSecret(){
 
 	return _darkestSecret;
+}
+
+void	Contact::printContact(int index){
+	
+	
+
+
 }
