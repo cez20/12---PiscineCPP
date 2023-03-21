@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 14:46:03 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/21 14:53:43 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/03/21 18:58:18 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@
 #include "contact.hpp"
 #include "phonebook.hpp"
 
-Contact::Contact(void): _firstName(""), _lastName(""), _nickname(""), _phoneNumber(""),_darkestSecret("")
-{
-	std::cout << "Je suis dans le constructeur de Contact" << std::endl;
-}
+Contact::Contact(void): _firstName(""), _lastName(""), _nickname(""), _phoneNumber(""),_darkestSecret("") {}
+
 
 void	Contact::addContact(std::string first, std::string last, std::string nick, std::string phone, std::string secret)
 {
