@@ -6,7 +6,7 @@
 #    By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/30 17:07:24 by cemenjiv          #+#    #+#              #
-#    Updated: 2023/03/19 14:53:24 by cemenjiv         ###   ########.fr        #
+#    Updated: 2023/03/21 19:08:09 by cemenjiv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRCS 			= $(addprefix $(SRCS_DIR), $(SRCS_FILES))
 OBJS_DIR		= objs/
 OBJS 			= $(patsubst $(SRCS_DIR)%.cpp, $(OBJS_DIR)%.o, $(SRCS))
 
-CC				= g++
+CC				= c++
 CFLAGS			= -Wall -Wextra -Werror -std=c++98
 RM				= rm -f 
 
