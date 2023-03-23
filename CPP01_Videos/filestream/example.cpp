@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   contact.hpp                                        :+:      :+:    :+:   */
+/*   example.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/21 21:28:45 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/21 21:49:02 by cemenjiv         ###   ########.fr       */
+/*   Created: 2023/03/23 15:44:52 by cemenjiv          #+#    #+#             */
+/*   Updated: 2023/03/23 16:46:41 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_HPP
-#define CONTACT_HPP
+#include <iostream>
+#include <fstream>
 
-class ClassName {
+int main()
+{
+	std::string food;
+	std::ofstream outfile("test.txt");
 
-public:
-	ClassName();
-	~ClassName();
+	std::cout << "What did you eat?";
+	std::cin >> food;
+	outfile << food;
+	//outfile.close();
 
-private:
-	int value;
-};
-
-#endif /* CONTACT_HPP */
-
-
-#include "contact.hpp"
-
-ClassName::ClassName() {
 }
 
-ClassName::~ClassName() {
-}
+// Structure interessant pour lire contenu d'un input
+
+
+// while (file >> food)
+// {
+// 	food.push_back 
+// }
