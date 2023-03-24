@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 16:49:49 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/23 18:53:32 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/03/24 12:52:52 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,6 @@ public:
 	void announce(void);      //Fonction membre qui invite le zombie a dire son nom
 };
 
-//Prototype des fonctions non-membres
-//newZombie(std::string name) permet de creer un Zombie sur la heap
-//randomChump(std::string name) permet de cree un Zombie sur la stack. Le Zombie va mourir 
-//aussitot cette fonction termine
+//Prototype des fonctions non-membres:
 Zombie*	newZombie(std::string name); 
-void	randomChump(std::string name); 
+void	randomChump(std::string name);

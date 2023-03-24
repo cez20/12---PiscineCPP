@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   randomChump.cpp                                    :+:      :+:    :+:   */
+/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/23 18:06:40 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/24 12:52:28 by cemenjiv         ###   ########.fr       */
+/*   Created: 2023/03/24 13:48:41 by cemenjiv          #+#    #+#             */
+/*   Updated: 2023/03/24 14:27:43 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "zombie.hpp"
 
-//Fonction qui cree une instance de Zombie. Prend le nom assigne
-void	randomChump(std::string name)
-{
-	Zombie zombie = Zombie(name);
-	zombie.announce();
+// Maybe there is an easier way to do this
+Zombie* zombieHorde(int N, std::string name){
+
+	Zombie* zombie = new Zombie[N];
+	
+	for (int i = 0; i < N ; i++)
+		zombie[i].setName(name);
+	//for (int i = 0; i < N ; i++)
+		//std::cout << zombie[i].getName() << std::endl;
+	return (zombie);
 }
