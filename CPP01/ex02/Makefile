@@ -6,13 +6,13 @@
 #    By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/30 17:07:24 by cemenjiv          #+#    #+#              #
-#    Updated: 2023/03/27 14:58:08 by cemenjiv         ###   ########.fr        #
+#    Updated: 2023/03/27 15:07:00 by cemenjiv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= zombie
 
-SRCS			= main.cpp Zombie.cpp zombieHorde.cpp
+SRCS			= main.cpp
 				  	  
 OBJS			= $(SRCS:.cpp=.o) #Do not forget to use .cpp in here. 
 

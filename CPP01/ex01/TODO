@@ -1,0 +1,10 @@
+TODO:
+
+[X] Creer les fichiers suivants: Makefile, main.cpp,, Zombie.hpp, Zombie.cpp, zombieHorde.cpp
+[X] Avoir le prototype de fonction suivant Zombie* zombieHorde (int N, std::string name)
+[X] Allouer N objets Zombie en UNE SEULE ALLOCATION 
+[X] Fonction zombie Horde doit : 
+	- Initialiser les zombies en en donnant a CHACUN le nom passe en parametre
+	- Elle retourne un pointeur sur le premier zombie
+[X] Essayer d'appeler announce() (sans parametre) pour chacun des Zombies. (annouce() se trouve dans le main);
+[X] Aucun leak : utiliser delete et verifier avec valgrind 

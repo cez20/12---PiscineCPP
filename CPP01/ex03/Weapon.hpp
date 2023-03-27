@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/24 13:48:41 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/27 15:01:46 by cemenjiv         ###   ########.fr       */
+/*   Created: 2023/03/27 15:29:29 by cemenjiv          #+#    #+#             */
+/*   Updated: 2023/03/27 15:58:28 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include <iostream>
+#include <string.h>
 
-// Maybe there is an easier way to do this
-Zombie* zombieHorde(int N, std::string name){
+class Weapon{
 
-	Zombie* zombie = new Zombie[N]; // Alloue N Objets Zombie en une seule allocation 
-	
-	for (int i = 0; i < N ; i++)
-		zombie[i].setName(name); // Initialise les zombies en donnant a chacun le nom passe en parametre
+	private:
+		std::string type;
+		
+	public:
+		Weapon(std::string);
+		~Weapon();
+		const std::string& getType(); // Il faut que ce une refence vers un string de type string.  
+		void  setType(std::string);
 
-	return (zombie); // Retourne un pointeur 
-}
+};

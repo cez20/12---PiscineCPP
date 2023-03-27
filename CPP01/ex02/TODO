@@ -1,0 +1,14 @@
+TODO:
+
+[X] Fichier Makefile and main.cpp
+[X] Une variable de type string initialisée à "HI THIS IS BRAIN".
+[X] stringPTR : Un pointeur sur la string.
+[X] stringREF : Une référence sur la string.
+[X] Votre programme doit afficher
+	[X] L’adresse de la string en mémoire.
+	[X] L’adresse stockée dans stringPTR.
+	[X] L’adresse stockée dans stringREF.
+	Puis:
+	[X] La valeur de la string.
+	[X] La valeur pointée par stringPTR.
+	[X] La valeur pointée par stringREF.

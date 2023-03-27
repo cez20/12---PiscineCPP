@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zombie.cpp                                         :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:23:08 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/24 14:24:52 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/03/27 14:57:27 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "zombie.hpp"
+#include "Zombie.hpp"
 
 Zombie::Zombie(void): _name(""){
 	std::cout << "Constructor has been called and initialized all Zombies names to NULL " << std::endl;
@@ -31,3 +31,7 @@ std::string Zombie::getName(){
 	return (_name);
 }
 
+void Zombie::announce(){
+
+	std::cout << "The name of the zombie is: " << getName() << std::endl;
+}
