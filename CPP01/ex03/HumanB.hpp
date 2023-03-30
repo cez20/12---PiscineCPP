@@ -6,23 +6,26 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 15:50:22 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/27 16:04:18 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/03/30 12:08:44 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef HUMANB_HPP
+# define HUMANB_HPP
 
 #include "Weapon.hpp"
 
 class HumanB{
 
 	private:
-		std::string Weapon;
-		std::string name;
+		std::string _nameB;
+		Weapon*		_weaponB;
 		
 	public:
-		HumanB(std::string name); // Constructeur qui assigne nom 
-		~HumanB(); //Destructeur
-		void setWeapon(std::string);
-		void attack();
-
-	
+		HumanB(std::string const& name); 
+		void setWeapon(Weapon& weapon);
+		std::string getNameB();
+		void		attack();
 };
+
+#endif 

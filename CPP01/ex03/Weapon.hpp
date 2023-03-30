@@ -6,22 +6,23 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 15:29:29 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/27 15:58:28 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/03/30 11:22:09 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string.h>
+#ifndef WEAPON_HPP
+# define WEAPON_HPP
+
+#include <string>
 
 class Weapon{
 
 	private:
-		std::string type;
-		
+		std::string _type;	
 	public:
-		Weapon(std::string);
-		~Weapon();
-		const std::string& getType(); // Il faut que ce une refence vers un string de type string.  
-		void  setType(std::string);
-
+		Weapon(std::string const& type);
+		std::string const& getType(); 
+		void  setType(std::string const& type);
 };
+
+#endif

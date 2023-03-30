@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/27 15:52:14 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/27 16:07:47 by cemenjiv         ###   ########.fr       */
+/*   Created: 2023/03/30 12:16:22 by cemenjiv          #+#    #+#             */
+/*   Updated: 2023/03/30 12:19:19 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 #include "HumanA.hpp"
 #include "HumanB.hpp"
 
-int main()
-{
+int main(){
+
 	{
 	Weapon club = Weapon("crude spiked club");
 	HumanA bob("Bob", club);
@@ -26,11 +26,11 @@ int main()
 	{
 	Weapon club = Weapon("crude spiked club");
 	HumanB jim("Jim");
+	//jim.attack(); // To test when empty weapon 
 	jim.setWeapon(club);
 	jim.attack();
 	club.setType("some other type of club");
 	jim.attack();
 	}
+	return (0);
 }
-
-return 0;
