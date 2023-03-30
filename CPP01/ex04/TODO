@@ -1,0 +1,26 @@
+TODO: Version du PDF 
+
+[] Fichier a rendre: Makefile, main.cpp, *.cpp, *.hpp
+
+[] Concevoir un programme prenant 3 parametres:
+	[] Parametre 1:  un nom de fichier
+	[] Parametre 2: un string s1 
+	[] Parametre 3: un string s2
+
+[] Le fichier filename sera ouvert et son contenu copie dans un nouveau fichier <filename>.replace
+[] Dans le nouveau filename, chaque occurence de s1 sera remplacee par s2 
+[] Toutes les fonctions de la std::string sont autorisees sauf replace. Utilisez-les inteligemment
+
+[] Interdit d'avoir recours:
+	[] Aux fonctions C de manipulation de fichiers
+	[] std::string::replace
+
+TODO: Mes propres notes 
+
+[] Creer un programme qui prend 3 arguments (ex: ./a.out <filename> <str1> <str2>)
+[] Je dois ouvrir mon fichier filename
+[] Je dois copier TOUT le contenu de filename dans filename.replace en m'assurant que toutes occurence
+   de s1, soit remplace par s2 
+[] Je dois gerer toutes les erreur inattendues et toutes les erreur possibles 
+[] std::ofstream
+[] std::istringstream ostringstream 
