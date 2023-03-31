@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 12:41:57 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/30 22:41:41 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/03/30 22:51:52 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int main(int argc, char **argv)
 
 	ifs.open(file, std::ios_base::in);  // std::ios_base::in always set by default if no mode is mentioned 
 	ofs.open(output);
-	if (!ifs)
+	if (!ifs || !ofs)
 	{
 		std::cout << "Il y a une erreur avec ifs ou ofs" << std::endl;
 		return (-1);
@@ -71,14 +71,15 @@ int main(int argc, char **argv)
 			ofs << str;
 			start = index + (str1.length());
 			index = line.find(str1, start);
-			if (index == std::string::npos)
-			{
-				str = line.substr(start, line.length() - start);
-				ofs << str;
-			}
+			// if (index == std::string::npos)
+			// {
+			// 	str = line.substr(start, line.length() - start);
+			// 	ofs << str;
+			// }
 		}
-		std::cout << std::endl;
-		ofs << "\n"; // Valider que 
+		str = line.substr(start, line.length() - start);
+		ofs << str;
+		ofs << "\n"; // Pas toujours le cas ou il y a un \n
 	}
 	ifs.close(); // Close the input stream 
 	ofs.close();
