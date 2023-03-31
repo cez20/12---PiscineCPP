@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 12:41:57 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/30 22:51:52 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/03/30 23:20:19 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ int main(int argc, char **argv)
 		index = line.find(str1); // Looking for str1 inside line.
 		while(index != std::string::npos)
 		{
-			str = replace(line, index, start, str2);
-			ofs << str;
+			str += replace(line, index, start, str2);
+			//ofs << str;
 			start = index + (str1.length());
 			index = line.find(str1, start);
 			// if (index == std::string::npos)
@@ -77,8 +77,9 @@ int main(int argc, char **argv)
 			// 	ofs << str;
 			// }
 		}
-		str = line.substr(start, line.length() - start);
+		str += line.substr(start, line.length() - start);
 		ofs << str;
+		str.clear();
 		ofs << "\n"; // Pas toujours le cas ou il y a un \n
 	}
 	ifs.close(); // Close the input stream 
