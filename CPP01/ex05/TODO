@@ -1,0 +1,31 @@
+TODO:
+
+[] Documents to submit : Makeifle, main.cpp, Harl.hpp, Harl.cpp
+[] Aucune fonction interdite 
+
+[] Harl est en mesure de faire plusieurs commentaires
+	[] Niveau "DEBUG" Ex: "I love having extra bacon for my 
+	7XL-double-cheese-triple-pickle-special-ketchup-burger! I really do.
+	[] Niveau "INFO" Ex: "I think IK deserve to have some extra bacon for free. "I've
+	   been coming for years whereas you started working here since last mont"
+	[] Niveau "WARNING" Ex: "i think I deserve some extra bacon for free. I've been coming
+	    coming for year whereas you started working here since last month.
+	[] Niveau "ERROR": Ex: "This is unacceptable! I want to speak to the manager now.!
+
+But:
+[] Automatiser Harl
+	[] Creer une classe Harl avec les fonctions membres PRIVEES suivantes:
+		[] void debug (void)
+		[] void info(void)
+		[] void warning (void)
+		[] void error(void)
+	[] Cree une fonction membre PUBLIQUE, SELON le niveau passe en parametre, fait appel
+	   a l'une des quatres fonctions membres ci-dessus
+			void complain (std::string level)
+	[] CREER et RENDRE des tests pour montrer que Harl se plaint beaucoup. Vous pouvez
+		utilisez les exaemple de commentaires indique au dessus dans le sujet 
+
+Notes:
+	[]Le but est d'utiliser des pointeurs sur fonctions membres. Harl doit pouvoir se plaindre sans
+	  avoir recours a une foret de if/else if/else
+	
