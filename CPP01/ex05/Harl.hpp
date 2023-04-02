@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 11:17:41 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/31 12:20:45 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/02 18:18:01 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@
 class Harl{
 
 	private:
-		void	debug(void);
-		void	info(void);
-		void	warning(void);
-		void	error(void);
+		void		debug(void);
+		void		info(void);
+		void		warning(void);
+		void		error(void);
+		void		(Harl::*funcPtr[4])(void);
 
 	public:
+		Harl();
 		void	complain(std::string level);
 };
 #endif
