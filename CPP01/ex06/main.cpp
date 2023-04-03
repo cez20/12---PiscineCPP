@@ -6,22 +6,27 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 11:37:36 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/02 22:07:26 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/02 22:02:47 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Harl.hpp"
 
-int	main()
+int	main(int argc, char **argv)
 {
-	Harl	test;
+	Harl		harl;
+	std::string	level;
 	
-	test.complain("DEBUG");
-	test.complain("INFO");
-	test.complain("WARNING");
-	test.complain("ERROR");
-	test.complain("PROBLEM");
-
+	if (argc != 2)
+	{
+		std::cout << "The program must take ONLY 1 command-line argument" << std::endl;
+		return (-1);
+	}
+	
+	for (size_t i = 0; i < strlen(argv[1]); i++)
+		level += toupper(argv[1][i]);
+	harl.complain(level);
+		
 	return (0);
 }
