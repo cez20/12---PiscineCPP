@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 19:23:13 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/05 20:47:20 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/05 22:14:18 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,28 @@
 class ClapTrap {
 
 private:
-	std::string _name;
-	int			_hitpoints;
-	int			_energyPoints;
-	int			_attackDamage;
+	std::string		_name;
+	unsigned int	_hitpoints;
+	unsigned int	_energyPoints;
+	unsigned int	_attackDamage;
 
 public:
-	ClapTrap(std::string name);
-	~ClapTrap();
+	ClapTrap();  // Default Constructor 
+	ClapTrap(std::string name); 
+	ClapTrap(ClapTrap const & src); // Constructor de recopie
+	~ClapTrap(); // Destructeur 
+
+	ClapTrap & operator=(ClapTrap const & rhs); // Operator overload. 
 
 	void		attack(const std::string & target);
 	void		takeDamage(unsigned int amount);
 	void		beRepaired(unsigned int amount);
 	
 	void		getInfo();
-	std::string	getName();
-	int			getHitpoints();
-	int			getEnergyPoints();
-	//void	getAttackDamage();
-
-	//void	setHitpoints();
-	//void	setEnergyPoints();
+	std::string getName() const;
+	int			getHitpoints() const;
+	int			getEnergyPoints() const;
+	int			getDamage() const;
 };
 
 #endif 
