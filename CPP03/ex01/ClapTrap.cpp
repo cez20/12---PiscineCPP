@@ -6,32 +6,45 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 19:23:10 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/05 22:24:35 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/07 13:44:38 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include <iostream>
 
+/*
+** ------------------------------- CONSTRUCTOR --------------------------------
+*/
+
 ClapTrap::ClapTrap(): _name("Henri"), _hitpoints(5), _energyPoints(5), _attackDamage(0){
 	std::cout << "Default constructor is called" << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string name): _name(name), _hitpoints(10), _energyPoints(10), _attackDamage(0) {
+ClapTrap::ClapTrap(std::string name): _name(name), _hitpoints(100), _energyPoints(50), _attackDamage(20) {
 
 	std::cout << "Claptrap " << this->_name << " has been created!" << std::endl;
 }
 
 ClapTrap::ClapTrap(ClapTrap const & src){
 
-	std::cout << "Copy Constructor has been called" << std::endl;
+	std::cout << "ClapTrap copy constructor has been called" << std::endl;
 	*this = src;
 }
 
+/*
+** ------------------------------- DESTRUCTOR --------------------------------
+*/
+
 ClapTrap::~ClapTrap() {
 	
-	std::cout << "Destructor is called" << std::endl;
+	std::cout << "ClapTrap " << getName() << " destructor is called" << std::endl;
 }
+
+
+/*
+** --------------------------------- OVERLOAD ---------------------------------
+*/
 
 ClapTrap & ClapTrap::operator=(ClapTrap const & rhs){
 	
@@ -45,6 +58,10 @@ ClapTrap & ClapTrap::operator=(ClapTrap const & rhs){
 		
 	return (*this);
 }
+
+/*
+** --------------------------------- METHODS ----------------------------------
+*/
 
 void ClapTrap::attack(const std::string & target){
 	
@@ -74,9 +91,15 @@ void ClapTrap::beRepaired(unsigned int amount){
 
 void	ClapTrap::getInfo(){
 
-	std::cout << "ClapTrap name is " << getName() << " and he has " << getHitpoints() 
-			  << " hitpoints and " << getEnergyPoints() << " energy points!" << std::endl;
+	std::cout << "ClapTrap name is " << getName() 
+			  << ". It has " << getHitpoints() << " hitpoints."
+			  << " It has " << getEnergyPoints() << " energy points."
+			  << " Its attack generates " << getDamage() << " of damage!" << std::endl;
 }
+
+/*
+** --------------------------------- ACCESSOR ---------------------------------
+*/
 
 std::string ClapTrap::getName() const{
 	return (this->_name);
