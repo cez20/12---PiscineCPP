@@ -1,39 +1,35 @@
 TODO:
 
-CLASSE: 
 Class ScavTrap : public ClapTrap
-[] Cree un robot DERIVE de Clap Trap (implique inheritance). Voir plus haut.
-[] ScavTrap heritera des constructeurs et destructeur de Scavtrap (En etant public, il en herite d'emblee)
-[] Les constructeurs (Coplen) de ScavTrap affiche un message different de ClapTrap.
-[] Le destructeur de ScavTrap affiche un message different de ClapTrap.
-[] Le attack() de ScavTRap affiche un message different de ClapTrap. 
-	?? Dois-je cree une nouvelle fonction membre public pour ScavTrap qui ecrase celle de ClapTrap???
-	?? Dois-je modifier la attack() de Claptrap pour qu'il affiche un message different tout dependant si c'est un
-		objet ClapTrap ou ScavTrap qui appelle la fonction??
-
-TESTS:
-[] Cree des tests qui montre que l'enchainement des constructeurs/destructeurs se fait dans le bon ordre
-[] Noubliez pas d'enrichir vos tests (Penser aux differentes edges cases)
+[X] Cree un robot DERIVE de Clap Trap (implique inheritance).
+[X] ScavTrap heritera des constructeurs et destructeur de ClapTrap (En etant public, il en herite d'emblee)
+[X] Les constructeurs (Coplen) de ScavTrap affiche un message different de ClapTrap.
+[X] Le destructeur de ScavTrap affiche un message different de ClapTrap.
+[X] Le attack() de ScavTRap affiche un message different de ClapTrap. 
+	[X]Je conserve lancienne fonction dans ClapTrap est en cree une nouvelle dans SrapTrap
 
 DEROULEMENT: Principalement a partir des creations d'instance dans main. 
-[] Quand on cree, un ScavTrap, le programme commence par cree un ClapTrap
-	[] Instance de ScravTrap est cree
-		[] Quel constructeur de ClapTrap dois je utiliser????? 
-		[] Message constructeur de ClapTrap saffiche (ClapTrap "name" has been created)
-		[] Message constructeur de ScravTrap saffiche  (ScravTrap)
-[] La destruction seffectue dans lordre inverse 
-	[] Destructeur ScavTrap is called (ScravTrap name is destroyed)
-	[] Destructor ClapTrap is called (ClapTrap name is destroyed)
-[] ScravTrap utilisera les attributs suivants de ClapTrap, (modifiez donc ClapTrap en consequence.)
-	[] ScravTrap initialisera les variables de ClapTrap avec les infos suivantes
-		[] Name : son nom: qui sera passe en parametre dun constructeurs
-		[] Hit points (100);
-		[] Energy points (50);
-		[] Attack damage (20);
-		[] Est-ce que je dois mettre les variables ci-haut de ClapTrap en mode protected????
-			Protected veut dire que les objets derives SEULEMENT peuvent utilise ces variabl
-	[] ScrapTrap aura une capacite speciale et unique:
+[X] Quand on cree, un ScavTrap, le programme commence par cree un ClapTrap
+	[X] Message constructeur de ClapTrap saffiche (ClapTrap "name" has been created)
+	[X] Message constructeur de ScravTrap saffiche  (ScravTrap)
+[X] La destruction seffectue dans lordre inverse 
+	[X] Destructeur ScavTrap is called (ScravTrap name is destroyed)
+	[X] Destructor ClapTrap is called (ClapTrap name is destroyed)
+[X] ScravTrap utilisera les attributs suivants de ClapTrap, (modifiez donc ClapTrap en consequence.)
+	[X] Mettre les attributs private de ClapTrap en PROTECTED 
+	[X] ScravTrap initialisera les variables de ClapTrap avec les infos suivantes
+		[X] Name : son nom: qui sera passe en parametre dun constructeurs
+		[X] Hit points (100);
+		[X] Energy points (50);
+		[X] Attack damage (20);
+	[X] ScrapTrap aura une capacite speciale et unique:
 			void guardGate(); (Fonction membre public). De toute facon, ClapTrap ne peut y acceder
-		[] Fonction guardGate doit afficher un message informant que ScravTrap est entre en mode Gatekeeper
+		[X] Fonction guardGate doit afficher un message informant que ScravTrap est entre en mode Gatekeeper
 
-	[] Verifier comment je cree , MES fonctions d'operateurs overload.
+AUTRES:
+[]X Verifier comment je cree , MES fonctions d'operateurs overload.
+	[X] operator overload =
+	[X] operator overload << 
+[X] ScavTrap : mettre toutes les fonctions necessaires actives 
+[X] Verifier si j'ai des leaks car j'ai utilise new pour mes tests dans main.
+[X] Verifier si ma fonction attack doit aussi etre en VIRTUAL. Il ne semble pas. 

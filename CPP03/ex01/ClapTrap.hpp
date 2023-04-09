@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 19:23:13 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/07 13:05:48 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/09 17:39:21 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 class ClapTrap {
 
-private:
+protected:
 	std::string		_name;
 	unsigned int	_hitpoints;
 	unsigned int	_energyPoints;
@@ -26,8 +26,8 @@ private:
 public:
 	ClapTrap();  // Default Constructor 
 	ClapTrap(std::string name); 
-	ClapTrap(ClapTrap const & src); // Constructor de recopie
-	~ClapTrap(); // Destructeur 
+	ClapTrap(ClapTrap const & src); // Copy constructor 
+	virtual ~ClapTrap(); // Destructor
 
 	ClapTrap & operator=(ClapTrap const & rhs); // Operator overload. 
 

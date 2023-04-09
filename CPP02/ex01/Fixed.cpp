@@ -6,12 +6,13 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 17:41:16 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/05 17:20:24 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/05 22:42:04 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <iostream>
+#include <cmath>
 
 int const Fixed::_bits = 8;
 
