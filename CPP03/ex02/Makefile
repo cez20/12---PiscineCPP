@@ -6,13 +6,13 @@
 #    By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/03 17:54:38 by cemenjiv          #+#    #+#              #
-#    Updated: 2023/04/09 23:08:41 by cemenjiv         ###   ########.fr        #
+#    Updated: 2023/04/09 23:07:58 by cemenjiv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			= ScavTrap
+NAME			= FragTrap
 
-SRCS			= main.cpp ClapTrap.cpp ScavTrap.cpp
+SRCS			= main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 				  	  
 OBJS			= $(SRCS:.cpp=.o) #Do not forget to use .cpp in here. 
 
