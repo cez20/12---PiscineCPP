@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 19:23:15 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/09 23:11:02 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/10 10:15:55 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ int main()
 {
 	std::cout << "\nCLAPTRAP ROBOT CREATION:" << std::endl;
 	ClapTrap* robot1= new ClapTrap("Robot1");
+
+
+	
 	robot1->getInfo();
 	robot1->attack("Jules");
 	robot1->getInfo();

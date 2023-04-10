@@ -1,3 +1,25 @@
 TODO:
 
+[] Implementez une classe FragTrap HERITANT de ClapTrap
+    [] Classe FragTrap tres similaire a ScavTrap
+    [] Messages de constructeur et destructeur doivent etre different
+       de ClapTrap et ScrapTrap
+[] Creer des tests
+    [] Les tests doivent montrer que l'enchainement des constructeurs/
+       /destructeurs s'effectue dans le bon ordre
+[] Lorsqu'on cree un FragTrap:
+    [] Le programme commence par cree un ClapTrap
+    [] La destructoion s'effectue dans l'ordre inverse
+    [] On utilise les attributs de FragTrap mais on les initialise a:
+        [] Name : son nom, qui sera passe en parametre d'un constructeur
+        [] Hitpoints (100);
+        [] Energy points (100);
+        [] Attack damage (30);
+    [] FragTrap possede aussi une capacite speciale
+        []void highFiveGuys(void);
+[] N'oubliez pas d'enrichir vos tests. 
+
+
+
+
 [] Make clearer test that show how simultaneous all actions are. 
