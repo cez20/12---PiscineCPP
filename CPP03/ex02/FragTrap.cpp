@@ -26,7 +26,7 @@ FragTrap::FragTrap(std::string name): ClapTrap(name){
 
 FragTrap::FragTrap( const FragTrap & src )
 {
-	std::cout << "[COPY CONSTRUCTOR] ScavTrap copy constructor has been called" << std::endl;
+	std::cout << "[COPY CONSTRUCTOR] FragTrap copy constructor has been called" << std::endl;
 	*this = src;
 }
 
@@ -65,7 +65,8 @@ FragTrap &				FragTrap::operator=( FragTrap const & rhs )
 
 void FragTrap::highFiveGuys(void){
 
-	std::cout << "[HIGHFIVEGUYS METHOD] FragTrap robot ask for a High Five, guys! Up top!" << std::endl;
+	std::cout << "[HIGHFIVEGUYS METHOD] FragTrap robot " << getName() 
+			  << " ask for a High Five, guys! Up top!" << std::endl;
 }
 
 /* ************************************************************************** */

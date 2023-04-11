@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 19:23:15 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/10 10:15:55 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/10 10:42:23 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int main()
 	derivedRobot2->beRepaired(2);
 	derivedRobot2->getInfo();
 	derivedRobot2->guardGate();
+	//derivedRobot2->highFiveGuys(); // Impossible for ScavTrap to call highFivedGuys
 	delete derivedRobot2;
 
 	std::cout << "\nFRAGTRAP ROBOT CREATION (DERIVED FROM CLAPTRAP):" << std::endl;
@@ -54,15 +55,14 @@ int main()
 	derivedRobot3->beRepaired(3);
 	derivedRobot3->getInfo();
 	derivedRobot3->highFiveGuys();
+	//derivedRobot3->guardGate(); // Pourquoi je suis capable d'appeler guardGate
 	delete derivedRobot3;
 
 
-	
-	
 	std::cout << "\nMAKING SURE BASE CLASS DESTRUCTOR IS 'VIRTUAL'" << std::endl;
-	ClapTrap* robot3 = new ScavTrap("Robot 3");
-	robot3->getInfo();
-	delete robot3;
+	ClapTrap* robot4 = new ScavTrap("Robot 4");
+	robot4->getInfo();
+	delete robot4;
 
 	return (0);
 }

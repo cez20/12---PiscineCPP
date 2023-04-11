@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 19:23:10 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/09 18:16:42 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/10 10:25:36 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 */
 
 ClapTrap::ClapTrap(): _name("Henri"), _hitpoints(5), _energyPoints(5), _attackDamage(0){
-	std::cout << "[DEFAULT CONSTRUCTOR] Default constructor is called" << std::endl;
+	std::cout << "[DEFAULT CONSTRUCTOR] ClaTrap default constructor is called" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name): _name(name), _hitpoints(10), _energyPoints(10), _attackDamage(0) {
@@ -48,7 +48,7 @@ ClapTrap::~ClapTrap() {
 
 ClapTrap & ClapTrap::operator=(ClapTrap const & rhs){
 	
-	std::cout << "[OPERATOR OVERLOAD] Copy assignement operator called" << std::endl;
+	std::cout << "[OPERATOR OVERLOAD] Claptrap copy assignement operator called" << std::endl;
 	
 	if (this != &rhs)
 		this->_name = rhs.getName();
