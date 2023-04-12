@@ -1,0 +1,43 @@
+TODO:
+
+Pour chaque exercice:
+[X] Fournir les tests les plus complets possible
+[X] Les constructeurs et les destructeurs de chaque classse doivent afficher
+	des message qui leur sont propres. NE PAS utiliser les memes messages pour toutes
+	les classse
+
+EX01:
+[] Implementez une classe Brain (cerveau) contenant un tableau de 100 std::string appele 
+   ideas (idees). Est-ce que je dois le mettre public ou private? 
+[] Ainsi, les classes Dog et Cat auront un attribut prive Brain*
+[] A la construction,
+	[]les classes Dog et Cat creeront leur Brain avec new Brain();
+[] A la destruction
+	[] les classes Dog et Cat devront delete leur brain (comment faire cela??? )
+
+[] Dans votre fonction main:
+	[] Creez et remplissez un tableau d'objets Animal:
+		[] dont la moitie est compose d'objets Dog
+		[] l'autre moitie est compose d'objet cat
+	[] A la fin de l'execution, parcourez ce tableau afin de delete (delete []) chaque Animal
+	[] Vous devez delete directement les chiens et les chats en tant qu'Animal. Les 
+	destructeurs correspondant doivent etre appeles dans le bon ordre. 
+	[] VErifier aucun LEAK -- leak -atExit -- <executable>
+	[] La copie d'un objet Dog ou d'un objet Cat ne doit pas etre superficielle. Par consequent,
+	   vous devez vous assurer que vos copies sont bien des copies profondes.
+
+[] Deep Copy vs Shallow Copy in C++
+[] Comment mettre les fichiers.hpp pour eviter d'avoir a les repeter partout? 
+
+
+CONCEPT APPRIS:
+	[] Par defaut, le compilateur offre un constructeur et un copy constructeur meme si celui
+	   n'est pas declare dans la classe. Ceci dit, si je cree un objet et je lui assigne un objet deja
+	   existant, il va faire une copie de l'objet
+	   	ex:  Animal animal  = animal1;  (Le contenu d'animal sera une copie des donnes de animal 1)
+		Il y a donc une forme de Copy constructor qui est appele, mais si celui ci nest pas declare 
+		dans ma classe. 
+	[] Meme si notre copy constructor est forme comme suit Animal::Animal (Animal & src), 
+	   on peut l'appeler de 2 facons
+	   	Animal animal1(animal2) OR   Animal animal1 = animal2  (A valider)
+	[] Shallow copy vs Deep Copy. 

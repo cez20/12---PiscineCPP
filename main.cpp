@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 21:53:52 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/11 22:39:07 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/11 22:50:18 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ public:
 class Derived : public Base {
 public:
 	Derived(){std::cout << "I called the Derived class constructor" << std::endl;}
-    void foo(){
+    virtual void foo(){
         std::cout << "Derived::foo()" << std::endl;
     }
 };

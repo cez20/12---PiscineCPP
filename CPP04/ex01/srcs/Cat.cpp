@@ -6,8 +6,9 @@
 
 Cat::Cat()
 {
-	type = "Cat";
 	std::cout << "[DEFAULT CONSTRUCTOR] Cat default constructor has been called!" << std::endl;
+	type = "Cat";
+	this->_catPtrToBrain = new Brain();
 }
 
 Cat::Cat( const Cat & src )
@@ -23,6 +24,7 @@ Cat::Cat( const Cat & src )
 
 Cat::~Cat()
 {
+	delete this->_catPtrToBrain;
 	std::cout << "[DESTRUCTOR] Cat destructor has been called" << std::endl;
 }
 

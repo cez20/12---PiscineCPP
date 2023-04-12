@@ -49,7 +49,7 @@ Dog &				Dog::operator=( Dog const & rhs )
 
 void	Dog::makeSound() const
 {
-	std::cout << "The Dog says WOOF WOOF!" << std::endl;
+	std::cout << "[MAKE SOUND] The Dog says WOOF WOOF!" << std::endl;
 }
 
 

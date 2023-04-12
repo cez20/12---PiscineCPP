@@ -1,18 +1,19 @@
-#include "Cat.hpp"
+#include "Dog.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Cat::Cat()
+Dog::Dog()
 {
-	type = "Cat";
-	std::cout << "[DEFAULT CONSTRUCTOR] Cat default constructor has been called!" << std::endl;
+	std::cout << "[DEFAULT CONSTRUCTOR] Dog default constructor has been called!" << std::endl;
+	type = "Dog";
+	this->_dogPtrToBrain = new Brain();
 }
 
-Cat::Cat( const Cat & src )
+Dog::Dog( const Dog & src )
 {
-	std::cout << "[COPY CONSTRUCTOR] Cat copy constructor has been called!" << std::endl;
+	std::cout << "[COPY CONSTRUCTOR] Dog copy constructor has been called!" << std::endl;
 	*this = src;
 }
 
@@ -21,9 +22,10 @@ Cat::Cat( const Cat & src )
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-Cat::~Cat()
+Dog::~Dog()
 {
-	std::cout << "[DESTRUCTOR] Cat destructor has been called" << std::endl;
+	delete this->_dogPtrToBrain;
+	std::cout << "[DESTRUCTOR] Dog destructor has been called" << std::endl;
 }
 
 
@@ -31,7 +33,7 @@ Cat::~Cat()
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-Cat &				Cat::operator=( Cat const & rhs )
+Dog &				Dog::operator=( Dog const & rhs )
 {
 	std::cout << "[OPERATOR OVERLOAD] Cat Equal operator overload has been called!" << std::endl;
 	if ( this != &rhs )
@@ -47,9 +49,9 @@ Cat &				Cat::operator=( Cat const & rhs )
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void	Cat::makeSound() const
+void	Dog::makeSound() const
 {
-	std::cout << "[MAKE SOUND] The Cat says MEOW MEOW!" << std::endl;
+	std::cout << "[MAKE SOUND] The Dog says WOOF WOOF!" << std::endl;
 }
 
 

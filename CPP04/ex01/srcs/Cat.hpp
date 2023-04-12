@@ -2,6 +2,7 @@
 # define CAT_HPP
 
 # include "Animal.hpp"
+# include "Brain.hpp"
 # include <iostream>
 # include <string>
 
@@ -15,6 +16,9 @@ class Cat : public Animal{
 		Cat &		operator=( Cat const & rhs );
 
 		virtual void	makeSound() const;
+
+	private:
+		Brain* _catPtrToBrain;
 };
 
 #endif /* ************************************************************* DOG_H */
