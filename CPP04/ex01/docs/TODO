@@ -7,24 +7,26 @@ Pour chaque exercice:
 	les classse
 
 EX01:
-[] Implementez une classe Brain (cerveau) contenant un tableau de 100 std::string appele 
+[X] Implementez une classe Brain (cerveau) contenant un tableau de 100 std::string appele 
    ideas (idees). Est-ce que je dois le mettre public ou private? 
-[] Ainsi, les classes Dog et Cat auront un attribut prive Brain*
-[] A la construction,
-	[]les classes Dog et Cat creeront leur Brain avec new Brain();
-[] A la destruction
-	[] les classes Dog et Cat devront delete leur brain (comment faire cela??? )
+[X] Ainsi, les classes Dog et Cat auront un attribut prive Brain*
+[X] A la construction,
+	[X]les classes Dog et Cat creeront leur Brain avec new Brain();
+[X] A la destruction
+	[X] les classes Dog et Cat devront delete leur brain (comment faire cela??? )
+[] Est-ce qu'il y a quoi que ce soit a inserer dans le tableau de std::string ideas[100]
 
 [] Dans votre fonction main:
-	[] Creez et remplissez un tableau d'objets Animal:
-		[] dont la moitie est compose d'objets Dog
-		[] l'autre moitie est compose d'objet cat
-	[] A la fin de l'execution, parcourez ce tableau afin de delete (delete []) chaque Animal
-	[] Vous devez delete directement les chiens et les chats en tant qu'Animal. Les 
-	destructeurs correspondant doivent etre appeles dans le bon ordre. 
-	[] VErifier aucun LEAK -- leak -atExit -- <executable>
+	[X] Creez et remplissez un tableau d'objets Animal. Tableau d'un nombre specifique? 
+		[X] dont la moitie est compose d'objets Dog
+		[X] l'autre moitie est compose d'objet cat
+	[X] A la fin de l'execution, parcourez ce tableau (boucle for) afin de delete chaque Animal
+	[X] Vous devez delete directement les chiens et les chats en tant qu'Animal. Les 
+	destructeurs correspondant doivent etre appeles dans le bon ordre. (jutilise delete animal et non delete dog)
+	[X] VErifier aucun LEAK -- leak -atExit -- <executable>
 	[] La copie d'un objet Dog ou d'un objet Cat ne doit pas etre superficielle. Par consequent,
 	   vous devez vous assurer que vos copies sont bien des copies profondes.
+	[] Comment tester le shallow vs Deep Copy. 
 
 [] Deep Copy vs Shallow Copy in C++
 [] Comment mettre les fichiers.hpp pour eviter d'avoir a les repeter partout? 

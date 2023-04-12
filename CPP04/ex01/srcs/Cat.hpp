@@ -18,7 +18,7 @@ class Cat : public Animal{
 		virtual void	makeSound() const;
 
 	private:
-		Brain* _catPtrToBrain;
+		Brain* _ptrBrain;
 };
 
 #endif /* ************************************************************* DOG_H */

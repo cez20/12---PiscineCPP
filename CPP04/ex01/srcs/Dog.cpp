@@ -8,7 +8,7 @@ Dog::Dog()
 {
 	std::cout << "[DEFAULT CONSTRUCTOR] Dog default constructor has been called!" << std::endl;
 	type = "Dog";
-	this->_dogPtrToBrain = new Brain();
+	this->_ptrBrain = new Brain();
 }
 
 Dog::Dog( const Dog & src )
@@ -24,7 +24,7 @@ Dog::Dog( const Dog & src )
 
 Dog::~Dog()
 {
-	delete this->_dogPtrToBrain;
+	delete this->_ptrBrain;
 	std::cout << "[DESTRUCTOR] Dog destructor has been called" << std::endl;
 }
 
