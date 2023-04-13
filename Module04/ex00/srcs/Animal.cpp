@@ -1,5 +1,5 @@
 #include "Animal.hpp"
-
+#include <iostream>
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
