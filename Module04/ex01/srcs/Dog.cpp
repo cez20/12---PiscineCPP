@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 15:27:11 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/13 15:27:12 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/13 16:58:23 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,12 @@ void	Dog::makeSound() const
 {
 	std::cout << "[MAKE SOUND] The Dog says WOOF WOOF!" << std::endl;
 }
+
+Brain*			Dog::getBrain()
+{
+	return (this->_ptrBrain);	
+}
+
 
 
 /* ************************************************************************** */

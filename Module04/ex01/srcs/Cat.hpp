@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 15:27:08 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/13 15:27:09 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/13 15:46:12 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ class Cat : public Animal{
 		Cat &		operator=( Cat const & rhs );
 
 		virtual void	makeSound() const;
+		Brain*			getBrain();
 
 	private:
 		Brain* _ptrBrain;

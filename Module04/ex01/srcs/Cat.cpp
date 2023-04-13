@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 15:27:04 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/13 15:27:05 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/13 16:52:49 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,9 @@ Cat &				Cat::operator=( Cat const & rhs )
 	if ( this != &rhs )
 	{
 		this->type = rhs.getType();
+		for (int i = 0; i < 100 ; i++)
+			this->_ptrBrain->setIdea(rhs._ptrBrain->getIdea(i), i);
     }
-	// std::string word = "ALLO";
-	// this->_ptrBrain->setIdeas(word, 0);
-	// std::cout << "The address of rhs brain is: " << rhs._ptrBrain->getIdeas(0) << std::endl;
-	// std::cout << "The address of THIS OBJECT brain is: " << _ptrBrain->getIdeas(0) << std::endl;
 
 	return *this;
 }
@@ -70,6 +68,11 @@ Cat &				Cat::operator=( Cat const & rhs )
 void	Cat::makeSound() const
 {
 	std::cout << "[MAKE SOUND] The Cat says MEOW MEOW!" << std::endl;
+}
+
+Brain*			Cat::getBrain()
+{
+	return (this->_ptrBrain);	
 }
 
 

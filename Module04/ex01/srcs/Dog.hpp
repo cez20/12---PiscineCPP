@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 15:27:14 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/13 15:27:15 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/13 16:58:05 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ class Dog : public Animal{
 		Dog &		operator=( Dog const & rhs );
 
 		virtual void	makeSound() const;
+		Brain*			getBrain();
 
 	private:
 		Brain* _ptrBrain;

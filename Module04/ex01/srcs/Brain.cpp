@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 15:26:51 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/13 15:26:52 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/13 16:54:21 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,19 @@ Brain &				Brain::operator=( Brain const & rhs )
 ** --------------------------------- METHODS ----------------------------------
 */
 
-std::string& Brain::getIdeas(int index)
+std::string& Brain::getIdea(int index)
 {
 	return (_ideas[index]);
 }
 
-void Brain::setIdeas(std::string& idea, int index)
+void Brain::setIdea(std::string idea, int index)
 {
-    _ideas[index] = idea;
+	_ideas[index] = idea;
+}
+
+void Brain::printIdea(int index)
+{
+	std::cout << _ideas[index] << std::endl;
 }
 
 /* ************************************************************************** */
