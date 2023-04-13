@@ -4,15 +4,16 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Cat::Cat()
+Cat::Cat(): Animal()
 {
-	std::cout << "[DEFAULT CONSTRUCTOR] Cat default constructor has been called!" << std::endl;
 	type = "Cat";
 	this->_ptrBrain = new Brain();
+	std::cout << "[DEFAULT CONSTRUCTOR] Cat default constructor has been called!" << std::endl;
 }
 
-Cat::Cat( const Cat & src )
+Cat::Cat( const Cat & src ): Animal()
 {
+	this->_ptrBrain = new Brain();
 	std::cout << "[COPY CONSTRUCTOR] Cat copy constructor has been called!" << std::endl;
 	*this = src;
 }
@@ -39,6 +40,9 @@ Cat &				Cat::operator=( Cat const & rhs )
 	if ( this != &rhs )
 	{
 		this->type = rhs.getType();
+		for (size_t i = 0; i < 100; ++i) {
+        	_ptrBrain->setIdea(rhs._ptrBrain->getIdea(i), i);
+    }
 	}
 	return *this;
 }
@@ -53,12 +57,6 @@ void	Cat::makeSound() const
 {
 	std::cout << "[MAKE SOUND] The Cat says MEOW MEOW!" << std::endl;
 }
-
-
-
-/*
-** --------------------------------- ACCESSOR ---------------------------------
-*/
 
 
 /* ************************************************************************** */

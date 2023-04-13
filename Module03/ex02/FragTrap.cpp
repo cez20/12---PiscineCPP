@@ -4,7 +4,7 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-FragTrap::FragTrap()
+FragTrap::FragTrap() : Claptrap()
 {
 	this->_hitpoints = 100;
 	this->_energyPoints = 100;
@@ -24,7 +24,7 @@ FragTrap::FragTrap(std::string name): ClapTrap(name){
 			  << std::endl;
 }
 
-FragTrap::FragTrap( const FragTrap & src )
+FragTrap::FragTrap( const FragTrap & src ) : ClapTrap(src._name)
 {
 	std::cout << "[COPY CONSTRUCTOR] FragTrap copy constructor has been called" << std::endl;
 	*this = src;

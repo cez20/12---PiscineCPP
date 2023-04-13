@@ -6,16 +6,13 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:21:23 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/12 18:43:04 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/13 10:49:48 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
-#include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
-#include "Brain.hpp"
+
 
 int main()
 {
@@ -32,14 +29,11 @@ int main()
 
 	Animal* animal[10];
 
-
 	// In this loop, animal[i] should do a copy of Brain and not keep same memory for dynamically allocated object.
 	for(int i = 0; i < 10; i++)
 	{
 		if (i < 5)
-		{
 			animal[i] = new Dog(); // Les 5 dogs sont crees dans des adresses qui en sont pas contigues
-		} 
 		else
 			animal[i] = new Cat(); // Les 5 cats sont crees dans des adresses qui en sont pas contigues
 	}

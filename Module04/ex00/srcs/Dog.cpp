@@ -4,13 +4,13 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Dog::Dog()
+Dog::Dog(): Animal()
 {
 	type = "Dog";
 	std::cout << "[DEFAULT CONSTRUCTOR] Dog default constructor has been called!" << std::endl;
 }
 
-Dog::Dog( const Dog & src )
+Dog::Dog( const Dog & src ): Animal()
 {
 	std::cout << "[COPY CONSTRUCTOR] Dog copy constructor has been called!" << std::endl;
 	*this = src;

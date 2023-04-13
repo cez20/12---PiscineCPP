@@ -4,13 +4,13 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Cat::Cat()
+Cat::Cat(): Animal()
 {
 	type = "Cat";
 	std::cout << "[DEFAULT CONSTRUCTOR] Cat default constructor has been called!" << std::endl;
 }
 
-Cat::Cat( const Cat & src )
+Cat::Cat( const Cat & src ): Animal()
 {
 	std::cout << "[COPY CONSTRUCTOR] Cat copy constructor has been called!" << std::endl;
 	*this = src;

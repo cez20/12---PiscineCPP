@@ -52,10 +52,4 @@ void	Animal::makeSound() const
 	std::cout << "[MAKE SOUND] Animal DOES NOT do any sound because no animal is precised" << std::endl;
 }
 
-
-/*
-** --------------------------------- ACCESSOR ---------------------------------
-*/
-
-
 /* ************************************************************************** */

@@ -12,10 +12,10 @@ class Brain
 		Brain( Brain const & src );
 		~Brain();
 
-		//Brain &		operator=( Brain const & rhs );
+		Brain &		operator=( Brain const & rhs );
 
 	private:
-		std::string	ideas[100];
+		std::string	_ideas[100];
 
 };
 

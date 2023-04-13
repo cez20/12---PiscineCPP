@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 11:56:27 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/09 23:16:07 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/13 09:16:56 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-ScavTrap::ScavTrap()
+ScavTrap::ScavTrap(): ClapTrap()
 {
 	this->_hitpoints = 100;
 	this->_energyPoints = 50;
@@ -35,7 +35,7 @@ ScavTrap::ScavTrap(std::string name): ClapTrap(name)
 			  << " derived from ClapTrap" << std::endl;
 }
 
-ScavTrap::ScavTrap( const ScavTrap & src )
+ScavTrap::ScavTrap( const ScavTrap & src ): ClapTrap(src._name)
 {
 	std::cout << "[COPY CONSTRUCTOR] ScavTrap copy constructor has been called" << std::endl;
 	*this = src;
