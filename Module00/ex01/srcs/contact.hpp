@@ -6,14 +6,16 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:13:10 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/27 14:54:30 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/13 01:37:02 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_H
 # define CONTACT_H
 
-#include <string>  // Permet d'utiliser l'element string de la librarie std:
+#include <iostream>
+#include <string>
+#include <iomanip>
 
 class	Contact{
 

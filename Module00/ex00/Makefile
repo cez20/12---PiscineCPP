@@ -6,17 +6,17 @@
 #    By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/30 17:07:24 by cemenjiv          #+#    #+#              #
-#    Updated: 2023/03/21 19:08:31 by cemenjiv         ###   ########.fr        #
+#    Updated: 2023/04/13 01:30:45 by cemenjiv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= megaphone
 
 SRCS			= megaphone.cpp
-				  	  #
-OBJS			= $(SRCS:.cpp=.o) #Do not forget to use .cpp in here. 
 
-CC				= c++  #We can also use c++ as a compiler 
+OBJS			= $(SRCS:.cpp=.o) 
+
+CC				= c++ 
 CFLAGS			= -Wall -Wextra -Werror -std=c++98
 RM				= rm -f 
 

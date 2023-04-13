@@ -6,17 +6,14 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 14:45:34 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/21 14:52:54 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/13 01:37:12 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string>
-#include <iomanip>
 #include "contact.hpp"
 #include "phonebook.hpp"
 
-PhoneBook::PhoneBook(void): choice(""), _nbrOfContact(0) {}
+PhoneBook::PhoneBook(void):  _nbrOfContact(0), choice("") {}
 
 void	PhoneBook::display_options(void)
 {
