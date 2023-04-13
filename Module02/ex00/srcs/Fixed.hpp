@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 17:29:18 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/05 13:31:35 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/13 15:12:49 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ class Fixed{
 
 private:
 	int	_nbr; // Maybe call it raw bits.  
-	int static const bits = 8; // Is it the right time to assign it forever ?
+	int static const _bits; // Is it the right time to assign it forever ?
 
 public:
 	Fixed(); // Default Constructor

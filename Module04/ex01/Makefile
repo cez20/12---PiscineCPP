@@ -6,21 +6,21 @@
 #    By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/03 17:54:38 by cemenjiv          #+#    #+#              #
-#    Updated: 2023/04/12 16:59:27 by cemenjiv         ###   ########.fr        #
+#    Updated: 2023/04/13 15:26:18 by cemenjiv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= Brain
 
 SRCS_DIR   		= srcs/
-SRCS_FILES		= main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
+SRCS_FILES		= main.cpp Animal.cpp Dog.cpp Cat.cpp Brain.cpp
 SRCS 			= $(addprefix $(SRCS_DIR), $(SRCS_FILES))
 
 OBJS_DIR		= objs/
 OBJS 			= $(patsubst $(SRCS_DIR)%.cpp, $(OBJS_DIR)%.o, $(SRCS))
 
 CC				= c++
-CFLAGS			= -Wall -Wextra -Werror -std=c++98
+CFLAGS			= -Wall -Wextra -Werror -g -std=c++98
 RM				= rm -f 
 
 $(OBJS_DIR)%.o: $(SRCS_DIR)%.cpp

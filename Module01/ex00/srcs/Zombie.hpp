@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
+/*   zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/24 13:48:41 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/27 15:01:46 by cemenjiv         ###   ########.fr       */
+/*   Created: 2023/03/23 16:49:49 by cemenjiv          #+#    #+#             */
+/*   Updated: 2023/04/13 14:38:26 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include <iostream>
+#include <string>
 
-// Maybe there is an easier way to do this
-Zombie* zombieHorde(int N, std::string name){
+class Zombie{
 
-	Zombie* zombie = new Zombie[N]; // Alloue N Objets Zombie en une seule allocation 
+private:
+	std::string _name;
 	
-	for (int i = 0; i < N ; i++)
-		zombie[i].setName(name); // Initialise les zombies en donnant a chacun le nom passe en parametre
+public:
+	Zombie(std::string name); 
+	~Zombie();                
+	void announce(void);   
+};
 
-	return (zombie); // Retourne un pointeur 
-}
+//Prototype des fonctions non-membres:
+Zombie*	newZombie(std::string name); 
+void	randomChump(std::string name);

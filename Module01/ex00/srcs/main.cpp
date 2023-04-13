@@ -6,11 +6,11 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 18:33:59 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/24 12:53:44 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/13 14:39:35 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "zombie.hpp"
+#include "Zombie.hpp"
 
 int main()
 {

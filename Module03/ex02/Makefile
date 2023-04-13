@@ -5,35 +5,42 @@
 #                                                     +:+ +:+         +:+      #
 #    By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/04/03 17:54:38 by cemenjiv          #+#    #+#              #
-#    Updated: 2023/04/09 23:07:58 by cemenjiv         ###   ########.fr        #
+#    Created: 2023/01/30 17:07:24 by cemenjiv          #+#    #+#              #
+#    Updated: 2023/04/13 15:18:24 by cemenjiv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= FragTrap
 
-SRCS			= main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
-				  	  
-OBJS			= $(SRCS:.cpp=.o) #Do not forget to use .cpp in here. 
+SRCS_DIR   		= srcs/
+SRCS_FILES		= main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
+SRCS 			= $(addprefix $(SRCS_DIR), $(SRCS_FILES))
 
-CC				= c++  #We can also use c++ as a compiler 
-CFLAGS			= -Wall -Wextra -Werror -std=c++98
+OBJS_DIR		= objs/
+OBJS 			= $(patsubst $(SRCS_DIR)%.cpp, $(OBJS_DIR)%.o, $(SRCS))
+
+CC				= c++
+CFLAGS			= -Wall -Wextra -Werror -g -std=c++98
 RM				= rm -f 
 
-.cpp.o:
-				c++ ${CFLAGS}  -c $< -o $(<:.cpp=.o) 
+$(OBJS_DIR)%.o: $(SRCS_DIR)%.cpp
+				$(CC) ${CFLAGS}  -c $< -o $@
 	
-all:			$(NAME)
+all:			objs $(NAME)
 
 $(NAME):		$(OBJS)
-				$(CC) ${OBJS} -o $@ 
+				$(CC) $(CFLAGS) ${OBJS} -o $@ 
 			
 clean:		
-				$(RM) $(OBJS)
+				@rm -rf $(OBJS)
+				@rm -rf $(OBJS_DIR)
 				
 fclean:			clean
 				$(RM) $(NAME)
 				
 re:				fclean all
 
-.PHONY:			all clean fclean re
+objs:
+				@mkdir -p objs
+
+.PHONY:			all clean fclean re 

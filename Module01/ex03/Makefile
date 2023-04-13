@@ -6,35 +6,41 @@
 #    By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/30 17:07:24 by cemenjiv          #+#    #+#              #
-#    Updated: 2023/03/30 12:13:38 by cemenjiv         ###   ########.fr        #
+#    Updated: 2023/04/13 14:46:55 by cemenjiv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= violence
 
-SRCS			= main.cpp HumanA.cpp HumanB.cpp Weapon.cpp
-				  	  
-OBJS			= $(SRCS:.cpp=.o) #Do not forget to use .cpp in here. 
+SRCS_DIR   		= srcs/
+SRCS_FILES		= main.cpp HumanA.cpp HumanB.cpp Weapon.cpp
+SRCS 			= $(addprefix $(SRCS_DIR), $(SRCS_FILES))
 
-CC				= c++  #We can also use c++ as a compiler 
-CFLAGS			= -Wall -Wextra -Werror -std=c++98
+OBJS_DIR		= objs/
+OBJS 			= $(patsubst $(SRCS_DIR)%.cpp, $(OBJS_DIR)%.o, $(SRCS))
+
+CC				= c++
+CFLAGS			= -Wall -Wextra -Werror -g -std=c++98
 RM				= rm -f 
 
-.c.o:
-				c++ ${CFLAGS}  -c $< -o $(<:.c=.o) 
+$(OBJS_DIR)%.o: $(SRCS_DIR)%.cpp
+				$(CC) ${CFLAGS}  -c $< -o $@
 	
-all:			$(NAME)
+all:			objs $(NAME)
 
 $(NAME):		$(OBJS)
-				$(CC) ${OBJS} -o $@ 
+				$(CC) $(CFLAGS) ${OBJS} -o $@ 
 			
 clean:		
-				$(RM) $(OBJS)
+				@rm -rf $(OBJS)
+				@rm -rf $(OBJS_DIR)
 				
 fclean:			clean
 				$(RM) $(NAME)
 				
 re:				fclean all
 
-.PHONY:			all clean fclean re
+objs:
+				@mkdir -p objs
 
+.PHONY:			all clean fclean re 
