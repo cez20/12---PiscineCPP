@@ -1,0 +1,78 @@
+TODO:
+
+Info:
+	Il n'y existe pas d'interfaces en C++98 et en C++20
+	Toutefois, les classes PUREMENT abstraites sont appeles des interfaces
+
+[] FIX the function clone() in ICE class
+
+
+
+
+[]Completez la definition de la classe AMateria
+[]Implementez les fonctions membres necessaires 
+
+[] Implementez les Materias Ice(Glace) et Cure() sous formes de classes CONCRETES
+	[]Utilisez leur noms en minuscules ("ice" pour Ice, "cure" pour Cure) comme types
+	[]leur fonction membre "clone()" retournera un nouvelle instance de meme type
+		(en clonant un Materia Ice, on obtient un autre Materia Ice)
+	[] Pour la fonction membre use(ICharacter &), elle affichera:
+		Ice : "* shoots an ice bolt at <name> *
+		Cure : "*heals <name>'s wounds *"
+		<name> est le nom du Character(personnage) passe en parametre. N'affiche pas les chevrons
+	[] **** Quand on assigne une Materia a une autre, copier son type n'a pas grand interet ***** 
+
+[] Creez une classe Character
+	[] Elle doit implementer l'interface donne en exemple dans PDF
+	[] Le Character a un inventaire de 4 items, soit 4 Materias maximum. A la construction
+		l'inventaire est vide
+	[] Les Materias sont equipes au premier emplacement vide trouve soit dans l'ordre suivant:
+		de l'emplacement 0 a 3
+	[] Dans le cas ou on essaie d'ajouter une Materia a un inventaire plein, ou d'utiliser/retirer
+	   une Materia qui nexiste PAS, ne faites RIEN (cela n'autorise pas les bugs pour autant)
+	[] La fonction membre unequip() ne doit pas "delete" la Materia!
+		[] !!!! Occupez-vous des Materias laisses au sol par votre votre personnage comme vous le sentez. Vous pouvez enregistrer l'adresse avant d'appeler unequip(), ou autre, du moment que vous n'avez pas de fuites de memoire.
+	[] la fonction membre use(int, ICharacter&) utilisera la Materia de l'emplacement[idx], et passera
+	   la cible en parametre a la fonction AMateria::use.
+	   	[]!!!!! L'inventaire de votre personnage devra pouvoir contenir n'importe quel type d'objet AMateria
+
+[] Votre Character doit comporter:
+	[] un constructeur prenant son nom en parametre (ex: Character(std::string name));
+	[] Toute copie (avec le constructeur par recopie ou l'operateur d'affectation) d'un
+	   Character doit etre profonde (Deep Copy)
+		[] Ainsi lors d'une copie, les Materias du Character doivent etre delete avant que
+		   les nouvelles ne les remplacant dans l'inventaire
+		[] Les Materias doivent aussi etre supprimes a la destruction d'un Character
+
+[] Creez la classe concrete MateriaSource
+	[] Elle devra implementez l'interface tel qu'indique dans PDF
+	[] La fonction learnMateria(AMateria*)
+		[] Cette fonction copie la Materia passe en parametre et la stocke en memoire afin de la cloner plus tard. Tout comme le Character, la MateriaSource peut contenir 4 Materias maximum. Ces dernieres NE SONT PAS forcement uniques.
+	[] La fonction createMateria(std::string const &)
+		[] Retourne une nouvelle Materia. Celle-ci est une copie de celle apprise precedemment par la MateriaSource et dont le type est le meme que celui passe en parametre. Retourne 0 si le type est inconnu
+	[] En bref, votre MateriaSource doit pouvoir apprendre des "modeles" de Materias afin de les recreer a volonte. Ainsi, vous serez capable de generer une nouvelle Materia a partir de son type sous forme de chaine de caracteres. 
+
+[] Executer le code tel qu'indique dans le PDF 
+
+
+
+
+
+
+Apprentissages:
+- Toutes les methodes qui sont abtraites sont dites qu'elles ont un comportement abstrait
+- Toutes les methodes normales, sont dites avec comportement concret.
+- Une classe dont toutes les methodes sont abstraites est appele INTERFACE 
+- Une fonction membre qui est virtuelle est appelle une METHODE, a l'oppose d'une fonction membre. 
+- Une interface n'a AUCUN attribut. 
+- Definition Interace : Dispositif qui permet la communication entre deux elements 
+   d'un systeme informatique. 
+- Si je mets une methode comme virtuelle dans une Base Class, je peux associe un pointer de la Base 
+  Class vers une Derived Class, seulement et seulement si la Derived Class contient un definition de
+  la meme fonction. En d'autres mots, si j'ai une pure method makeSound(), je dois absolument avoir un 
+  makeSound() dnas la Derived class
+- Functions in Interface are always virtual. Also, we create a .hpp file, but never a .cpp.
+  In others words, we define or class, we must never create an implementation file.
+
+Questions:
+- Does pure method has to be put as "virtual"?

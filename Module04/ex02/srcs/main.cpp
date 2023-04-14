@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:21:23 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/14 10:36:39 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/14 12:28:23 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int main()
 	animal->makeSound();
 	delete animal;
 
-	AAnimal* animal = new Cat();
-	animal->makeSound();
-	delete animal;
+	AAnimal* animal1 = new Cat();
+	animal1->makeSound();
+	delete animal1;
 
 	//AAnimal instanciation IMPOSSIBLE because AAnimal is an abtract class, because one of its
 	// method is pure 

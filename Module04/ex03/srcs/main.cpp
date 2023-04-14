@@ -6,30 +6,46 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:21:23 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/14 10:36:39 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/14 16:45:00 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
-#include "Cat.hpp"
+#include "AMateria.hpp"
+#include "Ice.hpp"
+
 
 int main()
 {
-	//AAnimal instanciation is possible because the object it refers to is an object
-	AAnimal* animal = new Dog();
-	animal->makeSound();
-	delete animal;
+	//AMateria material;   // Impossible to instanciate because this is an abstract class 
+	AMateria *material = new Ice();
+	std::cout << "I am in main function" << std::endl;
+	delete material;
 
-	AAnimal* animal = new Cat();
-	animal->makeSound();
-	delete animal;
 
-	//AAnimal instanciation IMPOSSIBLE because AAnimal is an abtract class, because one of its
-	// method is pure 
 
-	// AAnimal AAnimal = AAnimal();
-	// AAnimal->makeSound();
 
-	return (0);
+	//MAIN INSIDE PDG 
 	
+	// MateriaSource* src = new MateriaSource();
+	// src->learnMateria(new Ice());
+	// src->learnMateria(new Cure());
+
+	// ICharacter* me = new Character("me");
+	
+	// AMateria* tmp;
+	// tmp = src->createMateria("ice");
+	// me->equip(tmp);
+	// tmp = src->createMateria("cure");
+	// me->equip(tmp);
+	
+	// ICharacter* bob = new Character("bob");
+	
+	// me->use(0, *bob);
+	// me->use(1, *bob);
+	
+	// delete bob;
+	// delete me;
+	// delete src;
+	return 0;
+
 }

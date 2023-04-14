@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 15:27:08 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/14 10:25:32 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/14 12:28:35 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <iostream>
 # include <string>
 
-class Cat : public AAnimal{
+class Cat : public AAnimal {
 
 	public:
 		Cat();
