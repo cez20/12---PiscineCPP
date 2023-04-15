@@ -14,9 +14,9 @@ class Ice : public AMateria
 		Ice();
 		Ice(std::string &type);
 		Ice( Ice const & src );
-		~Ice();
+		virtual ~Ice();
 
-		Ice &		operator=( Ice const & rhs );
+		Ice &		operator=( Ice const & rhs);
 
 		virtual AMateria* clone() const;  // Dois-je mettre Ice* clone() ici ou Amateria est suffisant?
 		//virtual void use(ICharacter& target);

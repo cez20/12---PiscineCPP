@@ -10,7 +10,7 @@ Ice::Ice(): AMateria()
 	std::cout << "[DEFAULT CONSTRUCTOR] ICE default constructor is called" << std::endl;
 }
 
-Ice::Ice(std::string &name): AMateria(name)
+Ice::Ice(std::string & type): AMateria(type)
 {
 	std::cout << "[CONSTRUCTOR] ICE constructor with name is called" << std::endl;
 }
@@ -36,7 +36,7 @@ Ice::~Ice()
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-Ice &				Ice::operator=( Ice const & rhs )
+Ice &				Ice::operator=( Ice const & rhs)
 {
 	if (this != &rhs )
 	{
@@ -51,8 +51,8 @@ Ice &				Ice::operator=( Ice const & rhs )
 
 AMateria* Ice::clone() const
 {
-	std::cout << "I am in clone function inside ICE instance" << std::endl;
-	return (0);
+	std::cout << "[CLONE] Create an ICE clone, by " << std::endl;
+	return new Ice();
 }
 
 

@@ -5,6 +5,11 @@ Info:
 	Toutefois, les classes PUREMENT abstraites sont appeles des interfaces
 
 [] FIX the function clone() in ICE class
+[] Fix the function clone() in CURE class
+[] Fix the header in main.cpp (Keep only those I need)
+[] better understand the concept of the functionc clone
+	[] A pointer is an address, therefore new Ice() will create object of type pointer (address)
+
 
 
 
@@ -16,6 +21,7 @@ Info:
 	[]Utilisez leur noms en minuscules ("ice" pour Ice, "cure" pour Cure) comme types
 	[]leur fonction membre "clone()" retournera un nouvelle instance de meme type
 		(en clonant un Materia Ice, on obtient un autre Materia Ice)
+		[] Comment puis-je cloner? 
 	[] Pour la fonction membre use(ICharacter &), elle affichera:
 		Ice : "* shoots an ice bolt at <name> *
 		Cure : "*heals <name>'s wounds *"

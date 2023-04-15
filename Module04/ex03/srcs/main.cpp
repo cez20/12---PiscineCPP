@@ -6,21 +6,29 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:21:23 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/14 16:45:00 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/15 12:02:13 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
 #include "Ice.hpp"
+#include "Cure.hpp"
 
 
 int main()
 {
 	//AMateria material;   // Impossible to instanciate because this is an abstract class 
-	AMateria *material = new Ice();
+	AMateria* material = new Ice();
 	std::cout << "I am in main function" << std::endl;
+
+	AMateria* copy = material->clone();
+	
+	delete copy;
 	delete material;
 
+	// AMateria* material2 = new Cure();
+	// std::cout << "I am in main function" << std::endl;
+	// delete material2;
 
 
 
