@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:21:23 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/15 12:02:13 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/18 14:18:28 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,29 @@
 #include "Ice.hpp"
 #include "Cure.hpp"
 
+//Different tests that can be done:
+// 1- Try to instance Amateria. It doesn't work because it is abstract class
+// 2- 
+
+
+
 
 int main()
 {
 	//AMateria material;   // Impossible to instanciate because this is an abstract class 
 	AMateria* material = new Ice();
-	std::cout << "I am in main function" << std::endl;
-
-	AMateria* copy = material->clone();
+	AMateria* material1 = new Cure();
+	AMateria* clone = material->clone(); // Does a dynamic deep copy of material->clone
+	AMateria* clone1 = material1->clone();
 	
-	delete copy;
+	delete clone1;
+	delete clone;
+	delete material1;
 	delete material;
 
+	//material2 = material3;
+
+	
 	// AMateria* material2 = new Cure();
 	// std::cout << "I am in main function" << std::endl;
 	// delete material2;

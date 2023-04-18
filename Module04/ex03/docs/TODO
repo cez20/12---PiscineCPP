@@ -4,11 +4,11 @@ Info:
 	Il n'y existe pas d'interfaces en C++98 et en C++20
 	Toutefois, les classes PUREMENT abstraites sont appeles des interfaces
 
-[] FIX the function clone() in ICE class
-[] Fix the function clone() in CURE class
+[X] FIX the function clone() in ICE class
+[X] Fix the function clone() in CURE class
 [] Fix the header in main.cpp (Keep only those I need)
-[] better understand the concept of the functionc clone
-	[] A pointer is an address, therefore new Ice() will create object of type pointer (address)
+[X] better understand the concept of the functionc clone
+	[X] A pointer is an address, therefore new Ice() will create object of type pointer (address)
 
 
 
@@ -17,11 +17,11 @@ Info:
 []Completez la definition de la classe AMateria
 []Implementez les fonctions membres necessaires 
 
-[] Implementez les Materias Ice(Glace) et Cure() sous formes de classes CONCRETES
-	[]Utilisez leur noms en minuscules ("ice" pour Ice, "cure" pour Cure) comme types
-	[]leur fonction membre "clone()" retournera un nouvelle instance de meme type
+[X] Implementez les Materias Ice(Glace) et Cure() sous formes de classes CONCRETES
+	[X]Utilisez leur noms en minuscules ("ice" pour Ice, "cure" pour Cure) comme types
+	[X]leur fonction membre "clone()" retournera un nouvelle instance de meme type
 		(en clonant un Materia Ice, on obtient un autre Materia Ice)
-		[] Comment puis-je cloner? 
+		[X] Comment puis-je cloner? 
 	[] Pour la fonction membre use(ICharacter &), elle affichera:
 		Ice : "* shoots an ice bolt at <name> *
 		Cure : "*heals <name>'s wounds *"
@@ -79,6 +79,10 @@ Apprentissages:
   makeSound() dnas la Derived class
 - Functions in Interface are always virtual. Also, we create a .hpp file, but never a .cpp.
   In others words, we define or class, we must never create an implementation file.
+- Copy constructor does a copy of an object by value (on stack), whereas the clone() method does a copy
+	on by creating a new object dynamically and doing a DEEP copy (needs to be deepen).
+	In other words, clone() can clone a derived object into a pointer of the base class, we normally a copy constructor
+	couldnt'. Amateria class = Ice class (impossible)
 
 Questions:
 - Does pure method has to be put as "virtual"?

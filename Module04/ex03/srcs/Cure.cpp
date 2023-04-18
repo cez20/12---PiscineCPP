@@ -51,8 +51,8 @@ Cure &				Cure::operator=( Cure const & rhs )
 
 AMateria* Cure::clone() const
 {
-	std::cout << "I am in clone function inside CURE instance" << std::endl;
-	return (0);
+	std::cout << "[CLONE] Created a Cure clone, by creating a new instance of Cure" << std::endl;
+	return new Cure();
 }
 
 /*

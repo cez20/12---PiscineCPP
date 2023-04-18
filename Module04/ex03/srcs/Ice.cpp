@@ -51,7 +51,7 @@ Ice &				Ice::operator=( Ice const & rhs)
 
 AMateria* Ice::clone() const
 {
-	std::cout << "[CLONE] Create an ICE clone, by " << std::endl;
+	std::cout << "[CLONE] Create an ICE clone, by creating a new instance of Ice" << std::endl;
 	return new Ice();
 }
 
