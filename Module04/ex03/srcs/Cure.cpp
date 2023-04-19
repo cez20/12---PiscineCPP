@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Cure.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/18 22:32:33 by cemenjiv          #+#    #+#             */
+/*   Updated: 2023/04/18 22:32:34 by cemenjiv         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Cure.hpp"
 
 /*
@@ -53,6 +65,11 @@ AMateria* Cure::clone() const
 {
 	std::cout << "[CLONE] Created a Cure clone, by creating a new instance of Cure" << std::endl;
 	return new Cure();
+}
+
+void	Cure::use(ICharacter & target)
+{
+	std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
 }
 
 /*

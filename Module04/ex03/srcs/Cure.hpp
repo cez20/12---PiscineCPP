@@ -1,8 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Cure.hpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/18 22:32:40 by cemenjiv          #+#    #+#             */
+/*   Updated: 2023/04/18 22:44:47 by cemenjiv         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CURE_HPP
 # define CURE_HPP
 
 # include <iostream>
 # include <string>
+# include "ICharacter.hpp"
+# include "Ice.hpp"
+# include "Cure.hpp"
 # include "AMateria.hpp"
 
 class Cure : public AMateria
@@ -18,7 +33,7 @@ class Cure : public AMateria
 		Cure &		operator=( Cure const & rhs );
 
 		virtual AMateria* clone() const;  // Dois-je mettre Cure* clone() ici ou Amateria est suffisant?
-		//virtual void use(ICharacter& target);
+		virtual void use(ICharacter& target);
 
 };
 

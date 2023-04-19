@@ -6,20 +6,18 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:21:23 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/18 14:18:28 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/18 23:14:51 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
 #include "Ice.hpp"
 #include "Cure.hpp"
+#include "Character.hpp"
 
 //Different tests that can be done:
 // 1- Try to instance Amateria. It doesn't work because it is abstract class
 // 2- 
-
-
-
 
 int main()
 {
@@ -34,16 +32,32 @@ int main()
 	delete material1;
 	delete material;
 
-	//material2 = material3;
+	// TESTING THE FUNCTION USE()
+	Character character("Robert");
+	Character character1("Cindy");
+	std::cout << "The character's name is: " << character.getName() << std::endl;
 
-	
-	// AMateria* material2 = new Cure();
-	// std::cout << "I am in main function" << std::endl;
-	// delete material2;
+	character1.equip(new Ice);
+	character1.equip(new Cure);
+	character1.equip(new Cure);
+	character1.equip(new Ice);
+
+	character.unequip(2);
+	character.unequip(0);
+	character.printInventory();
+
+	character.equip(new Ice);
+	character.printInventory();
+	character.equip(new Ice);
+	character.printInventory();
+
+	character1.use(3, character);
+
+	return 0;
+}
 
 
-
-	//MAIN INSIDE PDG 
+//MAIN INSIDE PDF
 	
 	// MateriaSource* src = new MateriaSource();
 	// src->learnMateria(new Ice());
@@ -65,6 +79,3 @@ int main()
 	// delete bob;
 	// delete me;
 	// delete src;
-	return 0;
-
-}

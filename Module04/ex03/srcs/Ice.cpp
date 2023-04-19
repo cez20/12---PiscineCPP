@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Ice.cpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/18 22:32:46 by cemenjiv          #+#    #+#             */
+/*   Updated: 2023/04/18 22:32:47 by cemenjiv         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Ice.hpp"
 
 /*
@@ -53,6 +65,11 @@ AMateria* Ice::clone() const
 {
 	std::cout << "[CLONE] Create an ICE clone, by creating a new instance of Ice" << std::endl;
 	return new Ice();
+}
+
+void	Ice::use(ICharacter & target)
+{
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 }
 
 

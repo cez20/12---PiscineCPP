@@ -6,14 +6,14 @@
 #    By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/03 17:54:38 by cemenjiv          #+#    #+#              #
-#    Updated: 2023/04/15 11:14:59 by cemenjiv         ###   ########.fr        #
+#    Updated: 2023/04/18 22:19:14 by cemenjiv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= Interface
 
 SRCS_DIR   		= srcs/
-SRCS_FILES		= main.cpp AMateria.cpp Ice.cpp Cure.cpp
+SRCS_FILES		= main.cpp AMateria.cpp Ice.cpp Cure.cpp Character.cpp
 SRCS 			= $(addprefix $(SRCS_DIR), $(SRCS_FILES))
 
 OBJS_DIR		= objs/

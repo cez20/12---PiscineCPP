@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   AMateria.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/18 22:32:06 by cemenjiv          #+#    #+#             */
+/*   Updated: 2023/04/18 23:03:47 by cemenjiv         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "AMateria.hpp"
 
 /*
@@ -57,6 +69,11 @@ std::string const & AMateria::getType() const
 void	AMateria::setType(std::string const & type)
 {
 	this->_type = type;
+}
+
+void AMateria::use(ICharacter& target)
+{
+	std::cout << "AMateria is an abstract class. Function use() cannot be used to attack " << target.getName() << std::endl;
 }
 
 /*

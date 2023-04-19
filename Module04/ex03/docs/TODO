@@ -4,18 +4,32 @@ Info:
 	Il n'y existe pas d'interfaces en C++98 et en C++20
 	Toutefois, les classes PUREMENT abstraites sont appeles des interfaces
 
+[] Fix the header in main.cpp (Keep only those I need)
+[] Creer une classe Character
+	[] Elle doit heriter de ICharacter
+	[] Toutes les fonctions des ICharacter doivent se repeter dans la classe Character ou pas 
+[] We might have to put a delete AMateria _inventory[4] inside Character destructor. How do I delete it
+	if it contains AMateria pointers (AMateria*) and not Character pointers.  
+[] Do my Character class needs to call the constructor of another class? 
+[] Remove the printing of index in Constructor once the class is finished 
+[] Verify if my operator= function is valid in my Character class.
+[] Est-ce que l'inventaire des AMateria est obligatoirement qqhcose cree par new Ice() ou ca pourrait
+    etre l'adresse d'un AMateria cree sur la stack.  
+[] Lorsque j'equip et que mon index est plus grand que 4, je delete automatiquement l'objet assigne sur la heap
+[] lorsque je unequip un Amateria(ex: a la position 2), comment dire qu'il doit de nouveau repasse les index
+   pour voir ou c'est vide.
+[] Comment gerer les cas ou il ne faut pas delete une AMateria quand on utilise unequip()
+[] Sometimes, I have to put th eprototype of the function, so that class can refer to some elements of another class
+
+
 [X] FIX the function clone() in ICE class
 [X] Fix the function clone() in CURE class
-[] Fix the header in main.cpp (Keep only those I need)
+
 [X] better understand the concept of the functionc clone
 	[X] A pointer is an address, therefore new Ice() will create object of type pointer (address)
 
-
-
-
-
-[]Completez la definition de la classe AMateria
-[]Implementez les fonctions membres necessaires 
+[X]Completez la definition de la classe AMateria
+[X]Implementez les fonctions membres necessaires 
 
 [X] Implementez les Materias Ice(Glace) et Cure() sous formes de classes CONCRETES
 	[X]Utilisez leur noms en minuscules ("ice" pour Ice, "cure" pour Cure) comme types
@@ -26,24 +40,29 @@ Info:
 		Ice : "* shoots an ice bolt at <name> *
 		Cure : "*heals <name>'s wounds *"
 		<name> est le nom du Character(personnage) passe en parametre. N'affiche pas les chevrons
+		[] Implementez l'interface ICharacter (juste hpp, pas de cpp)
+		[] Creer un Character 
 	[] **** Quand on assigne une Materia a une autre, copier son type n'a pas grand interet ***** 
 
 [] Creez une classe Character
-	[] Elle doit implementer l'interface donne en exemple dans PDF
-	[] Le Character a un inventaire de 4 items, soit 4 Materias maximum. A la construction
+	[X] Elle doit implementer l'interface donne en exemple dans PDF
+		[X] Repeter toutes les fonctions de l'interface dans la classe (sauf destructeur)
+	[X] Le Character a un inventaire de 4 items, soit 4 Materias maximum. A la construction
 		l'inventaire est vide
-	[] Les Materias sont equipes au premier emplacement vide trouve soit dans l'ordre suivant:
+	[X] Les Materias sont equipes au premier emplacement vide trouve soit dans l'ordre suivant:
 		de l'emplacement 0 a 3
 	[] Dans le cas ou on essaie d'ajouter une Materia a un inventaire plein, ou d'utiliser/retirer
 	   une Materia qui nexiste PAS, ne faites RIEN (cela n'autorise pas les bugs pour autant)
 	[] La fonction membre unequip() ne doit pas "delete" la Materia!
-		[] !!!! Occupez-vous des Materias laisses au sol par votre votre personnage comme vous le sentez. Vous pouvez enregistrer l'adresse avant d'appeler unequip(), ou autre, du moment que vous n'avez pas de fuites de memoire.
+		[] !!!! Occupez-vous des Materias laisses au sol par votre votre personnage comme vous le sentez. 
+		Vous pouvez enregistrer l'adresse avant d'appeler unequip(), ou autre, du moment que vous n'avez pas
+		de fuites de memoire.
 	[] la fonction membre use(int, ICharacter&) utilisera la Materia de l'emplacement[idx], et passera
 	   la cible en parametre a la fonction AMateria::use.
 	   	[]!!!!! L'inventaire de votre personnage devra pouvoir contenir n'importe quel type d'objet AMateria
 
 [] Votre Character doit comporter:
-	[] un constructeur prenant son nom en parametre (ex: Character(std::string name));
+	[X] un constructeur prenant son nom en parametre (ex: Character(std::string name));
 	[] Toute copie (avec le constructeur par recopie ou l'operateur d'affectation) d'un
 	   Character doit etre profonde (Deep Copy)
 		[] Ainsi lors d'une copie, les Materias du Character doivent etre delete avant que
@@ -79,6 +98,8 @@ Apprentissages:
   makeSound() dnas la Derived class
 - Functions in Interface are always virtual. Also, we create a .hpp file, but never a .cpp.
   In others words, we define or class, we must never create an implementation file.
+- Lorsqu'une classe herite d'un Interace, toutes les fonctions specifique doivent etre repete dans la fonction
+	qui en herite. 
 - Copy constructor does a copy of an object by value (on stack), whereas the clone() method does a copy
 	on by creating a new object dynamically and doing a DEEP copy (needs to be deepen).
 	In other words, clone() can clone a derived object into a pointer of the base class, we normally a copy constructor
