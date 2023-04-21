@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:21:23 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/20 20:08:52 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/21 12:08:19 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ int main()
 	// delete material;
 
 	// // TESTING THE CHARACTER EQUIP(), UNEQUIP() AND USE()
-	// Character character("Robert");
-	// Character character1("Cindy");
+	Character character("Robert");
+	//Character character1("Cindy");
 
-
-	// // EQUIP: Additional Materia is created but immediately deleted since no place in invetory. 
+	Character character1 = character;
+	// EQUIP: Additional Materia is created but immediately deleted since no place in invetory. 
 	// character.equip(new Ice);
 	// character.equip(new Cure);
 	// character.equip(new Cure);
@@ -46,7 +46,7 @@ int main()
 	// character.equip(new Cure); // Additional Material 
 	// character.printInventory();
 
-	// // UNEQUIP() and USE(). Unequip an unexisting Materia or using an Unexisting Materia, will do nothing. 
+	// UNEQUIP() and USE(). Unequip an unexisting Materia or using an Unexisting Materia, will do nothing. 
 	// character.unequip(1);
 	// character.unequip(1);
 	// character.use(1, character1); // Will do nothing 
@@ -64,45 +64,21 @@ int main()
 	// charact.equip(new Ice);
 	// Character charact1 = charact;  // Le probleme est que le constructeur de charact1 n'est jamais appele 
 	
-	IMateriaSource* src = new MateriaSource();
-	src->learnMateria(new Ice());
-	src->learnMateria(new Cure());
-	ICharacter* me = new Character("me");
-	AMateria* tmp;
-	tmp = src->createMateria("ice");
-	me->equip(tmp);
-	tmp = src->createMateria("cure");
-	me->equip(tmp);
-	ICharacter* bob = new Character("bob");
-	me->use(0, *bob);
-	me->use(1, *bob);
-	delete bob;
-	delete me;
-	delete src;
-	return 0;
-
-}
-
-
-//MAIN INSIDE PDF
-	
-	// MateriaSource* src = new MateriaSource();
+	// IMateriaSource* src = new MateriaSource();
 	// src->learnMateria(new Ice());
 	// src->learnMateria(new Cure());
-
 	// ICharacter* me = new Character("me");
-	
 	// AMateria* tmp;
 	// tmp = src->createMateria("ice");
 	// me->equip(tmp);
 	// tmp = src->createMateria("cure");
 	// me->equip(tmp);
-	
 	// ICharacter* bob = new Character("bob");
-	
 	// me->use(0, *bob);
 	// me->use(1, *bob);
-	
 	// delete bob;
 	// delete me;
 	// delete src;
+	 return 0;
+
+}

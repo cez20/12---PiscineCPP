@@ -83,16 +83,16 @@ Info:
 		[]  Tout comme le Character, la MateriaSource peut contenir 4 Materias maximum. 
 		[]  Ces dernieres (les 4 Materias) NE SONT PAS forcement uniques. Ce qui veut dire qu'une meme Materia
 			peut se repeter plus qu'une fois dans le tableau de 4 MAterias? 
-	[] La fonction createMateria(std::string const & type)
+	[X] La fonction createMateria(std::string const & type)
 		[X] Retourne une nouvelle Materia. 
-		[] Celle-ci est une copie de celle apprise precedemment par la MateriaSource 
+		[X] Celle-ci est une copie de celle apprise precedemment par la MateriaSource 
 		   et dont le type est le meme que celui passe en parametre. 
 		[X] Retourne 0 (nullptr) si le type est inconnu
-	[] En bref, votre MateriaSource doit pouvoir apprendre des "modeles" de Materias afin de les recreer a volonte. Ainsi, 
+	[X] En bref, votre MateriaSource doit pouvoir apprendre des "modeles" de Materias afin de les recreer a volonte. Ainsi, 
 	   vous serez capable de generer une nouvelle Materia a partir de 
 	   son type sous forme de chaine de caracteres. 
 
-[] Executer le code tel qu'indique dans le PDF 
+[X] Executer le code tel qu'indique dans le PDF 
 
 
 Apprentissages:

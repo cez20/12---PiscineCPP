@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 22:32:17 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/20 19:26:48 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/21 12:16:32 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ Character::Character(): _name()
 	std::cout << "[DEFAULT CONSTRUCTOR] CHARACTER default constructor is called" << std::endl;
 	for(int i = 0; i < 4; i++)
 		_inventory[i] = nullptr;
+	for (int i = 0; i < 100; i++)
+		_droppedInventory[i] = nullptr;
 }
 
 Character::Character(std::string const & name): _name(name)
@@ -28,14 +30,18 @@ Character::Character(std::string const & name): _name(name)
 	std::cout << "[DEFAULT CONSTRUCTOR] CHARACTER constructor with argument NAME is called" << std::endl;
 	for(int i = 0; i < 4; i++)
 		_inventory[i] = nullptr;
+	for (int i = 0; i < 100; i++)
+		_droppedInventory[i] = nullptr;
 }
 
 
 Character::Character( const Character & src )
 {
 	std::cout << "[COPY CONSTRUCTOR] CHARACTER copy constructor is called" << std::endl;
-	for(int i = 0; i < 4; i++)
+	for(int i = 0; i < 4; i++)  // 
 		this->_inventory[i] = nullptr;
+	for (int i = 0; i < 100; i++) // 
+		_droppedInventory[i] = nullptr;
 	*this = src;
 }
 
