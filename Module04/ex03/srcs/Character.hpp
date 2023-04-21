@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 22:32:25 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/21 12:04:04 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/21 12:33:43 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Character : public ICharacter
 {
 	private:
 		AMateria*	_inventory[4]; // Un array de [4] dont chaque case contient un ptr vers un AMateria 
-		AMateria*	_droppedInventory[100];
+		AMateria*	_droppedInventory[10];
 		std::string	_name;
 	
 	public:
@@ -39,6 +39,7 @@ class Character : public ICharacter
 		virtual void 				unequip(int idx);
 		virtual void 				use(int idx, ICharacter& target);
 		void						printInventory();
+		void						fillDroppedInventory(int idx);
 
 };
 

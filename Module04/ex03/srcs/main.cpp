@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:21:23 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/21 12:08:19 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/21 12:32:47 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,24 +35,23 @@ int main()
 
 	// // TESTING THE CHARACTER EQUIP(), UNEQUIP() AND USE()
 	Character character("Robert");
-	//Character character1("Cindy");
+	Character character1("Cindy");
 
-	Character character1 = character;
 	// EQUIP: Additional Materia is created but immediately deleted since no place in invetory. 
-	// character.equip(new Ice);
-	// character.equip(new Cure);
-	// character.equip(new Cure);
-	// character.equip(new Ice);
-	// character.equip(new Cure); // Additional Material 
-	// character.printInventory();
+	character.equip(new Ice);
+	character.equip(new Cure);
+	character.equip(new Cure);
+	character.equip(new Ice);
+	character.equip(new Cure); // Additional Material 
+	character.printInventory();
 
 	// UNEQUIP() and USE(). Unequip an unexisting Materia or using an Unexisting Materia, will do nothing. 
-	// character.unequip(1);
-	// character.unequip(1);
+	character.unequip(1);
+	character.unequip(3);
 	// character.use(1, character1); // Will do nothing 
 	// character.use(0, character1);
 	// character.use(3, character1);
-	// character.printInventory();
+	character.printInventory();
 
 
 	//TESTING COPY CONSTRUCTOR AND OPERATOR AFFECTATON;
