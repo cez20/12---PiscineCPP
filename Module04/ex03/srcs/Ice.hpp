@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 22:32:50 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/18 22:45:31 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/21 13:25:06 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <iostream>
 # include <string>
 # include "AMateria.hpp"
-# include "ICharacter.hpp"
 
 class Ice : public AMateria
 {
