@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 22:32:17 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/21 12:36:36 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/21 12:41:13 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ Character::~Character()
 		delete _droppedInventory[i];
 	std::cout << "[DESTRUCTOR] CHARACTER destructor is called" << std::endl;
 }
-
 
 /*
 ** --------------------------------- OVERLOAD ---------------------------------

@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 22:31:57 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/20 20:09:08 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/21 13:14:54 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,9 @@ class AMateria
 
 		AMateria &		operator=( AMateria const &);
 
-		std::string const & getType() const; //Returns the materia type
-		void				setType(std::string const & type);
+		std::string const & getType() const;
 
-		virtual AMateria* clone() const = 0;  //Pure method that make the class abstract. Abtract behavior
+		virtual AMateria* clone() const = 0; 
 		virtual void use(ICharacter& target);
 };
 

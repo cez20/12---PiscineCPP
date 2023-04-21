@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 22:32:33 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/18 22:32:34 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/21 13:14:48 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,8 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Cure::Cure(): AMateria()
+Cure::Cure(): AMateria("cure")
 {
-	this->setType("cure");
 	std::cout << "[DEFAULT CONSTRUCTOR] Cure default constructor is called" << std::endl;
 }
 
