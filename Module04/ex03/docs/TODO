@@ -1,31 +1,9 @@
 TODO:
 
-Info:
-	Il n'y existe pas d'interfaces en C++98 et en C++20
-	Toutefois, les classes PUREMENT abstraites sont appeles des interfaces
-
-[] Fix the header in main.cpp (Keep only those I need)
-[] Creer une classe Character
-	[] Elle doit heriter de ICharacter
-	[] Toutes les fonctions des ICharacter doivent se repeter dans la classe Character ou pas 
-[] We might have to put a delete AMateria _inventory[4] inside Character destructor. How do I delete it
-	if it contains AMateria pointers (AMateria*) and not Character pointers.  
-[] Do my Character class needs to call the constructor of another class? 
-[] Remove the printing of index in Constructor once the class is finished 
-[] Verify if my operator= function is valid in my Character class.
-[] Est-ce que l'inventaire des AMateria est obligatoirement qqhcose cree par new Ice() ou ca pourrait
-    etre l'adresse d'un AMateria cree sur la stack.  
-[] Lorsque j'equip et que mon index est plus grand que 4, je delete automatiquement l'objet assigne sur la heap
-[] lorsque je unequip un Amateria(ex: a la position 2), comment dire qu'il doit de nouveau repasse les index
-   pour voir ou c'est vide.
-[] Comment gerer les cas ou il ne faut pas delete une AMateria quand on utilise unequip()
-[] Sometimes, I have to put th eprototype of the function, so that class can refer to some elements of another class
-
-
 [X]Completez la definition de la classe AMateria
 [X]Implementez les fonctions membres necessaires 
 
-[] Implementez les Materias Ice(Glace) et Cure() sous formes de classes CONCRETES
+[X] Implementez les Materias Ice(Glace) et Cure() sous formes de classes CONCRETES
 	[X]Utilisez leur noms en minuscules ("ice" pour Ice, "cure" pour Cure) comme types
 	[X]leur fonction membre "clone()" retournera un nouvelle instance de meme type
 		(en clonant un Materia Ice, on obtient un autre Materia Ice)
@@ -38,54 +16,54 @@ Info:
 		[X] Creer un Character 
 	[X] **** Quand on assigne une Materia a une autre, copier son type n'a pas grand interet ***** 
 
-[] Creez une classe Character
-	[] Elle doit implementer l'interface donne en exemple dans PDF
-		[] Repeter toutes les fonctions de l'interface dans la classe (sauf destructeur)
-	[] Le Character a un inventaire de 4 items, soit 4 Materias maximum. A la construction
+[X] Creez une classe Character
+	[X] Elle doit implementer l'interface donne en exemple dans PDF
+		[X] Repeter toutes les fonctions de l'interface dans la classe (sauf destructeur)
+	[X] Le Character a un inventaire de 4 items, soit 4 Materias maximum. A la construction
 		l'inventaire est vide
-	[] Les Materias sont equipes au premier emplacement vide trouve soit dans l'ordre suivant:
+	[X] Les Materias sont equipes au premier emplacement vide trouve soit dans l'ordre suivant:
 		de l'emplacement 0 a 3
-	[] Dans le cas ou on essaie d'ajouter une Materia a un inventaire plein, ou d'utiliser/retirer
+	[X] Dans le cas ou on essaie d'ajouter une Materia a un inventaire plein, ou d'utiliser/retirer
 	   une Materia qui nexiste PAS, ne faites RIEN (cela n'autorise pas les bugs pour autant)
-		[] Ajout d'une Materia a un inventaire plein. Ne fait RIEN.
-			[] No LEAKS because the Materia, cannot be inserted so it is immediately deleted. 
-		[] Utiliser une Materia qui n'existe pas, ne fait RIEN.
-		[] Retirer une Materia qui n'existe pas, ne fait RIEN.
-		[] Que faire si ce ne sont pas tous des Materia creer sur la heap et certaines sont des addresses
+		[X] Ajout d'une Materia a un inventaire plein. Ne fait RIEN.
+			[X] No LEAKS because the Materia, cannot be inserted so it is immediately deleted. 
+		[X] Utiliser une Materia qui n'existe pas, ne fait RIEN.
+		[X] Retirer une Materia qui n'existe pas, ne fait RIEN.
+		[X] Que faire si ce ne sont pas tous des Materia creer sur la heap et certaines sont des addresses
 			de Materia creer sur la stack. 
-	[] La fonction membre unequip() ne doit pas "delete" la Materia!
-		[] !!!! Occupez-vous des Materias laisses au sol par votre votre personnage comme vous le sentez. 
+	[X] La fonction membre unequip() ne doit pas "delete" la Materia!
+		[X] !!!! Occupez-vous des Materias laisses au sol par votre votre personnage comme vous le sentez. 
 		Vous pouvez enregistrer l'adresse avant d'appeler unequip(), ou autre, du moment que vous n'avez pas
 		de fuites de memoire.
-	[] la fonction membre use(int, ICharacter&) utilisera la Materia de l'emplacement[idx], et passera
+	[X] la fonction membre use(int, ICharacter&) utilisera la Materia de l'emplacement[idx], et passera
 	   la cible en parametre a la fonction AMateria::use.
-	   	[]!!!!! L'inventaire de votre personnage devra pouvoir contenir n'importe quel type d'objet AMateria
+	   	[X]!!!!! L'inventaire de votre personnage devra pouvoir contenir n'importe quel type d'objet AMateria
 
 
-[] Votre Character doit comporter:
-	[] un constructeur prenant son nom en parametre (ex: Character(std::string name));
-	[] Toute copie (avec le constructeur par recopie ou l'operateur d'affectation) d'un
+[X] Votre Character doit comporter:
+	[X] un constructeur prenant son nom en parametre (ex: Character(std::string name));
+	[X] Toute copie (avec le constructeur par recopie ou l'operateur d'affectation) d'un
 	   Character doit etre profonde (Deep Copy)
-		[] Ainsi lors d'une copie, les Materias du Character doivent etre delete avant que
+		[X] Ainsi lors d'une copie, les Materias du Character doivent etre delete avant que
 		   les nouvelles ne les remplacant dans l'inventaire
-		[] Les Materias doivent aussi etre supprimes a la destruction d'un Character
+		[X] Les Materias doivent aussi etre supprimes a la destruction d'un Character
 
-[] Creez la classe concrete MateriaSource
-	[] Elle devra implementez l'interface (IMateria Source) tel qu'indique dans PDF
-	[] La fonction learnMateria(AMateria*):
-		[] Cette fonction copie la Materia passe en parametre et la stocke en memoire afin de la cloner plus tard. 
-		[] Tout comme le Character, la MateriaSource peut contenir 4 Materias maximum. 
-		[] Ces dernieres (les 4 Materias) NE SONT PAS forcement uniques???? Ce qui veut dire qu'une meme Materia
+[X] Creez la classe concrete MateriaSource
+	[X] Elle devra implementez l'interface (IMateria Source) tel qu'indique dans PDF
+	[X] La fonction learnMateria(AMateria*):
+		[X] Cette fonction copie la Materia passe en parametre et la stocke en memoire afin de la cloner plus tard. 
+		[X] Tout comme le Character, la MateriaSource peut contenir 4 Materias maximum. 
+		[X] Ces dernieres (les 4 Materias) NE SONT PAS forcement uniques???? Ce qui veut dire qu'une meme Materia
 			peut se repeter plus qu'une fois dans le tableau de 4 MAterias? 
-	[] La fonction createMateria(std::string const & type)
-		[] Retourne une nouvelle Materia. 
-		[] Celle-ci est une copie de celle apprise precedemment par la MateriaSource 
+	[X] La fonction createMateria(std::string const & type)
+		[X] Retourne une nouvelle Materia. 
+		[X] Celle-ci est une copie de celle apprise precedemment par la MateriaSource 
 		   et dont le type est le meme que celui passe en parametre. 
-		[] Retourne 0 (nullptr) si le type est inconnu
-	[] En bref, votre MateriaSource doit pouvoir apprendre des "modeles" de Materias afin de les recreer a volonte. Ainsi, 
+		[X] Retourne 0 (nullptr) si le type est inconnu
+	[X] En bref, votre MateriaSource doit pouvoir apprendre des "modeles" de Materias afin de les recreer a volonte. Ainsi, 
 	   vous serez capable de generer une nouvelle Materia a partir de son type sous forme de chaine de caracteres. 
 
-[] Executer le code tel qu'indique dans le PDF 
+[X] Executer le code tel qu'indique dans le PDF 
 
 
 Apprentissages:
@@ -108,6 +86,3 @@ Apprentissages:
 	on by creating a new object dynamically and doing a DEEP copy (needs to be deepen).
 	In other words, clone() can clone a derived object into a pointer of the base class, we normally a copy constructor
 	couldnt'. Amateria class = Ice class (impossible)
-
-Questions:
-- Does pure method has to be put as "virtual"?

@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 22:32:17 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/21 12:41:13 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/21 14:09:00 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,8 @@ void Character::unequip(int idx)
 {
 	if (idx < 0 || idx > 3)
 		std::cout << "The index provided does not exist in inventory!" << std::endl;
+	else if (!_inventory[idx])
+		std::cout << "No action to be done because Materia at index is null" << std::endl;
 	else
 	{
 		fillDroppedInventory(idx);
@@ -122,7 +124,10 @@ void	Character::printInventory()
 	for (int i = 0; i < 4; i++)
 	{
 		if (_inventory[i] != nullptr)
-			std::cout << "Inventory[" << i << "] is a: " << _inventory[i]->getType() << std::endl;
+		{
+			std::cout << "Inventory[" << i << "] is: " << _inventory[i]->getType()
+			<< " and address of Materia is: " << _inventory[i] << std::endl;
+		}
 		else
 			std::cout << "Inventory[" << i << "] is a NULLPTR!" << std::endl;
 	}

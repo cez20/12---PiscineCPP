@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:21:23 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/21 13:29:51 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/21 14:15:13 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@
 
 int main()
 {
-	// MAIN() INSIDE PDF. TO BE TESTED 
+	/*
+	** ----------------TESTING MAIN() FUNCTION INSIDE PDF  ----------------
+	*/
+	
 	IMateriaSource* src = new MateriaSource();
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
@@ -37,39 +40,61 @@ int main()
 	delete bob;
 	delete me;
 	delete src;
-	
-	return (0);
-}
 
+	/*
+	** ----------------TESTING MATERIAS INSTANCIATION AND CLONE() FUNCTION  ----------------
+	*/
 
+	// AMateria* materia1 = new Cure();
+	// AMateria* materia2 = materia1->clone();
+	// AMateria* materia3 = new Ice();
+	// AMateria* materia4 = materia3->clone();
 
-//AMateria material;   // Impossible to instanciate because this is an abstract class 
-	// AMateria* material = new Ice();
-	// AMateria* material1 = new Cure();
-	// AMateria* clone = material->clone(); // Does a dynamic deep copy of material->clone
-	// AMateria* clone1 = material1->clone();
-	
-	// delete clone1;
-	// delete clone;
-	// delete material1;
-	// delete material;
+	// delete materia1;
+	// delete materia2;
+	// delete materia3;
+	// delete materia4;
 
-	// // TESTING THE CHARACTER EQUIP(), UNEQUIP() AND USE()
+	/*
+	** ----------------TESTING CHARACTER EQUIP(), UNEQUIP(), USE() ----------------
+	*/
+
 	// Character character("Robert");
-	// Character character1("Cindy");
 
-	// // EQUIP: Additional Materia is created but immediately deleted since no place in invetory. 
+	// character.equip(new Ice);
 	// character.equip(new Ice);
 	// character.equip(new Cure);
 	// character.equip(new Cure);
-	// character.equip(new Ice);
-	// character.equip(new Cure); // Additional Material 
+	// character.equip(new Ice); // Additional Material will immmediately be deleted because inventory alredy full
 	// character.printInventory();
 
-	// // UNEQUIP() and USE(). Unequip an unexisting Materia or using an Unexisting Materia, will do nothing. 
+	// character.unequip(1);
 	// character.unequip(1);
 	// character.unequip(3);
-	// character.use(1, character1); // Will do nothing 
+	// character.printInventory();
+
+	// Character character1("Cindy");
 	// character.use(0, character1);
 	// character.use(3, character1);
-	// character.printInventory();
+	// character.use(1, character1); // Will do nothing because _inventory is empty at index [1]
+
+	/*
+	** ----------------TESTING CHARACTER DEEP COPY WHEN COPY CONSTRUCTOR AND ASSIGNEMENT OPERATOR ----------------
+	*/
+
+	// Character character2("Cesar");
+	// character2.equip(new Ice);
+	// character2.equip(new Ice);
+	// character2.equip(new Cure);
+	// character2.equip(new Cure);
+	// Character character3 = character2;
+
+	// std::cout << character2.getName() << std::endl;
+	// character2.printInventory();
+
+	// std::cout << character3.getName() << std::endl;
+	// character3.printInventory();
+
+
+	return (0);
+}
