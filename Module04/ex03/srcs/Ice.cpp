@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 22:32:46 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/18 22:32:47 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/20 19:23:48 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,8 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Ice::Ice(): AMateria()
+Ice::Ice(): AMateria("ice")
 {
-	this->setType("ice");
 	std::cout << "[DEFAULT CONSTRUCTOR] ICE default constructor is called" << std::endl;
 }
 

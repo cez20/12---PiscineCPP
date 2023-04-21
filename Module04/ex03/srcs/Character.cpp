@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 22:32:17 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/18 23:13:03 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/20 19:26:48 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Character::Character(): _name("")
+Character::Character(): _name()
 {
 	std::cout << "[DEFAULT CONSTRUCTOR] CHARACTER default constructor is called" << std::endl;
 	for(int i = 0; i < 4; i++)
@@ -34,6 +34,8 @@ Character::Character(std::string const & name): _name(name)
 Character::Character( const Character & src )
 {
 	std::cout << "[COPY CONSTRUCTOR] CHARACTER copy constructor is called" << std::endl;
+	for(int i = 0; i < 4; i++)
+		this->_inventory[i] = nullptr;
 	*this = src;
 }
 
@@ -44,7 +46,6 @@ Character::Character( const Character & src )
 
 Character::~Character()
 {
-	//delete[] _inventory;  // Est-ce que cette option pourrait marcher d'une facon quelconque 
 	for (int i = 0; i < 4; i++)
 		delete _inventory[i];
 	std::cout << "[DESTRUCTOR] CHARACTER destructor is called" << std::endl;
@@ -55,29 +56,19 @@ Character::~Character()
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-// Character &				Character::operator=( Character const & rhs)
-// {
-// 	(void)rhs;
-// 	// Est-ce que cela ne va pas pas efface les AMateria de la src?
-// 	// Il faudrait imprimer les AMAteria de la src une fois la copie termine pour voir si elle reste. 
-// 	for (int i = 0; i < 4; i++)
-// 	{
-// 		if(rhs._inventory[i]->getType() == "ice")
-// 		{
-// 			std::cout << "I am here" << std::endl;
-// 			std::cout << "The AMateria is Ice" << std::endl;
-// 			delete this->_inventory[i];  // I think this might cause problem.
-// 			this->_inventory[i] = new Ice();
-// 		}
-// 		else if(rhs._inventory[i]->getType() == "cure")
-// 		{
-// 			std::cout << "The AMateria is Cure" << std::endl;
-// 			delete this->_inventory[i];  // Maybe I have to erase the rhs._inventory[0] instead. 
-// 			this->_inventory[i] = new Cure();
-// 		}
-// 	}
-// 	return *this;
-// }
+Character &				Character::operator=( Character const & rhs)
+{
+	this->_name = rhs.getName();
+	for (int i = 0; i < 4; i++)
+	{
+		delete this->_inventory[i];
+		if (rhs._inventory[i])
+			this->_inventory[i] = rhs._inventory[i]->clone();
+		else
+			this->_inventory[i] = nullptr;
+	}
+	return *this;
+}
 
 
 /*
@@ -105,6 +96,8 @@ void Character::unequip(int idx)
 {
 	if (idx < 0 || idx > 3)
 		std::cout << "The index provided does not exist in inventory!" << std::endl;
+	else if (_inventory[idx] == nullptr)
+		return ;
 	else
 	{
 		_inventory[idx] = nullptr;

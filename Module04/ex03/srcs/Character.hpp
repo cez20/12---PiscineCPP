@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 22:32:25 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/18 22:52:52 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/20 19:21:40 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ class Character : public ICharacter
 		Character( Character const & src );
 		virtual ~Character();
 
-		//Character &		operator=( Character const & rhs );
+		Character &		operator=( Character const & rhs );
 
 		virtual std::string const & getName() const;
 		virtual void 				equip(AMateria* m);

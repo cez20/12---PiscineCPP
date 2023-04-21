@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 22:32:06 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/18 23:03:47 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/20 20:23:18 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-AMateria::AMateria() : _type("AMateria")
+AMateria::AMateria() : _type()
 {
 	std::cout << "[DEFAULT CONSTRUCTOR] AMateria default constructor is called" << std::endl;
 }

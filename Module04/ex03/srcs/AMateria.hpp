@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 22:31:57 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/18 22:54:35 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/20 20:09:08 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <iostream>
 # include <string>
 # include "ICharacter.hpp"
+# include "IMateriaSource.hpp"
 
 class ICharacter;
 
