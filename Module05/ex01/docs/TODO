@@ -40,4 +40,6 @@ PROJET:
 [] A quoi sert le gradeTo Execute();
 [] Verifier si la fonction signForm() est ce qui est recherche
 	[] Dois-je changer mon message d'exception pour qu'il affiche <bureaucrat> couldn't sign <form> because <reason>
-[] Est-ce que je peux utiliser le GradeTooLow et GRadeTooHigh de Bureaucrat?? 
+[] Est-ce que je peux utiliser le GradeTooLow et GRadeTooHigh de Bureaucrat??
+[] Le throw et le catch des exceptions peut se faire dans l'implementation des classes ou lieu du main
+	*** A VERIFIER *** 

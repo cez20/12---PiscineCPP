@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:21:23 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/24 18:52:00 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/24 19:15:21 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,28 +43,7 @@ int main()
 		bureaucrat1.signForm(form5);
 	}
 	
-	/*
-	** --------------------------- TESTING DECREASE OF ALREADY EXISTING GRADE  ----------------------------
-	*/
-
-	// try
-	// {
-	// 	Bureaucrat bureaucrat("Cesar", 150);
-	// 	bureaucrat.decreaseGrade();
-	// }
-
-	/*
-	** --------------------------- TESTING INSERTION OPERATOR OVERLOAD  ----------------------------
-	*/
-
-	// try
-	// {
-	// 	Bureaucrat bureaucrat("Cesar", 100);
-	// 	bureaucrat.decreaseGrade();
-	// 	std::cout << bureaucrat << std::endl;
-	// }
-
-
+	
 	/*
 	** --------------------------- CATCHING EXCEPTION BASED ON RIGHT EXCEPTION TYPE  ----------------------------
 	*/
@@ -77,14 +56,14 @@ int main()
 	{
 		std::cout << "Exception: " << e.what() << std::endl;
 	}
-	// catch (Form::GradeTooHighException &e)
-	// {
-	// 	std::cout << "Exception: " << e.what() << std::endl;	
-	// }
-	// catch(Form::GradeTooLowException & e)
-	// {
-	// 	std::cout << "Exception: " << e.what() << std::endl;
-	// }
+	catch (Form::GradeTooHighException &e)
+	{
+		std::cout << "Exception: " << e.what() << std::endl;	
+	}
+	catch(Form::GradeTooLowException & e)
+	{
+		std::cout << "Exception: " << e.what() << std::endl;
+	}
 	catch (std::exception e)
 	{
 		std::cout << "Exception: " << e.what() << std::endl;
