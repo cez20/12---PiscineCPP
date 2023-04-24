@@ -19,7 +19,7 @@ Bureaucrat::Bureaucrat(std::string const name, int grade): _name(name), _grade(g
 }
 
 
-Bureaucrat::Bureaucrat( const Bureaucrat & src )
+Bureaucrat::Bureaucrat( const Bureaucrat & src ): _name(src._name), _grade(src._grade)
 {
 	std::cout << "[BUREAUCRAT COPY CONSTRUCTOR] COPY Constructor has been called" << std::endl;
 	*this = src; 
@@ -44,7 +44,6 @@ Bureaucrat &				Bureaucrat::operator=( Bureaucrat const & rhs )
 {
 	if ( this != &rhs )
 	{
-		this->_name = rhs.getName();
 		this->_grade = rhs.getGrade();
 	}
 	return *this;
