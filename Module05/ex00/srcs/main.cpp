@@ -6,40 +6,75 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:21:23 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/13 01:14:02 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/23 19:59:25 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
-#include "Cat.hpp"
-#include "WrongCat.hpp"
+#include "Bureaucrat.hpp"
+#include <stdexcept>
+
 
 int main()
 {
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
+	/*
+	** --------------------------TESTING INVALID GRADE AT INSTANCIATION --------------------------
+	*/
+	try
+	{
+		//Bureaucrat bureaucrat("Cesar", 151);
+		Bureaucrat*	bureaucrat1 = new Bureaucrat("Robert", 0);
+		
+		delete bureaucrat1;
+	}
 
-	std::cout << "The Animal type is a: " << j->getType() << std::endl;
-	std::cout << "The Animal type is a: " << i->getType() << std::endl;
+	/*
+	** --------------------------- TESTING INCREASE OF ALREADY EXISTING GRADE ----------------------------
+	*/
+	// try
+	// {
 	
-	i->makeSound(); //will output the cat sound!
-	j->makeSound(); // Will output the dog sound 
+	// 	Bureaucrat bureaucrat1("Robert", 1);
+	// 	bureaucrat1.increaseGrade();
+	// }
+	
+	/*
+	** --------------------------- TESTING DECREASE OF ALREADY EXISTING GRADE  ----------------------------
+	*/
 
-	delete i;
-	delete j;
-	delete meta;
+	// try
+	// {
+	// 	Bureaucrat bureaucrat("Cesar", 150);
+	// 	bureaucrat.decreaseGrade();
+	// }
 
-	std::cout << "\n\n";
+	/*
+	** --------------------------- TESTING INSERTION OPERATOR OVERLOAD  ----------------------------
+	*/
 
-	const WrongAnimal* meta1 = new WrongAnimal();
-	const WrongAnimal* i1 = new WrongCat();
+	// try
+	// {
+	// 	Bureaucrat bureaucrat("Cesar", 100);
+	// 	bureaucrat.decreaseGrade();
+	// 	std::cout << bureaucrat << std::endl;
+	// }
 
-	i1->makeSound();
-	meta1->makeSound();
 
-	delete i1;
-	delete meta1;
+	/*
+	** --------------------------- CATCHING EXCEPTION BASED ON RIGHT EXCEPTION TYPE  ----------------------------
+	*/
 
+	catch (Bureaucrat::GradeTooHighException &e)
+	{
+		std::cout << "Exception: " << e.what() << std::endl;	
+	}
+	catch(Bureaucrat::GradeTooLowException & e)
+	{
+		std::cout << "Exception: " << e.what() << std::endl;
+	}
+	catch (std::exception e)
+	{
+		std::cout << "Exception: " << e.what() << std::endl;
+	}
+	
 	return (0);
 }

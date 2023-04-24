@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 13:58:58 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/23 14:24:50 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/23 16:56:59 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void test3
 
 void test4()
 {
-	class PEBKACException: public std::exception
+	class PEBKACException: public std::exception  // Il s'agit d'une classe d'exception.  
 	{
 		public:
 			virtual const char* what() const throw()  //(voir Explication plus haut)

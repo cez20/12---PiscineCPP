@@ -6,14 +6,14 @@
 #    By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/03 17:54:38 by cemenjiv          #+#    #+#              #
-#    Updated: 2023/04/23 13:38:09 by cemenjiv         ###   ########.fr        #
+#    Updated: 2023/04/23 17:24:37 by cemenjiv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			= Animal
+NAME			= Bureaucrat
 
 SRCS_DIR   		= srcs/
-SRCS_FILES		= main.cpp 
+SRCS_FILES		= main.cpp Bureaucrat.cpp
 SRCS 			= $(addprefix $(SRCS_DIR), $(SRCS_FILES))
 
 OBJS_DIR		= objs/
