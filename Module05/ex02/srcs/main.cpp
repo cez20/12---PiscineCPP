@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:21:23 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/26 16:08:02 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/26 17:11:59 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,11 @@ int main()
 	// }
 
 
-	// catch (Bureaucrat::GradeTooHighException &e)
+	// catch(GradeTooHighException &e)
 	// {
 	// 	std::cout << "Exception: " << e.what() << std::endl;	
 	// }
-	// catch(Bureaucrat::GradeTooLowException & e)
-	// {
-	// 	std::cout << "Exception: " << e.what() << std::endl;
-	// }
-	// catch (AForm::GradeTooHighException &e)
-	// {
-	// 	std::cout << "Exception: " << e.what() << std::endl;	
-	// }
-	// catch(AForm::GradeTooLowException & e)
+	// catch(GradeTooLowException & e)
 	// {
 	// 	std::cout << "Exception: " << e.what() << std::endl;
 	// }

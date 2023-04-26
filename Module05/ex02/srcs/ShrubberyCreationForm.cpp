@@ -58,39 +58,34 @@ ShrubberyCreationForm &				ShrubberyCreationForm::operator=( ShrubberyCreationFo
 void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
 	if (this->getSignStatus() == false || executor.getGrade() > this->getGradeToExecute())
-		return;
+	{
+		throw 
+	}
 
-	std::ofstream file("Cesar");
+	std::ofstream file(this->getTarget() + "_shrubbery");
 
 	if (file.is_open())
 	{
 		for (int i = 0; i < 3; i++)
 		{
-			file <<		 "oxoxoo    ooxoo\n"
-			<<			"ooxoxo oo  oxoxooo\n"
-			<<			"oooo xxoxoo ooo ooox\n"
-			<<			"oxo o oxoxo  xoxxoxo\n"
-			<<			"oxo xooxoooo o ooo\n"
-			// <<				"ooo\oo\  /o/o\n"
-			// <<					"\  \/ /\n"
-			// <<					"|   /\n"
-			// <<					"|  |\n"
-			// <<					"| D|\n"
-			// <<					"|  |\n"
-			// <<					"|  |\n"
-			// <<			"______/____\____\n"
+			file <<"	          oxoxoo    ooxoo\n"
+			     <<"			 ooxoxo oo  oxoxooo\n"
+			     <<"			oooo xxoxoo ooo ooox\n"
+			     <<"			oxo o oxoxo  xoxxoxo\n"
+				 <<"			oxo xooxoooo o ooo\n"
+				 <<"			   oooooo000o/o\n"
+				 <<"				oooooooooo/\n"
+				 <<"					|   /\n"
+				 <<"					|  |\n"
+				 <<"					|  |\n"
+				 <<"					|  |\n"
+				 <<"					|  |\n"
+				 <<"			 ______/____\\____\n"
 			<< "\n\n";
 		}
 	}
 
 	file.close();
 }
-
-
-
-/*
-** --------------------------------- ACCESSOR ---------------------------------
-*/
-
 
 /* ************************************************************************** */

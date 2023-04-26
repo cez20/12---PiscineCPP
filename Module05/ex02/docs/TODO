@@ -14,9 +14,9 @@ PROJET:
 
 [] Ajouter les classe concretes suivantes(Verifier si elle doivent herite de Form) :
 	[X] (AJOUT) Mettre public AForm pour les 3 classes 
-	[] ShruberryCreation Form(Formulaire de creations d'arbustes)
+	[X] ShruberryCreation Form(Formulaire de creations d'arbustes)
 		[X]Echelon requis: signature 145, execution 137
-		[]Creer un fichier <target> _shruberry dans le repertoire courant, et ecrit des 
+		[X]Creer un fichier <target> _shruberry dans le repertoire courant, et ecrit des 
 			arbres ASCII a l'interieur
 	[] RobotomyRequestForm (formulaire de demande de robotomie)
 		[]Echelon requis: signature 72, execution 45
@@ -28,7 +28,6 @@ PROJET:
 		[] Informe que la <target> a ete pardonne par Zaphod Beeblebrox
 [] Chacune d'entre elles prend un parametre dans son constructeur: la target(cible) 
 	du formulaire 
-	[] Quel defaut "target" devrais-je mettre dans les constructeur de base. 
 	[]Par exemple, "jardin" si vous voulez planter des arbustes dans votre jardin
 
 [] Ajouter la fonction membre execute (Bureaucrat const & executor) const
