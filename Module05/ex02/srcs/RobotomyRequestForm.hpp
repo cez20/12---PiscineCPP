@@ -1,24 +1,26 @@
-#ifndef ROBOTOMYREQUESTAForm_HPP
-# define ROBOTOMYREQUESTAForm_HPP
+#ifndef ROBOTOMYREQUESTFORM_HPP
+# define ROBOTOMYREQUESTFORM_HPP
 
 # include <iostream>
 # include <string>
 # include "AForm.hpp"
 
-class RobotomyRequestAForm: public AForm 
+class RobotomyRequestForm: public AForm 
 {
 	private:
 		// We will use the private attributes of AForm and access them through getters publicly inherited 
 	public:
 
-		RobotomyRequestAForm();
-		RobotomyRequestAForm( RobotomyRequestAForm const & src );
-		virtual ~RobotomyRequestAForm();
+		RobotomyRequestForm();
+		RobotomyRequestForm( RobotomyRequestForm const & src );
+		virtual ~RobotomyRequestForm();
 
-		RobotomyRequestAForm &		operator=( RobotomyRequestAForm const & rhs );
+		RobotomyRequestForm &		operator=( RobotomyRequestForm const & rhs );
+
+		virtual void			execute (Bureaucrat const & executor) const;
 
 };
 
-std::ostream &			operator<<( std::ostream & o, RobotomyRequestAForm const & i );
+std::ostream &			operator<<( std::ostream & o, RobotomyRequestForm const & i );
 
-#endif /* ********************************************* ROBOTOMYREQUESTAForm_H */
+#endif /* ********************************************* RobotomyRequestForm_H */

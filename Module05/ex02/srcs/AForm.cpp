@@ -4,23 +4,24 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-AForm::AForm(): _name("Default AForm"), _isSigned(false), _gradeToSign(150), _gradeToExecute(150)
+AForm::AForm(): _name("Default AForm"), _target(), _gradeToSign(150), _gradeToExecute(150)
 {
 	verifyGrade();
-	std::cout << "[AForm DEFAULT CONSTRUCTOR] Default constructor is called" << std::endl;
+	std::cout << "[AFORM DEFAULT CONSTRUCTOR] Default constructor is called" << std::endl;
 }
 
-AForm::AForm(std::string const name, unsigned int const sign, unsigned int const exec): _name(name), _gradeToSign(sign), _gradeToExecute(exec)
+AForm::AForm(std::string const name, std::string target, unsigned int const sign, unsigned int const exec): 
+_name(name), _target(target), _gradeToSign(sign), _gradeToExecute(exec)
 {
 	verifyGrade();
-	std::cout << "[AForm CONSTRUCTOR W ARGS] Constructor with argument is called" << std::endl;
+	std::cout << "[AFORM CONSTRUCTOR W ARGS] Constructor with argument is called" << std::endl;
 }
 
 
-AForm::AForm( const AForm & src ): _name(src._name), _gradeToSign(src._gradeToSign), _gradeToExecute(src._gradeToExecute)
+AForm::AForm( const AForm & src ): _name(src._name), _isSigned(false), _gradeToSign(src._gradeToSign), _gradeToExecute(src._gradeToExecute)
 {
 	verifyGrade();
-	std::cout << "[AForm COPY CONSTRUCTOR] Copy constructor is called" << std::endl;
+	std::cout << "[AFORM COPY CONSTRUCTOR] Copy constructor is called" << std::endl;
 	*this = src;
 }
 
@@ -31,7 +32,7 @@ AForm::AForm( const AForm & src ): _name(src._name), _gradeToSign(src._gradeToSi
 
 AForm::~AForm()
 {
-	std::cout << "[AForm DESTRUCTOR] Destructor is called" << std::endl;
+	std::cout << "[AFORM DESTRUCTOR] Destructor is called" << std::endl;
 }
 
 
@@ -91,6 +92,11 @@ void	AForm::beSigned(Bureaucrat & b)
 std::string AForm::getName() const
 {
 	return (this->_name);
+}
+
+std::string AForm::getTarget() const
+{
+	return (this->_target);
 }
 
 bool	AForm::getSignStatus() const

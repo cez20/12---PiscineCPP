@@ -1,14 +1,14 @@
-#include "RobotomyRequestAForm.hpp"
+#include "RobotomyRequestForm.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-RobotomyRequestAForm::RobotomyRequestAForm()
+RobotomyRequestForm::RobotomyRequestForm()
 {
 }
 
-RobotomyRequestAForm::RobotomyRequestAForm( const RobotomyRequestAForm & src )
+RobotomyRequestForm::RobotomyRequestForm( const RobotomyRequestForm & src )
 {
 }
 
@@ -17,7 +17,7 @@ RobotomyRequestAForm::RobotomyRequestAForm( const RobotomyRequestAForm & src )
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-RobotomyRequestAForm::~RobotomyRequestAForm()
+RobotomyRequestForm::~RobotomyRequestForm()
 {
 }
 
@@ -26,7 +26,7 @@ RobotomyRequestAForm::~RobotomyRequestAForm()
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-RobotomyRequestAForm &				RobotomyRequestAForm::operator=( RobotomyRequestAForm const & rhs )
+RobotomyRequestForm &				RobotomyRequestForm::operator=( RobotomyRequestForm const & rhs )
 {
 	//if ( this != &rhs )
 	//{
@@ -35,7 +35,7 @@ RobotomyRequestAForm &				RobotomyRequestAForm::operator=( RobotomyRequestAForm 
 	return *this;
 }
 
-std::ostream &			operator<<( std::ostream & o, RobotomyRequestAForm const & i )
+std::ostream &			operator<<( std::ostream & o, RobotomyRequestForm const & i )
 {
 	//o << "Value = " << i.getValue();
 	return o;

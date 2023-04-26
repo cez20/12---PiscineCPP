@@ -1,5 +1,5 @@
-#ifndef AForm_HPP
-# define AForm_HPP
+#ifndef AFORM_HPP
+# define AFORM_HPP
 
 # include <iostream>
 # include <string>
@@ -10,15 +10,19 @@ class Bureaucrat;
 class AForm
 {
 	private:
-		std::string const	_name;
+		std::string const 	_name;
+		std::string			_target;
 		bool			  	_isSigned;
 		unsigned int const	_gradeToSign;  // grade needed to be able to sign document
 		unsigned int const	_gradeToExecute; // grade needed to be able to execute document 
 
+	protected:
+		std::string			target;
+
 	public:
 
 		AForm();
-		AForm(std::string const name, unsigned int const gradeToSign, unsigned int const gradeToExecute);
+		AForm(std::string const name, std::string target, unsigned int const gradeToSign, unsigned int const gradeToExecute);
 		AForm( AForm const & src );
 		virtual ~AForm();
 
@@ -29,6 +33,7 @@ class AForm
 		void					beSigned(Bureaucrat & b);
 
 		std::string				getName() const;
+		std::string				getTarget() const;
 		bool					getSignStatus() const;
 		unsigned int			getGradeToSign() const;
 		unsigned int			getGradeToExecute() const;
