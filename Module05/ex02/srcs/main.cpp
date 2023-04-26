@@ -6,12 +6,12 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:21:23 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/24 22:19:31 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/26 11:20:13 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 #include <stdexcept>
 
 
@@ -23,7 +23,7 @@ int main()
 	try
 	{
 		Bureaucrat bureaucrat1;
-		Form	form2("AG13", 140, 12);
+		//AForm	AForm2("AG13", 140, 12);
 
 	
 	}
@@ -37,11 +37,11 @@ int main()
 	{
 		std::cout << "Exception: " << e.what() << std::endl;
 	}
-	catch (Form::GradeTooHighException &e)
+	catch (AForm::GradeTooHighException &e)
 	{
 		std::cout << "Exception: " << e.what() << std::endl;	
 	}
-	catch(Form::GradeTooLowException & e)
+	catch(AForm::GradeTooLowException & e)
 	{
 		std::cout << "Exception: " << e.what() << std::endl;
 	}

@@ -89,15 +89,15 @@ void	Bureaucrat::decreaseGrade(){
 		throw Bureaucrat::GradeTooLowException();
 }
 
-void			Bureaucrat::signForm(Form & f)
+void			Bureaucrat::signAForm(AForm & f)
 {
 	f.beSigned(*this);
 	//if (f.getSignStatus() == true)
-		//std::cout << this->_name << " signed form " << f.getName() << std::endl;
+		//std::cout << this->_name << " signed AForm " << f.getName() << std::endl;
 	//else
-		//std::cout << this->_name << " couldn't sign form " << f.getName() 
+		//std::cout << this->_name << " couldn't sign AForm " << f.getName() 
 		//<< " because minimum bureaucrat's grade to sign is: " << f.getGradeToSign() 
-		//<< " or because action of signing Form hasn't been done" << std::endl;
+		//<< " or because action of signing AForm hasn't been done" << std::endl;
 }
 
 /*

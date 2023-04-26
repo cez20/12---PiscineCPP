@@ -1,27 +1,27 @@
-#ifndef PRESIDENTIALPARDONFORM_HPP
-# define PRESIDENTIALPARDONFORM_HPP
+#ifndef PRESIDENTIALPARDONAForm_HPP
+# define PRESIDENTIALPARDONAForm_HPP
 
 # include <iostream>
 # include <string>
-# include "Form.hpp"
+# include "AForm.hpp"
 
-class PresidentialPardonForm : public Form
+class PresidentialPardonAForm : public AForm
 {
 	private:
-		// We will use the private attributes of Form and access them through getters publicly inherited 
+		// We will use the private attributes of AForm and access them through getters publicly inherited 
 
 	public:
 
-		PresidentialPardonForm();
-		PresidentialPardonForm( PresidentialPardonForm const & src );
-		virtual ~PresidentialPardonForm();
+		PresidentialPardonAForm();
+		PresidentialPardonAForm( PresidentialPardonAForm const & src );
+		virtual ~PresidentialPardonAForm();
 
-		PresidentialPardonForm &		operator=( PresidentialPardonForm const & rhs );
+		PresidentialPardonAForm &		operator=( PresidentialPardonAForm const & rhs );
 
 
 
 };
 
-std::ostream &			operator<<( std::ostream & o, PresidentialPardonForm const & i );
+std::ostream &			operator<<( std::ostream & o, PresidentialPardonAForm const & i );
 
-#endif /* ****************************************** PRESIDENTIALPARDONFORM_H */
+#endif /* ****************************************** PRESIDENTIALPARDONAForm_H */

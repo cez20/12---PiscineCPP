@@ -1,14 +1,14 @@
-#include "ShrubberyCreationForm.hpp"
+#include "ShrubberyCreationAForm.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-ShrubberyCreationForm::ShrubberyCreationForm()
+ShrubberyCreationAForm::ShrubberyCreationAForm()
 {
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm( const ShrubberyCreationForm & src )
+ShrubberyCreationAForm::ShrubberyCreationAForm( const ShrubberyCreationAForm & src )
 {
 }
 
@@ -17,7 +17,7 @@ ShrubberyCreationForm::ShrubberyCreationForm( const ShrubberyCreationForm & src 
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-ShrubberyCreationForm::~ShrubberyCreationForm()
+ShrubberyCreationAForm::~ShrubberyCreationAForm()
 {
 }
 
@@ -26,7 +26,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-ShrubberyCreationForm &				ShrubberyCreationForm::operator=( ShrubberyCreationForm const & rhs )
+ShrubberyCreationAForm &				ShrubberyCreationAForm::operator=( ShrubberyCreationAForm const & rhs )
 {
 	//if ( this != &rhs )
 	//{
@@ -35,7 +35,7 @@ ShrubberyCreationForm &				ShrubberyCreationForm::operator=( ShrubberyCreationFo
 	return *this;
 }
 
-std::ostream &			operator<<( std::ostream & o, ShrubberyCreationForm const & i )
+std::ostream &			operator<<( std::ostream & o, ShrubberyCreationAForm const & i )
 {
 	//o << "Value = " << i.getValue();
 	return o;

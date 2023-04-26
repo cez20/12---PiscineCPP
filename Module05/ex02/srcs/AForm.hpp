@@ -1,5 +1,5 @@
-#ifndef FORM_HPP
-# define FORM_HPP
+#ifndef AForm_HPP
+# define AForm_HPP
 
 # include <iostream>
 # include <string>
@@ -7,7 +7,7 @@
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
 	private:
 		std::string const	_name;
@@ -17,15 +17,16 @@ class Form
 
 	public:
 
-		Form();
-		Form(std::string const name, unsigned int const gradeToSign, unsigned int const gradeToExecute);
-		Form( Form const & src );
-		virtual ~Form();
+		AForm();
+		AForm(std::string const name, unsigned int const gradeToSign, unsigned int const gradeToExecute);
+		AForm( AForm const & src );
+		virtual ~AForm();
 
-		Form &		operator=( Form const & rhs );
+		AForm &		operator=( AForm const & rhs );
 
+		virtual void			execute (Bureaucrat const & executor) const = 0;
 		void					verifyGrade() const;
-		virtual	void			beSigned(Bureaucrat & b) = 0;
+		void					beSigned(Bureaucrat & b);
 
 		std::string				getName() const;
 		bool					getSignStatus() const;
@@ -50,6 +51,6 @@ class Form
 		};
 };
 
-std::ostream &			operator<<( std::ostream & o, Form const & i );
+std::ostream &			operator<<( std::ostream & o, AForm const & i );
 
-#endif /* ************************************************************ FORM_H */
+#endif /* ************************************************************ AForm_H */

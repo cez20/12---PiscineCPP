@@ -1,14 +1,14 @@
-#include "PresidentialPardonForm.hpp"
+#include "PresidentialPardonAForm.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-PresidentialPardonForm::PresidentialPardonForm()
+PresidentialPardonAForm::PresidentialPardonAForm()
 {
 }
 
-PresidentialPardonForm::PresidentialPardonForm( const PresidentialPardonForm & src )
+PresidentialPardonAForm::PresidentialPardonAForm( const PresidentialPardonAForm & src )
 {
 }
 
@@ -17,7 +17,7 @@ PresidentialPardonForm::PresidentialPardonForm( const PresidentialPardonForm & s
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-PresidentialPardonForm::~PresidentialPardonForm()
+PresidentialPardonAForm::~PresidentialPardonAForm()
 {
 }
 
@@ -26,7 +26,7 @@ PresidentialPardonForm::~PresidentialPardonForm()
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-PresidentialPardonForm &				PresidentialPardonForm::operator=( PresidentialPardonForm const & rhs )
+PresidentialPardonAForm &				PresidentialPardonAForm::operator=( PresidentialPardonAForm const & rhs )
 {
 	//if ( this != &rhs )
 	//{
@@ -35,7 +35,7 @@ PresidentialPardonForm &				PresidentialPardonForm::operator=( PresidentialPardo
 	return *this;
 }
 
-std::ostream &			operator<<( std::ostream & o, PresidentialPardonForm const & i )
+std::ostream &			operator<<( std::ostream & o, PresidentialPardonAForm const & i )
 {
 	//o << "Value = " << i.getValue();
 	return o;

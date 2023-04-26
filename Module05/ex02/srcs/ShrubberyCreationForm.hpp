@@ -1,23 +1,23 @@
-#ifndef SHRUBBERYCREATIONFORM_HPP
-# define SHRUBBERYCREATIONFORM_HPP
+#ifndef SHRUBBERYCREATIONAForm_HPP
+# define SHRUBBERYCREATIONAForm_HPP
 
 # include <iostream>
 # include <string>
-# include "Form.hpp"
+# include "AForm.hpp"
 
-class ShrubberyCreationForm: public Form
+class ShrubberyCreationAForm: public AForm
 {
 	private:
-		// We will use the private attributes of Form and access them through getters publicly inherited 
+		// We will use the private attributes of AForm and access them through getters publicly inherited 
 	public:
 
-		ShrubberyCreationForm();
-		ShrubberyCreationForm( ShrubberyCreationForm const & src );
-		virtual ~ShrubberyCreationForm();
+		ShrubberyCreationAForm();
+		ShrubberyCreationAForm( ShrubberyCreationAForm const & src );
+		virtual ~ShrubberyCreationAForm();
 
-		ShrubberyCreationForm &		operator=( ShrubberyCreationForm const & rhs );
+		ShrubberyCreationAForm &		operator=( ShrubberyCreationAForm const & rhs );
 };
 
-std::ostream &			operator<<( std::ostream & o, ShrubberyCreationForm const & i );
+std::ostream &			operator<<( std::ostream & o, ShrubberyCreationAForm const & i );
 
-#endif /* ******************************************* SHRUBBERYCREATIONFORM_H */
+#endif /* ******************************************* SHRUBBERYCREATIONAForm_H */
