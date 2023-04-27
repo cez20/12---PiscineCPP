@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:21:23 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/26 17:11:59 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/27 15:33:42 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,35 +19,45 @@
 int main()
 {
 	/*
-	** --------------------------TESTING INSTANCIATION AND COPY CONSTRUCTOR  --------------------------
+	** --------------------------TESTING INSTANCIATION of NEW FORMS  --------------------------
 	*/
+	Bureaucrat bureaucrat1("Cesar", 100);
 	ShrubberyCreationForm shrubbery1("jardin");
-	ShrubberyCreationForm shrubbery2 = shrubbery1;
-	
-	Bureaucrat bureaucrat1("Cesar", 1);
-	
+	bureaucrat1.signAForm(shrubbery1);
 	shrubbery1.execute(bureaucrat1);
+
 	
+	Bureaucrat bureaucrat2("Robert", 150);
+	ShrubberyCreationForm shrubbery2("champs");
+	bureaucrat2.signAForm(shrubbery2);
+	shrubbery2.execute(bureaucrat2);
+	
+	/*
+	** --------------------------TESTING SIGNATURE AND EXECUTION OF FORM --------------------------
+	*/
+	// Bureaucrat	bureaucrat2("Robert", 150);
+	// ShrubberyCreationForm Form1;
+	// bureaucrat2.signAForm(Form1);
+	// Form1.execute(bureaucrat2);
 
-	// try
-	// {
-	// 	Bureaucrat bureaucrat1;		
-
-	// }
-
-
-	// catch(GradeTooHighException &e)
+	// catch(AForm::GradeTooHighException &e)
 	// {
 	// 	std::cout << "Exception: " << e.what() << std::endl;	
 	// }
-	// catch(GradeTooLowException & e)
+	// catch(AForm::GradeTooLowException & e)
 	// {
 	// 	std::cout << "Exception: " << e.what() << std::endl;
 	// }
-	// catch (std::exception e)
+	// catch(AForm::isNotSigned & e)
 	// {
 	// 	std::cout << "Exception: " << e.what() << std::endl;
 	// }
-	
+	// catch(std::exception & e)
+	// {
+	// 	std::cout << "Exception: " << e.what() << std::endl;
+	// }
+
 	return (0);
 }
+
+

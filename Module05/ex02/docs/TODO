@@ -1,5 +1,14 @@
 TODO:
 
+Jeudi 27 avril 2023:
+[] Dans les fonctions Aform et Bureaucrat, mettre l'implementation des exceptions dans le fichier .cpp 
+[] Voir comment, je peux utiliser un seul GradeTooLow autant pour Bureaucrat que pour AForm
+[] 
+
+
+
+
+
 Pour chaque exercice:
 [] Mettre les bons headers au fur et a mesure 
 [] Verifier les leaks
@@ -33,7 +42,6 @@ PROJET:
 [] Ajouter la fonction membre execute (Bureaucrat const & executor) const
 	a la classe de base (classe Form)
 	[] Implementez une fonction pour executer l'action du formulaire des classes derivees.
-	[] Mettre un "throw" dans la fonction execute de Shrubbery,
 	[X]Vous devez vous assurez que le formulaire est signe et que la grade du bureaucrate
 	 tentant de l'executer est suffisant.
 

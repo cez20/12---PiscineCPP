@@ -57,12 +57,10 @@ ShrubberyCreationForm &				ShrubberyCreationForm::operator=( ShrubberyCreationFo
 
 void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
-	if (this->getSignStatus() == false || executor.getGrade() > this->getGradeToExecute())
-	{
-		std::cout << "Unable to execute Shrubbery Form because"
-				  << "Form is not signed OR Bureaucrat grade is too high" << std::endl;
-		return;	
-		// I should normally put a throw here! 
+	try{
+		isFormExecutable(executor);
+	}catch(std::exception &e){
+		std::cout << "Exception: " << e.what() << std::endl;
 	}
 
 	std::ofstream file(this->getTarget() + "_shrubbery");

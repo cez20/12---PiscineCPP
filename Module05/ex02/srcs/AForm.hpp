@@ -31,6 +31,7 @@ class AForm
 		virtual void			execute (Bureaucrat const & executor) const = 0;
 		void					verifyGrade() const;
 		void					beSigned(Bureaucrat & b);
+		void					isFormExecutable(Bureaucrat const & b) const;
 
 		std::string				getName() const;
 		std::string				getTarget() const;
@@ -40,19 +41,18 @@ class AForm
 
 		class GradeTooHighException: public std::exception
 		{
-			public:
-				virtual const char* what() const throw()  //(voir Explication plus haut)
-				{
-					return ("Grade is too HIGH");
-				}
+		public:
+			virtual const char* what() const throw();
 		};
 		class GradeTooLowException: public std::exception
 		{
-			public:
-				virtual const char* what() const throw()  //(voir Explication plus haut)
-				{
-					return ("Grade is too LOW");
-				}
+		public:
+			virtual const char* what() const throw();
+		};
+		class isNotSigned: public std::exception
+		{
+		public:
+			virtual const char* what() const throw();
 		};
 };
 
