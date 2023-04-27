@@ -59,7 +59,10 @@ void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
 	if (this->getSignStatus() == false || executor.getGrade() > this->getGradeToExecute())
 	{
-		throw 
+		std::cout << "Unable to execute Shrubbery Form because"
+				  << "Form is not signed OR Bureaucrat grade is too high" << std::endl;
+		return;	
+		// I should normally put a throw here! 
 	}
 
 	std::ofstream file(this->getTarget() + "_shrubbery");

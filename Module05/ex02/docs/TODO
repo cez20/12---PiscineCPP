@@ -33,6 +33,7 @@ PROJET:
 [] Ajouter la fonction membre execute (Bureaucrat const & executor) const
 	a la classe de base (classe Form)
 	[] Implementez une fonction pour executer l'action du formulaire des classes derivees.
+	[] Mettre un "throw" dans la fonction execute de Shrubbery,
 	[X]Vous devez vous assurez que le formulaire est signe et que la grade du bureaucrate
 	 tentant de l'executer est suffisant.
 

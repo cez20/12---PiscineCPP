@@ -4,7 +4,7 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-AForm::AForm(): _name("Default AForm"), _target(), _gradeToSign(150), _gradeToExecute(150)
+AForm::AForm():_name("Default AForm"), _target("Default Target"), _gradeToSign(150), _gradeToExecute(150)
 {
 	verifyGrade();
 	std::cout << "[AFORM DEFAULT CONSTRUCTOR] Default constructor is called" << std::endl;
