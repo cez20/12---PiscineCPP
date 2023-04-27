@@ -11,7 +11,7 @@ class AForm
 {
 	private:
 		std::string const 	_name;
-		std::string			_target;
+		std::string	const	_target;
 		bool			  	_isSigned;
 		unsigned int const	_gradeToSign;  // grade needed to be able to sign document
 		unsigned int const	_gradeToExecute; // grade needed to be able to execute document 
@@ -22,7 +22,7 @@ class AForm
 	public:
 
 		AForm();
-		AForm(std::string const name, std::string target, unsigned int const gradeToSign, unsigned int const gradeToExecute);
+		AForm(std::string const name, std::string const target, unsigned int const gradeToSign, unsigned int const gradeToExecute);
 		AForm( AForm const & src );
 		virtual ~AForm();
 

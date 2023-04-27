@@ -5,7 +5,7 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-ShrubberyCreationForm::ShrubberyCreationForm(): AForm ("Shrubbery", "target",145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(): AForm ("Shrubbery", "target", 145, 137)
 {
 	std::cout << "[SHRUBBERY DEFAULT CONSTRUCTOR] Default construtor is called" << std::endl;
 }
@@ -16,7 +16,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target): AForm ("Shrubb
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm( const ShrubberyCreationForm & src )
-: AForm("Shrubbery", "target", 145, 137)
+: AForm("Shrubbery", src.getTarget(), 145, 137)
 {
 	std::cout << "[SHRUBBERY COPY CONSTRUCTOR] Copy construtor is called" << std::endl;
 	*this = src;

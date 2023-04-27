@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:21:23 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/27 15:33:42 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/27 15:50:44 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int main()
 	ShrubberyCreationForm shrubbery1("jardin");
 	bureaucrat1.signAForm(shrubbery1);
 	shrubbery1.execute(bureaucrat1);
+	ShrubberyCreationForm shrubbery3 = shrubbery1;
+	std::cout << shrubbery3.getName() << shrubbery3.getTarget() << shrubbery3.getGradeToSign() << shrubbery1.getGradeToExecute() << std::endl;
 
 	
 	Bureaucrat bureaucrat2("Robert", 150);

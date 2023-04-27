@@ -4,12 +4,22 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-RobotomyRequestForm::RobotomyRequestForm()
+RobotomyRequestForm::RobotomyRequestForm(): AForm ("Robotomy", "target", 72, 45)
 {
+	std::cout << "[ROBOTOMY DEFAULT CONSTRUCTOR] Constructor has been called" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm( const RobotomyRequestForm & src )
+RobotomyRequestForm::RobotomyRequestForm(std::string target): AForm ("Robotomy", target, 72, 45)
 {
+	std::cout << "[ROBOTOMY CONSTRUCTOR W ARGS] Constructor has been called" << std::endl;
+}
+
+
+RobotomyRequestForm::RobotomyRequestForm( const RobotomyRequestForm & src )
+: AForm("Shrubbery", "target", 72, 45)
+{
+	std::cout << "[ROBOTOMY COPY CONSTRUCTOR] Copy construtor is called" << std::endl;
+	*this = src;
 }
 
 
@@ -19,6 +29,7 @@ RobotomyRequestForm::RobotomyRequestForm( const RobotomyRequestForm & src )
 
 RobotomyRequestForm::~RobotomyRequestForm()
 {
+	std::cout << "[SHRUBBERY DESTRUCTOR] DESTRUCTOR is called" << std::endl;
 }
 
 
@@ -28,10 +39,7 @@ RobotomyRequestForm::~RobotomyRequestForm()
 
 RobotomyRequestForm &				RobotomyRequestForm::operator=( RobotomyRequestForm const & rhs )
 {
-	//if ( this != &rhs )
-	//{
-		//this->_value = rhs.getValue();
-	//}
+	(void)rhs;
 	return *this;
 }
 

@@ -7,11 +7,10 @@
 
 class RobotomyRequestForm: public AForm 
 {
-	private:
-		// We will use the private attributes of AForm and access them through getters publicly inherited 
 	public:
 
 		RobotomyRequestForm();
+		RobotomyRequestForm(std::string target);
 		RobotomyRequestForm( RobotomyRequestForm const & src );
 		virtual ~RobotomyRequestForm();
 
