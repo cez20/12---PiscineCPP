@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:21:23 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/28 10:54:14 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/28 11:06:10 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,14 @@ int main()
 	/*
 	** --------------------------TESTING INSTANCIATION of NEW FORMS  --------------------------
 	*/
+
+	//**** SHRUBERRYCREATIONFORM ****
 	Bureaucrat bureaucrat1("Cesar", 100);
 	ShrubberyCreationForm shrubbery1("jardin");
 	bureaucrat1.signAForm(shrubbery1);
 	shrubbery1.execute(bureaucrat1);
 	ShrubberyCreationForm shrubbery3 = shrubbery1;
+	bureaucrat1.printData();
 	shrubbery1.printData();
 
 	
@@ -33,6 +36,13 @@ int main()
 	ShrubberyCreationForm shrubbery2("champs");
 	bureaucrat2.signAForm(shrubbery2);
 	shrubbery2.execute(bureaucrat2);
+	bureaucrat2.printData();
+	shrubbery2.printData();
+
+	//*** ROBOTOMYREQUESTFORM ****
+
+	//Bureaucrat
+	
 	
 	/*
 	** --------------------------TESTING SIGNATURE AND EXECUTION OF FORM --------------------------

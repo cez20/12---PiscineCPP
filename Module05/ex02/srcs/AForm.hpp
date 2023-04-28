@@ -15,10 +15,7 @@ class AForm
 		bool			  	_isSigned;
 		unsigned int const	_gradeToSign;  // grade needed to be able to sign document
 		unsigned int const	_gradeToExecute; // grade needed to be able to execute document 
-
-	protected:
-		std::string			target;
-
+		
 	public:
 
 		AForm();

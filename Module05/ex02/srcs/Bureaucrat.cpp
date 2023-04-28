@@ -113,4 +113,11 @@ void			Bureaucrat::signAForm(AForm & f)
 	}
 }
 
+void	Bureaucrat::printData() const 
+{
+	std::cout	<< "\nBureaucrat's name: " << getName() << "\n"
+				<< "Bureaucrat's grade: " << getGrade() << "\n\n";
+}
+
+
 /* ************************************************************************** */
