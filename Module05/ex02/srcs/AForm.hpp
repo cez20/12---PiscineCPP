@@ -32,6 +32,7 @@ class AForm
 		void					verifyGrade() const;
 		void					beSigned(Bureaucrat & b);
 		void					isFormExecutable(Bureaucrat const & b) const;
+		void					printData() const;
 
 		std::string				getName() const;
 		std::string				getTarget() const;

@@ -100,6 +100,15 @@ const char* AForm::isNotSigned::what() const throw()
 	return ("Form is NOT signed");
 }
 
+void	AForm::printData() const
+{
+	std::cout	<< "\nForm Name: " << getName() << "\n"
+				<< "Target Name: " << getTarget() << "\n"
+				<< "Sign Status: " << getSignStatus() << "\n"
+				<< "Grade to Sign: " << getGradeToSign() << "\n"
+				<< "Grade to Execute: " << getGradeToExecute() << "\n\n";
+}
+
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
