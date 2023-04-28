@@ -13,7 +13,8 @@ Pour chaque exercice:
 [] Mettre les bons headers au fur et a mesure 
 [] Verifier les leaks
 [] Mettre les tests dans le main separe par une ligne de commentaires
-[] Remove 
+[] Reecrire la fonction de << overlaod dans chacun des forms, car ils sont commentes 
+[] VErifier que les messages GradeTooLow and GradeTooHigh sont au bon endroit.  
 
 PROJET:
 [X] La classe de base Form (Base Class) devra etre une class abstraite

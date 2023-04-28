@@ -5,6 +5,8 @@
 # include <string>
 # include "AForm.hpp"
 
+class	Bureaucrat;
+
 class RobotomyRequestForm: public AForm 
 {
 	public:
@@ -17,9 +19,8 @@ class RobotomyRequestForm: public AForm
 		RobotomyRequestForm &		operator=( RobotomyRequestForm const & rhs );
 
 		virtual void			execute (Bureaucrat const & executor) const;
-
 };
 
-std::ostream &			operator<<( std::ostream & o, RobotomyRequestForm const & i );
+//std::ostream &			operator<<( std::ostream & o, RobotomyRequestForm const & i );
 
 #endif /* ********************************************* RobotomyRequestForm_H */

@@ -6,12 +6,13 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:21:23 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/28 11:06:10 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/28 11:26:07 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
 #include "AForm.hpp"
 #include <stdexcept>
 
@@ -41,7 +42,11 @@ int main()
 
 	//*** ROBOTOMYREQUESTFORM ****
 
-	//Bureaucrat
+	RobotomyRequestForm robotomy1("Drill");
+	Bureaucrat bureaucrat3("Bobby", 70);
+	bureaucrat3.signAForm(robotomy1);
+	robotomy1.execute(bureaucrat3);
+	robotomy1.printData();
 	
 	
 	/*
