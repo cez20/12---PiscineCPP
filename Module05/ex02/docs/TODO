@@ -29,21 +29,24 @@ PROJET:
 		[X]Echelon requis: signature 145, execution 137
 		[X]Creer un fichier <target> _shruberry dans le repertoire courant, et ecrit des 
 			arbres ASCII a l'interieur
-	[] RobotomyRequestForm (formulaire de demande de robotomie)
-		[]Echelon requis: signature 72, execution 45
-		[]Fait des bruits de perceuse. Ensuite, informe que la <target> a ete 
+		[X] Try/catch du execute ne semble pas au bon endroit. 
+	[X] RobotomyRequestForm (formulaire de demande de robotomie)
+		[X]Echelon requis: signature 72, execution 45
+		[X]Fait des bruits de perceuse. Ensuite, informe que la <target> a ete 
 			robotomisee avec succes 50% du temps. Dans le cas contraire, informe que 
 			l'operation a echoue
-	[] PresidentialPardonForm(formulaire de pardon presidentiel):
-		[] Echelon requis: signature 25, execution 5
-		[] Informe que la <target> a ete pardonne par Zaphod Beeblebrox
-[] Chacune d'entre elles prend un parametre dans son constructeur: la target(cible) 
+		[X] Try/catch du execute ne semble pas au bon endroit. 
+	[X] PresidentialPardonForm(formulaire de pardon presidentiel):
+		[X] Echelon requis: signature 25, execution 5
+		[X] Informe que la <target> a ete pardonne par Zaphod Beeblebrox
+		[X] Try/catch du execute ne semble pas au bon endroit. 
+[X] Chacune d'entre elles prend un parametre dans son constructeur: la target(cible) 
 	du formulaire 
-	[]Par exemple, "jardin" si vous voulez planter des arbustes dans votre jardin
+	[X]Par exemple, "jardin" si vous voulez planter des arbustes dans votre jardin
 
-[] Ajouter la fonction membre execute (Bureaucrat const & executor) const
+[X] Ajouter la fonction membre execute (Bureaucrat const & executor) const
 	a la classe de base (classe Form)
-	[] Implementez une fonction pour executer l'action du formulaire des classes derivees.
+	[X] Implementez une fonction pour executer l'action du formulaire des classes derivees.
 	[X]Vous devez vous assurez que le formulaire est signe et que la grade du bureaucrate
 	 tentant de l'executer est suffisant.
 

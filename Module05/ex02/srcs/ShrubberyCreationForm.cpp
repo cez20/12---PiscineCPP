@@ -57,11 +57,7 @@ ShrubberyCreationForm &				ShrubberyCreationForm::operator=( ShrubberyCreationFo
 
 void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
-	try{
-		isFormExecutable(executor);
-	}catch(std::exception &e){
-		std::cout << "Exception: " << e.what() << std::endl;
-	}
+	isFormExecutable(executor);
 
 	std::ofstream file(this->getTarget() + "_shrubbery");
 

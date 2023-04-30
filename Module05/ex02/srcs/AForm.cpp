@@ -43,7 +43,7 @@ AForm::~AForm()
 AForm &				AForm::operator=( AForm const & rhs )
 {
 	if ( this != &rhs )
-		this->_isSigned = false;
+		this->_isSigned = rhs.getSignStatus();
 	return *this;
 }
 
@@ -64,25 +64,27 @@ std::ostream &			operator<<( std::ostream & o, AForm const & AForm)
 void	AForm::verifyGrade() const
 {
 	if (this->_gradeToSign < 1 || this->_gradeToExecute < 1)
-		throw AForm::GradeTooLowException();
-	else if (this->_gradeToSign > 150 || this->_gradeToExecute > 150)
 		throw AForm::GradeTooHighException();
+	else if (this->_gradeToSign > 150 || this->_gradeToExecute > 150)
+		throw AForm::GradeTooLowException();
 }
 
 void	AForm::beSigned(Bureaucrat & b)
 {
-	if (b.getGrade() <= this->_gradeToSign)
-		this->_isSigned = true;
-	else
+	//std::cout << "Bureaucrat grade is " << b.getGrade() << std::endl;
+	//std::cout << "Form Sign is: " << this->getSignStatus() << std::endl;
+	
+	if (b.getGrade() > this->getGradeToSign())
 		throw AForm::GradeTooLowException();
+	this->_isSigned = true;
 }
 
-void	AForm::isFormExecutable(Bureaucrat const & b) const
+void	AForm::isFormExecutable(Bureaucrat const & executor) const
 {
 	if (getSignStatus() == false)
 		throw AForm::isNotSigned();
-	if (b.getGrade() > getGradeToExecute())
-		throw AForm::GradeTooHighException();
+	if (executor.getGrade() > this->getGradeToExecute())
+		throw AForm::GradeTooLowException();	
 }
 
 const char* AForm::GradeTooHighException::what() const throw()

@@ -6,74 +6,65 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:21:23 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/28 11:26:07 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/04/30 11:47:02 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
-#include "AForm.hpp"
+#include "PresidentialPardonForm.hpp"
 #include <stdexcept>
+#include <cstdlib>
+#include <ctime>
 
 
 int main()
 {
 	/*
+	** --------------------------TESTING BUREAUCRAT LEVELS --------------------------
+	*/
+
+	try{
+		Bureaucrat bureaucrat1("Francis", 151);
+	}catch(std::exception & e){
+		std::cout << "Exception: " << e.what() << "\n\n";
+	}
+	
+	try{
+		Bureaucrat bureaucrat2("Robert", 0);
+	}catch(std::exception & e){
+		std::cout << "Exception: " << e.what() << "\n\n";
+	}
+
+	/*
 	** --------------------------TESTING INSTANCIATION of NEW FORMS  --------------------------
+	   -------------------------- TRY AND CATCH ARE INSIDE CLASS INSTEAD OF MAIN -------------
 	*/
 
 	//**** SHRUBERRYCREATIONFORM ****
-	Bureaucrat bureaucrat1("Cesar", 100);
+	Bureaucrat bureaucrat3("Cesar", 100);
 	ShrubberyCreationForm shrubbery1("jardin");
-	bureaucrat1.signAForm(shrubbery1);
-	shrubbery1.execute(bureaucrat1);
-	ShrubberyCreationForm shrubbery3 = shrubbery1;
-	bureaucrat1.printData();
-	shrubbery1.printData();
+	bureaucrat3.signAForm(shrubbery1); //Can be commented to see other error
+	bureaucrat3.executeForm(shrubbery1);
+	bureaucrat3.printData();
+	shrubbery1.printData();		
 
+	//**** ROBOTOMYREQUESTFORM ****
+	Bureaucrat bureaucrat4("Steven", 70);
+	RobotomyRequestForm robotomy1("robot");
+	bureaucrat4.signAForm(robotomy1); //Can be commented to see other error
+	bureaucrat4.executeForm(robotomy1);
+	bureaucrat4.printData();
+	robotomy1.printData();	
+
+	//**** PRESIDENTIAL PARDON FORM ****
+	Bureaucrat bureaucrat5("Maxime", 1);
+	PresidentialPardonForm president1("presidente");
+	bureaucrat5.signAForm(president1); //Can be commented to see other error
+	bureaucrat5.executeForm(president1);
+	bureaucrat5.printData();
+	president1.printData();	
 	
-	Bureaucrat bureaucrat2("Robert", 150);
-	ShrubberyCreationForm shrubbery2("champs");
-	bureaucrat2.signAForm(shrubbery2);
-	shrubbery2.execute(bureaucrat2);
-	bureaucrat2.printData();
-	shrubbery2.printData();
-
-	//*** ROBOTOMYREQUESTFORM ****
-
-	RobotomyRequestForm robotomy1("Drill");
-	Bureaucrat bureaucrat3("Bobby", 70);
-	bureaucrat3.signAForm(robotomy1);
-	robotomy1.execute(bureaucrat3);
-	robotomy1.printData();
-	
-	
-	/*
-	** --------------------------TESTING SIGNATURE AND EXECUTION OF FORM --------------------------
-	*/
-	// Bureaucrat	bureaucrat2("Robert", 150);
-	// ShrubberyCreationForm Form1;
-	// bureaucrat2.signAForm(Form1);
-	// Form1.execute(bureaucrat2);
-
-	// catch(AForm::GradeTooHighException &e)
-	// {
-	// 	std::cout << "Exception: " << e.what() << std::endl;	
-	// }
-	// catch(AForm::GradeTooLowException & e)
-	// {
-	// 	std::cout << "Exception: " << e.what() << std::endl;
-	// }
-	// catch(AForm::isNotSigned & e)
-	// {
-	// 	std::cout << "Exception: " << e.what() << std::endl;
-	// }
-	// catch(std::exception & e)
-	// {
-	// 	std::cout << "Exception: " << e.what() << std::endl;
-	// }
-
 	return (0);
 }
 

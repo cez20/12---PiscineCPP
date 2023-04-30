@@ -1,5 +1,4 @@
 #include "RobotomyRequestForm.hpp"
-#include <ctime>
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
@@ -57,24 +56,15 @@ RobotomyRequestForm &				RobotomyRequestForm::operator=( RobotomyRequestForm con
 
 void	RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
-	try{
-		isFormExecutable(executor);
-	}catch(std::exception &e){
-		std::cout << "Exception: " << e.what() << std::endl;
-	}
+	isFormExecutable(executor);
 
 	std::cout 	<< "Bzzz zzzzz Bzzzzz zzzzz. " << std::endl;
+	srand(time(NULL));
 
-	// srand(time(NULL));
-
-    // // Generate a random number between 0 and 1
-    // double random = (double) rand() / RAND_MAX;
-
-    // Display the message 50% of the time
-    if (rand() % 2 == 0)
-        std::cout << "Robotomy was sucessfully done" << std::endl;
+	if (rand() % 2  == 0)
+        std::cout << getTarget() << " robotomy was sucessfully done" << std::endl;
     else
-        std::cout << "Robotomy failed" << std::endl;
+        std::cout << getTarget() << " robotomy failed" << std::endl;
 }
 
 
