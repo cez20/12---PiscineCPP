@@ -43,14 +43,6 @@ ShrubberyCreationForm &				ShrubberyCreationForm::operator=( ShrubberyCreationFo
 	return *this;
 }
 
-// std::ostream &			operator<<( std::ostream & o, ShrubberyCreationForm const & i )
-// {
-// 	//o << "Value = " << i.getValue();
-// 	(void)i;
-// 	return o;
-// }
-
-
 /*
 ** --------------------------------- METHODS ----------------------------------
 */

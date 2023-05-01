@@ -71,9 +71,6 @@ void	AForm::verifyGrade() const
 
 void	AForm::beSigned(Bureaucrat & b)
 {
-	//std::cout << "Bureaucrat grade is " << b.getGrade() << std::endl;
-	//std::cout << "Form Sign is: " << this->getSignStatus() << std::endl;
-	
 	if (b.getGrade() > this->getGradeToSign())
 		throw AForm::GradeTooLowException();
 	this->_isSigned = true;

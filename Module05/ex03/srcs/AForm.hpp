@@ -13,8 +13,8 @@ class AForm
 		std::string const 	_name;
 		std::string	const	_target;
 		bool			  	_isSigned;
-		unsigned int const	_gradeToSign;  // grade needed to be able to sign document
-		unsigned int const	_gradeToExecute; // grade needed to be able to execute document 
+		unsigned int const	_gradeToSign;
+		unsigned int const	_gradeToExecute;
 		
 	public:
 

@@ -52,13 +52,6 @@ Intern &				Intern::operator=( Intern const & rhs )
 	return *this;
 }
 
-// std::ostream &			operator<<( std::ostream & o, Intern const & i )
-// {
-// 	//o << "Value = " << i.getValue();
-// 	return o;
-// }
-
-
 /*
 ** --------------------------------- METHODS ----------------------------------
 */

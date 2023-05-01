@@ -28,6 +28,4 @@ class Intern
 		AForm*			makePresidentialForm(std::string const & target) const;
 };
 
-//std::ostream &			operator<<( std::ostream & o, Intern const & i );
-
 #endif /* ********************************************************** INTERN_H */

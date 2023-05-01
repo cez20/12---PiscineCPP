@@ -21,6 +21,4 @@ class ShrubberyCreationForm: public AForm
 		virtual void			execute (Bureaucrat const & executor) const;
 };
 
-//std::ostream &			operator<<( std::ostream & o, ShrubberyCreationForm const & i );
-
 #endif /* ******************************************* ShrubberyCreationForm_H */
