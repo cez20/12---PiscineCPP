@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 08:39:12 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/27 14:54:02 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/01 19:41:03 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,21 @@
 # define PHONEBOOK_H
 
 #include <string>
-#include "contact.hpp"
+#include "Contact.hpp"
 
 class	PhoneBook{
 
 private:
-
-	int			_nbrOfContact;
-	Contact		_contact[8]; //Array of 8 of class Contact 
+	int			_count;
+	Contact		_contact[8];
 
 public:
 
-	PhoneBook(void);
+	PhoneBook();
 	std::string	choice;
-	void		display_options(void);
-	void		add(void);
-	void		search(void);
+	void		display_options();
+	void		add();
+	void		search();
 };
 
 std::string truncate_str(std::string str, size_t size);

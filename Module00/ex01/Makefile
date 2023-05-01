@@ -6,14 +6,14 @@
 #    By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/30 17:07:24 by cemenjiv          #+#    #+#              #
-#    Updated: 2023/03/21 19:08:09 by cemenjiv         ###   ########.fr        #
+#    Updated: 2023/05/01 19:49:01 by cemenjiv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			= phonebook
+NAME			= Phonebook
 
 SRCS_DIR   		= srcs/
-SRCS_FILES		= main.cpp phonebook.cpp contact.cpp
+SRCS_FILES		= main.cpp PhoneBook.cpp Contact.cpp
 SRCS 			= $(addprefix $(SRCS_DIR), $(SRCS_FILES))
 
 OBJS_DIR		= objs/

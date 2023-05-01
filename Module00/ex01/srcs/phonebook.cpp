@@ -6,14 +6,13 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 14:45:34 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/13 01:37:12 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/01 19:42:48 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "contact.hpp"
-#include "phonebook.hpp"
+#include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook(void):  _nbrOfContact(0), choice("") {}
+PhoneBook::PhoneBook(): _count(0), choice("") {}
 
 void	PhoneBook::display_options(void)
 {
@@ -36,8 +35,8 @@ void	PhoneBook::add()
 	std::string phoneNumber;
 	std::string darkestSecret; 
 	
-	if (this->_nbrOfContact == 8)
-		this->_nbrOfContact = 0;
+	if (this->_count == 8)
+		this->_count = 0;
 	while (firstName.empty())
 	{
 		std::cout << "Please enter first name: ";
@@ -75,8 +74,8 @@ void	PhoneBook::add()
 		if (std::cin.eof())
 			return ;
 	}
-	_contact[this->_nbrOfContact].addContact(firstName, lastName, nickname, phoneNumber, darkestSecret);
- 	this->_nbrOfContact++;
+	_contact[this->_count].addContact(firstName, lastName, nickname, phoneNumber, darkestSecret);
+ 	this->_count++;
 }
 
 void	PhoneBook::search(void)
@@ -116,12 +115,6 @@ void	PhoneBook::search(void)
 	std::cout << "Phone number: " << _contact[index].getPhoneNumber() << std::endl;
 	std::cout << "Darkest secret: " << _contact[index].getDarkestSecret() << "\n" << std::endl;
 }
-
-// void	PhoneBook::exit(void)
-// {
-// 	std::cout << "Quitting the phonebook! See you soon!" << std::endl;
-// 	exit(0);
-// }
 
 
 std::string truncate_str(std::string str, size_t size) 
