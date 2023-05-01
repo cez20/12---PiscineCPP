@@ -67,7 +67,7 @@ AForm*	Intern::makeForm(std::string const & name, std::string const & target) co
 {
 	for(int i = 0; i < 3; i++)
 	{
-		if (this->formDetails[i]._name == name) // Afiifhce le message intern creates <form> 
+		if (this->formDetails[i]._name == name)
 		{
 			std::cout << "Intern creates " << name << std::endl;
 			return (this->*formDetails[i]._ptrToForm)(target);

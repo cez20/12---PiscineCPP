@@ -3,25 +3,22 @@ TODO:
 Lundi 1er mai 2023:
 
 [] Implementez la classe Intern
-	[] Le stagiaire na pas de nom, pas déchelon, aucun signe distinctif. 
-	[] la fonction Form* makeForm(std::string & name, std::string & target) const qui prend deux strings en paramètres
+	[X] Le stagiaire na pas de nom, pas déchelon, aucun signe distinctif. 
+	[X] la fonction Form* makeForm(std::string & name, std::string & target) const qui prend deux strings en paramètres
 		[X] Elle prendre 2 string en parametres:
 			[X]La première est le nom du formulaire, la seconde la cible du formulaire.
-		[] Elle retourne un pointeur sur un objet Form dont le nom est passé en
+		[X] Elle retourne un pointeur sur un objet Form dont le nom est passé en
 			paramètre et dont la cible est le second paramètre.
-		[] Elle affiche un message comme:
+		[X] Elle affiche un message comme:
 			Intern creates <form>
-		[] Si le nom du formulaire passé en paramètre n’existe pas, affichez un message d’erreur
+		[X] Si le nom du formulaire passé en paramètre n’existe pas, affichez un message d’erreur
 			 explicite
-		[] (AJOUT) Mettre un delete a qqpart pour s'assurer que ca fonctionne pour pas de leaks.  
-[] Vous devez éviter les choses illisibles ou peu élégantes comme une forêt de if/el-
+		[X] (AJOUT) Mettre un delete a qqpart pour s'assurer que ca fonctionne pour pas de leaks.  
+[X] Vous devez éviter les choses illisibles ou peu élégantes comme une forêt de if/el-
 	seif/else
-	[] Ce genre de solution ne sera pas accepte en evaluation 
+	[X] Ce genre de solution ne sera pas accepte en evaluation. J'ai cree structqui contient nom et le pointer vers fonction
+		[] Une class imbrique aurait pu fonctionne 
 
 [] Donner une foule de tests pour s'assurer que tout fonctionne comme il faut!
 [] Lancer le code apparaissant dans le PDF (voir main)
-[] J'ai mis tous les headers des AForm (les .hpp) dans le fichier Intern.cpp ???? A valider
 	
-
-[] Essayer l'option de creer un nouveau constructeur 
-[] Afficher quand la creation d'un formulaire est reussie. 

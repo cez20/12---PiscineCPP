@@ -5,15 +5,13 @@
 # include <string>
 # include "AForm.hpp"
 
-//class AForm; 
-
 class Intern
 {
 	private:
 		struct	Forms
 		{
-			std::string _name;  // Va contenir le nom du formulaire
-			AForm* (Intern::*_ptrToForm)(std::string const &) const; // Va contenir les addresses de function qui retourne un pointeur sur un Form 		
+			std::string 	_name;
+			AForm* 			(Intern::*_ptrToForm)(std::string const &) const; 
 		}  formDetails[3];
 		
 	public:
