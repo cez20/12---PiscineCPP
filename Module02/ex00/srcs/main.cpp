@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 13:08:38 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/13 15:02:09 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/01 18:40:37 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 int main(void) {
 
-	Fixed a; // "Default constructor called". Creates object a of type Fixed
-	Fixed b( a ); // "Copy constructor called". Creates object b of type Fixed. It copies the values of object a
+	Fixed a;
+	Fixed b( a );
 	Fixed c; //
 	c = b;
 	std::cout << a.getRawBits() << std::endl;

@@ -6,7 +6,7 @@
 #    By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/30 17:07:24 by cemenjiv          #+#    #+#              #
-#    Updated: 2023/04/13 01:30:45 by cemenjiv         ###   ########.fr        #
+#    Updated: 2023/05/01 19:30:02 by cemenjiv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,13 +20,13 @@ CC				= c++
 CFLAGS			= -Wall -Wextra -Werror -std=c++98
 RM				= rm -f 
 
-.c.o:		
-				gcc ${CFLAGS}  -c $< -o $(<:.c=.o) 
+%.o:%.cpp		
+				$(CC) ${CFLAGS}  -c $< -o $@
 	
 all:			$(NAME)
 
 $(NAME):		$(OBJS)
-				$(CC) ${OBJS} -o $@ 
+				$(CC) $(OBJS) -o $@ 
 			
 clean:		
 				$(RM) $(OBJS)
