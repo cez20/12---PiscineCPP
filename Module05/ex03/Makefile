@@ -6,14 +6,14 @@
 #    By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/03 17:54:38 by cemenjiv          #+#    #+#              #
-#    Updated: 2023/05/01 08:27:04 by cemenjiv         ###   ########.fr        #
+#    Updated: 2023/05/01 08:42:07 by cemenjiv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			= Forms
+NAME			= Intern
 SRCS_DIR   		= srcs/
 SRCS_FILES		= main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp \
-				  RobotomyRequestForm.cpp PresidentialPardonForm.cpp
+				  RobotomyRequestForm.cpp PresidentialPardonForm.cpp Intern.cpp 
 SRCS 			= $(addprefix $(SRCS_DIR), $(SRCS_FILES))
 
 OBJS_DIR		= objs/
