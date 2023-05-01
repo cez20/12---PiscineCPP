@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 01:35:04 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/13 01:35:07 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/01 19:31:11 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int main(int argc, char **argv) {
 	{
 		for(int i = 1; i < argc; i++)
 		{
-			for (int j = 0; j < strlen(argv[i]); j++)
+			for (size_t j = 0; j < strlen(argv[i]); j++)
 				putchar(toupper(argv[i][j]));
 			if (argv[i + 1])
 					std::cout << ' ';
