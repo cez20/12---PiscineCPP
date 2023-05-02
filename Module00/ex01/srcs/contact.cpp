@@ -6,14 +6,14 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 14:46:03 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/05/01 19:43:29 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/01 20:07:24 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
 
-Contact::Contact(void): _firstName(""), _lastName(""), _nickname(""), _phoneNumber(""),_darkestSecret("") {}
+Contact::Contact(): _firstName(""), _lastName(""), _nickname(""), _phoneNumber(""),_darkestSecret("") {}
 
 
 void	Contact::addContact(std::string first, std::string last, std::string nick, std::string phone, std::string secret)

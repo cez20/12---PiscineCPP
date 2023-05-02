@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   contact.hpp                                        :+:      :+:    :+:   */
+/*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:13:10 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/13 01:37:02 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/01 20:07:18 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ private:
 	std::string	_darkestSecret;
 
 public:
-	Contact(void);
+	Contact();
 	void		addContact(std::string first, std::string last, std::string nick, std::string phone, std::string secret);
 	std::string getFirstName();
 	std::string getLastName();

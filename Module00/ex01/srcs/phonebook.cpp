@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 14:45:34 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/05/01 19:42:48 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/01 21:15:33 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 PhoneBook::PhoneBook(): _count(0), choice("") {}
 
-void	PhoneBook::display_options(void)
+void	PhoneBook::display_options()
 {
 	std::cout << "\033[1;32mPlease enter ADD, SEARCH OR EXIT to use this PHONEBOOK: \033[0m" << std::endl;
 	std::cout << "ADD ----------> Allows you to enter a new contact in this PHONEBOOK" << std::endl;
@@ -102,18 +102,29 @@ void	PhoneBook::search(void)
 	   			<< std::setw(10) << nickname << "|" << std::endl;
     }
 
-	std::cout << "\nWhich entry would you like to see? Please enter index number: ";  //Manage entry errors here 
+	std::cout << "\nWhich entry would you like to see? Please enter index number: ";
 	std::getline(std::cin, choice);
-	if (std::cin.eof())
-		return ;
+	if (!is_all_digits(choice) || std::cin.eof())
+		return;	
+		
 	index = std::stoi(choice);
-	std::cout << std::endl;
-
-	std::cout << "First name: " << _contact[index].getFirstName() << std::endl;
-	std::cout << "Last name: " << _contact[index].getLastName() << std::endl;
-	std::cout << "Nickname: " << _contact[index].getNickName() << std::endl;
-	std::cout << "Phone number: " << _contact[index].getPhoneNumber() << std::endl;
-	std::cout << "Darkest secret: " << _contact[index].getDarkestSecret() << "\n" << std::endl;
+	std::cout << "\n";
+	
+	if (index > 7)
+	{
+		std::cout << "\033[31mThis is an invalid index. Quitting the SEARCH menu!\033[0m" << std::endl;
+		return;
+	}
+	if (_contact[index].getFirstName().empty())
+		std::cout << "This contact is empty" << std::endl;
+	else
+	{
+		std::cout << "First name: " << _contact[index].getFirstName() << std::endl;
+		std::cout << "Last name: " << _contact[index].getLastName() << std::endl;
+		std::cout << "Nickname: " << _contact[index].getNickName() << std::endl;
+		std::cout << "Phone number: " << _contact[index].getPhoneNumber() << std::endl;
+		std::cout << "Darkest secret: " << _contact[index].getDarkestSecret() << "\n" << std::endl;
+	}
 }
 
 
@@ -127,14 +138,14 @@ std::string truncate_str(std::string str, size_t size)
     return str;
 }
 
-int	is_all_digits(std::string phoneNumber)
+int	is_all_digits(std::string number)
 {
-	for(size_t i = 0; i < phoneNumber.size(); i++)
+	for(size_t i = 0; i < number.size(); i++)
 	{
-		if (!isdigit(phoneNumber[i]))
+		if (!isdigit(number[i]))
 		{
-			phoneNumber.clear();
-			std::cout << "\033[31mPlease enter a phone number ONLY composed of digits!\033[0m" << std::endl;
+			number.clear();
+			std::cout << "\033[31mPlease enter digits!\033[0m" << std::endl;
 			return(0);
 		}
 	}

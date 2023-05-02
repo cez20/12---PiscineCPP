@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 14:46:18 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/05/01 19:41:45 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/01 19:56:33 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main()
 	while (!std::cin.eof())
 	{	
 		phonebook.display_options();
-		if (phonebook.choice.compare("ADD") == 0)
+		if (phonebook.choice == "ADD")
 			phonebook.add();
 		else if (phonebook.choice == "SEARCH")
 			phonebook.search();
