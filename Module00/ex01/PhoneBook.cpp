@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.cpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 14:45:34 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/05/01 21:57:32 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/02 15:21:16 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,12 @@ void	PhoneBook::search(void)
 	std::string choice;
 	int			index;
 	
+	if (_contact[0].getFirstName().empty())
+	{
+		std::cout << "\033[31mPhonebook is empty! Please add 1 contact in phonebook\n" << std::endl;
+		return ;
+	}
+
 	std::cout << "\n" << std::setfill(' ') << std::setw(10) << "INDEX" << "|"
 			  << std::setfill(' ') << std::setw(10) << "FIRST NAME" << "|"
 			  << std::setfill(' ') << std::setw(10) << "LAST NAME" << "|"
@@ -112,32 +118,39 @@ void	PhoneBook::search(void)
 	   			<< std::setw(10) << nickname << "|" << std::endl;
     }
 
-	std::cout << "\nWhich entry would you like to see? Please enter index number: ";
-	std::getline(std::cin, choice);
-	if (!is_all_digits(choice) || std::cin.eof())
-		return;	
-		
-	index = std::stoi(choice);
+	index = -1;
+	while (index < 0 || index > 7)
+	{
+		std::cout << "Which entry would you like to see? Please enter index number: ";
+		std::getline(std::cin, choice);
+		try {
+			index = std::stoi(choice);
+		}
+		catch (std::invalid_argument)
+		{
+			std::cerr << "Bad entry" << std::endl;
+			return ;
+		}
+		if (index < 0 || index > 7)
+		{
+			std::cout << "\033[31mThis is an invalid index\033[0m" << std::endl;
+			index = -1;
+		}
+		else if (_contact[index].getFirstName().empty())
+		{
+			std::cout << "\033[31mThis index is empty\033[0m" << std::endl;
+			index = -1;
+		}
+	}
 	std::cout << std::endl;
-	
-	if (index > 7)
-	{
-		std::cout << "\033[31mThis is an invalid index. Quitting the SEARCH menu!\033[0m" << std::endl;
-		return;
-	}
-	if (_contact[index].getFirstName().empty())
-		std::cout << "This contact is empty" << std::endl;
-	else
-	{
-		std::cout << "First name: " << _contact[index].getFirstName() << std::endl;
-		std::cout << "Last name: " << _contact[index].getLastName() << std::endl;
-		std::cout << "Nickname: " << _contact[index].getNickName() << std::endl;
-		std::cout << "Phone number: " << _contact[index].getPhoneNumber() << std::endl;
-		std::cout << "Darkest secret: " << _contact[index].getDarkestSecret() << "\n" << std::endl;
-	}
+	std::cout << "First name: " << _contact[index].getFirstName() << std::endl;
+	std::cout << "Last name: " << _contact[index].getLastName() << std::endl;
+	std::cout << "Nickname: " << _contact[index].getNickName() << std::endl;
+	std::cout << "Phone number: " << _contact[index].getPhoneNumber() << std::endl;
+	std::cout << "Darkest secret: " << _contact[index].getDarkestSecret() << "\n" << std::endl;
 }
 
-std::string truncate_str(std::string str, size_t size) 
+std::string truncate_str(std::string str, size_t size)
 {
     if (str.size() > size) 
 	{

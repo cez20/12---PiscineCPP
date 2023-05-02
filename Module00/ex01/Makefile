@@ -6,41 +6,34 @@
 #    By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/30 17:07:24 by cemenjiv          #+#    #+#              #
-#    Updated: 2023/05/01 19:49:01 by cemenjiv         ###   ########.fr        #
+#    Updated: 2023/05/01 22:25:14 by cemenjiv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= Phonebook
 
-SRCS_DIR   		= srcs/
-SRCS_FILES		= main.cpp PhoneBook.cpp Contact.cpp
-SRCS 			= $(addprefix $(SRCS_DIR), $(SRCS_FILES))
-
-OBJS_DIR		= objs/
-OBJS 			= $(patsubst $(SRCS_DIR)%.cpp, $(OBJS_DIR)%.o, $(SRCS))
+SRCS			= main.cpp PhoneBook.cpp Contact.cpp
 
 CC				= c++
 CFLAGS			= -Wall -Wextra -Werror -std=c++98
 RM				= rm -f 
 
-$(OBJS_DIR)%.o: $(SRCS_DIR)%.cpp
+OBJS			= $(SRCS:.cpp=.o) 
+
+%.o: %.cpp
 				$(CC) ${CFLAGS}  -c $< -o $@
 	
-all:			objs $(NAME)
+all:			$(NAME)
 
 $(NAME):		$(OBJS)
-				$(CC) $(CFLAGS) ${OBJS} -o $@ 
+				$(CC) $(CFLAGS) $(OBJS) -o $@ 
 			
 clean:		
-				@rm -rf $(OBJS)
-				@rm -rf $(OBJS_DIR)
+				$(RM) $(OBJS)
 				
 fclean:			clean
 				$(RM) $(NAME)
 				
 re:				fclean all
-
-objs:
-				@mkdir -p objs
 
 .PHONY:			all clean fclean re 
