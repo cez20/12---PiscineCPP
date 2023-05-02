@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 14:46:03 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/05/01 20:07:24 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/01 21:47:00 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,41 +15,36 @@
 
 Contact::Contact(): _firstName(""), _lastName(""), _nickname(""), _phoneNumber(""),_darkestSecret("") {}
 
-
-void	Contact::addContact(std::string first, std::string last, std::string nick, std::string phone, std::string secret)
+Contact::Contact(std::string first, std::string last, std::string nick, std::string phone, std::string secret)
 {
-	if (!std::cin.eof())
-	{
-		_firstName = first;
-		_lastName = last;
-		_nickname = nick;
-		_phoneNumber = phone;
-		_darkestSecret = secret;
-		std::cout << "\n\033[1;34mCONTACT HAS BEEN SUCCESSFULLY ENTERED IN PHONEBOOK!\n\033[0m" << std::endl;
-	}
+	_firstName = first;
+	_lastName = last;
+	_nickname = nick;
+	_phoneNumber = phone;
+	_darkestSecret = secret;
 }
 
-std::string	Contact::getFirstName(){
-
+std::string	Contact::getFirstName() const
+{
 	return _firstName;
 }
 
-std::string	Contact::getLastName(){
-
+std::string	Contact::getLastName() const
+{
 	return _lastName;
 }
 
-std::string	Contact::getNickName(){
-
+std::string	Contact::getNickName() const
+{
 	return _nickname;
 }
 
-std::string	Contact::getPhoneNumber(){
-
+std::string	Contact::getPhoneNumber() const
+{
 	return _phoneNumber;
 }
 
-std::string	Contact::getDarkestSecret(){
-
+std::string	Contact::getDarkestSecret() const
+{
 	return _darkestSecret;
 }

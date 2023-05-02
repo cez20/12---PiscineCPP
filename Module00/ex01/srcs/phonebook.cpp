@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 14:45:34 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/05/01 21:15:33 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/01 21:57:32 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,18 @@ void	PhoneBook::add()
 		if (std::cin.eof())
 			return ;
 	}
-	_contact[this->_count].addContact(firstName, lastName, nickname, phoneNumber, darkestSecret);
+
+	addContact(Contact(firstName, lastName, nickname, phoneNumber, darkestSecret));
  	this->_count++;
+}
+
+void	PhoneBook::addContact(Contact contact)
+{
+	if (!std::cin.eof())
+	{
+		_contact[this->_count] = contact;
+		std::cout << "\n\033[1;34mCONTACT HAS BEEN SUCCESSFULLY ENTERED IN PHONEBOOK!\n\033[0m" << std::endl;
+	}
 }
 
 void	PhoneBook::search(void)
@@ -108,7 +118,7 @@ void	PhoneBook::search(void)
 		return;	
 		
 	index = std::stoi(choice);
-	std::cout << "\n";
+	std::cout << std::endl;
 	
 	if (index > 7)
 	{
@@ -126,7 +136,6 @@ void	PhoneBook::search(void)
 		std::cout << "Darkest secret: " << _contact[index].getDarkestSecret() << "\n" << std::endl;
 	}
 }
-
 
 std::string truncate_str(std::string str, size_t size) 
 {
