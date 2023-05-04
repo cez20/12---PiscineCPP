@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 14:45:34 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/05/02 15:21:16 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/03 21:41:21 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,11 @@ void	PhoneBook::search(void)
 			index = std::stoi(choice);
 		}
 		catch (std::invalid_argument)
+		{
+			std::cerr << "Bad entry" << std::endl;
+			return ;
+		}
+		catch (std::out_of_range)
 		{
 			std::cerr << "Bad entry" << std::endl;
 			return ;
