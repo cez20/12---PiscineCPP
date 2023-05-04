@@ -6,14 +6,14 @@
 #    By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/30 17:07:24 by cemenjiv          #+#    #+#              #
-#    Updated: 2023/04/13 14:43:55 by cemenjiv         ###   ########.fr        #
+#    Updated: 2023/05/04 12:13:40 by cemenjiv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= ZombieHorde
 
 SRCS_DIR   		= srcs/
-SRCS_FILES		= main.cpp Zombie.cpp ZombieHorde.cpp
+SRCS_FILES		= main.cpp Zombie.cpp zombieHorde.cpp
 SRCS 			= $(addprefix $(SRCS_DIR), $(SRCS_FILES))
 
 OBJS_DIR		= objs/

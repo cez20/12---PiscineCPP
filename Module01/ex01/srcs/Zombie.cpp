@@ -6,14 +6,14 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:23:08 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/27 14:57:27 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/04 12:17:41 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
 Zombie::Zombie(void): _name(""){
-	std::cout << "Constructor has been called and initialized all Zombies names to NULL " << std::endl;
+	std::cout << "Constructor has been called" << std::endl;
 }
 
 Zombie::~Zombie(void){
@@ -23,7 +23,6 @@ Zombie::~Zombie(void){
 void Zombie::setName(std::string name){
 	
 	_name = name;
-	std::cout << "Name has been set with help of setter" << std::endl;
 }
 
 std::string Zombie::getName(){
@@ -33,5 +32,5 @@ std::string Zombie::getName(){
 
 void Zombie::announce(){
 
-	std::cout << "The name of the zombie is: " << getName() << std::endl;
+	std::cout << "Zombie's name is: " << getName() << std::endl;
 }
