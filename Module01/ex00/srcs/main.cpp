@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 18:33:59 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/13 14:39:35 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/04 12:08:31 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,19 @@
 int main()
 {
 	Zombie* first = newZombie("Cesar");
-	Zombie* second = newZombie("Rene ");
+	Zombie* second = newZombie("Rene");
 
-	std::cout << "\nEach Zombie will introduce themselves with member function announce():" << std::endl;
+	// Zombies use annouce() function to introduce themselves
+	std::cout << std::endl;
 	first->announce();
 	second->announce();
 
-	std::cout << "\nCalling the randomChump() function that creates a Zombie and immediately called function announce()" << std::endl;
-	std::cout << "Destructor is also called, because object is not returned in function. Therefore lifetime of object ends\n" << std::endl;
+	// RandomChump creates a new zombie, calls announce() and are deleted
+	std::cout << std::endl;
 	randomChump("Louis");
 	randomChump("Robert");
 
-	std::cout << "\nDelete (free) memory of Zombie* (pointers) to make sure that destructor is called" << std::endl;
+	std::cout << std::endl;
 	delete first;
 	delete second;
 
