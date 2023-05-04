@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 15:29:29 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/30 11:22:09 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/04 12:45:43 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@ class Weapon{
 	private:
 		std::string _type;	
 	public:
-		Weapon(std::string const& type);
-		std::string const& getType(); 
-		void  setType(std::string const& type);
+		Weapon(std::string const & type);
+		
+		std::string const & getType(); 
+		void 			   setType(std::string const& type);
 };
 
 #endif

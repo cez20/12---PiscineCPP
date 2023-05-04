@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 15:47:20 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/30 12:08:57 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/04 12:48:29 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,11 @@ class HumanA{
 		Weapon&		_weaponA;
 		
 	public:
+		HumanA();
 		HumanA(std::string const& name, Weapon& weapon);
+		
 		std::string getNameA();
-		void attack();
+		void 		attack();
 };
 
 #endif

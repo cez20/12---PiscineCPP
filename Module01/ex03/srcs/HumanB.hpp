@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 15:50:22 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/30 12:08:44 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/04 12:53:09 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ class HumanB{
 		Weapon*		_weaponB;
 		
 	public:
-		HumanB(std::string const& name); 
-		void setWeapon(Weapon& weapon);
+		HumanB(std::string const& name);
+		
+		void		setWeapon(Weapon& weapon);
 		std::string getNameB();
 		void		attack();
 };

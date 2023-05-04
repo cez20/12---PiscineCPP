@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 11:44:12 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/30 11:54:08 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/04 13:04:03 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 HumanB::HumanB(std::string const& name): _nameB(name), _weaponB(nullptr){
 	
-	std::cout << "Constructor HumanB has been called" << std::endl;
+	std::cout << "[HUMAN B CONSTRUCTOR W ARGS] Constructor HumanB has been called" << std::endl;
 }
 
 void HumanB::setWeapon(Weapon& weapon){
