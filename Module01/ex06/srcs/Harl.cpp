@@ -6,16 +6,14 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 12:20:09 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/02 21:43:54 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/08 08:34:43 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 #include <iostream>
 
-Harl::Harl() {
-	std::cout << "Constructor has been called " << std::endl;
-}
+Harl::Harl() {}
 
 void	Harl::complain(std::string level)
 {
