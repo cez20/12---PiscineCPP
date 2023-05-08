@@ -1,3 +1,4 @@
 Harl
 objs/
 *.o
+*.dSYM

@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 11:17:41 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/02 18:18:01 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/08 08:16:43 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,5 @@ class Harl{
 		Harl();
 		void	complain(std::string level);
 };
+
 #endif
