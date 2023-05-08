@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 12:41:57 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/03/30 23:20:19 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/07 20:56:57 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int main(int argc, char **argv)
 	std::string		str;
 	std::string		str1;
 	std::string		str2;
-	std::ifstream	ifs;  // Create the input stream 
-	std::ofstream   ofs;  // Will contain the output stream
+	std::ifstream	ifs;  
+	std::ofstream   ofs;
 	std::string 	output;
 	std::string		line;
 	std::size_t		index;
@@ -37,7 +37,7 @@ int main(int argc, char **argv)
 
 	if (argc != 4)
 	{
-		std::cout << "Error: your program should take 3 command line arguments";
+		std::cout << "Error: your program should take 3 arguments";
 		return (-1);
 	}
 
@@ -47,17 +47,22 @@ int main(int argc, char **argv)
 
 	if (str1.empty() && str2.empty())
 	{
-		std::cout << "Error: The string have no content";
+		std::cerr << "Error: The strings have no content";
+		return (-1);
+	}
+	
+	ifs.open(file, std::ios_base::in);  // std::ios_base::in always set by default if no mode is mentioned 
+	if (!ifs)
+	{
+		std::cerr << "There is an error with input file!" << std::endl;
 		return (-1);
 	}
 	
 	output = file + ".replace";
-
-	ifs.open(file, std::ios_base::in);  // std::ios_base::in always set by default if no mode is mentioned 
 	ofs.open(output);
-	if (!ifs || !ofs)
+	if (!ofs)
 	{
-		std::cout << "Il y a une erreur avec ifs ou ofs" << std::endl;
+		std::cerr << "There is an error with output file!" << std::endl;
 		return (-1);
 	}
 
@@ -68,21 +73,16 @@ int main(int argc, char **argv)
 		while(index != std::string::npos)
 		{
 			str += replace(line, index, start, str2);
-			//ofs << str;
 			start = index + (str1.length());
 			index = line.find(str1, start);
-			// if (index == std::string::npos)
-			// {
-			// 	str = line.substr(start, line.length() - start);
-			// 	ofs << str;
-			// }
 		}
 		str += line.substr(start, line.length() - start);
 		ofs << str;
 		str.clear();
 		ofs << "\n"; // Pas toujours le cas ou il y a un \n
 	}
-	ifs.close(); // Close the input stream 
+	
+	ifs.close();
 	ofs.close();
 
 	return (0);

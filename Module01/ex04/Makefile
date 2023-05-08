@@ -6,7 +6,7 @@
 #    By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/30 17:07:24 by cemenjiv          #+#    #+#              #
-#    Updated: 2023/04/13 14:51:17 by cemenjiv         ###   ########.fr        #
+#    Updated: 2023/05/07 21:20:50 by cemenjiv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ $(NAME):		$(OBJS)
 clean:		
 				@rm -rf $(OBJS)
 				@rm -rf $(OBJS_DIR)
+				@rm -rf *.replace
 				
 fclean:			clean
 				$(RM) $(NAME)

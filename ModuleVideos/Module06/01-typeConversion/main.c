@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 17:11:44 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/05/03 21:07:20 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/05 09:51:27 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,14 @@ Il y existe en C, 2 types de cast:
 
 // Conversion: Le fait de changer le codage d'un octet vers une autre forme de codage s;appelle une
 // conversion. 
+
+// Hierarchie dans les types de variable
+// On peut caster d'un int vers un double, mais l'inverse est hasardeux.
+// Flag -Wconversion to avoid implicit conversion from double to int
+//	(from precise to less precise). Therefore, explicit conversion is needed.
+
+
+)
 
 void dump_32bits_integer(int const n);
 void dump_64bits_integer(double const z);
