@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 12:20:09 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/05/08 08:23:14 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/08 08:36:24 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <iostream>
 
 Harl::Harl() {
-	std::cout << "Constructor has been called " << std::endl;
 	funcPtr[0] = &Harl::debug;
 	funcPtr[1] = &Harl::info;
 	funcPtr[2] = &Harl::warning;
