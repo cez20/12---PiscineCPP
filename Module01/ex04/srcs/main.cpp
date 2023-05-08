@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 12:41:57 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/05/07 20:56:57 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/08 07:55:36 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,27 @@
 #include <fstream>
 #include <string>
 
-std::string replace(std::string line, std::size_t index, int start, std::string& str2)
+std::string replaceString(std::string line, size_t index, int start, std::string & str2)
 {
-	std::string str;
-	str = line.substr(start, index - start);
-	str += str2;
-	return (str);
+	std::string new_string;
+	
+	new_string = line.substr(start, index - start);
+	new_string += str2;
+	return (new_string);
 }
 
 int main(int argc, char **argv)
 {	
 	std::string		file;
-	std::string		str;
 	std::string		str1;
 	std::string		str2;
+	std::string		str_tmp;
 	std::ifstream	ifs;  
 	std::ofstream   ofs;
 	std::string 	output;
 	std::string		line;
-	std::size_t		index;
-	std::size_t		start;
+	size_t			index;
+	size_t			start;
 
 	if (argc != 4)
 	{
@@ -51,7 +52,7 @@ int main(int argc, char **argv)
 		return (-1);
 	}
 	
-	ifs.open(file, std::ios_base::in);  // std::ios_base::in always set by default if no mode is mentioned 
+	ifs.open(file, std::ios_base::in);
 	if (!ifs)
 	{
 		std::cerr << "There is an error with input file!" << std::endl;
@@ -59,7 +60,7 @@ int main(int argc, char **argv)
 	}
 	
 	output = file + ".replace";
-	ofs.open(output);
+	ofs.open(output, std::ios::out);
 	if (!ofs)
 	{
 		std::cerr << "There is an error with output file!" << std::endl;
@@ -68,18 +69,19 @@ int main(int argc, char **argv)
 
 	while (getline(ifs, line))
 	{
+		str_tmp.clear();
 		start = 0;
-		index = line.find(str1); // Looking for str1 inside line.
+		index = line.find(str1);
 		while(index != std::string::npos)
 		{
-			str += replace(line, index, start, str2);
+			str_tmp += replaceString(line, index, start, str2);
 			start = index + (str1.length());
 			index = line.find(str1, start);
 		}
-		str += line.substr(start, line.length() - start);
-		ofs << str;
-		str.clear();
-		ofs << "\n"; // Pas toujours le cas ou il y a un \n
+		str_tmp += line.substr(start, line.length() - start);
+		ofs << str_tmp;
+		if (!ifs.eof())
+			ofs << "\n";
 	}
 	
 	ifs.close();

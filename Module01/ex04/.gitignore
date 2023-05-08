@@ -1,3 +1,4 @@
 replaceString
 objs/
 *.o
+*.dSYM
