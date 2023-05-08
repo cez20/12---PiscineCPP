@@ -6,14 +6,14 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 17:41:16 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/05/01 18:46:41 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/08 09:37:31 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <iostream>
 
-int const Fixed::_bits = 8;
+int const Fixed:: _bits = 8;
 
 Fixed::Fixed(): _nbr(0)
 {
@@ -46,7 +46,7 @@ Fixed & Fixed::operator=(Fixed const & rhs)
 
 int	Fixed::getRawBits(void) const
 {
-	std::cout << "getRawBits function called" << std::endl;
+	std::cout << "getRawBits member function called" << std::endl;
 	return (this->_nbr);
 }
 

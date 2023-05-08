@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 13:08:38 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/05/01 18:40:37 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/08 09:34:50 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ int main(void) {
 
 	Fixed a;
 	Fixed b( a );
-	Fixed c; //
+	Fixed c; 
+
 	c = b;
+	
 	std::cout << a.getRawBits() << std::endl;
 	std::cout << b.getRawBits() << std::endl;
 	std::cout << c.getRawBits() << std::endl;
