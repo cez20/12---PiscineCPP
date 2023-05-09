@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 17:29:18 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/05 16:47:48 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/08 11:19:55 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,23 +22,22 @@ private:
 	static int const _bits; //stock le nombre de chiffres de la partie fractionnaire
 
 public:
-	Fixed(); 
-	Fixed(Fixed const & src);  
+	Fixed();
 	Fixed(int const & nbr); // Constructeur prenant un entier constant
 	Fixed(float const & nbr); // Constructeur prenant un flottant 
+	Fixed(Fixed const & src);  
 	~Fixed(); 
 
 	Fixed & operator=(Fixed const & rhs);
 
-	//float	toFloat(void) const; // convertit la valeur en virgule fixe en nombre a virgule flotante
+	float	toFloat(void) const; // convertit la valeur en virgule fixe en nombre a virgule flotante
 	int		toInt(void) const; // Convertit la valeur en virgule fixe en nombre entier.  
 
-	int		getRawBits(void) const;
-	void	setRawBits(int const raw);
+	int		getRawBits(void) const; // Est-ce obligatoire ?
+	void	setRawBits(int const raw); // Est-ce obligatoire ?
 
 };
 
-std::ostream & operator<<(std::ostream & output, Fixed const & input);
-
+//std::ostream & operator<<(std::ostream & output, Fixed const & input);
 
 #endif

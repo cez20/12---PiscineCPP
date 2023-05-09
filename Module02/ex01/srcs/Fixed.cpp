@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 17:41:16 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/05 22:42:04 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/08 11:21:39 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,16 @@ Fixed::Fixed(Fixed const & src){
 	
 	std::cout << "Copy constructor called" << std::endl;
 	*this = src;
-
 	return ;
 }
 
 Fixed::Fixed(int const & nbr): _nbr(nbr << this->_bits){
-	std::cout << "Int constructor called" << std::endl;
+	std::cout << "Constructor with INT called" << std::endl;
 }
 
 Fixed::Fixed(float const & nbr): _nbr(float_to_fixed(nbr, _bits)){
 
-	std::cout << "Float constructor called" << std::endl;
+	std::cout << "Constructor with Float called" << std::endl;
 }
 
 Fixed::~Fixed(){
@@ -77,8 +76,8 @@ int	Fixed::toInt(void) const{
 
 int	Fixed::getRawBits(void) const{
 	
-	std::cout << "getRawBits function called" << std::endl; // Why do we say copy 
-	return (this->_nbr); // Verify if it is right variable that I return
+	std::cout << "getRawBits function called" << std::endl;
+	return (this->_nbr);
 }
 
 void	Fixed::setRawBits(int const raw){
@@ -94,5 +93,3 @@ std::ostream &	operator<<(std::ostream & output, Fixed const & input){
 		//output << input.
 	return (output);
 }
-
-//(int)roundf(nbr * (float)(1 << _bits))

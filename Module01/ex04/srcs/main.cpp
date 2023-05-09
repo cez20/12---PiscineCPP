@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 12:41:57 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/05/08 07:55:36 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/08 20:18:39 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int main(int argc, char **argv)
 	str1 = argv[2];
 	str2 = argv[3];
 
-	if (str1.empty() && str2.empty())
+	if (str1.empty() || str2.empty())
 	{
 		std::cerr << "Error: The strings have no content";
 		return (-1);
