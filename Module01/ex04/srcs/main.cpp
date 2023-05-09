@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 12:41:57 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/05/08 20:18:39 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/08 20:34:04 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 #include <fstream>
 #include <string>
 
-std::string replaceString(std::string line, size_t index, int start, std::string & str2)
+std::string replaceString(std::string line, size_t str_position, int index, std::string & str2)
 {
 	std::string new_string;
 	
-	new_string = line.substr(start, index - start);
+	new_string = line.substr(index, str_position - index);
 	new_string += str2;
 	return (new_string);
 }
@@ -34,7 +34,7 @@ int main(int argc, char **argv)
 	std::string 	output;
 	std::string		line;
 	size_t			index;
-	size_t			start;
+	size_t			str_position;
 
 	if (argc != 4)
 	{
@@ -70,15 +70,15 @@ int main(int argc, char **argv)
 	while (getline(ifs, line))
 	{
 		str_tmp.clear();
-		start = 0;
-		index = line.find(str1);
-		while(index != std::string::npos)
+		index = 0;
+		str_position = line.find(str1);
+		while(str_position != std::string::npos)
 		{
-			str_tmp += replaceString(line, index, start, str2);
-			start = index + (str1.length());
-			index = line.find(str1, start);
+			str_tmp += replaceString(line, str_position, index, str2);
+			index = str_position + (str1.length());
+			str_position = line.find(str1, index);
 		}
-		str_tmp += line.substr(start, line.length() - start);
+		str_tmp += line.substr(index, line.length() - index);
 		ofs << str_tmp;
 		if (!ifs.eof())
 			ofs << "\n";

@@ -2,3 +2,4 @@ replaceString
 objs/
 *.o
 *.dSYM
+*.replace
