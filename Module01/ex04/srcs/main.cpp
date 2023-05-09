@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 12:41:57 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/05/08 20:34:04 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/08 20:59:53 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 #include <fstream>
 #include <string>
 
-std::string replaceString(std::string line, size_t str_position, int index, std::string & str2)
+std::string replaceString(std::string line, int current_index, size_t str_position, std::string & str_replacement)
 {
-	std::string new_string;
+	std::string initial_content;
+	std::string new_content;
 	
-	new_string = line.substr(index, str_position - index);
-	new_string += str2;
-	return (new_string);
+	initial_content = line.substr(current_index, (str_position - current_index));
+	new_content = (initial_content + str_replacement);
+	return (new_content);
 }
 
 int main(int argc, char **argv)
@@ -28,12 +29,12 @@ int main(int argc, char **argv)
 	std::string		file;
 	std::string		str1;
 	std::string		str2;
-	std::string		str_tmp;
 	std::ifstream	ifs;  
 	std::ofstream   ofs;
 	std::string 	output;
 	std::string		line;
-	size_t			index;
+	std::string		new_line;
+	size_t			current_index;
 	size_t			str_position;
 
 	if (argc != 4)
@@ -69,17 +70,17 @@ int main(int argc, char **argv)
 
 	while (getline(ifs, line))
 	{
-		str_tmp.clear();
-		index = 0;
+		new_line.clear();
+		current_index = 0;
 		str_position = line.find(str1);
 		while(str_position != std::string::npos)
 		{
-			str_tmp += replaceString(line, str_position, index, str2);
-			index = str_position + (str1.length());
-			str_position = line.find(str1, index);
+			new_line += replaceString(line, current_index, str_position, str2);
+			current_index = str_position + (str1.length());
+			str_position = line.find(str1, current_index);
 		}
-		str_tmp += line.substr(index, line.length() - index);
-		ofs << str_tmp;
+		new_line += line.substr(current_index, line.length() - current_index);
+		ofs << new_line;
 		if (!ifs.eof())
 			ofs << "\n";
 	}
