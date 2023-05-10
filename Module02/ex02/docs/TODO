@@ -14,12 +14,14 @@ TODO:
 		[X] '-'	(Je dois mettre des tests)
 		[X] '*'
 		[X] '/'  (Je dois mettre des tests)
+		[] Modifier tous mes operateurs arithmetiques car il prennent font les operations sur  les fixed point
+			et non les valeurs initiales. 
 	[] Les 4 operateurs incrementation et de decrementation
 		[] "++a"
 		[] "a++"
 		[] "--a"
 		[] "a--"
-		[] Ces operateurs diminueront qui diminueront la valeur du nombre à virgule fixe 
+		[] Ces operateurs diminueront la valeur du nombre à virgule fixe 
 			d’unité ε tel que 1 + ε > 1.  ????
 
 [] Ajoutez a votre classe ces quatres fonctions membres publiques surcharges:

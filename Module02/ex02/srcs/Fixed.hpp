@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 08:14:51 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/05/10 10:07:31 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/10 11:19:21 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ class Fixed
 		Fixed &	operator- (Fixed const & rhs);
 		Fixed &	operator* (Fixed const & rhs);
 		Fixed &	operator/ (Fixed const & rhs);
+
+		Fixed &	operator++ ();
+		Fixed &	operator++ (int);
+
 
 		int		toInt(void) const; // Might need to be removed! 
 		float	toFloat(void) const;  // Might need to be removed!

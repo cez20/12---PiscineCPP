@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 08:14:59 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/05/10 10:36:45 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/10 14:11:02 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,38 +37,26 @@ static int	float_to_fixed(float const initialFloatNbr, int const fractionalBits)
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Fixed::Fixed(): _nbr(0)
-{
-	std::cout << "[DEFAULT CONSTRUCTOR] is called" << std::endl;
-}
+Fixed::Fixed(): _nbr(0) {}
+
+
+Fixed::Fixed(int const & nbr): _nbr(nbr << this->_fractionalBits){}
+
+
+Fixed::Fixed(float const & nbr): _nbr(float_to_fixed(nbr, _fractionalBits)){}
+
 
 Fixed::Fixed(Fixed const & src)
 {
-	std::cout << "[COPY CONSTRUCTOR] is called" << std::endl;
 	*this = src;
 	return ;
-}
-
-Fixed::Fixed(int const & nbr): _nbr(nbr << this->_fractionalBits)
-{
-	std::cout << "[INT CONSTRUCTOR] is called" << std::endl;
-}
-
-Fixed::Fixed(float const & nbr): _nbr(float_to_fixed(nbr, _fractionalBits))
-{
-	std::cout << "[FLOAT CONSTRUCTOR] is called" << std::endl;
 }
 
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-Fixed::~Fixed()
-{
-	std::cout << "[DESTRUCTOR] for " << _nbr << "[" << this << "]" << " is called" << std::endl;
-	return ;
-}
-
+Fixed::~Fixed(){}
 
 /*
 ** --------------------------------- OVERLOAD ---------------------------------
@@ -76,42 +64,55 @@ Fixed::~Fixed()
 
 Fixed &				Fixed::operator=( Fixed const & rhs )
 {
-	std::cout << "[ASSIGNMENT OVERLOAD] is called" << std::endl;
-
 	if (this != &rhs)
 		this->_nbr = rhs.getRawBits();
-
+		
 	return *this;	
 }
 
+
+// *** ARIHMETIC OPERATOR OVERLOAD ***
+
 Fixed &	  			Fixed::operator+ (Fixed const & rhs)
 {
-	std::cout << "[ADDITION OVERLOAD] is called" << std::endl;
 	this->_nbr += rhs.getRawBits();
 	return *this;	
 }
 
 Fixed &	  			Fixed::operator- (Fixed const & rhs)
 {
-	std::cout << "[SUBSTRACTION OVERLOAD] is called" << std::endl;
 	this->_nbr -= rhs.getRawBits();
 	return *this;	
 }
 
 Fixed &	  			Fixed::operator* (Fixed const & rhs)
-{
-	std::cout << "[MULTIPLICATION OVERLOAD] is called" << std::endl;
-	this->_nbr *= rhs.getRawBits();
+{	
+	std::cout << this->getRawBits() << std::endl;
+	std::cout << this->toInt() << std::endl;
+	
+	std::cout << rhs.getRawBits() << std::endl;
+
 	return *this;	
 }
 
 Fixed &	  			Fixed::operator/ (Fixed const & rhs)
 {
-	std::cout << "[MULTIPLICATION OVERLOAD] is called" << std::endl;
 	this->_nbr /= rhs.getRawBits();
 	return *this;	
 }
 
+// *** INCREMENTATION/DECREMENTATION OPERATOR OVERLOAD ***
+
+Fixed &	  			Fixed::operator++ ()
+{
+	this->_nbr += 1;
+	return *this;	
+}
+
+Fixed &	  			Fixed::operator++ (int) 
+{
+	return (*this);
+}
 
 /*
 ** --------------------------------- METHODS ----------------------------------
