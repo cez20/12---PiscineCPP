@@ -1,0 +1,4 @@
+FixedPointNumber
+objs/
+*.o
+.DS_Store
