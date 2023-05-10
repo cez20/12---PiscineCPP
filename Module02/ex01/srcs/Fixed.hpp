@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 17:29:18 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/05/08 11:19:55 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/09 19:50:10 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,26 +18,26 @@
 class Fixed{
 
 private:
-	int	_nbr; // stocke la valeur du nombre en virgule fixe une fois qu'on lui mets 8bits de chiffres fractionnaire a gauche
-	static int const _bits; //stock le nombre de chiffres de la partie fractionnaire
+	int				 _nbr;
+	static int const _fractionalBits; 
 
 public:
 	Fixed();
-	Fixed(int const & nbr); // Constructeur prenant un entier constant
-	Fixed(float const & nbr); // Constructeur prenant un flottant 
+	Fixed(int const & nbr);
+	Fixed(float const & nbr);
 	Fixed(Fixed const & src);  
 	~Fixed(); 
 
 	Fixed & operator=(Fixed const & rhs);
 
-	float	toFloat(void) const; // convertit la valeur en virgule fixe en nombre a virgule flotante
-	int		toInt(void) const; // Convertit la valeur en virgule fixe en nombre entier.  
+	int		toInt(void) const; 
+	float	toFloat(void) const; 
 
-	int		getRawBits(void) const; // Est-ce obligatoire ?
-	void	setRawBits(int const raw); // Est-ce obligatoire ?
+	int		getRawBits(void) const;
+	void	setRawBits(int const raw);
 
 };
 
-//std::ostream & operator<<(std::ostream & output, Fixed const & input);
+std::ostream & operator<<(std::ostream & output, Fixed const & input);
 
 #endif

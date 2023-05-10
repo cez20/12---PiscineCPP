@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 17:41:16 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/05/08 11:21:39 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/09 20:01:56 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,18 @@
 #include <iostream>
 #include <cmath>
 
-int const Fixed::_bits = 8;
+int const Fixed::_fractionalBits = 8;
 
-static int	float_to_fixed(float const f, int const frac_nBits)
+static int	float_to_fixed(float const initialFloatNbr, int const fractionalBits)
 {
-	float	t;
-	int		res;
+	float	shiftedFloatNbr;
+	int		fixedInteger;
 
-	t = f * (1 << frac_nBits);
-	std::cout << t << std::endl;
-	res = (int)roundf(t);
-	std::cout << res << std::endl;
-	if (f < 0)
-	{
-		res = -res;
-		res = ~res;
-		res += 1;
-	}
-	return (res);
+	shiftedFloatNbr = initialFloatNbr * (1 << fractionalBits);
+	//std::cout << shiftedFloatNbr << std::endl;
+	fixedInteger = (int)roundf(shiftedFloatNbr);
+	//std::cout << fixedInteger << std::endl;
+	return (fixedInteger);
 }
 
 Fixed::Fixed(): _nbr(0){
@@ -45,13 +39,14 @@ Fixed::Fixed(Fixed const & src){
 	return ;
 }
 
-Fixed::Fixed(int const & nbr): _nbr(nbr << this->_bits){
-	std::cout << "Constructor with INT called" << std::endl;
+Fixed::Fixed(int const & nbr): _nbr(nbr << this->_fractionalBits){
+	std::cout << "Constructor with INT argument called" << std::endl;
 }
 
-Fixed::Fixed(float const & nbr): _nbr(float_to_fixed(nbr, _bits)){
+Fixed::Fixed(float const & nbr): _nbr(float_to_fixed(nbr, _fractionalBits)){
 
-	std::cout << "Constructor with Float called" << std::endl;
+	std::cout << "Constructor with Float argument called" << std::endl;
+	std::cout << "The value of nbr in float is : " << this->_nbr << std::endl;
 }
 
 Fixed::~Fixed(){
@@ -69,27 +64,28 @@ Fixed & Fixed::operator=(Fixed const & rhs)
 	return *this;	
 }
 
-int	Fixed::toInt(void) const{
-
-	return (this->_nbr >> this->_bits); // right bit shift to get integer without any fraction portion 
+int	Fixed::toInt(void) const
+{
+	return (this->_nbr >> this->_fractionalBits);
 }
 
-int	Fixed::getRawBits(void) const{
-	
-	std::cout << "getRawBits function called" << std::endl;
+float	Fixed::toFloat(void) const
+{
+	return (float)this->_nbr / (float)(1 << this->_fractionalBits);
+}
+
+int	Fixed::getRawBits(void) const
+{	
 	return (this->_nbr);
 }
 
-void	Fixed::setRawBits(int const raw){
-	
+void	Fixed::setRawBits(int const raw)
+{	
 	this->_nbr = raw;
 }
 
-std::ostream &	operator<<(std::ostream & output, Fixed const & input){
-
-	//if ()
-		output << input.toInt() << std::endl;
-	//else
-		//output << input.
+std::ostream &	operator <<(std::ostream & output, Fixed const & fixedNbr)
+{
+	output << fixedNbr.toFloat();
 	return (output);
 }

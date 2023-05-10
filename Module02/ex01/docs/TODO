@@ -1,10 +1,10 @@
 TODO:
 
 
-[] Un constructeur prenant un entier constant en paramètre et qui convertit celui-
+[X] Un constructeur prenant un entier constant en paramètre et qui convertit celui-
 	ci en virgule fixe. Le nombre de bits de la partie fractionnaire est initialisé à 8
 	comme dans l’exercice 00
-[] Un constructeur prenant un flottant constant en paramètre et qui convertit
+[X] Un constructeur prenant un flottant constant en paramètre et qui convertit
 	celui-ci en virgule fixe. Le nombre de bits de la partie fractionnaire est initialisé à
 	8 comme dans l’exercice 00.
 [] Une fonction membre float toFloat( void ) const;
