@@ -1,41 +1,30 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/03 17:29:18 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/05/09 19:50:10 by cemenjiv         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef FIXED_HPP
 # define FIXED_HPP
 
-#include <iostream>
+# include <iostream>
+# include <string>
 
-class Fixed{
+class Fixed
+{
+	public:
+		Fixed();
+		Fixed(int const & nbr);
+		Fixed(float const & nbr);
+		Fixed(Fixed const & src);  
+		~Fixed(); 
 
-private:
-	int				 _nbr;
-	static int const _fractionalBits; 
+		Fixed & operator=(Fixed const & rhs);
 
-public:
-	Fixed();
-	Fixed(int const & nbr);
-	Fixed(float const & nbr);
-	Fixed(Fixed const & src);  
-	~Fixed(); 
+		int		toInt(void) const; 
+		float	toFloat(void) const; 
 
-	Fixed & operator=(Fixed const & rhs);
+		int		getRawBits(void) const;
+		void	setRawBits(int const raw);
+		int		getFractionalBits() const;
 
-	int		toInt(void) const; 
-	float	toFloat(void) const; 
-
-	int		getRawBits(void) const;
-	void	setRawBits(int const raw);
-
+	private:
+		int				 _nbr;
+		static int const _fractionalBits; 
 };
 
 std::ostream & operator<<(std::ostream & output, Fixed const & input);
