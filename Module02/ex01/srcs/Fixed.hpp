@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/10 08:14:51 by cemenjiv          #+#    #+#             */
+/*   Updated: 2023/05/10 08:15:44 by cemenjiv         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FIXED_HPP
 # define FIXED_HPP
 
@@ -20,7 +32,6 @@ class Fixed
 
 		int		getRawBits(void) const;
 		void	setRawBits(int const raw);
-		int		getFractionalBits() const;
 
 	private:
 		int				 _nbr;
