@@ -6,11 +6,12 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 08:14:59 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/05/10 14:11:02 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/11 11:24:04 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+#include <cmath>
 
 int const Fixed::_fractionalBits = 8;
 
@@ -70,35 +71,46 @@ Fixed &				Fixed::operator=( Fixed const & rhs )
 	return *this;	
 }
 
-
 // *** ARIHMETIC OPERATOR OVERLOAD ***
 
-Fixed &	  			Fixed::operator+ (Fixed const & rhs)
+Fixed 	  			Fixed::operator+ (Fixed const & rhs)
 {
-	this->_nbr += rhs.getRawBits();
-	return *this;	
-}
-
-Fixed &	  			Fixed::operator- (Fixed const & rhs)
-{
-	this->_nbr -= rhs.getRawBits();
-	return *this;	
-}
-
-Fixed &	  			Fixed::operator* (Fixed const & rhs)
-{	
-	std::cout << this->getRawBits() << std::endl;
-	std::cout << this->toInt() << std::endl;
+	Fixed	newInstance;
 	
-	std::cout << rhs.getRawBits() << std::endl;
+	int newNbr = this->getRawBits() + rhs.getRawBits();
+	newInstance.setRawBits(newNbr);
 
-	return *this;	
+	return (newInstance);
 }
 
-Fixed &	  			Fixed::operator/ (Fixed const & rhs)
+Fixed 	  			Fixed::operator- (Fixed const & rhs)
 {
-	this->_nbr /= rhs.getRawBits();
-	return *this;	
+	Fixed	newInstance;
+	
+	int newNbr = this->getRawBits() - rhs.getRawBits();
+	newInstance.setRawBits(newNbr);
+
+	return (newInstance);
+}
+
+Fixed 	  			Fixed::operator* (Fixed const & rhs)
+{	
+	Fixed	newInstance;
+	
+	int newNbr = this->getRawBits() * rhs.getRawBits();
+	newInstance.setRawBits(newNbr >> 8);
+
+	return (newInstance);	
+}
+
+Fixed 	  			Fixed::operator/ (Fixed const & rhs)
+{
+	Fixed	newInstance;
+	
+	int newNbr = this->getRawBits() / rhs.getRawBits();
+	newInstance.setRawBits(newNbr << 8);
+
+	return (newInstance);
 }
 
 // *** INCREMENTATION/DECREMENTATION OPERATOR OVERLOAD ***
