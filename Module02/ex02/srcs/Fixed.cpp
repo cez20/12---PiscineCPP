@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 08:14:59 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/05/11 11:24:04 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/12 11:11:57 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,6 @@
 
 int const Fixed::_fractionalBits = 8;
 
-// int Fixed::max(int & nbr1, int & nbr2);
-// {
-// 	if (nbr1 > nbr2)
-// 		return (nbr1)
-// 	return (nbr2); 	
-// }
 
 static int	float_to_fixed(float const initialFloatNbr, int const fractionalBits)
 {
@@ -38,17 +32,25 @@ static int	float_to_fixed(float const initialFloatNbr, int const fractionalBits)
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Fixed::Fixed(): _nbr(0) {}
+Fixed::Fixed(): _nbr(0) {
+	std::cout << "[CONSTRUCTOR] for " << this << std::endl;
+}
 
 
-Fixed::Fixed(int const & nbr): _nbr(nbr << this->_fractionalBits){}
+Fixed::Fixed(int const & nbr): _nbr(nbr << this->_fractionalBits){
+	std::cout << "[CONSTRUCTOR INT] for " << this << std::endl;
+}
 
 
-Fixed::Fixed(float const & nbr): _nbr(float_to_fixed(nbr, _fractionalBits)){}
+Fixed::Fixed(float const & nbr): _nbr(float_to_fixed(nbr, _fractionalBits)){
+
+	std::cout << "[CONSTRUCTOR FLOAT] for" << this << std::endl;
+}
 
 
 Fixed::Fixed(Fixed const & src)
 {
+	std::cout << "[COPY CONSTRUCTOR] for src: " << &src << " and for current instance" << this << std::endl;
 	*this = src;
 	return ;
 }
@@ -57,7 +59,10 @@ Fixed::Fixed(Fixed const & src)
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-Fixed::~Fixed(){}
+Fixed::~Fixed(){
+	
+	std::cout << "[DESTRUCTOR] for " << this << std::endl;
+}
 
 /*
 ** --------------------------------- OVERLOAD ---------------------------------
@@ -71,7 +76,9 @@ Fixed &				Fixed::operator=( Fixed const & rhs )
 	return *this;	
 }
 
-// *** ARIHMETIC OPERATOR OVERLOAD ***
+/*
+** ------------------------ ARITHMETIC OPERATION OVERLOAD ----------------------
+*/
 
 Fixed 	  			Fixed::operator+ (Fixed const & rhs)
 {
@@ -113,15 +120,33 @@ Fixed 	  			Fixed::operator/ (Fixed const & rhs)
 	return (newInstance);
 }
 
-// *** INCREMENTATION/DECREMENTATION OPERATOR OVERLOAD ***
+/*
+** ------------------------ INCREMENTATION/DECREMENTATION OPERATOR OVERLOAD  ----------------------
+*/
 
 Fixed &	  			Fixed::operator++ ()
 {
-	this->_nbr += 1;
-	return *this;	
+	std::cout << "[INSIDE PRE-INCREMENTATION]" << std::endl;
+	this->_nbr++;
+	return *this;
 }
 
-Fixed &	  			Fixed::operator++ (int) 
+Fixed  			Fixed::operator++ (int) 
+{
+	std::cout << "[INSIDE POST-INCREMENTATION]" << std::endl;
+	Fixed  tmp(*this); 
+
+	this->_nbr++;  // Increments the
+	return (tmp); // return initial value of nbr through a new instance
+}
+
+Fixed &	  			Fixed::operator-- ()
+{
+	this->_nbr--;
+	return (*this);
+}
+
+Fixed &	  			Fixed::operator-- (int) 
 {
 	return (*this);
 }
@@ -157,6 +182,7 @@ void	Fixed::setRawBits(int const raw)
 
 std::ostream &	operator << (std::ostream & output, Fixed const & fixedNbr)
 {
+	std::cout << "[INSIDE << operator overload]" << std::endl;
 	output << fixedNbr.toFloat();
 	return (output);
 }

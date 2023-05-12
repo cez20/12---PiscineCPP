@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 08:14:51 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/05/11 11:14:13 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/11 14:02:31 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,16 @@ class Fixed
 		Fixed   operator/ (Fixed const & rhs);
 
 		Fixed &	operator++ ();
-		Fixed &	operator++ (int);
+		Fixed   operator++ (int);
+		Fixed &	operator-- ();
+		Fixed &	operator-- (int);
 
 
-		int		toInt(void) const; // Might need to be removed! 
-		float	toFloat(void) const;  // Might need to be removed!
+		int		toInt(void) const;
+		float	toFloat(void) const;
 
 		int		getRawBits(void) const;
 		void	setRawBits(int const raw);
-
-		// static	int max(int & nbr1, int & nbr2);
 
 	private:
 		int				 _nbr;
