@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 15:15:51 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/13 15:15:54 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/15 18:14:05 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,16 @@
 
 class ScavTrap : public ClapTrap
 {
-public:
-	ScavTrap();
-	ScavTrap(std::string name);
-	ScavTrap( ScavTrap const & src );
-	~ScavTrap();
+	public:
+		ScavTrap();
+		ScavTrap(std::string name);
+		ScavTrap( ScavTrap const & src );
+		~ScavTrap();
 
-	ScavTrap & operator=( ScavTrap const & rhs );
+		ScavTrap & operator=( ScavTrap const & rhs );
 
-	void	guardGate();
-	void	attack(const std::string & target);
-
+		void			guardGate();
+		virtual	void	attack(const std::string & target);
 };
 
 #endif /* ******************************************************** SCAVTRAP_H */

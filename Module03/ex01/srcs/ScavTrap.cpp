@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 11:56:27 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/13 09:16:56 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/15 18:24:44 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ ScavTrap::ScavTrap( const ScavTrap & src ): ClapTrap(src._name)
 
 ScavTrap::~ScavTrap()
 {
-	std::cout << "[DESTRUCTOR] ScavTrap destructor has been called" << std::endl;
+	std::cout << "[DESTRUCTOR] ScavTrap " << getName() << " destructor has been called" << std::endl;
 }
 
 
@@ -86,6 +86,7 @@ void		ScavTrap::attack(const std::string & target){
 	}
 	std::cout << "[ATTACK] ScavTrap " << getName() << " attacks " << target << " with HIS OWN attack type. " 
 			  << " This takes 2 energy points away!" << std::endl;
+			  
 	this->_energyPoints -= 2;
 }
 

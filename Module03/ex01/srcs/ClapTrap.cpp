@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 19:23:10 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/09 18:16:42 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/15 18:09:07 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,7 @@ void ClapTrap::beRepaired(unsigned int amount){
 
 void	ClapTrap::getInfo(){
 
-	std::cout << "[GET INFO] ClapTrap name is " << getName() 
-			  << ". It has " << getHitpoints() << " hitpoints."
+	std::cout << "[GET INFO] " << getName() << " has " << getHitpoints() << " hitpoints."
 			  << " It has " << getEnergyPoints() << " energy points."
 			  << " Its attack generates " << getDamage() << " of damage!" << std::endl;
 }
