@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 19:23:15 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/10 10:42:23 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/15 18:52:06 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,12 @@
 
 int main()
 {
-	std::cout << "\nCLAPTRAP ROBOT CREATION:" << std::endl;
+	std::cout << GRN"*************************************************************************************" RESET << std::endl;
+    std::cout << GRN"*                               CLAPTRAP ROBOT CREATION                             *" RESET << std::endl;
+    std::cout << GRN"*************************************************************************************" RESET << std::endl;
+	
 	ClapTrap* robot1= new ClapTrap("Robot1");
 
-
-	
 	robot1->getInfo();
 	robot1->attack("Jules");
 	robot1->getInfo();
@@ -30,7 +31,11 @@ int main()
 	robot1->getInfo();
 	//robot.guardGate();  //Impossible to use because base class cannot use a function of derived class
 	delete robot1;
-	std::cout << "\n" << std::endl;
+	std::cout << std::endl;
+	
+	std::cout << GRN"*************************************************************************************" RESET << std::endl;
+    std::cout << GRN"*                      SCAVTRAP ROBOT CREATION (DERIVED FROM CLAPTRAP):             *" RESET << std::endl;
+    std::cout << GRN"*************************************************************************************" RESET << std::endl;
 	
 	std::cout << "SCAVTRAP ROBOT CREATION (DERIVED FROM CLAPTRAP):" << std::endl;
 	ScavTrap* derivedRobot2 = new ScavTrap("Robot 2");
@@ -44,8 +49,12 @@ int main()
 	derivedRobot2->guardGate();
 	//derivedRobot2->highFiveGuys(); // Impossible for ScavTrap to call highFivedGuys
 	delete derivedRobot2;
+	std::cout << std::endl;
 
-	std::cout << "\nFRAGTRAP ROBOT CREATION (DERIVED FROM CLAPTRAP):" << std::endl;
+	std::cout << GRN"*************************************************************************************" RESET << std::endl;
+    std::cout << GRN"*                      FRAGTRAP ROBOT CREATION (DERIVED FROM CLAPTRAP)              *" RESET << std::endl;
+    std::cout << GRN"*************************************************************************************" RESET << std::endl;
+	
 	FragTrap* derivedRobot3 = new FragTrap("Robot 3");
 	derivedRobot3->getInfo();
 	derivedRobot3->attack("Henri");
@@ -57,11 +66,15 @@ int main()
 	derivedRobot3->highFiveGuys();
 	//derivedRobot3->guardGate(); // Pourquoi je suis capable d'appeler guardGate
 	delete derivedRobot3;
+	std::cout << std::endl;
 
-
-	std::cout << "\nMAKING SURE BASE CLASS DESTRUCTOR IS 'VIRTUAL'" << std::endl;
+	std::cout << GRN"*************************************************************************************" RESET << std::endl;
+    std::cout << GRN"*             MAKING SURE ATTACK() AND BASE CLASS DESTRUCTOR ARE 'VIRTUAL'          *" RESET << std::endl;
+    std::cout << GRN"*************************************************************************************" RESET << std::endl;
+	
 	ClapTrap* robot4 = new ScavTrap("Robot 4");
 	robot4->getInfo();
+	robot4->attack("Robby");
 	delete robot4;
 
 	return (0);
