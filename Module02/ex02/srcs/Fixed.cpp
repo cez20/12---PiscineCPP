@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 08:14:59 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/05/12 14:51:36 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/15 16:11:40 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@ static int	float_to_fixed(float const initialFloatNbr, int const fractionalBits)
 	int		fixedInteger;
 
 	shiftedFloatNbr = initialFloatNbr * (1 << fractionalBits);
-	//std::cout << shiftedFloatNbr << std::endl;
 	fixedInteger = (int)roundf(shiftedFloatNbr);
-	//std::cout << fixedInteger << std::endl;
 	return (fixedInteger);
 }
 
