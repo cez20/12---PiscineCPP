@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 15:25:19 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/13 15:25:25 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/16 18:55:14 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ std::string WrongAnimal::getType() const{
 void	WrongAnimal::makeSound() const
 {
 	std::cout << "[MAKE SOUND] WrongAnimal DOES NOT do any animal sound, because we haven't precised" 
-	          << " what kind of animal it is!" << std::endl;
+	          << " what kind of WrongAnimal it is!" << std::endl;
 }
 
 

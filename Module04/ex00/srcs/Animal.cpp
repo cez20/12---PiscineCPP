@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 15:24:26 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/13 15:24:30 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/16 13:33:44 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Animal::Animal(): type("NONE"){
+Animal::Animal(): type("DEFAULT"){
 	std::cout << "[DEFAULT CONSTRUCTOR] Animal default constructor has been called!" << std::endl;
 }
 

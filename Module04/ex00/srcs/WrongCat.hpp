@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 15:25:43 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/13 15:25:46 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/16 18:54:23 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class WrongCat : public WrongAnimal
 
 		WrongCat &		operator=( WrongCat const & rhs );
 		
-		void				makeSound() const;
+		void	makeSound() const;
 };
 
 #endif /* ******************************************************** WRONGCAT_H */
