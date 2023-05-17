@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:21:23 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/05/16 20:46:22 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/17 11:40:52 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,17 @@ int main()
 	std::cout << "Printing the address of Brain[0] for instance B after change: ";	
 	b.getBrain()->printIdea(0);
 	
+	std::cout << GRN"*************************************************************************************" RESET << std::endl;
+    std::cout << GRN"*                             MANDATORY PDF TESTS                                   *" RESET << std::endl;
+    std::cout << GRN"*************************************************************************************" RESET << std::endl;
+
+	const Animal* j = new Dog();
+	const Animal* i = new Cat();
 	
+	delete j;//should not create a leak
+	delete i;
+
+	std::cout << "\nDestructor of previous examples: " << std::endl;
+
 	return 0;
 }
