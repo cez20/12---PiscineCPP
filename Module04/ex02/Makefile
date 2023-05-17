@@ -6,14 +6,14 @@
 #    By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/03 17:54:38 by cemenjiv          #+#    #+#              #
-#    Updated: 2023/04/14 15:57:43 by cemenjiv         ###   ########.fr        #
+#    Updated: 2023/05/16 20:51:26 by cemenjiv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= abstractClass
 
 SRCS_DIR   		= srcs/
-SRCS_FILES		= 
+SRCS_FILES		= main.cpp AAnimal.cpp Dog.cpp Cat.cpp Brain.cpp
 SRCS 			= $(addprefix $(SRCS_DIR), $(SRCS_FILES))
 
 OBJS_DIR		= objs/
