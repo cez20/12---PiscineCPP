@@ -6,79 +6,76 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:21:23 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/13 17:10:36 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/16 20:46:22 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 #include "Cat.hpp"
 
+# define RESET "\e[0m"
+# define RED "\e[0;31m"
+# define GRN "\e[0;32m"
+# define CYN "\e[0;36m"
+# define YEL "\e[0;33m"
+# define REDB "\e[41m"
+
 int main()
 {
-	// ARRAY OF ANIMAL OBJECTS : HALF IS DOG, HALF IS CAT
-	// VALIDATION THAT CORRECT OBJECT IS CREATED IS TESTED THROUGH MAKE SOUND
-	// DELETE ALL OBJECT USING "ANIMAL "
+	std::cout << GRN"*************************************************************************************" RESET << std::endl;
+    std::cout << GRN"*                               ARRAY OF 100 BRAINS                                 *" RESET << std::endl;
+    std::cout << GRN"*************************************************************************************" RESET << std::endl;
+
+	Brain brain1;
+
+	for (int i = 0; i < 100; i++)
+		brain1.printIdea(i);
+
+	std::cout << GRN"*************************************************************************************" RESET << std::endl;
+    std::cout << GRN"*                                ARRAY HALF DOG, HALF CAT                           *" RESET << std::endl;
+    std::cout << GRN"*************************************************************************************" RESET << std::endl;
 
 	Animal* animal[10];
-	
-	for(int i = 0; i < 10; i++)
+
+	for(int i = 0; i < 6; i++)
 	{
-		if (i < 5)
+		if (i < 3)
 			animal[i] = new Dog(); 
 		else
 			animal[i] = new Cat();
 	}
 
-	for (int i = 0; i < 10; i++)
-		animal[i]->makeSound();
+	std::cout << GRN"*************************************************************************************" RESET << std::endl;
+    std::cout << GRN"*                                DESTRUCTION OF DOGS AND CATS                       *" RESET << std::endl;
+    std::cout << GRN"*************************************************************************************" RESET << std::endl;
 
-	for(int i = 0; i < 10; i++)
+	for(int i = 0; i < 6; i++)
 		delete	animal[i];
 
-	// SHALLOW COPY VS DEEP COPY - CAT VERSION 
+	std::cout << GRN"*************************************************************************************" RESET << std::endl;
+    std::cout << GRN"*                       SHALLOW COPY VS DEEP COPY - CAT VERSION                     *" RESET << std::endl;
+    std::cout << GRN"*************************************************************************************" RESET << std::endl;
 
 	Cat a;
 	Cat b(a);
 
-	a.getBrain()->printIdea(0);
+	std::cout << "\nPrinting the address of _ptrBrain for instance A: ";	
+	std::cout << a.getBrain() << std::endl;
+	std::cout << "Printing the address of _ptrBrain for instance B: ";	
+	std::cout << b.getBrain() << std::endl;
+
+	std::cout << "\nPrinting the address of Brain[0] for instance A: ";	
+ 	a.getBrain()->printIdea(0);
+	std::cout << "Printing the address of Brain[0] for instance B: ";	
 	b.getBrain()->printIdea(0);
 	
 	a.getBrain()->setIdea("MEOW", 0);
 
-	a.getBrain()->printIdea(0);
+	std::cout << "\nPrinting the address of Brain[0] for instance A after change: ";	
+ 	a.getBrain()->printIdea(0);
+	std::cout << "Printing the address of Brain[0] for instance B after change: ";	
 	b.getBrain()->printIdea(0);
 	
-	b = a;
 	
-	a.getBrain()->printIdea(0);
-	b.getBrain()->printIdea(0);
-
-	// // SHALLOW COPY VS DEEP COPY - DOG VERSION 
-
-	Dog a1;
-	Dog b1(a1);
-
-	a1.getBrain()->printIdea(0);
-	b1.getBrain()->printIdea(0);
-	
-	a1.getBrain()->setIdea("WOOF", 0);
-
-	a1.getBrain()->printIdea(0);
-	b1.getBrain()->printIdea(0);
-	
-	b1 = a1;
-	
-	a1.getBrain()->printIdea(0);
-	b1.getBrain()->printIdea(0);
-
-
-	// TESTING LEAKS - NO LEAK SHOULD BE VISIBLE
-
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	
-	delete j;
-	delete i;
-
 	return 0;
 }

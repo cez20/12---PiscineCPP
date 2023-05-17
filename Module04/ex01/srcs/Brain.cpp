@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 15:26:51 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/13 16:54:21 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/16 20:41:12 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,10 @@ void Brain::setIdea(std::string idea, int index)
 
 void Brain::printIdea(int index)
 {
-	std::cout << _ideas[index] << std::endl;
+	std::cout << "[" << index << "]" << _ideas[index];
+	std::cout << "\t";
+	if (index % 5  == 0 || index == 99)
+		std::cout << std::endl;
 }
 
 /* ************************************************************************** */
