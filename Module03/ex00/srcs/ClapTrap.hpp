@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 19:23:13 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/05/15 17:21:52 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/17 12:52:06 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ class ClapTrap {
 		void		takeDamage(unsigned int amount);
 		void		beRepaired(unsigned int amount);
 		
-		void		getInfo();
+		void		printInfo();
+
 		std::string getName() const;
 		int			getHitpoints() const;
 		int			getEnergyPoints() const;

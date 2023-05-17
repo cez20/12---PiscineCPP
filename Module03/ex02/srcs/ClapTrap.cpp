@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 19:23:10 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/10 10:25:36 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/17 13:17:34 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,18 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-ClapTrap::ClapTrap(): _name("Henri"), _hitpoints(5), _energyPoints(5), _attackDamage(0){
-	std::cout << "[DEFAULT CONSTRUCTOR] ClaTrap default constructor is called" << std::endl;
+ClapTrap::ClapTrap(): _name("Default"), _hitpoints(10), _energyPoints(10), _attackDamage(0){
+	std::cout << "Default constructor is called" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name): _name(name), _hitpoints(10), _energyPoints(10), _attackDamage(0) {
 
-	std::cout << "[CONSTRUCTOR] Claptrap constructor for " << this->_name << " has been created!" << std::endl;
+	std::cout << "Claptrap " << this->_name << " has been created!" << std::endl;
 }
 
 ClapTrap::ClapTrap(ClapTrap const & src){
 
-	std::cout << "[COPY CONSTRUCTOR]ClapTrap copy constructor has been called" << std::endl;
+	std::cout << "Copy Constructor has been called" << std::endl;
 	*this = src;
 }
 
@@ -38,7 +38,7 @@ ClapTrap::ClapTrap(ClapTrap const & src){
 
 ClapTrap::~ClapTrap() {
 	
-	std::cout << "[DESTRUCTOR] ClapTrap " << getName() << " destructor is called" << std::endl;
+	std::cout << "Destructor is called" << std::endl;
 }
 
 
@@ -48,7 +48,7 @@ ClapTrap::~ClapTrap() {
 
 ClapTrap & ClapTrap::operator=(ClapTrap const & rhs){
 	
-	std::cout << "[OPERATOR OVERLOAD] Claptrap copy assignement operator called" << std::endl;
+	std::cout << "Copy assignement operator called" << std::endl;
 	
 	if (this != &rhs)
 		this->_name = rhs.getName();
@@ -67,42 +67,64 @@ void ClapTrap::attack(const std::string & target){
 	
 	if (this->_energyPoints == 0)
 	{
-		std::cout << "Sorry we can't proceed with attack because we no longer have energy points" << std::endl;
-		return ;
+		std::cout << "[ATTACK] ClapTrap cannot because not enough energypoints!" << std::endl;
+		return;
 	}
-	std::cout << "[ATTACK] ClapTrap " << this->_name << " attacks "  << target << " causing his enemy to lose " 
-			  << _attackDamage << " points of damage! He loses 1 energy point to do so." << std::endl;
+		
+	std::cout 	<< "[ATTACK] ClapTrap " << this->_name << " attacks "  << target
+				<< " causing his enemy to lose " << _attackDamage << " points of damage!" 
+				<< " His energy points are reduced by 1!" << std::endl;
+				
 	this->_energyPoints--;
 }
 
 void ClapTrap::takeDamage(unsigned int amount){
 
-	if (amount > this->_hitpoints)
-		amount = this->_hitpoints;
-	std::cout << "[TAKE DAMAGE] ClapTrap " << this->_name << " takes a hit of " << amount << " points of damage. " 
-			  <<  "His hitpoints is reduced by " << amount << " points" << std::endl;
+	if (this->_hitpoints == 0)
+	{
+		std::cout 	<< "[TAKE DAMAGE] ClapTrap " << getName() 
+					<< " cannot be attacked because he is already dead!" << std::endl;
+		return ;
+	}
+	
+	if (amount >= this->_hitpoints)
+	{
+		std::cout 	<< "[TAKE DAMAGE] ClapTrap " << getName() << " takes damage of " << amount 
+					<< " and dies afterward!" << std::endl;
+		this->_hitpoints = 0;;
+		return;
+	}
+		
+	std::cout << "[TAKE DAMAGE] ClapTrap " << this->_name << " takes a hit of " << amount << " points of damage.\n" 
+			  <<  "His hitpoints are reduced by " << amount << " points" << std::endl;
+		  
 	this->_hitpoints -= amount;
+
 }
 
-void ClapTrap::beRepaired(unsigned int amount){
-
-	if (amount > this->_energyPoints)
-		amount = this->_energyPoints;
-	std::cout << "[BE REPAIRED] ClapTrap " << getName() << " is being repaired. This takes 1 energy point!"
-			  << " His hitpoints goes up by " << amount << " points." << std::endl;
+void ClapTrap::beRepaired(unsigned int amount)
+{
+	if (this->_energyPoints == 0)
+	{
+		std::cout 	<< "[BE REPAIRED] ClapTrap cannot be repaired as it does not have enough"
+					<< " energy points to do reparation!" << std::endl;
+		return ;
+	}
+		
+	std::cout << "[BE REPAIRED] ClapTrap " << getName() << " is being repaired."
+			  << " His hitpoints goes up by " << amount << "\n"
+			  << "His energy points is reduced by 1!" << std::endl;
+	
 	this->_hitpoints += amount;
 	this->_energyPoints--;
-
 }
 
-void	ClapTrap::getInfo(){
+void	ClapTrap::printInfo(){
 
-	std::cout << "[GET INFO] ClapTrap name is " << getName() 
-			  << ". It has " << getHitpoints() << " hitpoints."
-			  << " It has " << getEnergyPoints() << " energy points."
-			  << " Its attack generates " << getDamage() << " of damage!" << std::endl;
+	std::cout << YEL"ClapTrap name is " << getName() << std::endl;
+	std::cout << getName() << " has " << getHitpoints() << " hitpoints." << std::endl;
+	std::cout << getName() << " has " << getEnergyPoints() << " energy points." RESET << std::endl;
 }
-
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */

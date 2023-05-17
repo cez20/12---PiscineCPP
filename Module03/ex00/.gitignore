@@ -1,3 +1,4 @@
 ClapTrap
 objs/
 *.o
+.DS_Store

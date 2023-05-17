@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 19:23:13 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/05/15 18:14:33 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/17 12:52:06 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,23 @@ class ClapTrap {
 	public:
 		ClapTrap();  // Default Constructor 
 		ClapTrap(std::string name); 
-		ClapTrap(ClapTrap const & src); // Copy constructor 
-		virtual ~ClapTrap(); // Destructor
+		ClapTrap(ClapTrap const & src); // Copy Constructor 
+		~ClapTrap(); // Destructor
 
 		ClapTrap & operator=(ClapTrap const & rhs); // Operator overload. 
 
-		virtual	void		attack(const std::string & target);
-		void				takeDamage(unsigned int amount);
-		void				beRepaired(unsigned int amount);
+		void		attack(const std::string & target);
+		void		takeDamage(unsigned int amount);
+		void		beRepaired(unsigned int amount);
 		
-		void				getInfo();
-		std::string 		getName() const;
-		int					getHitpoints() const;
-		int					getEnergyPoints() const;
-		int					getDamage() const;
+		void		printInfo();
 
-	protected:
+		std::string getName() const;
+		int			getHitpoints() const;
+		int			getEnergyPoints() const;
+		int			getDamage() const;
+
+	private:
 		std::string		_name;
 		unsigned int	_hitpoints;
 		unsigned int	_energyPoints;
