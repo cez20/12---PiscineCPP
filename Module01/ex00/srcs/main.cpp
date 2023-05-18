@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 18:33:59 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/05/04 12:08:31 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/17 15:27:14 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int main()
 	std::cout << std::endl;
 	delete first;
 	delete second;
+
 
 	return (0);
 }

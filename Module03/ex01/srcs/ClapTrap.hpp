@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 19:23:13 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/05/17 12:52:06 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/18 12:15:27 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ class ClapTrap {
 		ClapTrap();  // Default Constructor 
 		ClapTrap(std::string name); 
 		ClapTrap(ClapTrap const & src); // Copy Constructor 
-		~ClapTrap(); // Destructor
+		virtual ~ClapTrap(); // Destructor
 
 		ClapTrap & operator=(ClapTrap const & rhs); // Operator overload. 
 
-		void		attack(const std::string & target);
-		void		takeDamage(unsigned int amount);
-		void		beRepaired(unsigned int amount);
+		virtual	void	attack(const std::string & target);
+		void			takeDamage(unsigned int amount);
+		void			beRepaired(unsigned int amount);
 		
 		void		printInfo();
 
@@ -44,7 +44,7 @@ class ClapTrap {
 		int			getEnergyPoints() const;
 		int			getDamage() const;
 
-	private:
+	protected:
 		std::string		_name;
 		unsigned int	_hitpoints;
 		unsigned int	_energyPoints;

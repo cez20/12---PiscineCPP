@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 19:23:10 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/05/17 13:17:34 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/18 11:44:39 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void ClapTrap::attack(const std::string & target){
 	
 	if (this->_energyPoints == 0)
 	{
-		std::cout << "[ATTACK] ClapTrap cannot because not enough energypoints!" << std::endl;
+		std::cout << "[ATTACK] ClapTrap cannot attack because not enough energypoints!" << std::endl;
 		return;
 	}
 		
