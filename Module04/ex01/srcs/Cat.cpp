@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 15:27:04 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/13 16:52:49 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/23 15:15:19 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@
 
 Cat::Cat(): Animal()
 {
+	std::cout << "[DEFAULT CONSTRUCTOR] Cat default constructor has been called!" << std::endl;
 	type = "Cat";
 	this->_ptrBrain = new Brain();
-	std::cout << "[DEFAULT CONSTRUCTOR] Cat default constructor has been called!" << std::endl;
 }
 
 Cat::Cat( const Cat & src ): Animal()
 {
-	this->_ptrBrain = new Brain();
 	std::cout << "[COPY CONSTRUCTOR] Cat copy constructor has been called!" << std::endl;
+	this->_ptrBrain = new Brain();
 	*this = src; // Call the operator overload function. 
 }
 
@@ -37,8 +37,8 @@ Cat::Cat( const Cat & src ): Animal()
 
 Cat::~Cat()
 {
-	delete this->_ptrBrain;
 	std::cout << "[DESTRUCTOR] Cat destructor has been called" << std::endl;
+	delete this->_ptrBrain;
 }
 
 
