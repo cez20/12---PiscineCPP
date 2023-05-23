@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 15:27:11 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/14 10:25:32 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/23 16:07:04 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@
 
 Dog::Dog(): AAnimal()
 {
+	std::cout << "[DEFAULT CONSTRUCTOR] Dog default constructor has been called!" << std::endl;
 	type = "Dog";
 	this->_ptrBrain = new Brain();
-	std::cout << "[DEFAULT CONSTRUCTOR] Dog default constructor has been called!" << std::endl;
 }
 
 Dog::Dog( const Dog & src ): AAnimal()
 {
-	this->_ptrBrain = new Brain();
 	std::cout << "[COPY CONSTRUCTOR] Dog copy constructor has been called!" << std::endl;
+	this->_ptrBrain = new Brain();
 	*this = src;
 }
 
@@ -37,8 +37,8 @@ Dog::Dog( const Dog & src ): AAnimal()
 
 Dog::~Dog()
 {
-	delete this->_ptrBrain;
 	std::cout << "[DESTRUCTOR] Dog destructor has been called" << std::endl;
+	delete this->_ptrBrain;
 }
 
 
@@ -52,11 +52,9 @@ Dog &				Dog::operator=( Dog const & rhs )
 	if ( this != &rhs )
 	{
 		this->type = rhs.getType();
+		for (int i = 0; i < 100 ; i++)
+			this->_ptrBrain->setIdea(rhs._ptrBrain->getIdea(i), i);
     }
-	// std::string word = "ALLO";
-	// this->_ptrBrain->setIdeas(word, 0);
-	// std::cout << "The address of rhs brain is: " << rhs._ptrBrain->getIdeas(0) << std::endl;
-	// std::cout << "The address of THIS OBJECT brain is: " << _ptrBrain->getIdeas(0) << std::endl;
 	return *this;
 }
 
