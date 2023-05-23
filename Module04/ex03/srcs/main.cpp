@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:21:23 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/05/23 17:07:31 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/23 17:35:34 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,9 @@ int main()
 	std::cout << RED "\nCharacter use his Materias against Cindy" RESET << std::endl;
 	Character* character1 = new Character("Cindy");
 	character->use(0, *character1);
-	character->use(1, *character1);
-	character->use(3, *character1);
+	character->use(2, *character1);
+	character->use(1, *character1); //Nothing happens because empty Materia
+	character->use(3, *character1); // Nothing happens because empty Materia 
 
 	delete character1;
 	delete character;
@@ -114,12 +115,14 @@ int main()
 	character2.equip(new Cure);
 	Character character3 = character2;
 
+	std::cout << "\n";
 	std::cout << character2.getName() << std::endl;
 	character2.printInventory();
 
+	std::cout << "\n";
 	std::cout << character3.getName() << std::endl;
 	character3.printInventory();
-
+	std::cout << "\n";
 
 	return (0);
 }
