@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 22:32:40 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/21 13:24:57 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/23 17:08:54 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ class Cure : public AMateria
 
 	public:
 		Cure();
-		Cure(std::string & type);
 		Cure( Cure const & src );
 		virtual ~Cure();
 

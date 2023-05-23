@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 22:32:46 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/20 19:23:48 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/23 17:08:38 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,6 @@
 Ice::Ice(): AMateria("ice")
 {
 	std::cout << "[DEFAULT CONSTRUCTOR] ICE default constructor is called" << std::endl;
-}
-
-Ice::Ice(std::string & type): AMateria(type)
-{
-	std::cout << "[CONSTRUCTOR] ICE constructor with name is called" << std::endl;
 }
 
 Ice::Ice( const Ice & src ): AMateria()

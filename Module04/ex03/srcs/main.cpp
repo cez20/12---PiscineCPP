@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:21:23 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/05/16 21:54:13 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/23 17:07:31 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,38 +67,8 @@ int main()
 	delete materia3;
 	delete materia4;
 
-	// std::cout << GRN"*************************************************************************************" RESET << std::endl;
-    // std::cout << GRN"*               TESTING EQUIP(), UNEQUIP(), USE() FUNCTIONS                         *" RESET << std::endl;
-    // std::cout << GRN"*************************************************************************************" RESET << std::endl;	
 
-	// Character character("Robert");
-
-	// character.equip(new Ice);
-	// character.equip(new Ice);
-	// character.equip(new Cure);
-	// character.equip(new Cure);
-
-	// std::cout << RED "\nInventory is full (4 items). Any additional Materia is created and then deleted on the spot" RESET << std::endl;
-	// character.equip(new Ice); // Additional Material will immmediately be deleted because inventory already full
-
-	// std::cout << RED "\nPrinting character inventory and address of Materia" RESET << std::endl;
-	// character.printInventory();
-
-	// std::cout << RED "\nRemoving materias from character's inventory" RESET << std::endl;
-	// character.unequip(1);
-	// character.unequip(1);
-	// character.unequip(3);
-
-	// std::cout << RED "\nReprinting character inventory and address of Materia" RESET << std::endl;
-	// character.printInventory();
-
-	// std::cout << RED "\nCharacter use his Materias against Cindy" RESET << std::endl;
-	// Character character1("Cindy");
-	// character.use(0, character1);
-	// character.use(3, character1);
-	// character.use(1, character1); // Will do nothing because _inventory is empty at index [1]
-
-		std::cout << GRN"*************************************************************************************" RESET << std::endl;
+	std::cout << GRN"*************************************************************************************" RESET << std::endl;
     std::cout << GRN"*               TESTING EQUIP(), UNEQUIP(), USE() FUNCTIONS                         *" RESET << std::endl;
     std::cout << GRN"*************************************************************************************" RESET << std::endl;	
 

@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 22:32:50 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/21 13:25:06 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/05/23 17:08:42 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ class Ice : public AMateria
 	
 	public:
 		Ice();
-		Ice(std::string &type);
 		Ice( Ice const & src );
 		virtual ~Ice();
 
