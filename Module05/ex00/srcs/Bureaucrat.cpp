@@ -11,10 +11,13 @@ Bureaucrat::Bureaucrat(): _name(), _grade()
 
 Bureaucrat::Bureaucrat(std::string const name, int grade): _name(name), _grade(grade)
 {
-	if (this->_grade < 1)
+	if (this->_grade < HIGHEST_GRADE)
+	{
+		Bureaucrat::GradeTooHighException ex;
+		throw ex;
+	}
+	else if (this->_grade > LOWEST_GRADE)
 		throw Bureaucrat::GradeTooLowException();
-	else if (this->_grade > 150)
-		throw Bureaucrat::GradeTooHighException();
 	std::cout << "[BUREAUCRAT CONSTRUCTOR W ARGUMENTS] Constructor for " << this->_name << " has been called" << std::endl;
 }
 
@@ -53,24 +56,17 @@ Bureaucrat &				Bureaucrat::operator=( Bureaucrat const & rhs )
 	return *this;
 }
 
-std::ostream &			operator<<( std::ostream & o, Bureaucrat const & i )
-{
-	o << i.getName() << ", bureaucrat grade " << i.getGrade();
-	return o;
-}
-
-
 /*
 ** --------------------------------- METHODS ----------------------------------
 */
 
-std::string Bureaucrat::getName() const
+std::string const & Bureaucrat::getName() const
 {
 	return (this->_name);
 }
 
 
-unsigned int Bureaucrat::getGrade() const
+unsigned int const & Bureaucrat::getGrade() const
 {
 	return (this->_grade);
 }
@@ -93,5 +89,10 @@ void	Bureaucrat::decreaseGrade(){
 ** --------------------------------- ACCESSOR ---------------------------------
 */
 
+std::ostream &			operator<<( std::ostream & o, Bureaucrat const & i )
+{
+	o << i.getName() << ", bureaucrat grade " << i.getGrade();
+	return o;
+}
 
 /* ************************************************************************** */

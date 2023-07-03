@@ -1,15 +1,10 @@
 TODO:
 
-Pour chaque exercice:
-[] Mettre les bons headers au fur et a mesure 
-[] Verifier les leaks
-[] Mettre les tests dans le main separe par une ligne de commentaires
-
 PROJET:
-[X]Les classes d'exception n'ont pas a se conformer a la forme canonique de Coplien
+[]Les classes d'exception n'ont pas a se conformer a la forme canonique de Coplien
 	mais toutes les autres classe doivent le faire
 
-[X] Creer un "Bureaucrat" qui doit avoir:
+[X Creer un "Bureaucrat" qui doit avoir:
 	[X] Un "name" constant
 	[X] Un grade (echelon) pouvant aller de 1 (echelon le plus eleve) a 150 (echelon le plus bas)
 [X] Toute tentative d'instancier un Bureaucrat en utilisant un echelon invalide jettera une exception
@@ -33,6 +28,7 @@ PROJET:
 
 
 AUTRES:
-[X] Enlever la librairie <stdexcept> au besoin 
-[X] Qu'arrive-t-il si j'instancie un pointeur bureaucrat et que j'intercepte l'erreur. Il quitte le programme sans
+[] Enlever la librairie <stdexcept> au besoin 
+[] Qu'arrive-t-il si j'instancie un pointeur bureaucrat et que j'intercepte l'erreur. Il quitte le programme sans
 	delete le pointeur.  
+[] Est-ce que je dois mettre le constructeur Bureaucrat par defaut dans les attributes prives? 

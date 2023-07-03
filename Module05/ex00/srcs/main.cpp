@@ -6,75 +6,90 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:21:23 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/04/23 19:59:25 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/07/03 12:02:32 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
-#include <stdexcept>
+# define RESET "\e[0m"
+# define RED "\e[0;31m"
+# define GRN "\e[0;32m"
+# define CYN "\e[0;36m"
+# define YEL "\e[0;33m"
+# define REDB "\e[41m"
 
+#include "Bureaucrat.hpp"
 
 int main()
 {
-	/*
-	** --------------------------TESTING INVALID GRADE AT INSTANCIATION --------------------------
-	*/
-	try
+	std::cout << GRN"*************************************************************************************" RESET << std::endl;
+	std::cout << GRN"*                          GRADE TOO HIGH / GRADE TOO LOW                           *" RESET << std::endl;
+	std::cout << GRN"*************************************************************************************" RESET << std::endl;
 	{
-		//Bureaucrat bureaucrat("Cesar", 151);
-		Bureaucrat*	bureaucrat1 = new Bureaucrat("Robert", 0);
-		
-		delete bureaucrat1;
+		try{
+			Bureaucrat("Robert", 0);	
+		} catch (Bureaucrat::GradeTooHighException &e){
+			std::cout << "Exception: " << e.what() << std::endl;	
+		}
+		catch(Bureaucrat::GradeTooLowException & e){
+			std::cout << "Exception: " << e.what() << std::endl;
+		}
+		catch (std::exception e){
+			std::cout << "Exception: " << e.what() << std::endl;
+		}
+	}
+	{
+		try{
+			Bureaucrat("Robert", 151);	
+		} catch (Bureaucrat::GradeTooHighException &e){
+			std::cout << "Exception: " << e.what() << std::endl;	
+		}
+		catch(Bureaucrat::GradeTooLowException & e){
+			std::cout << "Exception: " << e.what() << std::endl;
+		}
+		catch (std::exception e){
+			std::cout << "Exception: " << e.what() << std::endl;
+		}
 	}
 
-	/*
-	** --------------------------- TESTING INCREASE OF ALREADY EXISTING GRADE ----------------------------
-	*/
-	// try
-	// {
+	std::cout << GRN"*************************************************************************************" RESET << std::endl;
+	std::cout << GRN"*                          GRADE DECREASE/ GRADE INCREASE                           *" RESET << std::endl;
+	std::cout << GRN"*************************************************************************************" RESET << std::endl;
+
+	{
+		try{
+			Bureaucrat bureaucrat1("Robert", 1);
+			bureaucrat1.increaseGrade();
+		} catch (Bureaucrat::GradeTooHighException &e){
+			std::cout << "Exception: " << e.what() << std::endl;	
+		}
+		catch(Bureaucrat::GradeTooLowException & e){
+			std::cout << "Exception: " << e.what() << std::endl;
+		}
+		catch (std::exception e){
+			std::cout << "Exception: " << e.what() << std::endl;
+		}
+	}
+	{
+		try{
+			Bureaucrat bureaucrat("Cesar", 150);
+			bureaucrat.decreaseGrade();
+		}catch (Bureaucrat::GradeTooHighException &e){
+			std::cout << "Exception: " << e.what() << std::endl;	
+		}
+		catch(Bureaucrat::GradeTooLowException & e){
+			std::cout << "Exception: " << e.what() << std::endl;
+		}
+		catch (std::exception e){
+			std::cout << "Exception: " << e.what() << std::endl;
+		}
+	}
 	
-	// 	Bureaucrat bureaucrat1("Robert", 1);
-	// 	bureaucrat1.increaseGrade();
-	// }
-	
-	/*
-	** --------------------------- TESTING DECREASE OF ALREADY EXISTING GRADE  ----------------------------
-	*/
+	std::cout << GRN"*************************************************************************************" RESET << std::endl;
+	std::cout << GRN"*                          TESTING INSERTION OPERATOR OVERLOAD                      *" RESET << std::endl;
+	std::cout << GRN"*************************************************************************************" RESET << std::endl;
 
-	// try
-	// {
-	// 	Bureaucrat bureaucrat("Cesar", 150);
-	// 	bureaucrat.decreaseGrade();
-	// }
+	Bureaucrat bureaucrat("Cesar", 100);
+	std::cout << bureaucrat << std::endl;
 
-	/*
-	** --------------------------- TESTING INSERTION OPERATOR OVERLOAD  ----------------------------
-	*/
-
-	// try
-	// {
-	// 	Bureaucrat bureaucrat("Cesar", 100);
-	// 	bureaucrat.decreaseGrade();
-	// 	std::cout << bureaucrat << std::endl;
-	// }
-
-
-	/*
-	** --------------------------- CATCHING EXCEPTION BASED ON RIGHT EXCEPTION TYPE  ----------------------------
-	*/
-
-	catch (Bureaucrat::GradeTooHighException &e)
-	{
-		std::cout << "Exception: " << e.what() << std::endl;	
-	}
-	catch(Bureaucrat::GradeTooLowException & e)
-	{
-		std::cout << "Exception: " << e.what() << std::endl;
-	}
-	catch (std::exception e)
-	{
-		std::cout << "Exception: " << e.what() << std::endl;
-	}
-	
 	return (0);
 }
