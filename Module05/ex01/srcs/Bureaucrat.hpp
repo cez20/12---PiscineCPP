@@ -1,9 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/03 18:08:42 by cemenjiv          #+#    #+#             */
+/*   Updated: 2023/07/05 08:21:34 by cemenjiv         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
 # include <iostream>
 # include <string>
 # include "Form.hpp"
+
+#define HIGHEST_GRADE 1
+#define LOWEST_GRADE 150
 
 class Form;
 

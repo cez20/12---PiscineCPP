@@ -6,7 +6,7 @@ Pour chaque exercice:
 [] Mettre les tests dans le main separe par une ligne de commentaires
 
 PROJET:
-[X] Faire une classe "Form" qui possede:
+[] Faire une classe "Form" qui possede:
 	[X] Un name (nom) const;
 	[X] Un booleen indiquant si le formulaire est signe (a la construction il ne l'est pas)
 	[X] Un grade (echelon) CONSTANT requis pour le signer

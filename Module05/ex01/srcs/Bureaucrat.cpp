@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/03 18:08:34 by cemenjiv          #+#    #+#             */
+/*   Updated: 2023/07/05 08:41:51 by cemenjiv         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Bureaucrat.hpp"
 
 /*
@@ -11,9 +23,9 @@ Bureaucrat::Bureaucrat(): _name(), _grade()
 
 Bureaucrat::Bureaucrat(std::string const name, int grade): _name(name), _grade(grade)
 {
-	if (this->_grade < 1)
+	if (this->_grade < HIGHEST_GRADE)
 		throw Bureaucrat::GradeTooLowException();
-	else if (this->_grade > 150)
+	else if (this->_grade > LOWEST_GRADE)
 		throw Bureaucrat::GradeTooHighException();
 	std::cout << "[BUREAUCRAT CONSTRUCTOR W ARGUMENTS] Constructor for " << this->_name << " has been called" << std::endl;
 }
@@ -92,12 +104,6 @@ void	Bureaucrat::decreaseGrade(){
 void			Bureaucrat::signForm(Form & f)
 {
 	f.beSigned(*this);
-	//if (f.getSignStatus() == true)
-		//std::cout << this->_name << " signed form " << f.getName() << std::endl;
-	//else
-		//std::cout << this->_name << " couldn't sign form " << f.getName() 
-		//<< " because minimum bureaucrat's grade to sign is: " << f.getGradeToSign() 
-		//<< " or because action of signing Form hasn't been done" << std::endl;
 }
 
 /*
