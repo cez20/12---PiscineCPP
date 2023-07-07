@@ -32,7 +32,7 @@ class Bureaucrat
 
 		class GradeTooHighException: public std::exception
 		{
-		public:
+			public:
 			virtual const char* what() const throw(); 
 		};
 		class GradeTooLowException: public std::exception

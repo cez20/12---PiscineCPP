@@ -5,7 +5,7 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-ShrubberyCreationForm::ShrubberyCreationForm(): AForm ("Shrubbery", "target", 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(): AForm ("Shrubbery", "default_target", 145, 137)
 {
 	std::cout << "[SHRUBBERY DEFAULT CONSTRUCTOR] Default construtor is called" << std::endl;
 }

@@ -6,7 +6,7 @@
 #    By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/03 17:54:38 by cemenjiv          #+#    #+#              #
-#    Updated: 2023/05/01 08:27:04 by cemenjiv         ###   ########.fr        #
+#    Updated: 2023/07/07 06:39:49 by cemenjiv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ CFLAGS			= -Wall -Wextra -Werror -g -std=c++98
 RM				= rm -f 
 
 $(OBJS_DIR)%.o: $(SRCS_DIR)%.cpp
-				$(CC) ${CFLAGS}  -c $< -o $@
+				$(CC) ${CFLAGS} -Isrcs/ -c $< -o $@
 	
 all:			objs $(NAME)
 

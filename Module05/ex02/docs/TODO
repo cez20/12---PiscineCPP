@@ -1,20 +1,5 @@
 TODO:
 
-Jeudi 27 avril 2023:
-[] Dans les fonctions Aform et Bureaucrat, mettre l'implementation des exceptions dans le fichier .cpp 
-[] Voir comment, je peux utiliser un seul GradeTooLow autant pour Bureaucrat que pour AForm
-[] 
-
-
-
-
-
-Pour chaque exercice:
-[] Mettre les bons headers au fur et a mesure 
-[] Verifier les leaks
-[] Mettre les tests dans le main separe par une ligne de commentaires
-[] Reecrire la fonction de << overlaod dans chacun des forms, car ils sont commentes 
-[] VErifier que les messages GradeTooLow and GradeTooHigh sont au bon endroit.  
 
 PROJET:
 [X] La classe de base Form (Base Class) devra etre une class abstraite
@@ -22,32 +7,29 @@ PROJET:
 	[] Mettre les fonctions necessaire en virtual. Il faut choisir intligemment la fonction qui sera abstraire
 		car elle devra se repeter dans chacune des classes derivees! 
 
-
 [] Ajouter les classe concretes suivantes(Verifier si elle doivent herite de Form) :
 	[X] (AJOUT) Mettre public AForm pour les 3 classes 
 	[X] ShruberryCreation Form(Formulaire de creations d'arbustes)
 		[X]Echelon requis: signature 145, execution 137
 		[X]Creer un fichier <target> _shruberry dans le repertoire courant, et ecrit des 
 			arbres ASCII a l'interieur
-		[X] Try/catch du execute ne semble pas au bon endroit. 
 	[X] RobotomyRequestForm (formulaire de demande de robotomie)
 		[X]Echelon requis: signature 72, execution 45
 		[X]Fait des bruits de perceuse. Ensuite, informe que la <target> a ete 
 			robotomisee avec succes 50% du temps. Dans le cas contraire, informe que 
-			l'operation a echoue
-		[X] Try/catch du execute ne semble pas au bon endroit. 
+			l'operation a echoue 
 	[X] PresidentialPardonForm(formulaire de pardon presidentiel):
 		[X] Echelon requis: signature 25, execution 5
 		[X] Informe que la <target> a ete pardonne par Zaphod Beeblebrox
 		[X] Try/catch du execute ne semble pas au bon endroit. 
 [X] Chacune d'entre elles prend un parametre dans son constructeur: la target(cible) 
 	du formulaire 
-	[X]Par exemple, "jardin" si vous voulez planter des arbustes dans votre jardin
+	[]Par exemple, "jardin" si vous voulez planter des arbustes dans votre jardin
 
-[X] Ajouter la fonction membre execute (Bureaucrat const & executor) const
+[] Ajouter la fonction membre execute (Bureaucrat const & executor) const
 	a la classe de base (classe Form)
-	[X] Implementez une fonction pour executer l'action du formulaire des classes derivees.
-	[X]Vous devez vous assurez que le formulaire est signe et que la grade du bureaucrate
+	[] Implementez une fonction pour executer l'action du formulaire des classes derivees.
+	[]Vous devez vous assurez que le formulaire est signe et que la grade du bureaucrate
 	 tentant de l'executer est suffisant.
 
 [] Que vous souhaitiez checker les prerequis dans CHAQUE CLASSE CONCRETE ou dans 
