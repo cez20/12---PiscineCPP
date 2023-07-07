@@ -68,7 +68,7 @@ AForm*	Intern::makeForm(std::string const & name, std::string const & target) co
 	}
 
 	std::cout << "Form requested to be created does NOT exist!" << std::endl; 
-	return nullptr;
+	return (NULL);
 }
 
 AForm*	Intern::makeShrubberyForm(std::string const & target) const

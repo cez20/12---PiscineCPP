@@ -7,13 +7,6 @@
 
 class Intern
 {
-	private:
-		struct	Forms
-		{
-			std::string 	_name;
-			AForm* 			(Intern::*_ptrToForm)(std::string const &) const; 
-		}  formDetails[3];
-		
 	public:
 
 		Intern();
@@ -26,6 +19,14 @@ class Intern
 		AForm*			makeShrubberyForm(std::string const & target) const;
 		AForm*			makeRobotomyForm(std::string const & target) const;
 		AForm*			makePresidentialForm(std::string const & target) const;
+
+	private:
+	
+		struct	Forms
+		{
+			std::string 	_name;
+			AForm* 			(Intern::*_ptrToForm)(std::string const &) const; 
+		}  formDetails[3];
 };
 
 #endif /* ********************************************************** INTERN_H */

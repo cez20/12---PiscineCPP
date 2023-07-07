@@ -71,6 +71,9 @@ void	AForm::verifyGrade() const
 
 void	AForm::beSigned(Bureaucrat & b)
 {
+	//std::cout << "Bureaucrat grade is " << b.getGrade() << std::endl;
+	//std::cout << "Form Sign is: " << this->getSignStatus() << std::endl;
+	
 	if (b.getGrade() > this->getGradeToSign())
 		throw AForm::GradeTooLowException();
 	this->_isSigned = true;
@@ -84,20 +87,20 @@ void	AForm::isFormExecutable(Bureaucrat const & executor) const
 		throw AForm::GradeTooLowException();	
 }
 
-const char* AForm::GradeTooHighException::what() const throw()
-{
-	return ("Grade is too HIGH");
-}
+// const char* AForm::GradeTooHighException::what() const throw()
+// {
+// 	return ("Grade is too HIGH");
+// }
 
-const char* AForm::GradeTooLowException::what() const throw()
-{
-	return ("Grade is too LOW");
-}
+// const char* AForm::GradeTooLowException::what() const throw()
+// {
+// 	return ("Grade is too LOW");
+// }
 
-const char* AForm::isNotSigned::what() const throw()
-{
-	return ("Form is NOT signed");
-}
+// const char* AForm::isNotSigned::what() const throw()
+// {
+// 	return ("Form is NOT signed");
+// }
 
 void	AForm::printData() const
 {
