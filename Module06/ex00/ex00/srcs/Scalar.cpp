@@ -8,7 +8,7 @@ Scalar::Scalar()
 {
 }
 
-Scalar::Scalar(std::string const & input): _input(input), _c(0)
+Scalar::Scalar(std::string const & input): _input(input), _char(0)
 {
 	analyzeInput();
 }
@@ -52,21 +52,37 @@ Scalar::~Scalar()
 ** --------------------------------- METHODS ----------------------------------
 */
 
+bool	Scalar::isInteger(std::string input)
+{
+	std::istringstream iss(input);
+    int value;
+
+	if ((iss >> value) && input.find(".") == std::string::npos){
+		std::cout << "Parsed integer: " << input << std::endl;
+		this->_int = value;
+		return (1);
+    } else {
+        std::cout << "Failed to parse integer." << std::endl;
+		return (0);
+    }
+}
+
 void	Scalar::analyzeInput()
 {
 	//char* end;
 
     _error = false;
-	// If input received is of length 1 and is not a digit and really a character
     if (_input.length() == 1 && std::isdigit(_input[0]) == 0)
 	{
-        std::cout << "I am here" << std::endl;
-		_c = _input[0];
+		type = isChar;
+		this->_char = _input[0];
 	}
+	else if (isInteger(this->_input))
+	{
+		type = isInt;
 
-
-
-
+		// I have to put a sentence here this->_int  = at an integer value 
+	}
 }
 
 

@@ -3,6 +3,7 @@
 
 # include <iostream>
 # include <string>
+# include <sstream>
 
 class Scalar
 {
@@ -18,13 +19,21 @@ class Scalar
 		std::string toInt() const;
 		std::string toFloat() const;
 		std::string toDouble() const;
+		bool		isInteger(std::string input);
 		void		analyzeInput();
 
 	private:
+		enum	InputType { isChar, isInt, isFloat, isDouble };
+
 		Scalar();
 		std::string _input;
 		bool		_error;
-		char 		_c;
+		char 		_char;
+		int			_int;
+		InputType	type;
+
+
+		
 
 };
 
