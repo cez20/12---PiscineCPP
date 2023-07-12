@@ -6,14 +6,14 @@
 #    By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/03 17:54:38 by cemenjiv          #+#    #+#              #
-#    Updated: 2023/05/29 13:50:20 by cemenjiv         ###   ########.fr        #
+#    Updated: 2023/07/11 22:24:18 by cemenjiv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= convert
 
 SRCS_DIR   		= srcs/
-SRCS_FILES		= main.cpp 
+SRCS_FILES		= main.cpp Scalar.cpp
 SRCS 			= $(addprefix $(SRCS_DIR), $(SRCS_FILES))
 
 OBJS_DIR		= objs/
