@@ -21,6 +21,7 @@ class Scalar
 		// Scalar &		operator=( Scalar const & rhs );
 
 		void	detectType(std::string & entry);
+		void	convertToAllTypes(std::string & entry);
 
 	private:
 

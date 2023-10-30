@@ -18,6 +18,7 @@ Scalar::Scalar(std::string entry): _char(0), _int(0), _float(0.0f), _double(0.0)
 	// std::cout << "The current double is: " << _double << std::endl;
 
 	detectType(entry);
+	convertToType(entry);
 }
 
 // Scalar::Scalar( const Scalar & src )
@@ -61,50 +62,79 @@ Scalar::~Scalar()
 
 void	Scalar::detectType(std::string & entry){
 
-	char *end;
 	int len = entry.length();
 	int nbrOfDots = findNbrOfDots(entry);
 	
 	if (nbrOfDots > 1)
 		this->_type = isError;
 	else if (len == 1 && !std::isdigit(entry[0]))
-	{
 		this->_type = isChar;
-		this->_char = entry[0];
-	}
 	else if (nbrOfDots == 1 || isPseudoLiteralFloat(entry) || isPseudoLiteralDouble(entry))
 	{
 		if (isPseudoLiteralFloat(entry))
-		{
 			this->_type = isFloat;
-			this->_float = std::strtof(entry.c_str(), &end);
-		}
 		else if(isPseudoLiteralDouble(entry))
-		{
 			this->_type = isDouble;
-			this->_double = std::strtod(entry.c_str(), &end);
-		}
 		else if (entry[len - 1] == 'f')
-		{
 			this->_type = isFloat;
-			this->_float = std::strtof(entry.c_str(), &end);
-		}
 		else
-		{
 			this->_type = isDouble;
-			this->_double = std::strtod(entry.c_str(), &end);
-		}
-		if (*end != '\0')
-			this->_type = isError;
 	}
 	else
-	{
 		this->_type = isInteger;
-		this->_int = static_cast<int>(strtol(entry.c_str(), &end, 10));
-		if (*end != '\0')
-			this->_type = isError;
-	}
 }
+
+void Scalar::convertToAllTypes(std::string & entry)
+{
+	char *end = NULL;
+
+	if (this->_type == isChar)
+	{
+		this->_char = entry[0];
+		this->_int = static_cast<int>(this->_char);
+		this->_float = static_cast<float>(this->_char);
+		this->_double = static_cast<double>(this->_char);
+	}
+	else if (this->_type == isInteger)
+	{
+		this->_int = static_cast<int>(strtol(entry.c_str(), &end, 10));
+		if (*end == '\0')
+		{
+			this->_char = static_cast<char>(this->_int);
+			this->_float = static_cast<float>(this->_int);
+			this->_double = static_cast<double>(this->_int);
+		}
+	}
+	else if (this->_type == isFloat)
+	{
+		this->_float = std::strtof(entry.c_str(), &end);
+		if (*end == '\0')
+		{
+			this->_char = static_cast<char>(this->_float);
+			this->_int = static_cast<int>(this->_float);
+			this->_double = static_cast<double>(this->_float);
+		}
+	}
+
+	else if (this->_type == isDouble)
+	{
+		this->_double = std::strtod(entry.c_str(), &end);
+		if (*end == '\0')
+		{
+			this->_char = static_cast<char>(this->_double);
+			this->_int = static_cast<int>(this->_double);
+			this->_float = static_cast<float>(this->_double);
+		}
+	}
+	
+	std::cout << "Type: " << this->_type << std::endl;
+	std::cout << "Char: " << this->_char << std::endl;
+	std::cout << "Int: " << this->_int << std::endl;
+	std::cout << "Float: " << this->_float << std::endl;
+	std::cout << "Double: " << this->_double << std::endl;
+}
+
+
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
