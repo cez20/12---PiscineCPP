@@ -91,35 +91,40 @@ void Scalar::convertToAllTypes(std::string & entry)
 	if (this->_type == isChar)
 	{
 		this->_char = entry[0];
-		this->_int = static_cast<int>(this->_char);
-		this->_float = static_cast<float>(this->_char);
-		this->_double = static_cast<double>(this->_char);
+		if (*end == '\0'){
+			this->_int = static_cast<int>(this->_char);
+			this->_float = static_cast<float>(this->_char);
+			this->_double = static_cast<double>(this->_char);
+		}
 	}
 	else if (this->_type == isInteger)
 	{
 		this->_int = static_cast<int>(strtol(entry.c_str(), &end, 10));
-		this->_char = static_cast<char>(this->_int);
-		this->_float = static_cast<float>(this->_int);
-		this->_double = static_cast<double>(this->_int);
+		if (*end == '\0'){
+			this->_char = static_cast<char>(this->_int);
+			this->_float = static_cast<float>(this->_int);
+			this->_double = static_cast<double>(this->_int);
+		}
 	}
 	else if (this->_type == isFloat)
 	{
 		this->_float = std::strtof(entry.c_str(), &end);
-		this->_char = static_cast<char>(this->_float);
-		this->_int = static_cast<int>(this->_float);
-		this->_double = static_cast<double>(this->_float);
+		if (*end == '\0'){
+			this->_char = static_cast<char>(this->_float);
+			this->_int = static_cast<int>(this->_float);
+			this->_double = static_cast<double>(this->_float);
+		}
 	}
 
 	else if (this->_type == isDouble)
 	{
 		this->_double = std::strtod(entry.c_str(), &end);
-		this->_char = static_cast<char>(this->_double);
-		this->_int = static_cast<int>(this->_double);
-		this->_float = static_cast<float>(this->_double);
+		if (*end == '\0'){
+			this->_char = static_cast<char>(this->_double);
+			this->_int = static_cast<int>(this->_double);
+			this->_float = static_cast<float>(this->_double);
+		}
 	}
-
-	if (*end != '\0')
-		this->_type = isError;
 	
 	std::cout << "Type: " << this->_type << std::endl;
 	std::cout << "Char: " << this->_char << std::endl;
