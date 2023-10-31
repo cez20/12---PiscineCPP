@@ -1,4 +1,6 @@
 #include "Scalar.hpp"
+#include <iomanip>
+#include <sstream>
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
@@ -11,14 +13,13 @@ Scalar::Scalar()
 
 Scalar::Scalar(std::string entry): _char(0), _int(0), _float(0.0f), _double(0.0), _type(isError) {
 	std::cout << "[CONSTRUCTOR w args] has been called" << std::endl;
-	// std::cout << "The current entry is: " << entry << std::endl;
-	// std::cout << "The current char is: " << _char << std::endl;
-	// std::cout << "The current int is: " << _int << std::endl;
-	// std::cout << "The current float is: " << _float << std::endl;
-	// std::cout << "The current double is: " << _double << std::endl;
 
 	detectType(entry);
 	convertToAllTypes(entry);
+	printChar();
+	printInt();
+	printFloat(entry);
+	printDouble(entry);
 }
 
 // Scalar::Scalar( const Scalar & src )
@@ -109,7 +110,7 @@ void Scalar::convertToAllTypes(std::string & entry)
 	else if (this->_type == isFloat)
 	{
 		this->_float = std::strtof(entry.c_str(), &end);
-		if (*end == '\0'){
+		if (*end == '\0' || *end == 'f'){
 			this->_char = static_cast<char>(this->_float);
 			this->_int = static_cast<int>(this->_float);
 			this->_double = static_cast<double>(this->_float);
@@ -125,7 +126,7 @@ void Scalar::convertToAllTypes(std::string & entry)
 			this->_float = static_cast<float>(this->_double);
 		}
 	}
-	
+
 	std::cout << "Type: " << this->_type << std::endl;
 	std::cout << "Char: " << this->_char << std::endl;
 	std::cout << "Int: " << this->_int << std::endl;
@@ -133,7 +134,69 @@ void Scalar::convertToAllTypes(std::string & entry)
 	std::cout << "Double: " << this->_double << std::endl;
 }
 
+void	Scalar::printChar()
+{
+	if (this->_type == isError)
+		std::cout << "char: " << "impossible" << std::endl;
 
+	else if (this->_int < 0 || this->_int > 127)
+		std::cout << "char: " << "impossible" << std::endl;
+
+	else if (this->_float != this->_float || this->_float == std::numeric_limits<double>::infinity() ||
+		this->_float == -std::numeric_limits<double>::infinity())
+		std::cout << "char: " << "impossible" << std::endl;
+
+	else if (!std::isprint(static_cast<int>(this->_char)))
+		std::cout << "char: " << "Non displayable" << std::endl;
+
+	else{
+		std::cout << "char: '" << this->_char << "'" << std::endl;
+	}
+}
+
+void	Scalar::printInt()
+{
+	if (this->_type == isError)
+		std::cout << "int: " << "impossible" << std::endl;
+
+	else if (this->_float != this->_float || this->_float == std::numeric_limits<double>::infinity() ||
+		this->_float == -std::numeric_limits<double>::infinity())
+		std::cout << "int: " << "impossible" << std::endl;
+
+	else{
+		std::cout << "int: " << this->_int << std::endl;
+	}
+}
+
+void	Scalar::printFloat(std::string & entry)
+{
+	if (this->_type == isError)
+		std::cout << "float: " << "impossible" << std::endl;
+
+	else if (entry == "+inff")
+		std::cout << "float: +inff" << std::endl;
+	
+	else{
+		std::stringstream ss;
+		ss << "float: " << std::fixed << std::setprecision(1) << this->_float << "f";
+		std::cout << ss.str() << std::endl;
+	}
+}
+
+void	Scalar::printDouble(std::string & entry)
+{
+	if (this->_type == isError)
+		std::cout << "double: impossible" << std::endl;
+
+	else if (entry == "+inff")
+		std::cout << "double: +inf" << std::endl;
+	
+	else {
+		std::stringstream ss;
+		ss << "double: " << std::fixed << std::setprecision(1) << this->_float;
+		std::cout << ss.str() << std::endl;
+	}
+}
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------

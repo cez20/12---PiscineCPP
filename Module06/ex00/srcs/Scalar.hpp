@@ -22,6 +22,10 @@ class Scalar
 
 		void	detectType(std::string & entry);
 		void	convertToAllTypes(std::string & entry);
+		void	printChar();
+		void	printInt();
+		void	printFloat(std::string & entry);
+		void 	printDouble(std::string & entry);
 
 	private:
 
