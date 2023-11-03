@@ -1,0 +1,21 @@
+
+[] Me rappelez ce que je dois faire pour respecter la forme canonique de Coplien
+
+[]Implementez les fonctions suivantes:
+    [] uintptr_t serialize(data *ptr);
+        Elle prend un pointeur et convertit celui-ci vers le type d'entier non-signe uintptr_t
+    [] Data* deserialize(uintptr_t raw)
+        Elle prend un entier non-signe en parametre et le convertit en pointeur sur Data 
+
+[] Ecrivez un programme pour tester vos fonctions et vous assurer que tout marche comme prevu
+[] Vous devez creer une structure non-vide (cela signifie quelle coporte des variables membres)Data 
+
+[]Utiliser serialiaze() sur l'adresse objet Data et passer la valuer de retour obtenue a deserialize(). Ensuite,
+    assurez-vous que le retour de deserialize() est identique au pointeur dorigine
+
+[] Noubliez pas de rendre les fichiers de votre structure Data
+
+
+
+Definition serialize:
+ process of transforming an object into a format that can be stores
