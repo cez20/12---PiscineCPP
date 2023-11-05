@@ -28,6 +28,4 @@ class Serialize
 
 };
 
-// std::ostream &			operator<<( std::ostream & o, Serialize const & i );
-
 #endif /* ******************************************************* SERIALIZE_H */
