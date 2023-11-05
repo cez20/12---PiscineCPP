@@ -6,15 +6,12 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 20:29:23 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/11/03 15:45:20 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/11/05 14:54:33 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Base.hpp"
-#include "A.hpp"
-#include "B.hpp"
-#include "C.hpp"
 
 Base*   generate(void){
 
@@ -32,11 +29,11 @@ Base*   generate(void){
 
 void	identify(Base *p){
 
-	if(dynamic_cast<A*>(p))
+	if(dynamic_cast<A*>(p) != NULL)
 		std::cout << "Base pointer true type is A" << std::endl;
-	else if(dynamic_cast<B*>(p))
+	else if(dynamic_cast<B*>(p) != NULL)
 		std::cout << "Base pointer true type is B" << std::endl;
-	else if(dynamic_cast<C*>(p))
+	else if(dynamic_cast<C*>(p) != NULL)
 		std::cout << "Base pointer true type is C" << std::endl;
 	else
 		std::cout << "There is an ERROR" << std::endl;
@@ -63,7 +60,6 @@ void	identify(Base &p){
 	} catch (std::bad_cast &bc){
 	}
 }
-
 
 int main ()
 {
