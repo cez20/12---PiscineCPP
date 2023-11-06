@@ -8,11 +8,11 @@
 
 Scalar::Scalar()
 {
-
+	std::cout << "[DEFAULT CONSTRUCTOR] has been called." << std::endl;
 }
 
 Scalar::Scalar(std::string entry): _char(0), _int(0), _float(0.0f), _double(0.0), _type(isError) {
-	std::cout << "[CONSTRUCTOR w args] has been called" << std::endl;
+
 
 	detectType(entry);
 	convertToAllTypes(entry);
@@ -22,9 +22,10 @@ Scalar::Scalar(std::string entry): _char(0), _int(0), _float(0.0f), _double(0.0)
 	printDouble(entry);
 }
 
-// Scalar::Scalar( const Scalar & src )
-// {
-// }
+Scalar::Scalar( const Scalar & src )
+{
+	*this = src;
+}
 
 
 /*
@@ -33,7 +34,7 @@ Scalar::Scalar(std::string entry): _char(0), _int(0), _float(0.0f), _double(0.0)
 
 Scalar::~Scalar()
 {
-	std::cout << "[DESTRUCTOR] has been called!" << std::endl;
+
 }
 
 
@@ -41,21 +42,18 @@ Scalar::~Scalar()
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-// Scalar &				Scalar::operator=( Scalar const & rhs )
-// {
-// 	//if ( this != &rhs )
-// 	//{
-// 		//this->_value = rhs.getValue();
-// 	//}
-// 	return *this;
-// }
-
-// std::ostream &			operator<<( std::ostream & o, Scalar const & i )
-// {
-// 	//o << "Value = " << i.getValue();
-// 	return o;
-// }
-
+Scalar &				Scalar::operator=( Scalar const & rhs )
+{
+	if ( this != &rhs )
+	{
+		this->_char = rhs._char;
+		this->_int = rhs._int;
+		this->_float = rhs._float;
+		this->_double = rhs._double;
+		this->_type = rhs._type;
+	}
+	return *this;
+}
 
 /*
 ** --------------------------------- METHODS ----------------------------------
@@ -92,11 +90,9 @@ void Scalar::convertToAllTypes(std::string & entry)
 	if (this->_type == isChar)
 	{
 		this->_char = entry[0];
-		if (*end == '\0'){
-			this->_int = static_cast<int>(this->_char);
-			this->_float = static_cast<float>(this->_char);
-			this->_double = static_cast<double>(this->_char);
-		}
+		this->_int = static_cast<int>(this->_char);
+		this->_float = static_cast<float>(this->_char);
+		this->_double = static_cast<double>(this->_char);
 	}
 	else if (this->_type == isInteger)
 	{
@@ -105,6 +101,8 @@ void Scalar::convertToAllTypes(std::string & entry)
 			this->_char = static_cast<char>(this->_int);
 			this->_float = static_cast<float>(this->_int);
 			this->_double = static_cast<double>(this->_int);
+		}else{
+			this->_type = isError;
 		}
 	}
 	else if (this->_type == isFloat)
@@ -114,6 +112,8 @@ void Scalar::convertToAllTypes(std::string & entry)
 			this->_char = static_cast<char>(this->_float);
 			this->_int = static_cast<int>(this->_float);
 			this->_double = static_cast<double>(this->_float);
+		}else{
+			this->_type = isError;
 		}
 	}
 
@@ -124,14 +124,16 @@ void Scalar::convertToAllTypes(std::string & entry)
 			this->_char = static_cast<char>(this->_double);
 			this->_int = static_cast<int>(this->_double);
 			this->_float = static_cast<float>(this->_double);
+		}else{
+			this->_type = isError;
 		}
 	}
 
-	std::cout << "Type: " << this->_type << std::endl;
-	std::cout << "Char: " << this->_char << std::endl;
-	std::cout << "Int: " << this->_int << std::endl;
-	std::cout << "Float: " << this->_float << std::endl;
-	std::cout << "Double: " << this->_double << std::endl;
+	// std::cout << "Type: " << this->_type << std::endl;
+	// std::cout << "Char: " << this->_char << std::endl;
+	// std::cout << "Int: " << this->_int << std::endl;
+	// std::cout << "Float: " << this->_float << std::endl;
+	// std::cout << "Double: " << this->_double << std::endl;
 }
 
 void	Scalar::printChar()

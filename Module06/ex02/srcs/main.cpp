@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 20:29:23 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/11/05 14:54:33 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/11/06 14:05:30 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,8 @@ int main ()
     Base *instance3 = generate();
     identify(instance3);
     identify(*instance3);
+
+	delete instance1;
+	delete instance2;
+	delete instance3;
 }

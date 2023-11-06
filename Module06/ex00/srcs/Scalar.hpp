@@ -15,10 +15,10 @@ class Scalar
 	public:
 
 		Scalar(std::string entry);
-		// Scalar( Scalar const & src );
+		Scalar( Scalar const & src );
 		~Scalar();
 
-		// Scalar &		operator=( Scalar const & rhs );
+		Scalar &		operator=( Scalar const & rhs );
 
 		void	detectType(std::string & entry);
 		void	convertToAllTypes(std::string & entry);
