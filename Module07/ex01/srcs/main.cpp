@@ -1,37 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   whatever.hpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 22:16:53 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/11/06 22:31:24 by cemenjiv         ###   ########.fr       */
+/*   Created: 2023/04/11 15:21:23 by cemenjiv          #+#    #+#             */
+/*   Updated: 2023/11/06 22:24:37 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include <iostream>
 
-template < typename T >
-void swap(T & a, T & b)
-{
-    T temp = a;
-    a = b;
-    b = temp;
-}
+int main( void ) {
 
-template < typename T >
-T & min (T & a, T & b)
-{
-    if (b <= a)
-        return (b);
-    return (a);
-}
-
-template < typename T >
-T & max (T & a, T & b)
-{
-    if (b >= a)
-        return (b);
-    return (a);
+    return 0;
 }
