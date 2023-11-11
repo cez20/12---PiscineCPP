@@ -1,10 +1,10 @@
 
 
 Implementez une fonction iter prenant 3 parametres et ne retournant rien
-    [] Le premier parametre est l'adresse dun tableau
-    [] Le second est la taille du tableau
-    [] Le troisieme est une fonction qui sera appelee sur chaque element du tableau.
+    [X] Le premier parametre est l'adresse dun tableau (pointeur)
+    [] Le second est la taille du tableau (size_t)
+    [] Le troisieme est une fonction qui sera appelee sur chaque element du tableau (function qui prend element du tableau )
 
 [] Rendez un fichier main.cpp contenant vos tests. Fournissez assez de code pour generer un executable de test.
 [] Votre fonction template iter devra fonctionner avec n'importe quel type de tableau.
-[] Le 3e parametre peut etre une fonction template instanciee
+[] Le 3e parametre peut etre une fonction template instancie

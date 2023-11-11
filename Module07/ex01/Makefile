@@ -6,11 +6,11 @@
 #    By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/03 17:54:38 by cemenjiv          #+#    #+#              #
-#    Updated: 2023/11/06 18:41:27 by cemenjiv         ###   ########.fr        #
+#    Updated: 2023/11/07 21:39:10 by cemenjiv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			= template
+NAME			= iter
 
 SRCS_DIR   		= srcs/
 SRCS_FILES		= main.cpp
