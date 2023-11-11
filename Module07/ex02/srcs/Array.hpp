@@ -10,35 +10,29 @@ class Array
 
 	public:
 
-		Array<T>(): array(NULL), arraySize(0){
+		Array(): array(NULL), arraySize(0){
 			std::cout << "[DEFAULT CONSTRUCTOR] has been called" << std::endl;
 		}
-		Array<T>(unsigned int n): arraySize(n){
+		Array(unsigned int n): arraySize(n){
 			std::cout << "[CONSTRUCTOR WITH ARG] has been called" << std::endl;
 			array = new T[n];
 		}
-		Array<T>( Array <T> const & src ){
+		Array( Array const & src ){
+			std::cout << "[COPY CONSTRUCTOR WITH ARG] has been called" << std::endl;
 			*this = src;
 		}
-		~Array<T>(){
+		~Array(){
 			std::cout << "[DESTRUCTOR] has been called" << std::endl;
 			delete[] array;
 		}
 
-		Array<T> &		operator=( Array<T> const & rhs ){
+		Array &		operator=( Array const & rhs ){
+			std::cout << "[ASSIGNMENT OPERATOR] has been called" << std::endl;
 			if ( this != &rhs ){
 				arraySize = rhs.arraySize;
 				array = new T[rhs.arraySize];
 			}
 			return *this;
-		}
-
-		void	modify_array_value(unsigned int index, T value)
-		{
-			if (index < arraySize)
-				array[index] = value;
-			else
-				std::cout << "Invalid index" << std::endl;
 		}
 
 		void	print_array()
