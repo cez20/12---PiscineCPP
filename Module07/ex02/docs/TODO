@@ -11,11 +11,11 @@
     [X] Vous DEVEZ utiliser l’opérateur new[] pour allouer de la mémoire. Toute allocation préventive (c’est-à-dire allouer de la mémoire en avance) est interdite. Votre
         rogramme ne doit pas pouvoir accéder à une zone non allouée.
     [X] Les éléments doivent être accessibles grâce à l’opérateur d’indice : [ ]
-    [] En cas d’index invalide lors d’une tentative d’accès d’un élément en utilisant l’opérateur [ ], une std::exception est jetée.
+    [X] En cas d’index invalide lors d’une tentative d’accès d’un élément en utilisant l’opérateur [ ], une std::exception est jetée.
     [X] Une fonction membre size() qui retourne le nombre d’éléments dans l’array. Cette
         fonction membre ne prend aucun paramètre et ne doit pas modifier l’instance courante.
     [X] Pas de leaks;
-    [] Faire des test avec dautres type de valuer que int
+    [X] Faire des test avec dautres type de valuer que int
 
         Comme d’habitude, assurez-vous que tout fonctionne comme attendu et rendez un
         fichier main.cpp contenant vos tests.       

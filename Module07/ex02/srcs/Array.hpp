@@ -10,46 +10,55 @@ class Array
 
 	public:
 
-		Array(): array(NULL), arraySize(0){
+		Array(): _array(NULL), _arraySize(0){
 			std::cout << "[DEFAULT CONSTRUCTOR] has been called" << std::endl;
 		}
-		Array(unsigned int n): arraySize(n){
+		Array(unsigned int n): _arraySize(n){
 			std::cout << "[CONSTRUCTOR WITH ARG] has been called" << std::endl;
-			array = new T[n];
+			_array = new T[n];
 		}
-		Array( Array const & src ){
+		Array( Array const & src ) {
 			std::cout << "[COPY CONSTRUCTOR WITH ARG] has been called" << std::endl;
+			_array = NULL; 
 			*this = src;
 		}
 		~Array(){
 			std::cout << "[DESTRUCTOR] has been called" << std::endl;
-			delete[] array;
+			delete[] _array;
 		}
 
 		Array &		operator=( Array const & rhs ){
 			std::cout << "[ASSIGNMENT OPERATOR] has been called" << std::endl;
 			if ( this != &rhs ){
-				arraySize = rhs.arraySize;
-				array = new T[rhs.arraySize];
+				_arraySize = rhs._arraySize;
+				_array = new T[rhs._arraySize];
+				std::memcpy(_array, rhs._array, rhs._arraySize * sizeof(T));
 			}
 			return *this;
 		}
 
-		void	print_array()
+		T &			operator[](unsigned int index)
 		{
-			std::cout << "The address of array is: " << array << std::endl;
-			for (unsigned int i = 0; i < arraySize; i++)
-				std::cout << array[i] << std::endl;
+			if (index >= _arraySize)
+				throw std::invalid_argument("Index is invalid. Index is out of bound");
+			return _array[index];
+		}
+
+		void	print_array(void)
+		{
+			std::cout << "The address of array is: " << _array << std::endl;
+			for (unsigned int i = 0; i < _arraySize; i++)
+				std::cout << _array[i] << std::endl;
 		}
 
 		unsigned int size(void){
-			return arraySize;
+			return _arraySize;
 		}
 
 	private:
 
-		T*				array;
-		unsigned int	arraySize;
+		T*				_array;
+		unsigned int	_arraySize;
 
 };
 
