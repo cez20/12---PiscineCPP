@@ -6,30 +6,27 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 19:41:07 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/11/23 20:34:13 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/11/23 21:05:51 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EASYFIND_HPP
 # define EASYFIND_HPP
 
-#include <list>
+#include <algorithm>
+#include <iostream>
 
 template < typename T >
-void easyfind(T const & a, int const & b)
+void easyfind(T a, int b)
 {
-	std::list<int>::const_iterator it;
-    std::list<int>::const_iterator ite = a.end();
+	typename T::iterator res = std::find(a.begin(), a.end(), b);
 
-	for(it = a.begin(); it != ite; ++it)
-    {
-        if (*it == b)
-		{
-			std::cout << *it << std::endl;
-			return; 
-		}
-	}
-	throw("Message error");
+	// if(std::find(a.begin(), a.end(), b) != a.end())
+	// 	std::cout << "Value " << b << " was found!"<< std::endl;
+	if(res != a.end())
+		std::cout << "Value " << b << " was found!"<< std::endl;
+	else
+		std::cout << "Value " << b << " was NOT found!"<< std::endl;
 }
 
 #endif
