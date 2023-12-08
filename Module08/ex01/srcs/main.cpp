@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 19:41:03 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/12/07 23:10:55 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/12/07 23:53:30 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 
 int main()
 {
+    // MaxCapacityReached exception 
+    
     Span test(3);
 
     test.addNumber(25);
@@ -31,6 +33,8 @@ int main()
         std::cout << e.what() << std::endl;
     }
 
+    // No range because all same values 
+
     Span test1(3);
 
     try{
@@ -44,6 +48,8 @@ int main()
         std::cout << e.what() << std::endl;
     }
 
+    // Shortest and longest span exception 
+    
     Span test2(3);
     
     test2.addNumber(3);
@@ -63,6 +69,7 @@ int main()
         std::cout << e.what() << std::endl;
     }
 
+    // Testing shortest and longest range with 10000 numbers 
 
     srand(static_cast<unsigned int>(time(NULL)));
 
@@ -74,6 +81,7 @@ int main()
 
     Span test5(10000);
     test5.addManyNumbers(test4.begin(), test4.end());
-    std::cout << "shortestSpan is: " << test1.shortestSpan() << std::endl;
-    std::cout << "longest Span is: " << test1.longestSpan() << std::endl;
+    
+    std::cout << "shortestSpan is: " << test5.shortestSpan() << std::endl;
+    std::cout << "longest Span is: " << test5.longestSpan() << std::endl;
 }
