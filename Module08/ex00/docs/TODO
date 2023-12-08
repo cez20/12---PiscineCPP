@@ -1,8 +1,0 @@
-[]Ecrire une fonction template easyfind acceptant un type T. 
-    []Elle prend 2 parametres. Le premier est de type T et le second un nombre entier 
-[] Partant du principe que T est un container dentiers, cette fonction doit trouver la 1ere occurence
-    du second parametre dans le premier parametre
-[] Si aucune occurence na ete trouvee, vous pouvez soit jeter une exception, soit retourner une valeur
-   de votre choix. Si vous avez besoin dinspiration, jetez un oeil au comportement des containers standards
-
-[] Bien entendu, implementez et rendez vos propres tests pour demontrer que tout marche comme attendu.
