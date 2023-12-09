@@ -19,14 +19,16 @@ Span::Span(unsigned int N): _maxRangeOfNumbers(N)
 	std::cout << "[CONSTRUCTOR W PARAMETERS] has been called" << std::endl;
 
 	_listOfNumbers.reserve(N);
-	std::cout << "Vector capacity is: " << _listOfNumbers.capacity() << std::endl;
-	std::cout << "maxRangeofNumbers is :" << _maxRangeOfNumbers << std::endl;
+	// std::cout << "Vector capacity is: " << _listOfNumbers.capacity() << std::endl;
+	// std::cout << "maxRangeofNumbers is :" << _maxRangeOfNumbers << std::endl;
 }
 
 
-// Span::Span( const Span & src )
-// {
-// }
+Span::Span( const Span & src )
+{
+	std::cout << "[COPY CONSTRUCTOR] has been called" << std::endl;
+	*this = src;
+}
 
 
 /*
@@ -43,14 +45,16 @@ Span::~Span()
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-// Span &				Span::operator=( Span const & rhs )
-// {
-// 	//if ( this != &rhs )
-// 	//{
-// 		//this->_value = rhs.getValue();
-// 	//}
-// 	return *this;
-// }
+Span &				Span::operator=( Span const & rhs )
+{
+	std::cout << "[ASSIGNMENT OPERATOR OVERLOAD] has been called" << std::endl;
+	if ( this != &rhs )
+	{
+		this->_maxRangeOfNumbers = rhs._maxRangeOfNumbers;
+		this->_listOfNumbers = rhs._listOfNumbers;
+	}
+	return *this;
+}
 
 
 /*
@@ -72,7 +76,7 @@ void	Span::addManyNumbers(std::vector<int>::iterator begin, std::vector<int>::it
 {
 	for (std::vector<int>::iterator it = begin; it != end; ++it) {
         addNumber(*it);
-		std::cout << "Value of it is:" << *it << std::endl;
+		// std::cout << "Value of it is:" << *it << std::endl;
     }
 }
 
@@ -113,7 +117,6 @@ unsigned int Span::longestSpan() const {
 			maxSpan = std::max(maxSpan, static_cast<unsigned int>(std::abs(span)));
 		}
     }
-
 	return (maxSpan);
 }
 

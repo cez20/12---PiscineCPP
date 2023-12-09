@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 19:41:03 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/12/07 23:53:30 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/12/09 13:53:11 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int main()
     test.addNumber(25);
     test.addNumber(100);
     test.addNumber(30);
-    test.shortestSpan();
-    test.longestSpan();
+    std::cout << "shortestSpan is: " << test.shortestSpan() << std::endl;;
+    std::cout << "longestSpan is: " << test.longestSpan() << std::endl;
 
     try{
         test.addNumber(75);
@@ -52,17 +52,17 @@ int main()
     
     Span test2(3);
     
-    test2.addNumber(3);
+    test2.addNumber(100);
     
     try{
-       test1.shortestSpan();
+       test2.shortestSpan();
     }catch (std::exception & e){
         std::cout << e.what() << std::endl;
     }
 
     Span test3(3);
     
-    test2.addNumber(3);
+    test3.addNumber(100);
     try{
         test3.longestSpan();
     }catch (std::exception & e){
@@ -76,7 +76,6 @@ int main()
     std::vector<int> test4;
     for (std::size_t i = 0; i < 10000; ++i) {
         test4.push_back(rand());
-        std::cout << test4[i] << std::endl;
     }
 
     Span test5(10000);

@@ -11,10 +11,10 @@ class Span
 	public:
 
 		Span(unsigned int N);
-		// Span( Span const & src );
+		Span( Span const & src );
 		~Span();
 
-		// Span &		operator=( Span const & rhs );
+		Span &		operator=( Span const & rhs );
 		void 			addNumber(unsigned int nbr);
 		void			addManyNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 		unsigned int	shortestSpan() const;
@@ -36,13 +36,11 @@ class Span
 	};
 
 	private:
-		Span(); // cannot be used
-		unsigned int				_maxRangeOfNumbers;  // Designed maximum range of numbers that class can contain
+		Span();
+		unsigned int				_maxRangeOfNumbers;
 		std::vector<unsigned int> 	_listOfNumbers;
 
 
 };
-
-std::ostream &			operator<<( std::ostream & o, Span const & i );
 
 #endif /* ************************************************************ SPAN_H */
