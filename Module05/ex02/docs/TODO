@@ -1,0 +1,46 @@
+TODO:
+
+
+PROJET:
+[X] La classe de base Form (Base Class) devra etre une class abstraite
+	[] Les attributs du formulaire doivent rester prives et dans la classe de base.
+	[] Mettre les fonctions necessaire en virtual. Il faut choisir intligemment la fonction qui sera abstraire
+		car elle devra se repeter dans chacune des classes derivees! 
+
+[] Ajouter les classe concretes suivantes(Verifier si elle doivent herite de Form) :
+	[X] (AJOUT) Mettre public AForm pour les 3 classes 
+	[X] ShruberryCreation Form(Formulaire de creations d'arbustes)
+		[X]Echelon requis: signature 145, execution 137
+		[X]Creer un fichier <target> _shruberry dans le repertoire courant, et ecrit des 
+			arbres ASCII a l'interieur
+	[X] RobotomyRequestForm (formulaire de demande de robotomie)
+		[X]Echelon requis: signature 72, execution 45
+		[X]Fait des bruits de perceuse. Ensuite, informe que la <target> a ete 
+			robotomisee avec succes 50% du temps. Dans le cas contraire, informe que 
+			l'operation a echoue 
+	[X] PresidentialPardonForm(formulaire de pardon presidentiel):
+		[X] Echelon requis: signature 25, execution 5
+		[X] Informe que la <target> a ete pardonne par Zaphod Beeblebrox
+		[X] Try/catch du execute ne semble pas au bon endroit. 
+[X] Chacune d'entre elles prend un parametre dans son constructeur: la target(cible) 
+	du formulaire 
+	[]Par exemple, "jardin" si vous voulez planter des arbustes dans votre jardin
+
+[] Ajouter la fonction membre execute (Bureaucrat const & executor) const
+	a la classe de base (classe Form)
+	[] Implementez une fonction pour executer l'action du formulaire des classes derivees.
+	[]Vous devez vous assurez que le formulaire est signe et que la grade du bureaucrate
+	 tentant de l'executer est suffisant.
+
+[] Que vous souhaitiez checker les prerequis dans CHAQUE CLASSE CONCRETE ou dans 
+	LA CLASSE DE BASE (puis appeler une autre fonction pour executer le formulaire),
+	c'est VOTRE CHOIX. Toutefois, une de ces deux manieres de faire est plus propre
+	que l'autre.
+
+[] Pour finir, ajoutez la fonction membre executeForm(Form const & form) au Bureaucrat
+	[] Ce dernier (Bureaucrat) doit tenter "d'execute" le formulaire. S'il y arrive,
+		affichez un message comme: 
+			<bureaucrat> executed <form>
+	 	[] Dans le cas contraire, affichez un message d'erreur explicite
+
+[] Implementez et rendez vos propres tests afin de demontrer que tout marche comme attendu.
