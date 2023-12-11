@@ -1,4 +1,5 @@
 #include "MutantStack.hpp"
+#include <stack>
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
@@ -54,7 +55,7 @@ typename MutantStack<T>::iterator	MutantStack<T>::begin()
 }
 
 template <typename T>
-typename MutantStack<T>::iterator	MutantStack<T>::end()
+typename MutantStack<T>::iterator MutantStack<T>::end()
 {
     return std::stack<T>::c.end();
 }

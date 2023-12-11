@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 18:48:46 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/12/10 20:13:36 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/12/10 20:54:26 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ class MutantStack: public std::stack<T>
 
 		MutantStack &operator=( MutantStack const & rhs );
 
-		iterator begin();
-    	iterator end();
+		iterator	begin();
+    	iterator	end();
 };
 
 #endif
