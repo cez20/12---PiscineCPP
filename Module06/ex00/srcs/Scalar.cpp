@@ -13,7 +13,11 @@ Scalar::Scalar()
 
 Scalar::Scalar(std::string entry): _char(0), _int(0), _float(0.0f), _double(0.0), _type(isError) {
 
-
+	if (entry.empty()){
+		std::cout << "ERROR: Cannot convert because string is empty!" << std::endl;
+		return;
+	}
+	
 	detectType(entry);
 	convertToAllTypes(entry);
 	printChar();
@@ -200,12 +204,6 @@ void	Scalar::printDouble(std::string & entry)
 	}
 }
 
-/*
-** --------------------------------- ACCESSOR ---------------------------------
-*/
-
-
-/* ************************************************************************** */
 
 bool isPseudoLiteralFloat(std::string & entry)
 {

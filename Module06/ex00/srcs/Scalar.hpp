@@ -41,6 +41,6 @@ class Scalar
 int findNbrOfDots(std::string & entry);
 bool isPseudoLiteralFloat(std::string & entry);
 bool isPseudoLiteralDouble(std::string & entry);
-// std::ostream &			operator<<( std::ostream & o, Scalar const & i );
+
 
 #endif /* ********************************************************** SCALAR_H */
