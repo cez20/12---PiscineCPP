@@ -72,22 +72,27 @@ void	Scalar::detectType(std::string &entry){
 		this->_type = isError;
 	else if (len == 1 &&!std::isdigit(entry[0]))
 		this->_type = isChar;
-	else if (nbrOfDots == 1 || isPseudoLiteralFloat(entry) || isPseudoLiteralDouble(entry))
-	{
-		if (isPseudoLiteralFloat(entry))
-			this->_type = isFloat;
-		else if(isPseudoLiteralDouble(entry))
-			this->_type = isDouble;
-		else if (entry[len - 1] == 'f')
-		{
-			this->_type = isFloat;
-			
-		}
-		else
-			this->_type = isDouble;
-	}
+	else if (nbrOfDots == 1 || isPseudoLiteralFloat(entry) || entry[len - 1] == 'f')
+		this->_type = isFloat;
+	else if (nbrOfDots == 1 || isPseudoLiteralDouble(entry))
+		this->_type = isDouble;
 	else
 		this->_type = isInteger;
+
+	// else if (nbrOfDots == 1 || isPseudoLiteralFloat(entry) || isPseudoLiteralDouble(entry))
+	// {
+	// 	if (isPseudoLiteralFloat(entry))
+	// 		this->_type = isFloat;
+	// 	else if(isPseudoLiteralDouble(entry))
+	// 		this->_type = isDouble;
+	// 	else if (entry[len - 1] == 'f')
+	// 	{
+	// 		this->_type = isFloat;
+
+	// 	}
+	// 	else
+	// 		this->_type = isDouble;
+	// }
 }
 
 void Scalar::convertToAllTypes(std::string &entry)
@@ -236,7 +241,6 @@ void	Scalar::printInt()
 
 void	Scalar::printFloat(std::string &entry)
 {
-	std::cout << "The value of this float is: " << this->_float << std::endl;
 	if (this->_type == isError)
 		std::cout << "float: impossible" << std::endl;
 	else if (entry == "nanf")
