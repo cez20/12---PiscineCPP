@@ -26,7 +26,7 @@ Scalar::Scalar(std::string entry): _char(0), _int(0), _float(0.0f), _double(0.0)
 	printDouble(entry);
 }
 
-Scalar::Scalar( const Scalar & src )
+Scalar::Scalar( const Scalar &src )
 {
 	*this = src;
 }
@@ -46,7 +46,7 @@ Scalar::~Scalar()
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-Scalar &				Scalar::operator=( Scalar const & rhs )
+Scalar &				Scalar::operator=( Scalar const &rhs )
 {
 	if ( this != &rhs )
 	{
@@ -63,14 +63,14 @@ Scalar &				Scalar::operator=( Scalar const & rhs )
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void	Scalar::detectType(std::string & entry){
+void	Scalar::detectType(std::string &entry){
 
 	int len = entry.length();
 	int nbrOfDots = findNbrOfDots(entry);
 	
 	if (nbrOfDots > 1)
 		this->_type = isError;
-	else if (len == 1 && !std::isdigit(entry[0]))
+	else if (len == 1 &&!std::isdigit(entry[0]))
 		this->_type = isChar;
 	else if (nbrOfDots == 1 || isPseudoLiteralFloat(entry) || isPseudoLiteralDouble(entry))
 	{
@@ -79,7 +79,10 @@ void	Scalar::detectType(std::string & entry){
 		else if(isPseudoLiteralDouble(entry))
 			this->_type = isDouble;
 		else if (entry[len - 1] == 'f')
+		{
 			this->_type = isFloat;
+			
+		}
 		else
 			this->_type = isDouble;
 	}
@@ -87,101 +90,159 @@ void	Scalar::detectType(std::string & entry){
 		this->_type = isInteger;
 }
 
-void Scalar::convertToAllTypes(std::string & entry)
+void Scalar::convertToAllTypes(std::string &entry)
+{
+	if (this->_type == isChar)
+		convertToChar(entry);
+	else if (this->_type == isInteger) 
+		convertToInteger(entry);
+	else if (this->_type == isFloat) 
+		convertToFloat(entry);
+	else if (this->_type == isDouble)
+		convertToDouble(entry);
+}
+
+void Scalar::convertToChar(std::string &entry)
+{
+	this->_char = entry[0];
+	this->_int = static_cast<int>(this->_char);
+	this->_float = static_cast<float>(this->_char);
+	this->_double = static_cast<double>(this->_char);
+}
+
+void Scalar::convertToInteger(std::string &entry)
 {
 	char *end = NULL;
 
-	if (this->_type == isChar)
+	this->_int = static_cast<int>(strtol(entry.c_str(), &end, 10));
+	if (*end == '\0')
 	{
-		this->_char = entry[0];
-		this->_int = static_cast<int>(this->_char);
-		this->_float = static_cast<float>(this->_char);
-		this->_double = static_cast<double>(this->_char);
+		this->_char = static_cast<char>(this->_int);
+		this->_float = static_cast<float>(this->_int);
+		this->_double = static_cast<double>(this->_int);
 	}
-	else if (this->_type == isInteger)
-	{
-		this->_int = static_cast<int>(strtol(entry.c_str(), &end, 10));
-		if (*end == '\0'){
-			this->_char = static_cast<char>(this->_int);
-			this->_float = static_cast<float>(this->_int);
-			this->_double = static_cast<double>(this->_int);
-		}else{
-			this->_type = isError;
-		}
-	}
-	else if (this->_type == isFloat)
-	{
-		this->_float = std::strtof(entry.c_str(), &end);
-		if (*end == '\0' || *end == 'f'){
-			this->_char = static_cast<char>(this->_float);
-			this->_int = static_cast<int>(this->_float);
-			this->_double = static_cast<double>(this->_float);
-		}else{
-			this->_type = isError;
-		}
-	}
-
-	else if (this->_type == isDouble)
-	{
-		this->_double = std::strtod(entry.c_str(), &end);
-		if (*end == '\0'){
-			this->_char = static_cast<char>(this->_double);
-			this->_int = static_cast<int>(this->_double);
-			this->_float = static_cast<float>(this->_double);
-		}else{
-			this->_type = isError;
-		}
-	}
-
-	// std::cout << "Type: " << this->_type << std::endl;
-	// std::cout << "Char: " << this->_char << std::endl;
-	// std::cout << "Int: " << this->_int << std::endl;
-	// std::cout << "Float: " << this->_float << std::endl;
-	// std::cout << "Double: " << this->_double << std::endl;
+	else
+		this->_type = isError;
 }
+
+void Scalar::convertToFloat(std::string &entry)
+{
+	char *end = NULL;
+	
+	this->_float = std::strtof(entry.c_str(), &end);
+	// if (*end == '\0' || *end == 'f')
+	if (*end == '\0' || *end == 'f')
+	{
+		this->_char = static_cast<char>(this->_float);
+		this->_int = static_cast<int>(this->_float);
+		this->_double = static_cast<double>(this->_float);
+	}
+	else
+		this->_type = isError;
+}
+
+void Scalar::convertToDouble(std::string &entry)
+{
+	char *end = NULL;
+
+	this->_double = std::strtod(entry.c_str(), &end);
+	if (*end == '\0')
+	{
+		this->_char = static_cast<char>(this->_double);
+		this->_int = static_cast<int>(this->_double);
+		this->_float = static_cast<float>(this->_double);
+	}
+	else
+		this->_type = isError;
+}
+
+	
+// 	char *end = NULL;
+
+// 	if (this->_type == isChar)
+// 	{
+// 		this->_char = entry[0];
+// 		this->_int = static_cast<int>(this->_char);
+// 		this->_float = static_cast<float>(this->_char);
+// 		this->_double = static_cast<double>(this->_char);
+// 	}
+// 	else if (this->_type == isInteger)
+// 	{
+// 		this->_int = static_cast<int>(strtol(entry.c_str(), &end, 10));
+// 		if (*end == '\0'){
+// 			this->_char = static_cast<char>(this->_int);
+// 			this->_float = static_cast<float>(this->_int);
+// 			this->_double = static_cast<double>(this->_int);
+// 		}else{
+// 			this->_type = isError;
+// 		}
+// 	}
+// 	else if (this->_type == isFloat)
+// 	{
+// 		this->_float = std::strtof(entry.c_str(), &end);
+// 		if (*end == '\0' || *end == 'f'){
+// 			this->_char = static_cast<char>(this->_float);
+// 			this->_int = static_cast<int>(this->_float);
+// 			this->_double = static_cast<double>(this->_float);
+// 		}else{
+// 			this->_type = isError;
+// 		}
+// 	}
+
+// 	else if (this->_type == isDouble)
+// 	{
+// 		this->_double = std::strtod(entry.c_str(), &end);
+// 		if (*end == '\0'){
+// 			this->_char = static_cast<char>(this->_double);
+// 			this->_int = static_cast<int>(this->_double);
+// 			this->_float = static_cast<float>(this->_double);
+// 		}else{
+// 			this->_type = isError;
+// 		}
+// 	}
+
+// 	// std::cout << "Type: " << this->_type << std::endl;
+// 	// std::cout << "Char: " << this->_char << std::endl;
+// 	// std::cout << "Int: " << this->_int << std::endl;
+// 	// std::cout << "Float: " << this->_float << std::endl;
+// 	// std::cout << "Double: " << this->_double << std::endl;
+// }
 
 void	Scalar::printChar()
 {
 	if (this->_type == isError)
-		std::cout << "char: " << "impossible" << std::endl;
-
+		std::cout << "char: impossible" << std::endl;
 	else if (this->_int < 0 || this->_int > 127)
-		std::cout << "char: " << "impossible" << std::endl;
-
+		std::cout << "char: impossible" << std::endl;
 	else if (this->_float != this->_float || this->_float == std::numeric_limits<double>::infinity() ||
 		this->_float == -std::numeric_limits<double>::infinity())
-		std::cout << "char: " << "impossible" << std::endl;
-
+		std::cout << "char: impossible" << std::endl;
 	else if (!std::isprint(static_cast<int>(this->_char)))
-		std::cout << "char: " << "Non displayable" << std::endl;
-
-	else{
+		std::cout << "char: Non displayable" << std::endl;
+	else
 		std::cout << "char: '" << this->_char << "'" << std::endl;
-	}
 }
 
 void	Scalar::printInt()
 {
 	if (this->_type == isError)
 		std::cout << "int: " << "impossible" << std::endl;
-
 	else if (this->_float != this->_float || this->_float == std::numeric_limits<double>::infinity() ||
 		this->_float == -std::numeric_limits<double>::infinity())
 		std::cout << "int: " << "impossible" << std::endl;
-
-	else{
+	else
 		std::cout << "int: " << this->_int << std::endl;
-	}
 }
 
-void	Scalar::printFloat(std::string & entry)
+void	Scalar::printFloat(std::string &entry)
 {
+	std::cout << "The value of this float is: " << this->_float << std::endl;
 	if (this->_type == isError)
-		std::cout << "float: " << "impossible" << std::endl;
-
+		std::cout << "float: impossible" << std::endl;
+	else if (entry == "nanf")
+		std::cout << "float: nanf" << std::endl;
 	else if (entry == "+inff")
 		std::cout << "float: +inff" << std::endl;
-	
 	else{
 		std::stringstream ss;
 		ss << "float: " << std::fixed << std::setprecision(1) << this->_float << "f";
@@ -189,14 +250,12 @@ void	Scalar::printFloat(std::string & entry)
 	}
 }
 
-void	Scalar::printDouble(std::string & entry)
+void	Scalar::printDouble(std::string &entry)
 {
 	if (this->_type == isError)
 		std::cout << "double: impossible" << std::endl;
-
 	else if (entry == "+inff")
 		std::cout << "double: +inf" << std::endl;
-	
 	else {
 		std::stringstream ss;
 		ss << "double: " << std::fixed << std::setprecision(1) << this->_float;
@@ -204,22 +263,7 @@ void	Scalar::printDouble(std::string & entry)
 	}
 }
 
-
-bool isPseudoLiteralFloat(std::string & entry)
-{
-	if (entry == "inff" || entry == "+inff" || entry == "-inff" || entry == "nanf")
-		return (true);
-	return (false);
-}
-
-bool isPseudoLiteralDouble(std::string & entry)
-{
-	if(entry == "inf"|| entry == "+inf" || entry == "-inf" || entry == "nan")
-		return (true);
-	return (false);
-}
-
-int findNbrOfDots(std::string & entry)
+int findNbrOfDots(std::string &entry)
 {
 	int count = 0;
 	for (size_t i = 0; i < entry.length(); i++)
@@ -228,4 +272,25 @@ int findNbrOfDots(std::string & entry)
 			count++;
 	}
 	return (count);
+}
+
+bool isNan(float nan)
+{
+	if (nan != nan)
+		return (true);
+	return (false);
+}
+
+bool isPseudoLiteralFloat(std::string &entry)
+{
+	if (entry == "inff" || entry == "+inff" || entry == "-inff" || entry == "nanf")
+		return (true);
+	return (false);
+}
+
+bool isPseudoLiteralDouble(std::string &entry)
+{
+	if(entry == "inf"|| entry == "+inf" || entry == "-inf" || entry == "nan")
+		return (true);
+	return (false);
 }

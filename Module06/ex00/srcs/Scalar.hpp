@@ -21,7 +21,13 @@ class Scalar
 		Scalar &		operator=( Scalar const & rhs );
 
 		void	detectType(std::string & entry);
+
 		void	convertToAllTypes(std::string & entry);
+		void	convertToChar(std::string & entry);
+		void	convertToInteger(std::string & entry);
+		void	convertToFloat(std::string & entry);
+		void	convertToDouble(std::string & entry);
+
 		void	printChar();
 		void	printInt();
 		void	printFloat(std::string & entry);
