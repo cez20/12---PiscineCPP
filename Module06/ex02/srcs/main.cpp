@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 20:29:23 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/11/06 14:05:30 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/12/13 17:29:42 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	identify(Base *p){
 	else if(dynamic_cast<C*>(p) != NULL)
 		std::cout << "Base pointer true type is C" << std::endl;
 	else
-		std::cout << "There is an ERROR" << std::endl;
+		std::cout << "There is an IMPOSSIBLE" << std::endl;
 }
 
 void	identify(Base &p){

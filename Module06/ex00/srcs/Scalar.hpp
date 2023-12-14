@@ -4,11 +4,12 @@
 # include <iostream>
 # include <string>
 
-#define isError 0
-#define isChar 1
-#define isInteger 2
-#define isFloat 3
-#define isDouble 4
+#define IMPOSSIBLE 0
+#define CHAR 1
+#define INTEGER 2
+#define FLOAT 3
+#define DOUBLE 4
+#define PSEUDOFLOAT 5
 
 class Scalar
 {
@@ -47,6 +48,8 @@ class Scalar
 int findNbrOfDots(std::string & entry);
 bool isPseudoLiteralFloat(std::string & entry);
 bool isPseudoLiteralDouble(std::string & entry);
+bool isNan(double nan);
+bool isInfinite(double nbr);
 
 
 #endif /* ********************************************************** SCALAR_H */
