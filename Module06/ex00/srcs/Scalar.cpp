@@ -74,9 +74,9 @@ void	Scalar::detectType(std::string &entry){
 		this->_type = CHAR;
 	else if ((nbrOfDots == 1 && entry[len - 1] == 'f') || isPseudoLiteralFloat(entry))
 	{
+		this->_type = FLOAT;
 		if (isPseudoLiteralFloat(entry))
 			this->_type = PSEUDOFLOAT;
-		this->_type = FLOAT;
 	}
 	else if (nbrOfDots == 1 || isPseudoLiteralDouble(entry))
 		this->_type = DOUBLE;
@@ -90,7 +90,7 @@ void Scalar::convertToAllTypes(std::string &entry)
 		convertToChar(entry);
 	else if (this->_type == INTEGER) 
 		convertToInteger(entry);
-	else if (this->_type == FLOAT) 
+	else if (this->_type == FLOAT || this->_type == PSEUDOFLOAT) 
 		convertToFloat(entry);
 	else if (this->_type == DOUBLE)
 		convertToDouble(entry);
@@ -152,9 +152,7 @@ void Scalar::convertToDouble(std::string &entry)
 
 void	Scalar::printChar()
 {
-	if (this->_type == IMPOSSIBLE)
-		std::cout << "char: impossible" << std::endl;
-	else if (isNan(this->_double) || isInfinite(this->_double))
+	if (this->_type == IMPOSSIBLE || isNan(this->_double) || isInfinite(this->_double)) 
 		std::cout << "char: impossible" << std::endl;
 	else if (!std::isprint(static_cast<int>(this->_char)))
 		std::cout << "char: Non displayable" << std::endl;
@@ -164,9 +162,7 @@ void	Scalar::printChar()
 
 void	Scalar::printInt()
 {
-	if (this->_type == IMPOSSIBLE)
-		std::cout << "int: impossible" << std::endl;
-	else if (isNan(this->_float) || isInfinite(this->_float))
+	if (this->_type == IMPOSSIBLE || isNan(this->_double) || isInfinite(this->_double))
 		std::cout << "int: impossible" << std::endl;
 	else
 		std::cout << "int: " << this->_int << std::endl;
@@ -174,30 +170,22 @@ void	Scalar::printInt()
 
 void	Scalar::printFloat(std::string &entry)
 {
-	(void)entry;
 	if (this->_type == IMPOSSIBLE)
 		std::cout << "float: impossible" << std::endl;
-	else{
-		std::stringstream ss;
-		ss << "float: " << std::fixed << std::setprecision(1) << this->_float << "f";
-		std::cout << ss.str() << std::endl;
-	}
+	else
+		std::cout << createString(entry, "float") << std::endl;
 }
 
 void	Scalar::printDouble(std::string &entry)
 {
 	if (this->_type == IMPOSSIBLE)
 		std::cout << "double: impossible" << std::endl;
-	else if (entry == "+inff")
-		std::cout << "double: +inf" << std::endl;
-	else {
-		std::stringstream ss;
-		ss << "double: " << std::fixed << std::setprecision(1) << this->_float;
-		std::cout << ss.str() << std::endl;
-	}
+	else 
+		std::cout << createString(entry, "double") << std::endl;
 }
 
-int findNbrOfDots(std::string &entry)
+
+int Scalar::findNbrOfDots(std::string &entry)
 {
 	int count = 0;
 	for (size_t i = 0; i < entry.length(); i++)
@@ -208,21 +196,21 @@ int findNbrOfDots(std::string &entry)
 	return (count);
 }
 
-bool isPseudoLiteralFloat(std::string &entry)
+bool Scalar::isPseudoLiteralFloat(std::string &entry)
 {
 	if (entry == "inff" || entry == "+inff" || entry == "-inff" || entry == "nanf")
 		return (true);
 	return (false);
 }
 
-bool isPseudoLiteralDouble(std::string &entry)
+bool Scalar::isPseudoLiteralDouble(std::string &entry)
 {
 	if(entry == "inf"|| entry == "+inf" || entry == "-inf" || entry == "nan")
 		return (true);
 	return (false);
 }
 
-bool isNan(double nbr)
+bool Scalar::isNan(double nbr)
 {
 	// NaN of "Not a number" never equals itself. 
 	if (nbr != nbr)
@@ -230,7 +218,7 @@ bool isNan(double nbr)
 	return (false);
 }
 
-bool isInfinite(double nbr)
+bool Scalar::isInfinite(double nbr)
 {
 	double positiveInfinity = std::numeric_limits<double>::infinity();
 	double negativeInfinity = -std::numeric_limits<double>::infinity();
@@ -238,5 +226,20 @@ bool isInfinite(double nbr)
 	if (nbr == positiveInfinity || nbr == negativeInfinity)
 		return (true);
 	return (false);
+}
 
+std::string Scalar::createString(std::string & entry, std::string const &type)
+{
+	std::stringstream output_stream;
+
+	if (entry == "+inf" && type == "float")
+		output_stream << "float: +" << std::fixed << std::setprecision(1) << this->_float << "f";
+	else if (type == "float")
+		output_stream << "float: " << std::fixed << std::setprecision(1) << this->_float << "f";
+	else if (entry == "+inf")
+		output_stream << "double: +" << std::fixed << std::setprecision(1) << this->_double;
+	else if (type == "double")
+		output_stream << "double: " << std::fixed << std::setprecision(1) << this->_double;
+	
+	return output_stream.str();
 }

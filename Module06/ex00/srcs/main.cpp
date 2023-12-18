@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:21:23 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/12/13 17:29:51 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2023/12/17 19:46:46 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int main (int argc, char **argv)
     }
     
     Scalar entry1(argv[1]);
-    Scalar entry2 = entry1;
+
     
     return (0);
 }
