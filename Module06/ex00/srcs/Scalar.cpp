@@ -108,9 +108,10 @@ void Scalar::convertToInteger(std::string &entry)
 {
 	char *end = NULL;
 
-	this->_int = static_cast<int>(strtol(entry.c_str(), &end, 10));
-	if (*end == '\0')
+	long long result = strtoll(entry.c_str(), &end, 10);
+	if (result >= -2147483648 && result <= 2147483647)
 	{
+		this->_int = static_cast<int>(result);
 		this->_char = static_cast<char>(this->_int);
 		this->_float = static_cast<float>(this->_int);
 		this->_double = static_cast<double>(this->_int);
