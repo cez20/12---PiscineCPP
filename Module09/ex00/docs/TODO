@@ -1,0 +1,38 @@
+Objective:
+[] You have to create a program which outputs the value of a certain amount of bitcoin
+on a certain date.
+
+Details: 
+[] We have a database in .csv format REPRESENTING bitcoin price over time (On a specific date, what we the value of a bitcoin)
+[] Program will take as input (1 input), a SECOND DATABASE
+    [] storing the different prices/dates to evaluate
+[] Your program must respect these rules:
+    [] Program name is btc.
+    [] Program must take a file as argument
+    [] Each line in this file (file given as argument) MUST use the following format : "date | value"
+    [] A valid date, will always be in the following format:  Year-Month-DAy
+    [] A valid value must EITHER be a float or a positive integer , between 0 and 1000
+    [] You must use at least one container in your code to validate this exercise
+        [] You should handle possible errors with an appropriate error message
+
+Data.csv : donne la valeur du bitcoin a un moment donne
+
+Pseudocode:
+
+Type d'erreur: 
+- argc != 2 "Error, could not open file"    ./btc ou ./btc <arg1> <arg2>
+- "Error, not a positive number"   ex: Value = -1 dans mon input.txt 
+- "Error: bad input" => <Donnees erronnee>  : ex: Error: bad input => 2001-42-42
+- "Error: too large a number": Si le chiffre est un plus haut que INT_MAX qui est 2147483647
+
+
+
+Faire le end-to-end le plus simple pour le programme:
+- Mettre une seule ligne dans le input.txt avec une date et une valeur valide (ex: 2011-01-03 | 3)
+- Prendre le value du input.txt (ex: 3) et la multiplie par le taux de change qui se trouve dans data.csv pour la MEME date ou la DATE la plus proche
+(Ex: Taux de change au 2011-01-01) = 0.03
+- Trouver la meme date, ou sinon la date la plus proche qui se trouve avant la data donne
+- Multiplie la value * le taux de change et conserver le contenu dans une variable
+- Afficher sur le standard output:
+    <DATE exacte ou DATE plus proche> ' ' => <Value> = <Value * taux de conversion de data.csv>
+- Repetez les memes etapes pour 
