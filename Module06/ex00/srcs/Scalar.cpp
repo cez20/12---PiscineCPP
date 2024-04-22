@@ -165,6 +165,10 @@ void	Scalar::printInt()
 {
 	if (this->_type == IMPOSSIBLE || isNan(this->_double) || isInfinite(this->_double))
 		std::cout << "int: impossible" << std::endl;
+	else if (this->_float > std::numeric_limits<int>::max() || this->_float < std::numeric_limits<int>::min())
+		std::cout << "int: impossible" << std::endl;
+	else if (this->_double > std::numeric_limits<int>::max() || this->_double < std::numeric_limits<int>::min())
+		std::cout << "int: impossible" << std::endl;
 	else
 		std::cout << "int: " << this->_int << std::endl;
 }
