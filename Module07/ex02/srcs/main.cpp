@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:21:23 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/11/11 19:48:46 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2024/04/22 17:03:32 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ int main( void ) {
         }catch (const std::exception & e){
             std::cerr << e.what() << std::endl;
         }
+
+        try {
+            array2[5] = 15;
+        }catch (const std::exception & e){
+            std::cerr << e.what() << std::endl;
+        }
         
         try {
             array2[-125] = 15;
@@ -33,7 +39,7 @@ int main( void ) {
         }
 
          try {
-            array2[2147483648] = 15;
+            array2[2147483647] = 15;
         }catch (const std::exception & e){
             std::cerr << e.what() << std::endl;
         }

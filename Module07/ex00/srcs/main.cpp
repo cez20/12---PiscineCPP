@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:21:23 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/11/06 22:18:44 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2024/04/22 16:58:59 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,13 @@ int main( void ) {
     std::cout << "min( c, d ) = " << ::min( c, d ) << std::endl;
     std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
 
-    // Mes tests lors 2 valeurs sont equivalentes, retourne la 2e valeur. 
-    // {
-    //     int a = 3;
-    //     int b = 3;
-
-    //     std::cout << &min(a,b) << std::endl;
-    //     std::cout << &b << std::endl;
-
-    //     std::cout << &max(a,b) << std::endl;
-    //     std::cout << &b << std::endl;
-
-    // }
-
-
+    float e = 700.4f;
+    float f = 700.5f;
+    
+    ::swap(e, f);
+    std::cout << "e = " << e << ", f = " << f << std::endl;
+    std::cout << "min( e, f ) = " << ::min( e, f ) << std::endl;
+    std::cout << "max( e, f ) = " << ::max( e, f ) << std::endl;
+    
     return 0;
 }
