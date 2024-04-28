@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 19:41:03 by cemenjiv          #+#    #+#             */
-/*   Updated: 2024/04/28 17:38:50 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2024/04/28 17:40:16 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,4 @@ int main()
     easyfind(list3, 1);
     easyfind(list3, 48);
 
-    //Container of type std::array
-    std::array<int, 5> arr = {1, 2, 3, 4, 5};
-    easyfind(arr, 3);
-    easyfind(arr, 7);
 }
