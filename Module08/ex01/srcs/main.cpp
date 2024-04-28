@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 19:41:03 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/12/09 14:03:59 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2024/04/28 14:34:13 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int main()
     sp.addNumber(3);
     sp.addNumber(17);
     sp.addNumber(9);
-    sp.addNumber(11);
+    sp.addNumber(1);
     std::cout << sp.shortestSpan() << std::endl;
     std::cout << sp.longestSpan() << std::endl;
 
@@ -31,15 +31,15 @@ int main()
     
     Span test(3);
 
-    test.addNumber(25);
-    test.addNumber(100);
-    test.addNumber(30);
+    test.addNumber(-2147483648);
+    test.addNumber(0);
+    test.addNumber(2147483647);
+
     std::cout << "shortestSpan is: " << test.shortestSpan() << std::endl;;
     std::cout << "longestSpan is: " << test.longestSpan() << std::endl;
 
     try{
         test.addNumber(75);
-    
     }catch (std::exception & e){
         std::cout << e.what() << std::endl;
     }
@@ -82,7 +82,7 @@ int main()
 
     // Testing shortest and longest range with 10000 numbers 
 
-    srand(static_cast<unsigned int>(time(NULL)));
+    srand(static_cast<int>(time(NULL)));
 
     std::vector<int> test4;
     for (std::size_t i = 0; i < 10000; ++i) {
@@ -90,8 +90,14 @@ int main()
     }
 
     Span test5(10000);
-    test5.addManyNumbers(test4.begin(), test4.end());
-    
+    try{
+        test5.addManyNumbers(test4.begin(), test4.end());
+    }catch (std::exception & e){
+        std::cout << e.what() << std::endl;
+    }
+
     std::cout << "shortestSpan is: " << test5.shortestSpan() << std::endl;
     std::cout << "longest Span is: " << test5.longestSpan() << std::endl;
+    
+   
 }

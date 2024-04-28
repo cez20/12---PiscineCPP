@@ -62,7 +62,7 @@ Span &				Span::operator=( Span const & rhs )
 */
 
 
-void	Span::addNumber(unsigned int nbr){
+void	Span::addNumber(int nbr){
 
 	if (_listOfNumbers.size() >= _maxRangeOfNumbers){
 		throw MaxCapacityReachedException();
@@ -74,50 +74,44 @@ void	Span::addNumber(unsigned int nbr){
 
 void	Span::addManyNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end)
 {
-	for (std::vector<int>::iterator it = begin; it != end; ++it) {
-        addNumber(*it);
-		// std::cout << "Value of it is:" << *it << std::endl;
-    }
+	if (_listOfNumbers.size() + std::distance(begin, end) > _maxRangeOfNumbers) {
+		throw MaxCapacityReachedException();
+	}
+	_listOfNumbers.insert(_listOfNumbers.end(), begin, end);
 }
 
 unsigned int Span::shortestSpan() const {
 
-	if (_listOfNumbers.size() < 2){
-		throw ShortestSpanException();
-	}
-	
-	std::vector <unsigned int>::const_iterator it;
-	std::vector <unsigned int>::const_iterator ite = _listOfNumbers.end();
-	unsigned int minSpan = std::numeric_limits<unsigned int>::max();
-
-	for (it = _listOfNumbers.begin(); it != ite; ++it) {
-		if (std::next(it) != ite)
-		{
-			int span = *(std::next(it)) - *it;
-			minSpan = std::min(minSpan, static_cast<unsigned int>(std::abs(span)));
-		}
+    if (_listOfNumbers.size() < 2){
+        throw ShortestSpanException();
     }
-	return (minSpan);
+
+    std::vector<int> sortedNumbers = _listOfNumbers;
+    std::sort(sortedNumbers.begin(), sortedNumbers.end());
+
+    unsigned int minSpan = std::numeric_limits<unsigned int>::max();
+
+    for (size_t i = 1; i < sortedNumbers.size(); ++i) {
+        unsigned int span = sortedNumbers[i] - sortedNumbers[i - 1];
+        minSpan = std::min(minSpan, span);
+    }
+
+    return minSpan;
 }
 
-unsigned int Span::longestSpan() const {
+long long Span::longestSpan() const {
 
-	if (_listOfNumbers.size() < 2){
-		throw LongestSpanException();
-	}
-
-	std::vector <unsigned int>::const_iterator it;
-	std::vector <unsigned int>::const_iterator ite = _listOfNumbers.end();
-	unsigned int maxSpan = std::numeric_limits<unsigned int>::min();
-
-	  for (it = _listOfNumbers.begin(); it != ite; ++it) {
-        if (std::next(it) != ite)
-		{
-			int span = *(std::next(it)) - *it;
-			maxSpan = std::max(maxSpan, static_cast<unsigned int>(std::abs(span)));
-		}
+    if (_listOfNumbers.size() < 2){
+        throw LongestSpanException();
     }
-	return (maxSpan);
+
+    std::pair<std::vector<int>::const_iterator, std::vector<int>::const_iterator> minmax = 
+        std::minmax_element(_listOfNumbers.begin(), _listOfNumbers.end());
+
+    long long min = *minmax.first;
+    long long max = *minmax.second;
+
+    return max - min;
 }
 
 const char * Span::MaxCapacityReachedException:: what() const throw() {

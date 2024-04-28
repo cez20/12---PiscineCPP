@@ -6,11 +6,11 @@
 #    By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/03 17:54:38 by cemenjiv          #+#    #+#              #
-#    Updated: 2023/11/06 18:41:27 by cemenjiv         ###   ########.fr        #
+#    Updated: 2024/04/28 12:40:18 by cemenjiv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			= template
+NAME			= easyfind
 
 SRCS_DIR   		= srcs/
 SRCS_FILES		= main.cpp

@@ -14,11 +14,11 @@ class Span
 		Span( Span const & src );
 		~Span();
 
-		Span &		operator=( Span const & rhs );
-		void 			addNumber(unsigned int nbr);
+		Span &			operator=( Span const & rhs );
+		void 			addNumber(int nbr);
 		void			addManyNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 		unsigned int	shortestSpan() const;
-		unsigned int	longestSpan() const;
+		long long		longestSpan() const;
 
 	class MaxCapacityReachedException: public std::exception {
 		public:
@@ -38,7 +38,7 @@ class Span
 	private:
 		Span();
 		unsigned int				_maxRangeOfNumbers;
-		std::vector<unsigned int> 	_listOfNumbers;
+		std::vector<int> 			_listOfNumbers;
 
 
 };
