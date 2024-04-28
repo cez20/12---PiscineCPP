@@ -11,22 +11,17 @@
 
 Span::Span()
 {
-	std::cout << "[DEFAULT CONSTRUCTOR] has been called";
+
 }
 
 Span::Span(unsigned int N): _maxRangeOfNumbers(N)
 {
-	std::cout << "[CONSTRUCTOR W PARAMETERS] has been called" << std::endl;
-
 	_listOfNumbers.reserve(N);
-	// std::cout << "Vector capacity is: " << _listOfNumbers.capacity() << std::endl;
-	// std::cout << "maxRangeofNumbers is :" << _maxRangeOfNumbers << std::endl;
 }
 
 
 Span::Span( const Span & src )
 {
-	std::cout << "[COPY CONSTRUCTOR] has been called" << std::endl;
 	*this = src;
 }
 
@@ -37,7 +32,7 @@ Span::Span( const Span & src )
 
 Span::~Span()
 {
-	std::cout << "[DESTRUCTOR] has been called" << std::endl;
+	
 }
 
 

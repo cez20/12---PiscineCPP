@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 19:41:03 by cemenjiv          #+#    #+#             */
-/*   Updated: 2023/12/10 21:11:49 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2024/04/28 17:16:53 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main()
         
         mstack.push(5);
         mstack.push(17);
-
+ 
         std::cout << mstack.top() << std::endl;
         
         mstack.pop();
@@ -47,9 +47,7 @@ int main()
             ++it;
         }
         
-        //Copy constructor 
         std::stack<int> s(mstack);
-
     }
 
     {
@@ -82,7 +80,6 @@ int main()
             ++it;
         }
         
-        //Copy constructor 
         std::stack<int, std::list<int> > s(mstack);
     }
     
