@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 19:41:03 by cemenjiv          #+#    #+#             */
-/*   Updated: 2024/04/28 12:33:17 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2024/04/28 17:38:50 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include <list>
 #include <vector>
 #include <deque>
-#include <array>
 
 int main()
 {
