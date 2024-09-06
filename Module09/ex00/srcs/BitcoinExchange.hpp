@@ -11,21 +11,19 @@ class BitcoinExchange
 {
 	public:
 		BitcoinExchange();
-		// BitcoinExchange( BitcoinExchange const & src );
+		BitcoinExchange( BitcoinExchange const & src );
 		~BitcoinExchange();
 
 		BitcoinExchange &		operator=( BitcoinExchange const & rhs );
 
 		void			mapBitcoinDatabase(std::ifstream & btc_database);
 		void			findBitcoinData(std::ifstream & second_database);
-		// void			printExchange();
-
 		void			printMap();
 
 	private:
-		std::map<std::string, double> 		bitcoin_map;
-		std::string 						date_to_find;
-		double								nbr_of_bitcoins;
+		std::map<std::string, double> 		_bitcoin_map;
+		// std::string 						_date_to_find;
+		// double							_nbr_of_bitcoins;
 		
 };
 
