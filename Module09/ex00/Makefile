@@ -6,14 +6,14 @@
 #    By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/03 17:54:38 by cemenjiv          #+#    #+#              #
-#    Updated: 2024/02/27 19:51:23 by cemenjiv         ###   ########.fr        #
+#    Updated: 2024/09/05 14:58:18 by cemenjiv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= btc 
 
 SRCS_DIR   		= srcs/
-SRCS_FILES		= main.cpp
+SRCS_FILES		= main.cpp BitcoinExchange.cpp
 SRCS 			= $(addprefix $(SRCS_DIR), $(SRCS_FILES))
 
 OBJS_DIR		= objs/
