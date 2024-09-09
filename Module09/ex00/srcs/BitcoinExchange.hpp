@@ -16,7 +16,7 @@ class BitcoinExchange
 
 		BitcoinExchange &		operator=( BitcoinExchange const & rhs );
 
-		void			mapBitcoinDatabase(std::ifstream & btc_database);
+		void			parseBitcoinDatabase(std::ifstream & btc_database);
 		void			findBitcoinData(std::ifstream & second_database);
 		void			printMap();
 

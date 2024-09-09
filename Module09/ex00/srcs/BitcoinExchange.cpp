@@ -35,7 +35,7 @@ BitcoinExchange &				BitcoinExchange::operator=( BitcoinExchange const & rhs )
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void			BitcoinExchange::mapBitcoinDatabase(std::ifstream & btc_database) {
+void			BitcoinExchange::parseBitcoinDatabase(std::ifstream & btc_database) {
 	std::string line;
 
 	std::getline(btc_database, line);
