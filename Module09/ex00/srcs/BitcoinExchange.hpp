@@ -31,6 +31,7 @@ std::string::iterator	findFirstLetter(std::string & s);
 std::string::iterator	findFirstSpace(std::string & s);
 std::string				trimLeftSpaces(std::string & s);
 std::string				trimRightSpaces(std::string & s);
+std::string				removeAllSpaces(std::string & s);
 
 #endif /* ************************************************* BITCOINEXCHANGE_H */
 

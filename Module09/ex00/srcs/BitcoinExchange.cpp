@@ -45,6 +45,10 @@ void			BitcoinExchange::parseBitcoinDatabase(std::ifstream & btc_database) {
 
         if (std::getline(ss, file_date, ',')) {
             std::getline(ss, file_exchange_rate);
+
+            removeAllSpaces(file_date);
+            removeAllSpaces(file_exchange_rate);
+
 			_bitcoin_map.insert(std::make_pair(file_date, std::stod(file_exchange_rate))); //TODO: validate std::stod can be used
         } else {
             std::cerr << "Delimiter(comma) not found in the line: " << line << std::endl;
@@ -117,7 +121,16 @@ std::string     trimLeftSpaces(std::string & s){
     return (s);
 }
 
+std::string     trimRightSpaces(std::string & s){
+    s.erase(findFirstSpace(s), s.end());
     return(s);
+}
+
+std::string     removeAllSpaces(std::string & s){
+    trimLeftSpaces(s);
+    trimRightSpaces(s);
+
+    return (s);
 }
 
 
