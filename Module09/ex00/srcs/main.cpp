@@ -1,37 +1,36 @@
 #include <iostream>
 #include <fstream>
-#include <map>
 #include "BitcoinExchange.hpp"
 
 int main(int argc, char **argv)
 {      
     if (argc != 2){
-        std::cerr << "ERROR! Program must contain a database as argument!" << std::endl;
+        std::cerr << "ERROR! Program must contain a bitcoin value database as argument!" << std::endl;
         return 1;
     }
     
     BitcoinExchange bitcoin_exchange = BitcoinExchange();
-    std::ifstream bitcoin_database("data.csv");
+    std::ifstream bitcoinExchangeRateHistory("data.csv");
 
-    if (!bitcoin_database.is_open()){
-        std::cerr << "Error! Could not open the database!" << std::endl;
+    if (!bitcoinExchangeRateHistory.is_open()){
+        std::cerr << "Error! Could not open bitcoin exchange rate database!" << std::endl;
         return 1;
     }
     
-    bitcoin_exchange.parseBitcoinDatabase(bitcoin_database); // If there is an error, I should close the bitcoin database? 
-    //bitcoin_exchange.printMap();
+    bitcoin_exchange.parseBitcoinExchangeRate(bitcoinExchangeRateHistory); // TODO:If there is an error, I should close the bitcoin database? 
+    //bitcoin_exchange.printBitcoinRates();
 
-    std::ifstream second_database(argv[1]);
-    if (!second_database.is_open()){
-        std::cerr << "Error! Could not open the second database !" << std::endl;
-        bitcoin_database.close(); // This close the already open database
+    std::ifstream bitcoinValueHistory(argv[1]);
+    if (!bitcoinValueHistory.is_open()){
+        std::cerr << "Error! Could not open bitcoin value database !" << std::endl;
+        bitcoinExchangeRateHistory.close(); // This close the already open database
         return 1;
     }
 
-    bitcoin_exchange.findBitcoinData(second_database);
+    bitcoin_exchange.parseBitcoinValue(bitcoinValueHistory);
     
-    bitcoin_database.close();
-    second_database.close();
+    bitcoinExchangeRateHistory.close();
+    bitcoinValueHistory.close();
 
     return 0;
 }

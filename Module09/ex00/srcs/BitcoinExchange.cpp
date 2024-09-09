@@ -25,8 +25,8 @@ BitcoinExchange &				BitcoinExchange::operator=( BitcoinExchange const & rhs )
 {
 	if ( this != &rhs ) // TODO: Once class is finished added element inside condition. 
 	{
-		this->_bitcoin_map = rhs._bitcoin_map;
-        //this->_bitcoin_map = rhs.getBitcoinMap(); //Maybe this is it
+		this->_bitcoin_rates = rhs._bitcoin_rates;
+        //this->_bitcoin_rates = rhs.getBitcoinMap(); //Maybe this is it
 	}
 	return *this;
 }
@@ -35,7 +35,7 @@ BitcoinExchange &				BitcoinExchange::operator=( BitcoinExchange const & rhs )
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void			BitcoinExchange::parseBitcoinDatabase(std::ifstream & btc_database) {
+void			BitcoinExchange::parseBitcoinExchangeRate(std::ifstream & btc_database) {
 	std::string line;
 
 	std::getline(btc_database, line);
@@ -46,37 +46,37 @@ void			BitcoinExchange::parseBitcoinDatabase(std::ifstream & btc_database) {
         if (std::getline(ss, file_date, ',')) {
             std::getline(ss, file_exchange_rate);
 
-            removeAllSpaces(file_date);
-            removeAllSpaces(file_exchange_rate);
+            removeAllWhitespace(file_date);
+            removeAllWhitespace(file_exchange_rate);
 
-            if(!validateDateFormat(file_date) || !validateDateNumbers(file_date) || !validateMonthDayData(file_date)){
+            if(!isDateFormatValid(file_date) || !isDateOnlyDigits(file_date) || !isMonthDayValid(file_date)){
                 std::cerr << "ERROR! Reference database has error" << std::endl;
                 exit(1); // TODO:: Est-ce que je peux faire ca
             }
 
-			_bitcoin_map.insert(std::make_pair(file_date, std::stod(file_exchange_rate))); //TODO: validate std::stod can be used
+			_bitcoin_rates.insert(std::make_pair(file_date, std::stod(file_exchange_rate))); //TODO: validate std::stod can be used
         } else {
             std::cerr << "Delimiter(comma) not found in the line: " << line << std::endl;
         }
     }
 }
 
-void            BitcoinExchange::findBitcoinData(std::ifstream & second_database) {
+void            BitcoinExchange::parseBitcoinValue(std::ifstream & bitcoinValueHistory) {
     std::string line;
     
-    while(std::getline(second_database, line)) {
+    while(std::getline(bitcoinValueHistory, line)) {
         size_t delimiter_pos = line.find('|');
 
         if (delimiter_pos != std::string::npos){
             std::string target_date = line.substr(0, delimiter_pos);
             std::string nbr_of_bitcoins = line.substr(delimiter_pos + 1);
 
-            trimRightSpaces(target_date);
-            trimLeftSpaces(nbr_of_bitcoins);
+            trimTrailingWhitespace(target_date);
+            trimLeadingWhitespace(nbr_of_bitcoins);
 
             // Check if the date exists in the map
-            std::map<std::string, double>::iterator it = _bitcoin_map.find(target_date);
-            if (it != _bitcoin_map.end()) {
+            std::map<std::string, double>::iterator it = _bitcoin_rates.find(target_date);
+            if (it != _bitcoin_rates.end()) {
                 std::cout << it->first << " => " << nbr_of_bitcoins << " = "
                         << (std::stod(nbr_of_bitcoins) * it->second) << std::endl;
             } else {
@@ -89,10 +89,10 @@ void            BitcoinExchange::findBitcoinData(std::ifstream & second_database
 }
 
 
-void	BitcoinExchange::printMap(){
+void	BitcoinExchange::printBitcoinRates(){
 	std::map<std::string, double>::iterator it;
 
-	for(it = _bitcoin_map.begin(); it != _bitcoin_map.end(); ++it){
+	for(it = _bitcoin_rates.begin(); it != _bitcoin_rates.end(); ++it){
 		std::cout << std::fixed << std::setprecision(2) << it->first << " | " << it->second << std::endl;
 	}
 }
@@ -101,7 +101,7 @@ void	BitcoinExchange::printMap(){
 ** --------------------------------- OTHER ---------------------------------
 */
 
-std::string::iterator findFirstLetter(std::string & s){
+std::string::iterator findFirstNonWhitespace(std::string & s){
     std::string::iterator it;
 
     for(it = s.begin(); it != s.end(); ++it){
@@ -111,7 +111,7 @@ std::string::iterator findFirstLetter(std::string & s){
     return s.end();
 }
 
-std::string::iterator findFirstSpace(std::string & s){
+std::string::iterator findFirstTrailingWhitespace(std::string & s){
     std::string::iterator it;
 
     for(it = s.begin(); it != s.end(); ++it){
@@ -121,31 +121,31 @@ std::string::iterator findFirstSpace(std::string & s){
     return s.end();
 }
 
-std::string     trimLeftSpaces(std::string & s){
-    s.erase(s.begin(), findFirstLetter(s));
+std::string     trimLeadingWhitespace(std::string & s){
+    s.erase(s.begin(), findFirstNonWhitespace(s));
     return (s);
 }
 
-std::string     trimRightSpaces(std::string & s){
-    s.erase(findFirstSpace(s), s.end());
+std::string     trimTrailingWhitespace(std::string & s){
+    s.erase(findFirstTrailingWhitespace(s), s.end());
     return(s);
 }
 
-std::string     removeAllSpaces(std::string & s){
-    trimLeftSpaces(s);
-    trimRightSpaces(s);
+std::string     removeAllWhitespace(std::string & s){
+    trimLeadingWhitespace(s);
+    trimTrailingWhitespace(s);
 
     return (s);
 }
 
-bool            validateDateFormat(std::string & s){
+bool            isDateFormatValid(std::string & s){
     if (s[4] != '-' || s[7] != '-')
         return false;
     return true;
 }
 
 
-bool            validateDateNumbers(std::string s){
+bool            isDateOnlyDigits(std::string s){
     std::string str1 = s;
 
     str1.erase(4, 1);
@@ -159,7 +159,7 @@ bool            validateDateNumbers(std::string s){
     return true;
 }
 
-bool            validateMonthDayData(std::string s){
+bool            isMonthDayValid(std::string s){
 
     std::string     year, month, day;
     unsigned int    new_year, new_month, new_day;
