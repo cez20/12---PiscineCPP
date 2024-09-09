@@ -32,6 +32,8 @@ std::string::iterator	findFirstSpace(std::string & s);
 std::string				trimLeftSpaces(std::string & s);
 std::string				trimRightSpaces(std::string & s);
 std::string				removeAllSpaces(std::string & s);
+bool					validateDateFormat(std::string & s);
+bool					validateDateNumbers(std::string s);
 
 #endif /* ************************************************* BITCOINEXCHANGE_H */
 

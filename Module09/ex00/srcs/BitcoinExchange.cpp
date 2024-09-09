@@ -49,6 +49,11 @@ void			BitcoinExchange::parseBitcoinDatabase(std::ifstream & btc_database) {
             removeAllSpaces(file_date);
             removeAllSpaces(file_exchange_rate);
 
+            if(!validateDateFormat(file_date) || !validateDateNumbers(file_date)){
+                std::cerr << "ERROR! Reference database has error" << std::endl;
+                exit(1); // TODO:: Est-ce que je peux faire ca
+            }
+
 			_bitcoin_map.insert(std::make_pair(file_date, std::stod(file_exchange_rate))); //TODO: validate std::stod can be used
         } else {
             std::cerr << "Delimiter(comma) not found in the line: " << line << std::endl;
@@ -133,5 +138,25 @@ std::string     removeAllSpaces(std::string & s){
     return (s);
 }
 
+bool            validateDateFormat(std::string & s){
+    if (s[4] != '-' || s[7] != '-')
+        return false;
+    return true;
+}
+
+
+bool            validateDateNumbers(std::string s){
+    std::string str1 = s;
+
+    str1.erase(4, 1);
+    str1.erase(6, 1);
+    
+    for(std::size_t i = 0; i < str1.size(); ++i){
+        if(!isdigit(static_cast<unsigned char>(str1[i]))){
+            return false;
+        }    
+    }
+    return true;
+}
 
 /* ************************************************************************** */
