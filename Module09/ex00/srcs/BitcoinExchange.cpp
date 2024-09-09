@@ -62,8 +62,8 @@ void            BitcoinExchange::findBitcoinData(std::ifstream & second_database
             std::string target_date = line.substr(0, delimiter_pos);
             std::string nbr_of_bitcoins = line.substr(delimiter_pos + 1);
 
-            trim_right_spaces(target_date);
-            trim_left_spaces(nbr_of_bitcoins);
+            trimRightSpaces(target_date);
+            trimLeftSpaces(nbr_of_bitcoins);
 
             // Check if the date exists in the map
             std::map<std::string, double>::iterator it = _bitcoin_map.find(target_date);
@@ -92,7 +92,7 @@ void	BitcoinExchange::printMap(){
 ** --------------------------------- OTHER ---------------------------------
 */
 
-std::string::iterator find_first_letter(std::string & s){
+std::string::iterator findFirstLetter(std::string & s){
     std::string::iterator it;
 
     for(it = s.begin(); it != s.end(); ++it){
@@ -102,7 +102,7 @@ std::string::iterator find_first_letter(std::string & s){
     return s.end();
 }
 
-std::string::iterator find_first_space(std::string & s){
+std::string::iterator findFirstSpace(std::string & s){
     std::string::iterator it;
 
     for(it = s.begin(); it != s.end(); ++it){
@@ -112,13 +112,11 @@ std::string::iterator find_first_space(std::string & s){
     return s.end();
 }
 
-std::string trim_left_spaces(std::string & s){
-    s.erase(s.begin(), find_first_letter(s));
+std::string     trimLeftSpaces(std::string & s){
+    s.erase(s.begin(), findFirstLetter(s));
     return (s);
 }
 
-std::string trim_right_spaces(std::string & s){
-    s.erase(find_first_space(s), s.end());
     return(s);
 }
 

@@ -27,10 +27,10 @@ class BitcoinExchange
 		
 };
 
-std::string::iterator	find_first_letter(std::string & s);
-std::string::iterator	find_first_space(std::string & s);
-std::string				trim_left_spaces(std::string & s);
-std::string				trim_right_spaces(std::string & s);
+std::string::iterator	findFirstLetter(std::string & s);
+std::string::iterator	findFirstSpace(std::string & s);
+std::string				trimLeftSpaces(std::string & s);
+std::string				trimRightSpaces(std::string & s);
 
 #endif /* ************************************************* BITCOINEXCHANGE_H */
 
