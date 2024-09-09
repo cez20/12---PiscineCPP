@@ -49,7 +49,7 @@ void			BitcoinExchange::parseBitcoinDatabase(std::ifstream & btc_database) {
             removeAllSpaces(file_date);
             removeAllSpaces(file_exchange_rate);
 
-            if(!validateDateFormat(file_date) || !validateDateNumbers(file_date)){
+            if(!validateDateFormat(file_date) || !validateDateNumbers(file_date) || !validateMonthDayData(file_date)){
                 std::cerr << "ERROR! Reference database has error" << std::endl;
                 exit(1); // TODO:: Est-ce que je peux faire ca
             }
@@ -159,4 +159,34 @@ bool            validateDateNumbers(std::string s){
     return true;
 }
 
-/* ************************************************************************** */
+bool            validateMonthDayData(std::string s){
+
+    std::string     year, month, day;
+    unsigned int    new_year, new_month, new_day;
+
+    year = s.substr(0, 4);
+    month = s.substr(5, 2);
+    day = s.substr(8, 2);
+
+    new_year = atoi(year.c_str());
+    new_month = atoi(month.c_str());
+    new_day = atoi(day.c_str());
+
+    if (new_month < 1 || new_month > 12)
+        return false;
+    if (new_day < 1 || new_day > 31)
+        return false;
+    if ((new_month == 4 || new_month == 6 || new_month == 9 || new_month == 11) && new_day > 30)
+        return false;
+    if (new_month == 2){
+        if ((new_year % 4 == 0 && new_year % 100 != 0) || (new_year % 400 == 0)){
+            if (new_day > 29)
+                return false;
+        } else {
+            if (new_day > 28)
+                return false;
+        }
+    }
+
+    return true;
+}

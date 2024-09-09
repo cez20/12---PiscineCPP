@@ -19,7 +19,7 @@ int main(int argc, char **argv)
     }
     
     bitcoin_exchange.parseBitcoinDatabase(bitcoin_database); // If there is an error, I should close the bitcoin database? 
-    // bitcoin_exchange.printMap();
+    //bitcoin_exchange.printMap();
 
     std::ifstream second_database(argv[1]);
     if (!second_database.is_open()){
