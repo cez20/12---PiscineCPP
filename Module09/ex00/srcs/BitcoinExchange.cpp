@@ -107,7 +107,8 @@ void            BitcoinExchange::parseBitcoinValue(std::ifstream & bitcoinValueH
                     std::cout << it->first << " => " << bitcoinValue << " = "
                     << (std::stod(bitcoinValue) * it->second) << std::endl;
                 } else {
-                    std::cout << "Cannot find date! Must find closest date!" << std::endl;
+                    findClosestDate(targetDate, bitcoinValue, _exchangeRates);
+                    // std::cout << "Cannot find date! Must find closest date!" << std::endl;
                 }
             } 
         } else {
@@ -271,3 +272,58 @@ float stringToFloat(const std::string& s) {
     return result;
 }
 
+void findClosestDate(std::string s, std::string value, std::map<std::string, double> rates){
+
+    std::string     year, month, day;
+    unsigned int    new_year, new_month, new_day;
+    std::stringstream new_full_date;
+
+    year = s.substr(0, 4);
+    month = s.substr(5, 2);
+    day = s.substr(8, 2);
+
+    new_year = atoi(year.c_str()); //TODO: Validate if atoi is the best function. Maybe std::stoi 
+    new_month = atoi(month.c_str());
+    new_day = atoi(day.c_str());
+
+    while (1) {
+            
+        if (new_day > 1)
+            new_day -= 1;
+        else if (new_day == 1 && new_month != 1){
+            new_month -= 1;
+
+            if(new_month == 2) {
+                if ((new_year % 4 == 0 && new_year % 100 != 0) || (new_year % 400 == 0))
+                    new_day = 29;
+                else
+                    new_day = 28;
+            }
+            else if ((new_month == 4 || new_month == 6 || new_month == 9 || new_month == 11))
+                new_day = 30;
+            else
+                new_day = 31;
+        } 
+        else if (new_day == 1 && new_month == 1){
+            new_year -= 1;
+            new_month = 12;
+            new_day = 31;
+        }
+
+        new_full_date << new_year << "-";
+        new_full_date << std::setw(2) << std::setfill('0') << new_month << "-";
+        new_full_date << std::setw(2) << std::setfill('0') << new_day;
+
+        std::string new_string = new_full_date.str();
+        new_full_date.str(""); // Clear the content of the std::stringstream, do not use .erase()
+
+        std::map<std::string, double>::iterator it = rates.find(new_string);
+        if (it != rates.end()){
+            std::cout << it->first << " => " << value << " = "
+                    << (std::stod(value) * it->second) << std::endl;
+            break;
+        }
+       
+    }
+    
+}
