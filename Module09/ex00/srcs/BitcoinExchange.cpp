@@ -59,7 +59,7 @@ void			BitcoinExchange::parseBitcoinExchangeRate(std::ifstream & bitcoinRatesHis
                 exit(1); // TODO:: Est-ce que je peux faire ca
             }
 
-            if (!isValidFloatFormat(exchangeRate)){
+            if (!isRateValidFloat(exchangeRate) || !isFloatPositive(exchangeRate)){
                 std::cerr << "ERROR! Exchange Rate has an error!" << std::endl;
                 exit(1); // TODO:: Est-ce que je peux faire ca
             }
@@ -202,11 +202,12 @@ bool            isMonthDayValid(std::string s){
     return true;
 }
 
-bool isValidFloatFormat(std::string& s) {
+bool isRateValidFloat(std::string& s) {
     bool decimalPointSeen = false;
+    bool negativeSignSeen = false;
 
-    if (!std::isdigit(s[0]))
-        return false;
+    // if (!std::isdigit(s[0]) || s[0] != '-')
+    //     return false;
 
     for (size_t i = 0; i < s.size(); ++i) {
         char c = s[i];
@@ -219,9 +220,31 @@ bool isValidFloatFormat(std::string& s) {
             if (decimalPointSeen)
                 return false; 
             decimalPointSeen = true;
+        } else if(c == '-'){
+            if(negativeSignSeen)
+                return false;
+            negativeSignSeen = true;
         } else {
             return false;
         }
     }
     return true;
 }
+
+bool isFloatPositive(std::string& s){
+
+    float rate = stringToFloat(s);
+
+    if (rate < 0)
+        return false;
+    return true;
+}
+
+float stringToFloat(const std::string& s) {
+    std::stringstream ss(s);
+    float result;
+
+    ss >> result;
+
+    return result;
+} 
