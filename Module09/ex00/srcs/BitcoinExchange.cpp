@@ -88,7 +88,7 @@ void            BitcoinExchange::parseBitcoinValue(std::ifstream & bitcoinValueH
 
             // Error validation Validate
             if (targetDate == "" || bitcoinValue == "")
-                std::cerr << "ERROR! Target date or bitcoin value is missing" << std::endl;
+                std::cerr << "ERROR! Target date or bitcoin value is missing" << " => " << line << std::endl;
             else if (!isDateFormatValid(targetDate))
                 std::cerr << "ERROR! Date format does not respect YYYY-MM-DD" << " => " << targetDate << std::endl;
             else if (!isDateOnlyDigits(targetDate))
@@ -97,6 +97,8 @@ void            BitcoinExchange::parseBitcoinValue(std::ifstream & bitcoinValueH
                  std::cerr << "ERROR! Date provided does not exist" << " => " << targetDate << std::endl;
             else if (!isValidFloatFormat(bitcoinValue))
                 std::cerr << "ERROR! Bitcoin value is not an integer or a float" <<  " => " << bitcoinValue << std::endl;
+            else if (!isFloatPositive(bitcoinValue))
+                std::cerr << "ERROR! Bitcoin value is not positive" <<  " => " << bitcoinValue << std::endl;
             else {
                 std::map<std::string, double>::iterator it = _exchangeRates.find(targetDate);
                 if(it != _exchangeRates.end()) {
