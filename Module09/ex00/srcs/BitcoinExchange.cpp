@@ -99,6 +99,8 @@ void            BitcoinExchange::parseBitcoinValue(std::ifstream & bitcoinValueH
                 std::cerr << "ERROR! Bitcoin value is not an integer or a float" <<  " => " << bitcoinValue << std::endl;
             else if (!isFloatPositive(bitcoinValue))
                 std::cerr << "ERROR! Bitcoin value is not positive" <<  " => " << bitcoinValue << std::endl;
+            else if (!isFloatWithinRange(bitcoinValue, 0, 1000))
+                std::cerr << "ERROR! Bitcoin value is not within range of 0 to 1000" <<  " => " << bitcoinValue << std::endl;
             else {
                 std::map<std::string, double>::iterator it = _exchangeRates.find(targetDate);
                 if(it != _exchangeRates.end()) {
@@ -252,6 +254,14 @@ bool isFloatPositive(std::string& s){
     return true;
 }
 
+bool isFloatWithinRange(std::string& s, int min, int max){
+    float value = stringToFloat(s);
+
+    if (value < min || value > max)
+        return false;
+    return true;
+}
+
 float stringToFloat(const std::string& s) {
     std::stringstream ss(s);
     float result;
@@ -259,4 +269,5 @@ float stringToFloat(const std::string& s) {
     ss >> result;
 
     return result;
-} 
+}
+

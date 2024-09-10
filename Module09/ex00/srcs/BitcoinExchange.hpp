@@ -37,6 +37,7 @@ bool					isDateOnlyDigits(std::string s);
 bool					isMonthDayValid(std::string s);
 bool					isValidFloatFormat(std::string& s);
 bool					isFloatPositive(std::string& s);
+bool					isFloatWithinRange(std::string& s, int min, int max);
 float 					stringToFloat(const std::string& s);
 
 #endif /* ************************************************* BITCOINEXCHANGE_H */
