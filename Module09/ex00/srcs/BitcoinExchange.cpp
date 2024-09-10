@@ -86,16 +86,20 @@ void            BitcoinExchange::parseBitcoinValue(std::ifstream & bitcoinValueH
             removeAllWhitespace(targetDate);
             removeAllWhitespace(bitcoinValue);
 
-            // Check if the date exists in the map
-            std::map<std::string, double>::iterator it = _exchangeRates.find(targetDate);
-            if (it != _exchangeRates.end()) {
-                std::cout << it->first << " => " << bitcoinValue << " = "
-                        << (std::stod(bitcoinValue) * it->second) << std::endl;
-            } else {
-                std::cerr << "ERROR! Cannot find the date in file or ERROR" << std::endl;
-            }
+            // Error validation Validate
+            if (targetDate == "" || bitcoinValue == "")
+                std::cerr << "ERROR! Target date or bitcoin value is missing" << std::endl;
+            else {
+                std::map<std::string, double>::iterator it = _exchangeRates.find(targetDate);
+                if(it != _exchangeRates.end()) {
+                    std::cout << it->first << " => " << bitcoinValue << " = "
+                    << (std::stod(bitcoinValue) * it->second) << std::endl;
+                } else {
+                    std::cout << "Cannot find date! Must find closest date!" << std::endl;
+                }
+            } 
         } else {
-            std::cerr << "ERROR! Delimiter missing or improperly formatted line" << std::endl;
+            std::cerr << "ERROR! Delimiter | is missing or improperly formatted line" << std::endl;
         }
     }
 }
