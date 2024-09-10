@@ -36,6 +36,6 @@ bool					isValidFloatFormat(std::string& s);
 bool					isFloatPositive(std::string& s);
 bool					isFloatWithinRange(std::string& s, int min, int max);
 float 					stringToFloat(const std::string& s);
-void					findClosestDate(std::string s, std::string value, std::map<std::string, double>  rates);
+void					findMatchingDate(std::string s, std::string value, std::map<std::string, double>  rates);
 #endif /* ************************************************* BITCOINEXCHANGE_H */
 

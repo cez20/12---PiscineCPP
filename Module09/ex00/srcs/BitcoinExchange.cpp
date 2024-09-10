@@ -107,7 +107,7 @@ void            BitcoinExchange::parseBitcoinValue(std::ifstream & bitcoinValueH
                     std::cout << it->first << " => " << bitcoinValue << " = "
                     << (std::stod(bitcoinValue) * it->second) << std::endl;
                 } else {
-                    findClosestDate(targetDate, bitcoinValue, _exchangeRates);
+                    findMatchingDate(targetDate, bitcoinValue, _exchangeRates);
                     // std::cout << "Cannot find date! Must find closest date!" << std::endl;
                 }
             } 
@@ -272,7 +272,7 @@ float stringToFloat(const std::string& s) {
     return result;
 }
 
-void findClosestDate(std::string s, std::string value, std::map<std::string, double> rates){
+void findMatchingDate(std::string s, std::string value, std::map<std::string, double> rates){
 
     std::string     year, month, day;
     unsigned int    new_year, new_month, new_day;
