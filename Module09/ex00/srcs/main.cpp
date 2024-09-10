@@ -9,7 +9,7 @@ int main(int argc, char **argv)
         return 1;
     }
     
-    BitcoinExchange bitcoin_exchange = BitcoinExchange();
+    BitcoinExchange bitcoinExchange = BitcoinExchange();
     std::ifstream bitcoinExchangeRateHistory("data.csv");
 
     if (!bitcoinExchangeRateHistory.is_open()){
@@ -17,8 +17,8 @@ int main(int argc, char **argv)
         return 1;
     }
     
-    bitcoin_exchange.parseBitcoinExchangeRate(bitcoinExchangeRateHistory); // TODO:If there is an error, I should close the bitcoin database? 
-    //bitcoin_exchange.printBitcoinRates();
+    bitcoinExchange.parseBitcoinExchangeRate(bitcoinExchangeRateHistory); // TODO:If there is an error, I should close the bitcoin database? 
+    //bitcoinExchange.printBitcoinRates();
 
     std::ifstream bitcoinValueHistory(argv[1]);
     if (!bitcoinValueHistory.is_open()){
@@ -27,7 +27,7 @@ int main(int argc, char **argv)
         return 1;
     }
 
-    bitcoin_exchange.parseBitcoinValue(bitcoinValueHistory);
+    bitcoinExchange.parseBitcoinValue(bitcoinValueHistory);
     
     bitcoinExchangeRateHistory.close();
     bitcoinValueHistory.close();

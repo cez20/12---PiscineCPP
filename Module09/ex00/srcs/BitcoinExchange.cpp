@@ -25,8 +25,8 @@ BitcoinExchange &				BitcoinExchange::operator=( BitcoinExchange const & rhs )
 {
 	if ( this != &rhs ) // TODO: Once class is finished added element inside condition. 
 	{
-		this->_bitcoin_rates = rhs._bitcoin_rates;
-        //this->_bitcoin_rates = rhs.getBitcoinMap(); //Maybe this is it
+		this->_exchangeRates = rhs._exchangeRates;
+        //this->_exchangeRates = rhs.getBitcoinMap(); //Maybe this is it
 	}
 	return *this;
 }
@@ -35,26 +35,26 @@ BitcoinExchange &				BitcoinExchange::operator=( BitcoinExchange const & rhs )
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void			BitcoinExchange::parseBitcoinExchangeRate(std::ifstream & btc_database) {
+void			BitcoinExchange::parseBitcoinExchangeRate(std::ifstream & bitcoinRatesHistory) {
 	std::string line;
 
-	std::getline(btc_database, line);
-	while (std::getline(btc_database, line)) { 
+	std::getline(bitcoinRatesHistory, line);
+	while (std::getline(bitcoinRatesHistory, line)) { 
         std::stringstream ss(line);
-        std::string file_date, file_exchange_rate;
+        std::string inputDate, exchangeRate;
 
-        if (std::getline(ss, file_date, ',')) {
-            std::getline(ss, file_exchange_rate);
+        if (std::getline(ss, inputDate, ',')) {
+            std::getline(ss, exchangeRate);
 
-            removeAllWhitespace(file_date);
-            removeAllWhitespace(file_exchange_rate);
+            removeAllWhitespace(inputDate);
+            removeAllWhitespace(exchangeRate);
 
-            if(!isDateFormatValid(file_date) || !isDateOnlyDigits(file_date) || !isMonthDayValid(file_date)){
+            if(!isDateFormatValid(inputDate) || !isDateOnlyDigits(inputDate) || !isMonthDayValid(inputDate)){
                 std::cerr << "ERROR! Reference database has error" << std::endl;
                 exit(1); // TODO:: Est-ce que je peux faire ca
             }
 
-			_bitcoin_rates.insert(std::make_pair(file_date, std::stod(file_exchange_rate))); //TODO: validate std::stod can be used
+			_exchangeRates.insert(std::make_pair(inputDate,std::stod(exchangeRate))); //TODO: validate std::stod can be used
         } else {
             std::cerr << "Delimiter(comma) not found in the line: " << line << std::endl;
         }
@@ -75,8 +75,8 @@ void            BitcoinExchange::parseBitcoinValue(std::ifstream & bitcoinValueH
             trimLeadingWhitespace(nbr_of_bitcoins);
 
             // Check if the date exists in the map
-            std::map<std::string, double>::iterator it = _bitcoin_rates.find(target_date);
-            if (it != _bitcoin_rates.end()) {
+            std::map<std::string, double>::iterator it = _exchangeRates.find(target_date);
+            if (it != _exchangeRates.end()) {
                 std::cout << it->first << " => " << nbr_of_bitcoins << " = "
                         << (std::stod(nbr_of_bitcoins) * it->second) << std::endl;
             } else {
@@ -92,7 +92,7 @@ void            BitcoinExchange::parseBitcoinValue(std::ifstream & bitcoinValueH
 void	BitcoinExchange::printBitcoinRates(){
 	std::map<std::string, double>::iterator it;
 
-	for(it = _bitcoin_rates.begin(); it != _bitcoin_rates.end(); ++it){
+	for(it = _exchangeRates.begin(); it != _exchangeRates.end(); ++it){
 		std::cout << std::fixed << std::setprecision(2) << it->first << " | " << it->second << std::endl;
 	}
 }
@@ -168,7 +168,7 @@ bool            isMonthDayValid(std::string s){
     month = s.substr(5, 2);
     day = s.substr(8, 2);
 
-    new_year = atoi(year.c_str());
+    new_year = atoi(year.c_str()); //TODO: Validate if atoi is the best function. Maybe std::stoi 
     new_month = atoi(month.c_str());
     new_day = atoi(day.c_str());
 

@@ -21,7 +21,7 @@ class BitcoinExchange
 		void			printBitcoinRates();
 
 	private:
-		std::map<std::string, double> 		_bitcoin_rates;
+		std::map<std::string, double> 		_exchangeRates;
 		// std::string 						_date_to_find;
 		// double							_nbr_of_bitcoins;
 		
