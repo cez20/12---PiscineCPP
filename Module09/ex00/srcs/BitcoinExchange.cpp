@@ -59,7 +59,7 @@ void			BitcoinExchange::parseBitcoinExchangeRate(std::ifstream & bitcoinRatesHis
                 exit(1); // TODO:: Est-ce que je peux faire ca
             }
 
-            if (!isRateValidFloat(exchangeRate) || !isFloatPositive(exchangeRate)){
+            if (!isValidFloatFormat(exchangeRate) || !isFloatPositive(exchangeRate)){
                 std::cerr << "ERROR! Exchange Rate has an error!" << std::endl;
                 exit(1); // TODO:: Est-ce que je peux faire ca
             }
@@ -95,6 +95,8 @@ void            BitcoinExchange::parseBitcoinValue(std::ifstream & bitcoinValueH
                 std::cerr << "ERROR! Date is not composed only composed of digit" << " => " << targetDate << std::endl;
             else if (!isMonthDayValid(targetDate))
                  std::cerr << "ERROR! Date provided does not exist" << " => " << targetDate << std::endl;
+            else if (!isValidFloatFormat(bitcoinValue))
+                std::cerr << "ERROR! Bitcoin value is not an integer or a float" <<  " => " << bitcoinValue << std::endl;
             else {
                 std::map<std::string, double>::iterator it = _exchangeRates.find(targetDate);
                 if(it != _exchangeRates.end()) {
@@ -213,12 +215,9 @@ bool            isMonthDayValid(std::string s){
     return true;
 }
 
-bool isRateValidFloat(std::string& s) {
+bool isValidFloatFormat(std::string& s) {
     bool decimalPointSeen = false;
     bool negativeSignSeen = false;
-
-    // if (!std::isdigit(s[0]) || s[0] != '-')
-    //     return false;
 
     for (size_t i = 0; i < s.size(); ++i) {
         char c = s[i];
