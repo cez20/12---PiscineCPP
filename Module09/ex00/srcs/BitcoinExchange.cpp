@@ -75,21 +75,22 @@ void			BitcoinExchange::parseBitcoinExchangeRate(std::ifstream & bitcoinRatesHis
 void            BitcoinExchange::parseBitcoinValue(std::ifstream & bitcoinValueHistory) {
     std::string line;
     
+    std::getline(bitcoinValueHistory, line); // Skip first line 
     while(std::getline(bitcoinValueHistory, line)) {
-        size_t delimiter_pos = line.find('|');
+        std::stringstream ss(line);
+        std::string targetDate, bitcoinValue;
 
-        if (delimiter_pos != std::string::npos){
-            std::string target_date = line.substr(0, delimiter_pos);
-            std::string nbr_of_bitcoins = line.substr(delimiter_pos + 1);
+        if (std::getline(ss, targetDate, '|')) {
+            std::getline(ss, bitcoinValue);
 
-            trimTrailingWhitespace(target_date);
-            trimLeadingWhitespace(nbr_of_bitcoins);
+            removeAllWhitespace(targetDate);
+            removeAllWhitespace(bitcoinValue);
 
             // Check if the date exists in the map
-            std::map<std::string, double>::iterator it = _exchangeRates.find(target_date);
+            std::map<std::string, double>::iterator it = _exchangeRates.find(targetDate);
             if (it != _exchangeRates.end()) {
-                std::cout << it->first << " => " << nbr_of_bitcoins << " = "
-                        << (std::stod(nbr_of_bitcoins) * it->second) << std::endl;
+                std::cout << it->first << " => " << bitcoinValue << " = "
+                        << (std::stod(bitcoinValue) * it->second) << std::endl;
             } else {
                 std::cerr << "ERROR! Cannot find the date in file or ERROR" << std::endl;
             }
