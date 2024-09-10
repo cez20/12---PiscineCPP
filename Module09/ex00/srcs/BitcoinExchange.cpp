@@ -58,7 +58,7 @@ void			BitcoinExchange::parseBitcoinExchangeRate(std::ifstream & bitcoinRatesHis
             if (!isValidFloatFormat(exchangeRate) || !isFloatPositive(exchangeRate))
                 throw std::runtime_error("ERROR! Reference database(data.csv) has error in one of its exchange rate");
 
-			_exchangeRates.insert(std::make_pair(inputDate,std::stod(exchangeRate))); //TODO: validate std::stod can be used
+			_exchangeRates.insert(std::make_pair(inputDate,std::atof(exchangeRate.c_str()))); //TODO: Test the std::atof 
         } else {
             throw std::runtime_error("ERROR! Delimiter(comma) not found in the line: ");
         }
