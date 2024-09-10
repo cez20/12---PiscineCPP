@@ -35,6 +35,7 @@ std::string				removeAllWhitespace(std::string & s);
 bool					isDateFormatValid(std::string & s);
 bool					isDateOnlyDigits(std::string s);
 bool					isMonthDayValid(std::string s);
+bool					isValidFloatFormat(std::string& s);
 
 #endif /* ************************************************* BITCOINEXCHANGE_H */
 

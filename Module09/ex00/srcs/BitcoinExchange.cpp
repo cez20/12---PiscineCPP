@@ -59,12 +59,10 @@ void			BitcoinExchange::parseBitcoinExchangeRate(std::ifstream & bitcoinRatesHis
                 exit(1); // TODO:: Est-ce que je peux faire ca
             }
 
-            // IsRateOnlyDigits  //IsRateValidNumber
-
-            // if (!isRateValidFloat(exchangeRate)){
-            //     std::cerr << "ERROR! Exchange Rate has an error!" << std::endl;
-            //     exit(1); // TODO:: Est-ce que je peux faire ca
-            // }
+            if (!isValidFloatFormat(exchangeRate)){
+                std::cerr << "ERROR! Exchange Rate has an error!" << std::endl;
+                exit(1); // TODO:: Est-ce que je peux faire ca
+            }
 
 			_exchangeRates.insert(std::make_pair(inputDate,std::stod(exchangeRate))); //TODO: validate std::stod can be used
         } else {
@@ -201,5 +199,29 @@ bool            isMonthDayValid(std::string s){
         }
     }
 
+    return true;
+}
+
+bool isValidFloatFormat(std::string& s) {
+    bool decimalPointSeen = false;
+
+    if (!std::isdigit(s[0]))
+        return false;
+
+    for (size_t i = 0; i < s.size(); ++i) {
+        char c = s[i];
+
+        if (std::isdigit(c)) {
+            continue;
+        }
+
+        if (c == '.') {
+            if (decimalPointSeen)
+                return false; 
+            decimalPointSeen = true;
+        } else {
+            return false;
+        }
+    }
     return true;
 }
