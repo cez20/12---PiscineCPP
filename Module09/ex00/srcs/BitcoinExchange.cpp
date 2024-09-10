@@ -49,14 +49,27 @@ void			BitcoinExchange::parseBitcoinExchangeRate(std::ifstream & bitcoinRatesHis
             removeAllWhitespace(inputDate);
             removeAllWhitespace(exchangeRate);
 
+            if(inputDate == "" || exchangeRate == "") {
+                std::cout << "ERROR! Either inputDate or exchangeRate is missing!" << std::endl;
+                exit(1); //TODO: Remove this exit which is not good practice 
+            }
+
             if(!isDateFormatValid(inputDate) || !isDateOnlyDigits(inputDate) || !isMonthDayValid(inputDate)){
                 std::cerr << "ERROR! Reference database has error" << std::endl;
                 exit(1); // TODO:: Est-ce que je peux faire ca
             }
 
+            // IsRateOnlyDigits  //IsRateValidNumber
+
+            // if (!isRateValidFloat(exchangeRate)){
+            //     std::cerr << "ERROR! Exchange Rate has an error!" << std::endl;
+            //     exit(1); // TODO:: Est-ce que je peux faire ca
+            // }
+
 			_exchangeRates.insert(std::make_pair(inputDate,std::stod(exchangeRate))); //TODO: validate std::stod can be used
         } else {
             std::cerr << "Delimiter(comma) not found in the line: " << line << std::endl;
+            exit(1);
         }
     }
 }
