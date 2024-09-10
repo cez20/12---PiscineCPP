@@ -16,10 +16,10 @@ class BitcoinExchange
 
 		BitcoinExchange &		operator=( BitcoinExchange const & rhs );
 
-		void			parseBitcoinExchangeRate(std::ifstream & btc_database);
-		void			parseBitcoinValue(std::ifstream & bitcoinValueHistory);
-		void			findMatchingDate(std::string s, std::string value);
-		void			printBitcoinRates();
+		void									parseBitcoinExchangeRate(std::ifstream & btc_database);
+		void									parseBitcoinValue(std::ifstream & bitcoinValueHistory);
+		std::map<std::string, double>::iterator findClosestDate(std::string inputDate);
+		void									printBitcoinRates();
 
 	private:
 		std::map<std::string, double> 		_exchangeRates;
@@ -37,6 +37,8 @@ bool					isValidFloatFormat(std::string& s);
 bool					isFloatPositive(std::string& s);
 bool					isFloatWithinRange(std::string& s, int min, int max);
 float 					stringToFloat(const std::string& s);
+void					parseDateToInteger(const std::string& inputDate, unsigned int& year, unsigned int& month, unsigned int& day);
+std::string 			generatePreviousDate(unsigned int year, unsigned int month, unsigned int day);
 
 #endif /* ************************************************* BITCOINEXCHANGE_H */
 

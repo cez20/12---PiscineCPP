@@ -49,25 +49,18 @@ void			BitcoinExchange::parseBitcoinExchangeRate(std::ifstream & bitcoinRatesHis
             removeAllWhitespace(inputDate);
             removeAllWhitespace(exchangeRate);
 
-            if(inputDate == "" || exchangeRate == "") {
-                std::cout << "ERROR! Either inputDate or exchangeRate is missing!" << std::endl;
-                exit(1); //TODO: Remove this exit which is not good practice 
-            }
+            if(inputDate == "" || exchangeRate == "") 
+                throw std::runtime_error("ERROR! Either inputDate or exchangeRate is missing!");
 
-            if(!isDateFormatValid(inputDate) || !isDateOnlyDigits(inputDate) || !isMonthDayValid(inputDate)){
-                std::cerr << "ERROR! Reference database has error" << std::endl;
-                exit(1); // TODO:: Est-ce que je peux faire ca
-            }
+            if(!isDateFormatValid(inputDate) || !isDateOnlyDigits(inputDate) || !isMonthDayValid(inputDate))
+                throw std::runtime_error("ERROR! Reference database(data.csv) has error in one of its date");
 
-            if (!isValidFloatFormat(exchangeRate) || !isFloatPositive(exchangeRate)){
-                std::cerr << "ERROR! Exchange Rate has an error!" << std::endl;
-                exit(1); // TODO:: Est-ce que je peux faire ca
-            }
+            if (!isValidFloatFormat(exchangeRate) || !isFloatPositive(exchangeRate))
+                throw std::runtime_error("ERROR! Reference database(data.csv) has error in one of its exchange rate");
 
 			_exchangeRates.insert(std::make_pair(inputDate,std::stod(exchangeRate))); //TODO: validate std::stod can be used
         } else {
-            std::cerr << "Delimiter(comma) not found in the line: " << line << std::endl;
-            exit(1);
+            throw std::runtime_error("ERROR! Delimiter(comma) not found in the line: ");
         }
     }
 }
@@ -85,8 +78,7 @@ void            BitcoinExchange::parseBitcoinValue(std::ifstream & bitcoinValueH
 
             removeAllWhitespace(targetDate);
             removeAllWhitespace(bitcoinValue);
-
-            // Error validation Validate
+        
             if (targetDate == "" || bitcoinValue == "")
                 std::cerr << "ERROR! Target date or bitcoin value is missing" << " => " << line << std::endl;
             else if (!isDateFormatValid(targetDate))
@@ -103,13 +95,9 @@ void            BitcoinExchange::parseBitcoinValue(std::ifstream & bitcoinValueH
                 std::cerr << "ERROR! Bitcoin value is not within range of 0 to 1000" <<  " => " << bitcoinValue << std::endl;
             else {
                 std::map<std::string, double>::iterator it = _exchangeRates.find(targetDate);
-                if(it != _exchangeRates.end()) {
-                    std::cout << it->first << " => " << bitcoinValue << " = "
-                    << (std::stod(bitcoinValue) * it->second) << std::endl;
-                } else {
-                    findMatchingDate(targetDate, bitcoinValue);
-                    // std::cout << "Cannot find date! Must find closest date!" << std::endl;
-                }
+                if(it == _exchangeRates.end())
+                    it = findClosestDate(targetDate);
+                std::cout << it->first << " => " << bitcoinValue << " = " << (std::stod(bitcoinValue) * it->second) << std::endl;
             } 
         } else {
             std::cerr << "ERROR! Delimiter | is missing or improperly formatted line" << std::endl;
@@ -118,58 +106,27 @@ void            BitcoinExchange::parseBitcoinValue(std::ifstream & bitcoinValueH
 }
 
 
-void BitcoinExchange::findMatchingDate(std::string s, std::string value){
+std::map<std::string, double>::iterator BitcoinExchange::findClosestDate(std::string inputDate){
 
-    std::string     year, month, day;
-    unsigned int    new_year, new_month, new_day;
-    std::stringstream new_full_date;
+    std::map<std::string, double>::iterator it;
+    unsigned int                            year, month, day;
 
-    year = s.substr(0, 4);
-    month = s.substr(5, 2);
-    day = s.substr(8, 2);
-
-    new_year = atoi(year.c_str()); //TODO: Validate if atoi is the best function. Maybe std::stoi 
-    new_month = atoi(month.c_str());
-    new_day = atoi(day.c_str());
+    parseDateToInteger(inputDate, year, month, day);
 
     while (1) {
-            
-        if (new_day > 1)
-            new_day -= 1;
-        else if (new_day == 1 && new_month != 1){
-            new_month -= 1;
+        std::string previousDate = generatePreviousDate(year, month, day);
 
-            if(new_month == 2) {
-                if ((new_year % 4 == 0 && new_year % 100 != 0) || (new_year % 400 == 0))
-                    new_day = 29;
-                else
-                    new_day = 28;
-            }
-            else if ((new_month == 4 || new_month == 6 || new_month == 9 || new_month == 11))
-                new_day = 30;
-            else
-                new_day = 31;
-        } 
-        else if (new_day == 1 && new_month == 1){
-            new_year -= 1;
-            new_month = 12;
-            new_day = 31;
-        }
+        it = _exchangeRates.find(previousDate);
+        if (it !=  _exchangeRates.end())
+            return it;
 
-        new_full_date << new_year << "-";
-        new_full_date << std::setw(2) << std::setfill('0') << new_month << "-";
-        new_full_date << std::setw(2) << std::setfill('0') << new_day;
+        parseDateToInteger(previousDate, year, month, day);
 
-        std::string new_string = new_full_date.str();
-        new_full_date.str(""); // Clear the content of the std::stringstream, do not use .erase()
-
-        std::map<std::string, double>::iterator it =  _exchangeRates.find(new_string);
-        if (it !=  _exchangeRates.end()){
-            std::cout << it->first << " => " << value << " = "
-                    << (std::stod(value) * it->second) << std::endl;
+        if (year == 0 && month == 0 && day == 0) { //TODO: Test this section 
             break;
         }
     }
+    return _exchangeRates.end();
 }
 
 
@@ -245,29 +202,22 @@ bool            isDateOnlyDigits(std::string s){
 
 bool            isMonthDayValid(std::string s){
 
-    std::string     year, month, day;
-    unsigned int    new_year, new_month, new_day;
+    unsigned int    year, month, day;
 
-    year = s.substr(0, 4);
-    month = s.substr(5, 2);
-    day = s.substr(8, 2);
+    parseDateToInteger(s, year, month, day);
 
-    new_year = atoi(year.c_str()); //TODO: Validate if atoi is the best function. Maybe std::stoi 
-    new_month = atoi(month.c_str());
-    new_day = atoi(day.c_str());
-
-    if (new_month < 1 || new_month > 12)
+    if (month < 1 || month > 12)
         return false;
-    if (new_day < 1 || new_day > 31)
+    if (day < 1 || day > 31)
         return false;
-    if ((new_month == 4 || new_month == 6 || new_month == 9 || new_month == 11) && new_day > 30)
+    if ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30)
         return false;
-    if (new_month == 2){
-        if ((new_year % 4 == 0 && new_year % 100 != 0) || (new_year % 400 == 0)){
-            if (new_day > 29)
+    if (month == 2){
+        if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)){
+            if (day > 29)
                 return false;
         } else {
-            if (new_day > 28)
+            if (day > 28)
                 return false;
         }
     }
@@ -323,6 +273,48 @@ float stringToFloat(const std::string& s) {
     float result;
 
     ss >> result;
-
     return result;
+}
+
+void parseDateToInteger(const std::string& inputDate, unsigned int& year, unsigned int& month, unsigned int& day) {
+    
+    std::string yearString = inputDate.substr(0, 4);
+    std::string monthString = inputDate.substr(5, 2);
+    std::string dayString = inputDate.substr(8, 2);
+
+    year = std::atoi(yearString.c_str());
+    month = std::atoi(monthString.c_str());
+    day = std::atoi(dayString.c_str());
+}
+
+std::string generatePreviousDate(unsigned int year, unsigned int month, unsigned int day) {
+     if (day > 1) {
+        day -= 1;
+    } else if (day == 1 && month != 1) {
+        month -= 1;
+
+        if (month == 2) {
+      
+            if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+                day = 29;
+            } else {
+                day = 28;
+            }
+        } else if (month == 4 || month == 6 || month == 9 || month == 11) {
+            day = 30; 
+        } else {
+            day = 31;
+        }
+    } else if (day == 1 && month == 1) {
+        year -= 1;
+        month = 12;
+        day = 31;
+    }
+
+    std::stringstream newFullDate;
+    newFullDate << year << "-";
+    newFullDate << std::setw(2) << std::setfill('0') << month << "-";
+    newFullDate << std::setw(2) << std::setfill('0') << day;
+
+    return newFullDate.str();
 }

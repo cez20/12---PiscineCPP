@@ -17,13 +17,18 @@ int main(int argc, char **argv)
         return 1;
     }
     
-    bitcoinExchange.parseBitcoinExchangeRate(bitcoinExchangeRateHistory); // TODO:If there is an error, I should close the bitcoin database? 
-    //bitcoinExchange.printBitcoinRates();
+    try {
+        bitcoinExchange.parseBitcoinExchangeRate(bitcoinExchangeRateHistory);
+    } catch (const std::exception& e) {
+        std::cerr << e.what() << std::endl;
+        bitcoinExchangeRateHistory.close();
+        return 1;
+    } 
 
     std::ifstream bitcoinValueHistory(argv[1]);
     if (!bitcoinValueHistory.is_open()){
         std::cerr << "Error! Could not open bitcoin value database !" << std::endl;
-        bitcoinExchangeRateHistory.close(); // This close the already open database
+        bitcoinExchangeRateHistory.close();
         return 1;
     }
 
