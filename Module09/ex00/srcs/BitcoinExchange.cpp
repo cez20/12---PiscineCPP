@@ -107,7 +107,7 @@ void            BitcoinExchange::parseBitcoinValue(std::ifstream & bitcoinValueH
                     std::cout << it->first << " => " << bitcoinValue << " = "
                     << (std::stod(bitcoinValue) * it->second) << std::endl;
                 } else {
-                    findMatchingDate(targetDate, bitcoinValue, _exchangeRates);
+                    findMatchingDate(targetDate, bitcoinValue);
                     // std::cout << "Cannot find date! Must find closest date!" << std::endl;
                 }
             } 
@@ -118,7 +118,7 @@ void            BitcoinExchange::parseBitcoinValue(std::ifstream & bitcoinValueH
 }
 
 
-void BitcoinExchange::findMatchingDate(std::string s, std::string value, std::map<std::string, double> rates){
+void BitcoinExchange::findMatchingDate(std::string s, std::string value){
 
     std::string     year, month, day;
     unsigned int    new_year, new_month, new_day;
@@ -163,8 +163,8 @@ void BitcoinExchange::findMatchingDate(std::string s, std::string value, std::ma
         std::string new_string = new_full_date.str();
         new_full_date.str(""); // Clear the content of the std::stringstream, do not use .erase()
 
-        std::map<std::string, double>::iterator it = rates.find(new_string);
-        if (it != rates.end()){
+        std::map<std::string, double>::iterator it =  _exchangeRates.find(new_string);
+        if (it !=  _exchangeRates.end()){
             std::cout << it->first << " => " << value << " = "
                     << (std::stod(value) * it->second) << std::endl;
             break;

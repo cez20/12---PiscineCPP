@@ -18,7 +18,7 @@ class BitcoinExchange
 
 		void			parseBitcoinExchangeRate(std::ifstream & btc_database);
 		void			parseBitcoinValue(std::ifstream & bitcoinValueHistory);
-		void			findMatchingDate(std::string s, std::string value, std::map<std::string, double>  rates);
+		void			findMatchingDate(std::string s, std::string value);
 		void			printBitcoinRates();
 
 	private:
