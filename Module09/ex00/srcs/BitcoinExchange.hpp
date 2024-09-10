@@ -22,9 +22,6 @@ class BitcoinExchange
 
 	private:
 		std::map<std::string, double> 		_exchangeRates;
-		// std::string 						_date_to_find;
-		// double							_nbr_of_bitcoins;
-		
 };
 
 std::string::iterator	findFirstNonWhitespace(std::string & s);
