@@ -81,7 +81,7 @@ void	RPN::parse(){
           _mystack.push(_mathString[i] - '0');
         }
       }
-      std::cout << "The total of the RNP is: " << _total << std::endl;
+      std::cout << _total << std::endl;
 } 
 
 
