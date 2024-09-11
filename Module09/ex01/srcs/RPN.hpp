@@ -20,6 +20,8 @@ class RPN
 
 		void		parse();
 		bool		isOperator(char c);
+		bool		isExpressionDigits(std::string & str);
+		bool 		hasExpressionValidCharacters(std::string & str);
 		int			calculate(int operand1, int operand2 , char op);
 
 	private:
