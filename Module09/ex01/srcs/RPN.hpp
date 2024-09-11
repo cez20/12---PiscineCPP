@@ -22,11 +22,13 @@ class RPN
 		bool		isOperator(char c);
 		bool		isExpressionDigits(std::string & str);
 		bool 		hasExpressionValidCharacters(std::string & str);
-		int			calculate(int operand1, int operand2 , char op);
+		void 		retrieveOperands(int& operand1, int& operand2);
+
+		void		calculate(int operand1, int operand2 , char op);
 
 	private:
-		int				_total;
-		std::string		_mathString;
+		int				_rpnTotal;
+		std::string		_rpnExpression;
 		std::stack<int> _mystack;
 
 };
