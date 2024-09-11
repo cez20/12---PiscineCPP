@@ -16,6 +16,7 @@ class BitcoinExchange
 
 		BitcoinExchange &		operator=( BitcoinExchange const & rhs );
 
+		const std::map<std::string, double>&	getExchangeRates() const;
 		void									parseBitcoinExchangeRate(std::ifstream & btc_database);
 		void									parseBitcoinValue(std::ifstream & bitcoinValueHistory);
 		std::map<std::string, double>::iterator findClosestDate(std::string inputDate);

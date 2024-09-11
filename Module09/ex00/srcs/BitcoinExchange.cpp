@@ -23,10 +23,9 @@ BitcoinExchange::~BitcoinExchange() {}
 
 BitcoinExchange &				BitcoinExchange::operator=( BitcoinExchange const & rhs )
 {
-	if ( this != &rhs ) // TODO: Once class is finished added element inside condition. 
+	if ( this != &rhs )
 	{
-		this->_exchangeRates = rhs._exchangeRates;
-        //this->_exchangeRates = rhs.getBitcoinMap(); //Maybe this is it
+		this->_exchangeRates = rhs.getExchangeRates();
 	}
 	return *this;
 }
@@ -34,6 +33,11 @@ BitcoinExchange &				BitcoinExchange::operator=( BitcoinExchange const & rhs )
 /*
 ** --------------------------------- METHODS ----------------------------------
 */
+
+const std::map<std::string, double>&   BitcoinExchange::getExchangeRates() const{
+    return _exchangeRates;
+}
+
 
 void			BitcoinExchange::parseBitcoinExchangeRate(std::ifstream & bitcoinRatesHistory) {
 	std::string line;
@@ -68,7 +72,7 @@ void			BitcoinExchange::parseBitcoinExchangeRate(std::ifstream & bitcoinRatesHis
 void            BitcoinExchange::parseBitcoinValue(std::ifstream & bitcoinValueHistory) {
     std::string line;
     
-    std::getline(bitcoinValueHistory, line); // Skip first line 
+    std::getline(bitcoinValueHistory, line);
     while(std::getline(bitcoinValueHistory, line)) {
         std::stringstream ss(line);
         std::string targetDate, bitcoinValue;
@@ -97,7 +101,10 @@ void            BitcoinExchange::parseBitcoinValue(std::ifstream & bitcoinValueH
                 std::map<std::string, double>::iterator it = _exchangeRates.find(targetDate);
                 if(it == _exchangeRates.end())
                     it = findClosestDate(targetDate);
-                std::cout << it->first << " => " << bitcoinValue << " = " << (std::stod(bitcoinValue) * it->second) << std::endl;
+                if(it == _exchangeRates.end()) // TODO: This is temporary fix to fix problem of date that is lower than lowest date.  
+                    std::cout << "ERROR! Cannot find match because date provided is lower than lowest date in database" << std::endl;
+                else
+                    std::cout << it->first << " => " << bitcoinValue << " = " << (std::atof(bitcoinValue.c_str()) * it->second) << std::endl; // TODO: is std::atof OK
             } 
         } else {
             std::cerr << "ERROR! Delimiter | is missing or improperly formatted line" << std::endl;
@@ -122,7 +129,7 @@ std::map<std::string, double>::iterator BitcoinExchange::findClosestDate(std::st
 
         parseDateToInteger(previousDate, year, month, day);
 
-        if (year == 0 && month == 0 && day == 0) { //TODO: Test this section 
+        if (year < 2009) { //TODO: Test this section 
             break;
         }
     }
