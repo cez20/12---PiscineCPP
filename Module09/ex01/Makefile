@@ -6,14 +6,14 @@
 #    By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/03 17:54:38 by cemenjiv          #+#    #+#              #
-#    Updated: 2023/11/06 18:41:27 by cemenjiv         ###   ########.fr        #
+#    Updated: 2024/09/11 10:29:30 by cemenjiv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			= template
+NAME			= RPN
 
 SRCS_DIR   		= srcs/
-SRCS_FILES		= main.cpp
+SRCS_FILES		= main.cpp #RPN.cpp
 SRCS 			= $(addprefix $(SRCS_DIR), $(SRCS_FILES))
 
 OBJS_DIR		= objs/
