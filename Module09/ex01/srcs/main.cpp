@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 19:41:03 by cemenjiv          #+#    #+#             */
-/*   Updated: 2024/09/11 12:04:46 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2024/09/11 12:12:22 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,33 +53,24 @@ int main(int argc, char **argv)
       std::string str = argv[1];
       str.erase(std::remove_if(str.begin(), str.end(), ::isspace), str.end()); //TODO: Fix the problem of ::isspace vs std::isspace
       
-      std::stack<char> mystack;
+      std::stack<int> mystack;
       int operand1 = 0;
       int operand2 = 0;
       int total = 0;
-      int newTotal = 0;
 
       for (size_t i = 0; i != str.size(); ++i){
         if(isOperator(str[i])){
-          operand2 = mystack.top() - '0'; // Takes element and converts it to int. 
-          mystack.pop();  //Removes elements from stack
-          if (mystack.empty())
-            total = calculate(total, operand2, str[i]);
-          else{
-            operand1 = mystack.top() - '0';
-            mystack.pop();
-            newTotal = calculate(operand1, operand2, str[i]);
-            if (newTotal >= 0)
-              total += newTotal;
-            else
-              total -= newTotal;
-          }
+          operand2 = mystack.top();
+          mystack.pop();
+          operand1 = mystack.top();
+          mystack.pop();
+          total = calculate(operand1, operand2, str[i]);
+          mystack.push(total);
         }
         else {
-          mystack.push(str[i]);
+          mystack.push(str[i] - '0');
         }
       }
-
       std::cout << "The total of the RNP is: " << total << std::endl;
 
     } else {
@@ -88,3 +79,25 @@ int main(int argc, char **argv)
     }
     return 0;
 }
+
+
+// for (size_t i = 0; i != str.size(); ++i){
+//     if(isOperator(str[i])){
+//       operand2 = mystack.top() - '0'; // Takes element and converts it to int. 
+//       mystack.pop();  //Removes elements from stack
+//       if (mystack.empty())
+//         total = calculate(total, operand2, str[i]);
+//       else{
+//         operand1 = mystack.top() - '0';
+//         mystack.pop();
+//         newTotal = calculate(operand1, operand2, str[i]);
+//         if (newTotal >= 0)
+//           total += newTotal;
+//         else
+//           total -= newTotal;
+//       }
+//     }
+//     else {
+//       mystack.push(str[i]);
+//     }
+//   }
