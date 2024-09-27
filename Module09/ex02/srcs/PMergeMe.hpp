@@ -19,7 +19,8 @@ class PMergeMe
 		void			processArguments(int argCount, char **argList);
 		void			initializeContainers();
 		void			mergeInsertionSort();
-		void			recursiveSortPairs(int n);
+		void			sortPairs();
+		void			mergeSortedPairs();
 
 		void			printInitialIntSequence();
 		void			printSequenceAfterSort();
@@ -28,7 +29,7 @@ class PMergeMe
 		std::clock_t 			_start;
 		std::vector<double>		_myVector;    // sortedIntSequence1
 		std::deque<double>		_myDeque;    // sortedIntSequence2;  
-		std::list<double>		_initialIntSequence;  // TODO: Should I call it int sequence or double sequence
+		std::list<double>		_initialIntSequence;
 		// size_t					_myVectorSortTime;
 		// size_t					_myDequeSortTime;
 };

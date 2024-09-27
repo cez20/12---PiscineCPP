@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 19:41:03 by cemenjiv          #+#    #+#             */
-/*   Updated: 2024/09/12 09:12:01 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2024/09/12 12:43:28 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,6 @@ int main(int argc, char **argv)
         } catch (std::exception & e) {
             std::cout << e.what() << std::endl;
         }
-       
-        // std::list<double>   argList;  
-        // int                 i = 1;
-
-        // while (i < argc){
-        //     std::string arg = argv[i];
-        //     if(!isValidNumberFormat(arg) || !isBelowIntMax(arg))
-        //         std::cout << "There is an error!" << std::endl;
-        //     else{
-        //         std::clock_t start = std::clock();
-        //         argList.push_back(stringToDouble(arg));
-        //     }
-        //     i++;
-        // }
     } else {
         std::cout << "ERROR! Program should take 1 argument or more" << std::endl;
         return 1;

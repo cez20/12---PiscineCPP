@@ -64,31 +64,41 @@ void	PMergeMe::initializeContainers() {
 	_myDeque.assign(_initialIntSequence.begin(), _initialIntSequence.end());
 }
 
-void PMergeMe::recursiveSortPairs(int n){
-	if (n < 1)
+void PMergeMe::sortPairs(){
+
+	if (_myVector.size() < 2)
 		return;
-	if (_myVector[n] > _myVector[n - 1])
-		std::swap(_myVector[n], _myVector[n - 1]);
-	recursiveSortPairs(n - 2);
+	size_t size = _myVector.size();
+	for (size_t i = 0; i < size; i += 2){
+		if(((i + 1) < size) && _myVector[i] > _myVector[i + 1])
+			std::swap(_myVector[i], _myVector[i + 1]);
+	}
 }
+
+void PMergeMe::mergeSortedPairs(){
+	const bool is_odd = _myVector.size() % 2 != 0;
+	
+	int initialLeftIndex = 0;
+	int initialRightIndex = ((_myVector.size() - 1) / 2 - (is_odd ? 1 : 0));
+	mergeSortedPairsRecursion(initialLeftIndex, initialRightIndex);
+}
+
+
 
 void PMergeMe::mergeInsertionSort() {
 
-	int n = _myVector.size();
-	if (n % 2 == 1)
-		n -= 2;
-	else
-		n -= 1;
-	recursiveSortPairs(n);
-	printSequenceAfterSort();
+	if (_initialIntSequence.size() < 2)
+		return;
+	sortPairs();
+	//mergeSortedPairs();
 }
 
-void	PMergeMe::printInitialIntSequence(){
-	
+void 	PMergeMe::printInitialIntSequence(){
+
 	std::list<double>::iterator it;
-	
-	std::cout << "Before sorting: ";
-	for (it = _initialIntSequence.begin(); it != _initialIntSequence.end(); ++it) {
+
+	std::cout << "Before Sorting: ";
+	for(it = _initialIntSequence.begin(); it != _initialIntSequence.end(); ++it){
 		std::cout << *it << " ";
 	}
 	std::cout << std::endl;
@@ -134,6 +144,32 @@ bool isBelowIntMax(const std::string& arg){
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
+
+
+
+// void	PMergeMe::initializeContainers() {
+
+// 	_myVector.assign(_initialIntSequence.begin(), _initialIntSequence.end());
+// 	_myDeque.assign(_initialIntSequence.begin(), _initialIntSequence.end());
+// }
+
+// void PMergeMe::recursiveSortPairs(int n){
+// 	if (n < 1)
+// 		return;
+// 	if (_myVector[n] > _myVector[n - 1])
+// 		std::swap(_myVector[n], _myVector[n - 1]);
+// 	recursiveSortPairs(n - 2);
+// }
+
+// void PMergeMe::mergeInsertionSort() {
+
+// 	int n = _myVector.size();
+// 	if (n % 2 == 1)
+// 		n -= 2;
+// 	else
+// 		n -= 1;
+// 	recursiveSortPairs(n);
+// }
 
 
 /* ************************************************************************** */
