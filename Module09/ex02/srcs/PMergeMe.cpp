@@ -68,29 +68,63 @@ void PMergeMe::sortPairs(){
 
 	if (_myVector.size() < 2)
 		return;
-	size_t size = _myVector.size();
-	for (size_t i = 0; i < size; i += 2){
-		if(((i + 1) < size) && _myVector[i] > _myVector[i + 1])
+	for (size_t i = 0; i < _myVector.size(); i += 2){
+		if(((i + 1) < _myVector.size()) && _myVector[i] > _myVector[i + 1])
 			std::swap(_myVector[i], _myVector[i + 1]);
 	}
+	//printSequenceAfterSort(); // This is to test that the swap is done correctly. 
 }
 
-void PMergeMe::mergeSortedPairs(){
-	const bool is_odd = _myVector.size() % 2 != 0;
+void PMergeMe::mergeSortPairsRecursive(size_t left, size_t right){
+
+	if (left >= right)
+		return;
+	const size_t middle = left + (right - left) / 2;
+	mergeSortPairsRecursive(left, middle);      // sort left part
+	mergeSortPairsRecursive(middle + 1, right); // sort right part
+	std::cout << "I am here" << std::endl;
+}
+
+
+// void
+// merge_sort_pairs_recursion(std::vector<int>& array, const size_t left, const size_t right) {
+//     if (left >= right) return; // recursion end condition
+
+//     const size_t middle = left + (right - left) / 2;
+//     merge_sort_pairs_recursion(array, left, middle);      // sort left part
+//     merge_sort_pairs_recursion(array, middle + 1, right); // sort right part
+
+//     merge_pair_arrays(array, left, middle, right); // merge two sorted parts
+// }
+
+void PMergeMe::mergeSortPairs(){
 	
-	int initialLeftIndex = 0;
-	int initialRightIndex = ((_myVector.size() - 1) / 2 - (is_odd ? 1 : 0));
-	mergeSortedPairsRecursion(initialLeftIndex, initialRightIndex);
+	size_t left = 0;
+	size_t nbrElementsInPair = 2;
+	size_t right = (_myVector.size() - 1) / nbrElementsInPair;
+
+	if (isArraySizeOdd()){
+		std::cout << _myVector.size() << std::endl;
+		mergeSortPairsRecursive(left, right - 1);
+	}
+	else
+		mergeSortPairsRecursive(left, right);
+
 }
-
-
 
 void PMergeMe::mergeInsertionSort() {
 
 	if (_initialIntSequence.size() < 2)
 		return;
 	sortPairs();
-	//mergeSortedPairs();
+	mergeSortPairs();
+}
+
+bool	PMergeMe::isArraySizeOdd(){
+
+	if (_myVector.size() % 2 != 0)
+		return true;
+	return false;
 }
 
 void 	PMergeMe::printInitialIntSequence(){

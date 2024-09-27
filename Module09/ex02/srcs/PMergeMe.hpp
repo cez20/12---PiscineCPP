@@ -20,7 +20,10 @@ class PMergeMe
 		void			initializeContainers();
 		void			mergeInsertionSort();
 		void			sortPairs();
-		void			mergeSortedPairs();
+		void			mergeSortPairs();
+		void			mergeSortPairsRecursive(size_t left, size_t right);
+
+		bool			isArraySizeOdd();
 
 		void			printInitialIntSequence();
 		void			printSequenceAfterSort();

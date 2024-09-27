@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 19:41:03 by cemenjiv          #+#    #+#             */
-/*   Updated: 2024/09/12 12:43:28 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2024/09/27 12:01:29 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,6 @@ int main(int argc, char **argv)
             sortedList.printInitialIntSequence();
             sortedList.initializeContainers();
             sortedList.mergeInsertionSort();
-            // sortedList.printSequenceAfterSort();
-            // sortedList.printVectorSortingTime();
-            // sortedList.printDequeSortingTime();
         } catch (std::exception & e) {
             std::cout << e.what() << std::endl;
         }
