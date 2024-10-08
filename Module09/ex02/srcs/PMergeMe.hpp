@@ -7,6 +7,8 @@
 # include <vector>
 # include <deque>
 # include <algorithm>
+# include <array>
+
 
 class PMergeMe
 {
@@ -16,18 +18,22 @@ class PMergeMe
 		~PMergeMe();
 
 		PMergeMe &		operator=( PMergeMe const & rhs );
+
 		void			processArguments(int argCount, char **argList);
 		void			initializeContainers();
+		
 		void			mergeInsertionSort();
-		void			sortPairs();
+		void			groupAndSortPairs();
 		void			mergeSortPairs();
-		void			mergeSortPairsRecursive(size_t left, size_t right);
 
-		bool			isArraySizeOdd();
+		void   			mergeSortPairsRecursive(size_t left, size_t right);
+		void 			mergeSort(size_t left, size_t middle, size_t right);
 
 		void			printInitialIntSequence();
-		void			printSequenceAfterSort();
+		void			printSortedPairs();
 
+		bool			isArraySizeOdd();
+		
 	private:
 		std::clock_t 			_start;
 		std::vector<double>		_myVector;    // sortedIntSequence1
