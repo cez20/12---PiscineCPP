@@ -73,7 +73,7 @@ void PMergeMe::mergeInsertionSort() {
 		return;
 	groupAndSortPairs();
 	mergeSortPairs();
-	// printRecursiveSortedPairs();
+	printRecursiveSortedPairs();
 }
 
 void	PMergeMe::groupAndSortPairs() {
@@ -93,68 +93,6 @@ void	PMergeMe::mergeSortPairs() {
 		mergeSortPairsRecursive(0, _myVector.size() / N_ELEM_IN_PAIR);
 }
 
-//Initial Array = 1 4 2 6
-
-// 1ST ROUND: We split initial vector by 2 (_myVector / 2) for the first time
-// MergeSortPairsRecursive(left, right);
-// MergeSortPairs(0, 2): 
-//	
-//	[1 , 4]   vs [2, 6]
-//	 ^	 ^        ^
-//	 l            r          **** l, m, r always refers to indices and not the number itself 
-//
-//   Find the middle (to start middle of left pair):
-//	
-//   middle = left + (right - left) / 2
-//		        ^       ^       ^
-//		        0       2   -  0    / 2
-//						   ^		^
-//                         2      / 2  = 1
-//   middle =   0  +  1
-
-//   SECOND ROUND (left side)
-//   mergeSortPairRecursive(left, right)
-//   mergeSortPairRecursive(0, 1)    // We take middle as right value so that we divive and conquer on left side
-//	
-//	 [0] [1]        [2]	[3]
-//	 [1 , 4]        [2 , 6 ]
-//	  ^	  ^
-//    l   r 
-
-//   middle = left + (right - left) / 2
-//		        ^       ^       ^
-//		        0       1   -  0    / 2
-//						   ^		^
-//                         1      / 2  = 0.5 == 0 
-//   middle =   0  +  0 = 0
-//
-//   THIRD ROUND(left side)
-
-//	 mergeSortPairRecursive(left, right)
-//	 mergeSortPairRecursive(0, 0)
-//   
-//   Stop condition because (left >= right)  0 >= 0, return;
-
-
-//  FIRST ROUND (RIGHT SIDE OF LEFT SIDE)
-//  Current values:
-//  left = 0
-//  right = 1
-//  middle = 0
-
-//  2ND ROUND (RIGHT SIDE)
-//	mergeSortPairs(middle + 1, right)
-//  mergeSortPairs(1, 1)
-//
-//  left >= right , stop condition
-//
-//
-//
-//  CALLING MERGE SORT (left, middle, right);
-//  mergeSort(0, 1, 0);
-//
-//   
-
 void   PMergeMe::mergeSortPairsRecursive(size_t left, size_t right) {
 
 	if (left >= right)
@@ -165,27 +103,61 @@ void   PMergeMe::mergeSortPairsRecursive(size_t left, size_t right) {
 	mergeSort(left, middle, right);
 }
 
-
-// Left SubArrayIndex indicates the start of the LeftSubArray
-// Middle Index indicates the middle between left and RightSubarray or in other words, the beginning of the rightSubArray
-// RightSubArrayEndIndex : indicates the end index of the right subarray
-
-
 void 	PMergeMe::mergeSort(size_t left, size_t middle, size_t right){
 
+	std::cout << "---------------- CALL -----------------" << std::endl;
+	printVector();
+	std::cout << "\n";
+	std::cout << "Initial left value (index) is: " << left << std::endl;
+	std::cout << "Initial Middle value (index) is: " << middle << std::endl;
+	std::cout << "Initial Right value (index) is: " << right << std::endl;
+
+	// Now I must compare 2 pairs absolutely. On first round, if I keep left = 0 and right = 1, it will compare the same pairs which was already done
+	// in sortedPairs. Therefore, I must adjust so that left , must point to the first index of left side, and right must point to the index of following pair
+
+	//1 - Ajuster les index pour qu'il represente ce qu'il doive representer
 	const size_t leftSubArrayStartingIndex = left * N_ELEM_IN_PAIR;
 	const size_t middleIndex = middle * N_ELEM_IN_PAIR;
-	const size_t rightSubArrayEndIndex = right * N_ELEM_IN_PAIR;
+	const size_t rightSubArrayEndIndex = right * N_ELEM_IN_PAIR;  // Is it EndIndex or Beginnning Index. Not sure yet
+ 
+	std::cout << "\n";
+	std::cout << "LeftSubArrayStartingIndex is: " << leftSubArrayStartingIndex << std::endl; // TO BE REMOVED
+	std::cout << "MiddleIndex is: " << middleIndex << std::endl; // TO BE REMOVED
+	std::cout << "RightSubArrayEndIndex is: " << rightSubArrayEndIndex << std::endl; // TO BE REMOVED
 
-	const size_t leftSubArrayLength = middleIndex - leftSubArrayStartingIndex + N_ELEM_IN_PAIR; // Clarify this part
+	//2 - Longueur de l'array de gauche
+	const size_t leftSubArrayLength = middleIndex - leftSubArrayStartingIndex + N_ELEM_IN_PAIR; // TODO: The + N_ELEM_IN PAIR causes value to not be good
+
+	std::cout << "\n";
+	std::cout << "leftSubArrayLength is: " << leftSubArrayLength << std::endl; // TO BE REMOVED
+
+	//3 - Longueur de l'array de droite
 	const size_t rightSubArrayLength = rightSubArrayEndIndex - middleIndex;
+	std::cout << "rightSubArrayLength is: " << rightSubArrayLength << std::endl; // TO BE REMOVED
 
+	//4 - Creer des array temporaire de facon a pouvoir contenir les regroupements que l'on va comparer
 	std::array<int, MAX_ARRAY_SIZE / 2> leftSubArray;
 	std::array<int, MAX_ARRAY_SIZE / 2> rightSubArray;
 
-	std::copy(&_myVector[leftSubArrayStartingIndex], &_myVector[leftSubArrayStartingIndex + leftSubArrayLength], leftSubArray.begin());
-    std::copy(&_myVector[middleIndex + N_ELEM_IN_PAIR], &_myVector[middleIndex + N_ELEM_IN_PAIR + rightSubArrayLength], rightSubArray.begin());
+	std::cout << "\n";
+	std::cout << "Create a leftSubArray of 2043 elements" << std::endl; // TO BE REMOVED
+	std::cout << "Created a rightSubArray of 2043 elements" << std::endl; // TO BE REMOVED
+	std::cout << "\n";
 
+	//5 - Copier le regroupement de paires de la moitie gauche dans leftSubArray
+	for (size_t i = 0; i < leftSubArrayLength; ++i) {
+        leftSubArray[i] = _myVector[leftSubArrayStartingIndex + i];
+		std::cout << "Inserted " << _myVector[leftSubArrayStartingIndex + i] << " in leftSubArray[" << i << "]" << std::endl; // TO BE REMOVED
+    }
+
+	//6 - Copier le regroupement de paires de la moitie droite dans righSubArray
+	std::cout << "\n";
+	for (size_t i = 0; i < rightSubArrayLength; ++i) {
+        rightSubArray[i] = _myVector[middleIndex + N_ELEM_IN_PAIR + i];
+		std::cout << "Inserted " << _myVector[middleIndex + N_ELEM_IN_PAIR + i] << " in rightSubArray[" << i << "]" << std::endl; // TO BE REMOVED
+    }
+
+	//7 - Do mergeSort when comparing elements of both halves
 	size_t i = 0;
     size_t j = 0;
     for (size_t k = leftSubArrayStartingIndex; k < rightSubArrayEndIndex + 1; k += N_ELEM_IN_PAIR) {
@@ -193,16 +165,59 @@ void 	PMergeMe::mergeSort(size_t left, size_t middle, size_t right){
             // copy pair from left
 			_myVector[k] = leftSubArray[i];
             _myVector[k + 1] = leftSubArray[i + 1];
+			std::cout << "\nInserted " << leftSubArray[i] << " at _myVector position [" << k << "]" << std::endl;
+			std::cout << "Inserted " << leftSubArray[i + 1] << " at _myVector position [" << k + 1 << "]" << std::endl;
             i += N_ELEM_IN_PAIR; // Goes to next pair. Jump 2 index further
         } else {
             // copy pair from right
             _myVector[k] = rightSubArray[j];
             _myVector[k + 1] = rightSubArray[j + 1];
+			std::cout << "\nInserted " << rightSubArray[j] << " at _myVector position [" << k << "]" << std::endl;
+			std::cout << "Inserted " << rightSubArray[j + 1] << " at _myVector position [" << k + 1 << "]" << std::endl;
             j += N_ELEM_IN_PAIR; // Goes to next pair. Jump 2 index further
         }
     }
 
+	printVector();
+	std::cout << "--------------- END OF CALL ------------------" << std::endl;
 }
+
+// void 	PMergeMe::mergeSort(size_t left, size_t middle, size_t right){
+
+// 	const size_t leftSubArrayStartingIndex = left * N_ELEM_IN_PAIR;
+// 	const size_t middleIndex = middle * N_ELEM_IN_PAIR;
+// 	const size_t rightSubArrayEndIndex = right * N_ELEM_IN_PAIR;
+
+// 	const size_t leftSubArrayLength = middleIndex - leftSubArrayStartingIndex + N_ELEM_IN_PAIR;
+// 	const size_t rightSubArrayLength = rightSubArrayEndIndex - middleIndex;
+
+// 	std::array<int, MAX_ARRAY_SIZE / 2> leftSubArray;
+// 	std::array<int, MAX_ARRAY_SIZE / 2> rightSubArray;
+
+// 	for (size_t i = 0; i < leftSubArrayLength; ++i) {
+//         leftSubArray[i] = _myVector[leftSubArrayStartingIndex + i];
+//     }
+	
+//     for (size_t i = 0; i < rightSubArrayLength; ++i) {
+//         rightSubArray[i] = _myVector[middleIndex + N_ELEM_IN_PAIR + i];
+//     }
+
+// 	size_t i = 0;
+//     size_t j = 0;
+//     for (size_t k = leftSubArrayStartingIndex; k < rightSubArrayEndIndex + 1; k += N_ELEM_IN_PAIR) {
+//         if (i < leftSubArrayLength && (j >= rightSubArrayLength || leftSubArray[i + 1] < rightSubArray[j + 1])) {
+//             // copy pair from left
+// 			_myVector[k] = leftSubArray[i];
+//             _myVector[k + 1] = leftSubArray[i + 1];
+//             i += N_ELEM_IN_PAIR; // Goes to next pair. Jump 2 index further
+//         } else {
+//             // copy pair from right
+//             _myVector[k] = rightSubArray[j];
+//             _myVector[k + 1] = rightSubArray[j + 1];
+//             j += N_ELEM_IN_PAIR; // Goes to next pair. Jump 2 index further
+//         }
+//     }
+// }
 
 void 	PMergeMe::printInitialIntSequence(){
 
@@ -230,6 +245,16 @@ void	PMergeMe::printRecursiveSortedPairs() {
 	std::vector<double>::iterator it;
 
 	std::cout << "After Recursive Pair Sorting: ";
+	for(it = _myVector.begin(); it != _myVector.end(); ++it){
+		std::cout << *it << " ";
+	}
+	std::cout << std::endl;
+}
+
+void	PMergeMe::printVector() {
+	std::vector<double>::iterator it;
+
+	std::cout << "Vector content: ";
 	for(it = _myVector.begin(); it != _myVector.end(); ++it){
 		std::cout << *it << " ";
 	}

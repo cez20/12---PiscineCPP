@@ -32,6 +32,7 @@ class PMergeMe
 		void			printInitialIntSequence();
 		void			printSortedPairs();
 		void			printRecursiveSortedPairs();
+		void			printVector();
 
 		bool			isArraySizeOdd();
 		
