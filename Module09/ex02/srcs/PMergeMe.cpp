@@ -126,8 +126,10 @@ void 	PMergeMe::mergeSort(size_t left, size_t middle, size_t right){
 	std::cout << "RightSubArrayEndIndex is: " << rightSubArrayEndIndex << std::endl; // TO BE REMOVED
 
 	//2 - Longueur de l'array de gauche
-	const size_t leftSubArrayLength = middleIndex - leftSubArrayStartingIndex + N_ELEM_IN_PAIR; // TODO: The + N_ELEM_IN PAIR causes value to not be good
-
+	size_t leftSubArrayLength = middleIndex - leftSubArrayStartingIndex; // TODO: The + N_ELEM_IN PAIR causes value to not be good
+	if (leftSubArrayLength == 0)
+		leftSubArrayLength += N_ELEM_IN_PAIR;
+	
 	std::cout << "\n";
 	std::cout << "leftSubArrayLength is: " << leftSubArrayLength << std::endl; // TO BE REMOVED
 
@@ -153,7 +155,7 @@ void 	PMergeMe::mergeSort(size_t left, size_t middle, size_t right){
 	//6 - Copier le regroupement de paires de la moitie droite dans righSubArray
 	std::cout << "\n";
 	for (size_t i = 0; i < rightSubArrayLength; ++i) {
-        rightSubArray[i] = _myVector[middleIndex + N_ELEM_IN_PAIR + i];
+        rightSubArray[i] = _myVector[middleIndex + N_ELEM_IN_PAIR + i]; // TODO: This part causes problem too
 		std::cout << "Inserted " << _myVector[middleIndex + N_ELEM_IN_PAIR + i] << " in rightSubArray[" << i << "]" << std::endl; // TO BE REMOVED
     }
 
