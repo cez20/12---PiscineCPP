@@ -112,6 +112,11 @@ void 	PMergeMe::mergeSort(size_t left, size_t middle, size_t right){
 	std::cout << "Initial Middle value (index) is: " << middle << std::endl;
 	std::cout << "Initial Right value (index) is: " << right << std::endl;
 
+	// If middle et left are equal, it means there are only 2 elements in array, therefore 
+	// 2 elements are already in order because of SortPairs?()
+	if (middle == left)
+		return;
+
 	// Now I must compare 2 pairs absolutely. On first round, if I keep left = 0 and right = 1, it will compare the same pairs which was already done
 	// in sortedPairs. Therefore, I must adjust so that left , must point to the first index of left side, and right must point to the index of following pair
 
@@ -127,7 +132,7 @@ void 	PMergeMe::mergeSort(size_t left, size_t middle, size_t right){
 
 	//2 - Longueur de l'array de gauche
 	size_t leftSubArrayLength = middleIndex - leftSubArrayStartingIndex; // TODO: The + N_ELEM_IN PAIR causes value to not be good
-	if (leftSubArrayLength == 0)
+	if (leftSubArrayLength == 0) // TODO: P-e que je peux l'enlever en raison de ma condition if left == middle return; 
 		leftSubArrayLength += N_ELEM_IN_PAIR;
 	
 	std::cout << "\n";
@@ -155,14 +160,19 @@ void 	PMergeMe::mergeSort(size_t left, size_t middle, size_t right){
 	//6 - Copier le regroupement de paires de la moitie droite dans righSubArray
 	std::cout << "\n";
 	for (size_t i = 0; i < rightSubArrayLength; ++i) {
-        rightSubArray[i] = _myVector[middleIndex + N_ELEM_IN_PAIR + i]; // TODO: This part causes problem too
-		std::cout << "Inserted " << _myVector[middleIndex + N_ELEM_IN_PAIR + i] << " in rightSubArray[" << i << "]" << std::endl; // TO BE REMOVED
+		if (middleIndex == 0){
+			rightSubArray[i] = _myVector[middleIndex + N_ELEM_IN_PAIR + i]; // TODO: This part causes problem too
+			std::cout << "Inserted " << _myVector[middleIndex + N_ELEM_IN_PAIR + i] << " in rightSubArray[" << i << "]" << std::endl; // TO BE REMOVED
+		} else {
+			rightSubArray[i] = _myVector[middleIndex + i]; // TODO: This part causes problem too
+			std::cout << "Inserted " << _myVector[middleIndex + i] << " in rightSubArray[" << i << "]" << std::endl; // TO BE REMOVED
+		}
     }
 
 	//7 - Do mergeSort when comparing elements of both halves
 	size_t i = 0;
     size_t j = 0;
-    for (size_t k = leftSubArrayStartingIndex; k < rightSubArrayEndIndex + 1; k += N_ELEM_IN_PAIR) {
+    for (size_t k = leftSubArrayStartingIndex; k < (leftSubArrayLength + rightSubArrayLength); k += N_ELEM_IN_PAIR) {
         if (i < leftSubArrayLength && (j >= rightSubArrayLength || leftSubArray[i + 1] < rightSubArray[j + 1])) {
             // copy pair from left
 			_myVector[k] = leftSubArray[i];
@@ -183,43 +193,6 @@ void 	PMergeMe::mergeSort(size_t left, size_t middle, size_t right){
 	printVector();
 	std::cout << "--------------- END OF CALL ------------------" << std::endl;
 }
-
-// void 	PMergeMe::mergeSort(size_t left, size_t middle, size_t right){
-
-// 	const size_t leftSubArrayStartingIndex = left * N_ELEM_IN_PAIR;
-// 	const size_t middleIndex = middle * N_ELEM_IN_PAIR;
-// 	const size_t rightSubArrayEndIndex = right * N_ELEM_IN_PAIR;
-
-// 	const size_t leftSubArrayLength = middleIndex - leftSubArrayStartingIndex + N_ELEM_IN_PAIR;
-// 	const size_t rightSubArrayLength = rightSubArrayEndIndex - middleIndex;
-
-// 	std::array<int, MAX_ARRAY_SIZE / 2> leftSubArray;
-// 	std::array<int, MAX_ARRAY_SIZE / 2> rightSubArray;
-
-// 	for (size_t i = 0; i < leftSubArrayLength; ++i) {
-//         leftSubArray[i] = _myVector[leftSubArrayStartingIndex + i];
-//     }
-	
-//     for (size_t i = 0; i < rightSubArrayLength; ++i) {
-//         rightSubArray[i] = _myVector[middleIndex + N_ELEM_IN_PAIR + i];
-//     }
-
-// 	size_t i = 0;
-//     size_t j = 0;
-//     for (size_t k = leftSubArrayStartingIndex; k < rightSubArrayEndIndex + 1; k += N_ELEM_IN_PAIR) {
-//         if (i < leftSubArrayLength && (j >= rightSubArrayLength || leftSubArray[i + 1] < rightSubArray[j + 1])) {
-//             // copy pair from left
-// 			_myVector[k] = leftSubArray[i];
-//             _myVector[k + 1] = leftSubArray[i + 1];
-//             i += N_ELEM_IN_PAIR; // Goes to next pair. Jump 2 index further
-//         } else {
-//             // copy pair from right
-//             _myVector[k] = rightSubArray[j];
-//             _myVector[k + 1] = rightSubArray[j + 1];
-//             j += N_ELEM_IN_PAIR; // Goes to next pair. Jump 2 index further
-//         }
-//     }
-// }
 
 void 	PMergeMe::printInitialIntSequence(){
 
