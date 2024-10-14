@@ -24,15 +24,13 @@ class PMergeMe
 		
 		void			mergeInsertionSort();
 		void			groupAndSortPairs();
-		void			mergeSortPairs();
-
-		void   			mergeSortPairsRecursive(size_t left, size_t right);
-		void 			mergeSort(size_t left, size_t middle, size_t right);
+		void			createSmallerLargerArrays();
+		template<typename T>
+		void   			mergeSortRecursive(T & container);
+		template<typename T>
+		void			mergeSort(T& container, std::vector<double> leftSubArray, std::vector<double> rightSubArray);
 
 		void			printInitialIntSequence();
-		void			printSortedPairs();
-		void			printRecursiveSortedPairs();
-		void			printVector();
 
 		bool			isArraySizeOdd();
 		
@@ -40,7 +38,10 @@ class PMergeMe
 		std::clock_t 			_start;
 		std::vector<double>		_myVector;    // sortedIntSequence1
 		std::deque<double>		_myDeque;    // sortedIntSequence2;  
-		std::list<double>		_initialIntSequence;
+		std::list<double>		_initialSequence;
+		std::vector<double>		_smallerElements;
+		std::vector<double>		_largerElements;
+		int						_unpairedElement;
 		// size_t					_myVectorSortTime;
 		// size_t					_myDequeSortTime;
 };
