@@ -75,12 +75,12 @@ void PMergeMe::mergeInsertionSort() {
 		_unpairedElement = _initialSequence.back();
 		_initialSequence.pop_back();
 	}
-	groupAndSortPairs();
+	sortPairs();
 	// createSmallerLargerArrays();
 	// mergeSortRecursive(_largerElements);
 }
 
-void	PMergeMe::groupAndSortPairs() {
+void	PMergeMe::sortPairs() {
 
 	for (size_t i = 0; i < _myVector.size(); i += 2){
 		if(((i + 1) < _myVector.size()) && _myVector[i] > _myVector[i + 1])
