@@ -114,8 +114,8 @@ void 	PMergeMe::mergeSort(size_t left, size_t middle, size_t right){
 
 	// If middle et left are equal, it means there are only 2 elements in array, therefore 
 	// 2 elements are already in order because of SortPairs?()
-	if (middle == left)
-		return;
+	// if (middle == left) // TODO: Not sure but I may need to remove this. 
+	// 	return;
 
 	// Now I must compare 2 pairs absolutely. On first round, if I keep left = 0 and right = 1, it will compare the same pairs which was already done
 	// in sortedPairs. Therefore, I must adjust so that left , must point to the first index of left side, and right must point to the index of following pair
