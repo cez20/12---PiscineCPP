@@ -23,8 +23,9 @@ class PMergeMe
 		void			initializeContainers();
 		
 		void			mergeInsertionSort();
-		void			sortPairs();
-		void			createSmallerLargerArrays();
+		template <typename T>
+		void			sortPairs(T & container);
+		void			createSmallestLargestIndexes();
 		template<typename T>
 		void   			mergeSortRecursive(T & container);
 		template<typename T>
@@ -39,8 +40,8 @@ class PMergeMe
 		std::vector<double>		_myVector;
 		std::deque<double>		_myDeque;
 		std::list<double>		_initialSequence;
-		std::vector<double>		_smallerElements;
-		std::vector<double>		_largerElements;
+		std::vector<int>		_smallestElementIndexes;
+		std::vector<int>		_largestElementIndexes;
 		int						_unpairedElement;
 		// size_t					_myVectorSortTime;
 		// size_t					_myDequeSortTime;

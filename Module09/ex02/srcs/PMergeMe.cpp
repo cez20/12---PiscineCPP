@@ -62,6 +62,12 @@ void PMergeMe::processArguments(int argCount, char **argList){
 
 void	PMergeMe::initializeContainers() {
 
+	if (_initialSequence.size() < 2)
+		return;
+	if (_initialSequence.size() % 2 == 1){
+		_unpairedElement = _initialSequence.back();
+		_initialSequence.pop_back();
+	}
 	_myVector.assign(_initialSequence.begin(), _initialSequence.end());
 	_myDeque.assign(_initialSequence.begin(), _initialSequence.end());
 }
@@ -69,31 +75,37 @@ void	PMergeMe::initializeContainers() {
 
 void PMergeMe::mergeInsertionSort() {
 
-	if (_initialSequence.size() < 2)
-		return;
-	if (_initialSequence.size() % 2 == 1){
-		_unpairedElement = _initialSequence.back();
-		_initialSequence.pop_back();
-	}
-	sortPairs();
-	// createSmallerLargerArrays();
+	sortPairs(_myVector);
+	// createSmallestLargestIndexes();
 	// mergeSortRecursive(_largerElements);
 }
 
-void	PMergeMe::sortPairs() {
+template <typename T>
+void	PMergeMe::sortPairs(T & container) {
 
-	for (size_t i = 0; i < _myVector.size(); i += 2){
-		if(((i + 1) < _myVector.size()) && _myVector[i] > _myVector[i + 1])
-			std::swap(_myVector[i], _myVector[i + 1]);
+	for (size_t i = 0; i < container.size(); i += 2){
+		if(((i + 1) < container.size()) && container[i] > container[i + 1])
+			std::swap(container[i], container[i + 1]);
 	}
+
+	for (size_t i = 0; i < container.size(); ++i)
+		std::cout << container[i] << std::endl;
 }
 
-void	PMergeMe::createSmallerLargerArrays() {
-	
-	for (size_t i = 0; i < _myVector.size(); i += 2){
-		_smallerElements.push_back(_myVector[i]);
-		_largerElements.push_back(_myVector[i + 1]);
+// Pairs are sorted. First element is smallest and second is largest. This function stores the
+// indexes of the smallest and largest elements. 
+void	PMergeMe::createSmallestLargestIndexes() {
+
+	for (size_t i = 0; i < _initialSequence.size(); i += 2){
+		_smallestElementIndexes.push_back(i);
+		_largestElementIndexes.push_back(i + 1);
 	}
+
+	// for(size_t i = 0; i < _smallestElementIndexes.size(); ++i)
+	// 	std::cout << "Index [" << i << "] is: " << _smallestElementIndexes[i] << std::endl;
+
+	// for(size_t i = 0; i < _largestElementIndexes.size(); ++i)
+	// 	std::cout << "Index [" << i << "] is: " << _largestElementIndexes[i] << std::endl;
 }
 
 template <typename T>
