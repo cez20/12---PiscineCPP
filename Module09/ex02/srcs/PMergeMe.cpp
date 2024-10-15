@@ -53,7 +53,7 @@ void PMergeMe::processArguments(int argCount, char **argList){
 		if(!isValidNumberFormat(arg) || !isBelowIntMax(arg))
 			throw std::invalid_argument("Invalid argument. Either not a number, a negative number or higher than INT_MAX");
 		else{
-			_start = std::clock(); // Starting the clock to calculate process runnning time. 
+			_start = std::clock(); // TODO: Should I start clock here or just before starting the SortPairs which is first step in merge-insertion sort
 			_initialSequence.push_back(stringToDouble(arg));
 		}
 		i++;
@@ -75,9 +75,14 @@ void	PMergeMe::initializeContainers() {
 
 void PMergeMe::mergeInsertionSort() {
 
+	// Merge-insertion sort for std::vector 
 	sortPairs(_myVector);
 	// createSmallestLargestIndexes();
 	// mergeSortRecursive(_largerElements);
+
+	// Merge-insertion sort for std::deque
+	sortPairs(_myDeque);
+
 }
 
 template <typename T>
@@ -88,6 +93,7 @@ void	PMergeMe::sortPairs(T & container) {
 			std::swap(container[i], container[i + 1]);
 	}
 
+	// Printing content of container
 	for (size_t i = 0; i < container.size(); ++i)
 		std::cout << container[i] << std::endl;
 }
