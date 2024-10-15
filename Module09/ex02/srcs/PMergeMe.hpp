@@ -25,13 +25,14 @@ class PMergeMe
 		void			mergeInsertionSort();
 		template <typename T>
 		void			sortPairs(T & container);
-		void			createSmallestLargestIndexes();
 		template<typename T>
-		void   			mergeSortRecursive(T & container);
+		void   			mergeSortRecursive(T & container, size_t left, size_t right);
 		template<typename T>
-		void			mergeSort(T& container, std::vector<double> leftSubArray, std::vector<double> rightSubArray);
+		void			mergeSort(T & container, const size_t left, const size_t middle, const size_t right);
 
 		void			printInitialIntSequence();
+		template <typename T>
+		void			printContainer(T & container);
 
 		bool			isArraySizeOdd();
 		

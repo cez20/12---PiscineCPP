@@ -77,11 +77,10 @@ void PMergeMe::mergeInsertionSort() {
 
 	// Merge-insertion sort for std::vector 
 	sortPairs(_myVector);
-	// createSmallestLargestIndexes();
-	// mergeSortRecursive(_largerElements);
+	mergeSortRecursive(_myVector, 0, _myVector.size() / 2);
 
 	// Merge-insertion sort for std::deque
-	sortPairs(_myDeque);
+	// sortPairs(_myDeque);
 
 }
 
@@ -94,68 +93,29 @@ void	PMergeMe::sortPairs(T & container) {
 	}
 
 	// Printing content of container
-	for (size_t i = 0; i < container.size(); ++i)
-		std::cout << container[i] << std::endl;
-}
-
-// Pairs are sorted. First element is smallest and second is largest. This function stores the
-// indexes of the smallest and largest elements. 
-void	PMergeMe::createSmallestLargestIndexes() {
-
-	for (size_t i = 0; i < _initialSequence.size(); i += 2){
-		_smallestElementIndexes.push_back(i);
-		_largestElementIndexes.push_back(i + 1);
-	}
-
-	// for(size_t i = 0; i < _smallestElementIndexes.size(); ++i)
-	// 	std::cout << "Index [" << i << "] is: " << _smallestElementIndexes[i] << std::endl;
-
-	// for(size_t i = 0; i < _largestElementIndexes.size(); ++i)
-	// 	std::cout << "Index [" << i << "] is: " << _largestElementIndexes[i] << std::endl;
+	// for (size_t i = 0; i < container.size(); ++i)
+	// 	std::cout << container[i] << std::endl;
 }
 
 template <typename T>
-void   PMergeMe::mergeSortRecursive(T & container) {
+void   PMergeMe::mergeSortRecursive(T & container, size_t left, size_t right) {
 
-	const size_t n = container.size();
-	if (n < 2)
+	if (left >= right)
 		return;
-	const size_t middle = n / 2;
-	std::vector<double> leftSubArray(middle);
-	std::vector<double> rightSubArray(n - middle);
-
-	for (size_t i = 0; i < middle; ++i){
-		leftSubArray[i] = container[i];
-	}
-	for (size_t i = 0; i < n - 1; ++i){
-		rightSubArray[i] = container[middle + i];
-	}
-	mergeSortRecursive(leftSubArray);
-	mergeSortRecursive(rightSubArray);
-	mergeSort(container, leftSubArray, rightSubArray);
+	const size_t middle = left + (right - left) / 2;
+	mergeSortRecursive(container, left, middle);
+	mergeSortRecursive(container, middle + 1, right);
+	mergeSort(container, left, middle, right);
 }
 
 template <typename T>
-void	PMergeMe::mergeSort(T & container, std::vector<double> leftSubArray, std::vector<double> rightSubArray){
+void	PMergeMe::mergeSort(T & container, const size_t left, const size_t middle, const size_t right){
 
-	const size_t leftSubArrayLength = leftSubArray.size();
-	const size_t rightSubArrayLength = rightSubArray.size();
+	printContainer(container);
+	std::cout << "The value of left is: " << left << std::endl;
+	std::cout << "The value of middle is: " << middle << std::endl;
+	std::cout << "The value of right is: " << right << std::endl;
 
-	size_t i = 0;
-	size_t j = 0;
-	size_t k = 0;
-
-	while(i < leftSubArrayLength && j < rightSubArrayLength){
-		if(leftSubArray[i] <= rightSubArray[j]){
-			container[k++] = leftSubArray[i++];
-		} else {
-			container[k++] = rightSubArray[j++];
-		}
-	}
-	while(i < leftSubArrayLength)
-		container[k++] = leftSubArray[i++];
-	while(j < rightSubArrayLength)
-		container[k++] = rightSubArray[j++];
 }
 
 void 	PMergeMe::printInitialIntSequence(){
@@ -168,6 +128,17 @@ void 	PMergeMe::printInitialIntSequence(){
 	}
 	std::cout << std::endl;
 }
+
+template <typename T>
+void	PMergeMe::printContainer(T & container){
+
+	std::cout << "Container content: ";
+	for (size_t i = 0; i < container.size(); ++i) {
+		std::cout << container[i] << " ";
+	}
+	std::cout << std::endl;
+}
+
 
 bool	PMergeMe::isArraySizeOdd(){
 
