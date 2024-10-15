@@ -63,7 +63,7 @@ void PMergeMe::processArguments(int argCount, char **argList){
 void	PMergeMe::initializeContainers() {
 
 	if (_initialSequence.size() < 2)
-		return;
+		throw std::invalid_argument("ERROR! Arguments size less than 2");
 	if (_initialSequence.size() % 2 == 1){
 		_unpairedElement = _initialSequence.back();
 		_initialSequence.pop_back();
