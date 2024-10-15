@@ -145,9 +145,7 @@ void	PMergeMe::mergeSort(T & container, const size_t left, const size_t middle, 
 
 	// Calculating length of left and rightSide
 	const size_t leftLength = leftEnd - leftStart;
-	// if (leftLength == 0)
-	// 	leftLength += N_ELEM_IN_PAIR;
-	const size_t rightLength = rightEnd - leftEnd;
+	const size_t rightLength = rightEnd - rightStart;
 
 	std::cout << "The value of leftLength is: " <<  leftLength << std::endl;
 	std::cout << "The value of rightLength is: " << rightLength << std::endl;
@@ -168,21 +166,49 @@ void	PMergeMe::mergeSort(T & container, const size_t left, const size_t middle, 
 	size_t j = 0;
 	size_t k = leftStart;
 
-	while (k < (rightEnd + 1)){
+	while (i < leftLength && j < rightLength){
 
-		if (i < leftLength && (j >= rightLength || leftSubArray[i + 1] < rightSubArray[j + 1])){
+		if (leftSubArray[i + 1] < rightSubArray[j + 1]){
 			container[k] = leftSubArray[i];
 			container[k + 1] = leftSubArray[i + 1];
 			i += N_ELEM_IN_PAIR;
-			k += N_ELEM_IN_PAIR;
 		} else {
 			container[k] = rightSubArray[j];
 			container[k + 1] = rightSubArray[j + 1];
 			j += N_ELEM_IN_PAIR;
-			k += N_ELEM_IN_PAIR;
 		}
-		std::cout << "I am in loop" << std::endl;
+		k += 2;
 	}
+	while (i < leftLength){
+		container[k] = leftSubArray[i];
+		container[k + 1] = leftSubArray[i + 1];
+		i += N_ELEM_IN_PAIR;
+		k += N_ELEM_IN_PAIR;
+	}
+	while (j < rightLength){
+		container[k] = rightSubArray[j];
+		container[k + 1] = rightSubArray[j + 1];
+		j += N_ELEM_IN_PAIR;
+		k += N_ELEM_IN_PAIR;
+	}
+	
+
+
+	// while (k < (rightEnd + 1)){
+
+	// 	if (i < leftLength && (j >= rightLength || leftSubArray[i + 1] < rightSubArray[j + 1])){
+	// 		container[k] = leftSubArray[i];
+	// 		container[k + 1] = leftSubArray[i + 1];
+	// 		i += N_ELEM_IN_PAIR;
+	// 		k += N_ELEM_IN_PAIR;
+	// 	} else {
+	// 		container[k] = rightSubArray[j];
+	// 		container[k + 1] = rightSubArray[j + 1];
+	// 		j += N_ELEM_IN_PAIR;
+	// 		k += N_ELEM_IN_PAIR;
+	// 	}
+	// 	std::cout << "I am in loop" << std::endl;
+	// }
 
 	printContainer(container);
 }
