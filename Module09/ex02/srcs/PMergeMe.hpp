@@ -23,7 +23,7 @@ class PMergeMe
 		void			initializeContainers();
 		
 		void			mergeInsertionSort();
-		template <typename T>
+		template<typename T>
 		void			sortPairs(T & container);
 		template<typename T>
 		void   			mergeSortRecursive(T & container, size_t left, size_t right);

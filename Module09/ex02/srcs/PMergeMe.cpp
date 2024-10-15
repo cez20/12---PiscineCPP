@@ -77,14 +77,19 @@ void PMergeMe::mergeInsertionSort() {
 
 	// Merge-insertion sort for std::vector 
 	sortPairs(_myVector);
-	mergeSortRecursive(_myVector, 0, _myVector.size() / 2);
+	// Condition that avoids doing unnecessary calls to mergeSort to sort 2 numbers which are already sorted after sortPairs()
+	if (_myVector.size() > 2){
+		mergeSortRecursive(_myVector, 0, _myVector.size() / 2);
+	}
+	printContainer(_myVector);
+
 
 	// Merge-insertion sort for std::deque
 	// sortPairs(_myDeque);
 
 }
 
-template <typename T>
+template<typename T>
 void	PMergeMe::sortPairs(T & container) {
 
 	for (size_t i = 0; i < container.size(); i += 2){
@@ -108,14 +113,78 @@ void   PMergeMe::mergeSortRecursive(T & container, size_t left, size_t right) {
 	mergeSort(container, left, middle, right);
 }
 
+// This function will put all the larger elements in order. Note that when a larger element is moved, its associated smallest element
+// is also moved with it at the position before. 
 template <typename T>
 void	PMergeMe::mergeSort(T & container, const size_t left, const size_t middle, const size_t right){
-
+	
+	std::cout << "------------------  CALL ------------------" << std::endl;
 	printContainer(container);
+	std::cout << "\n";
 	std::cout << "The value of left is: " << left << std::endl;
 	std::cout << "The value of middle is: " << middle << std::endl;
 	std::cout << "The value of right is: " << right << std::endl;
+	std::cout << "\n";
 
+	if (middle == 0){
+		std::cout << "Middle value is 0, which means only one pair. SO no comparisons btw 2 pairs possible" << std::endl;
+		return;
+	}
+		
+	// Adjusting the indices because we are counting in pairs
+	const size_t leftStart = left * N_ELEM_IN_PAIR;
+	const size_t leftEnd = middle * N_ELEM_IN_PAIR;
+	const size_t rightStart = middle * N_ELEM_IN_PAIR;
+	const size_t rightEnd = right * N_ELEM_IN_PAIR;
+
+	std::cout << "The value of leftStart is: " << leftStart << std::endl;
+	std::cout << "The value of leftEnd is: "  << leftEnd << std::endl;
+	std::cout << "The value of rightStart is: " << rightStart << std::endl;
+	std::cout << "The value of rightEnd is: " << rightEnd << std::endl;
+	std::cout << "\n";
+
+	// Calculating length of left and rightSide
+	const size_t leftLength = leftEnd - leftStart;
+	// if (leftLength == 0)
+	// 	leftLength += N_ELEM_IN_PAIR;
+	const size_t rightLength = rightEnd - leftEnd;
+
+	std::cout << "The value of leftLength is: " <<  leftLength << std::endl;
+	std::cout << "The value of rightLength is: " << rightLength << std::endl;
+
+	// Creating arrays that will contain the leftSubArray and rightSubArray
+	//TODO: Verifier si au lieu de creer un array de 2000 elements, je ne peux pas creer le bon size a chaque fois.
+	std::array<int, MAX_ARRAY_SIZE / 2> leftSubArray;
+	std::array<int, MAX_ARRAY_SIZE / 2> rightSubArray;
+
+	// Copying content of container inside newly created arrays
+	std::copy(&container[leftStart], &container[leftStart + leftLength], leftSubArray.begin());
+	std::copy(&container[rightStart], &container[rightStart + rightLength], rightSubArray.begin());
+
+	// Comparing leftSubArray with rightSubArray and moving values accordingly
+	// VERY IMPORTANT: if larger elements change place, its associated smallest element must move to.
+
+	size_t i = 0;
+	size_t j = 0;
+	size_t k = leftStart;
+
+	while (k < (rightEnd + 1)){
+
+		if (i < leftLength && (j >= rightLength || leftSubArray[i + 1] < rightSubArray[j + 1])){
+			container[k] = leftSubArray[i];
+			container[k + 1] = leftSubArray[i + 1];
+			i += N_ELEM_IN_PAIR;
+			k += N_ELEM_IN_PAIR;
+		} else {
+			container[k] = rightSubArray[j];
+			container[k + 1] = rightSubArray[j + 1];
+			j += N_ELEM_IN_PAIR;
+			k += N_ELEM_IN_PAIR;
+		}
+		std::cout << "I am in loop" << std::endl;
+	}
+
+	printContainer(container);
 }
 
 void 	PMergeMe::printInitialIntSequence(){
