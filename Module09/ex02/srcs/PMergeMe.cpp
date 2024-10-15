@@ -152,8 +152,10 @@ void	PMergeMe::mergeSort(T & container, const size_t left, const size_t middle, 
 
 	// Creating arrays that will contain the leftSubArray and rightSubArray
 	//TODO: Verifier si au lieu de creer un array de 2000 elements, je ne peux pas creer le bon size a chaque fois.
-	std::array<int, MAX_ARRAY_SIZE / 2> leftSubArray;
-	std::array<int, MAX_ARRAY_SIZE / 2> rightSubArray;
+	// std::array<int, MAX_ARRAY_SIZE / 2> leftSubArray;
+	// std::array<int, MAX_ARRAY_SIZE / 2> rightSubArray;
+	std::vector<int> leftSubArray(leftLength);
+	std::vector<int> rightSubArray(rightLength);
 
 	// Copying content of container inside newly created arrays
 	std::copy(&container[leftStart], &container[leftStart + leftLength], leftSubArray.begin());
