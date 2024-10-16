@@ -198,16 +198,34 @@ void	PMergeMe::createPend(){
 	std::cout << std::endl;
 }
 
-int		PMergeMe::Jacobsthal(int n){
+// int		PMergeMe::Jacobsthal(int n){
 
-	if (n == 0)
-        return 0;
-    // base case
-    if (n == 1)
-        return 1;
-    // recursive step.
-    return Jacobsthal(n - 1) + 2 * Jacobsthal(n - 2);
+// 	if (n == 0)
+//         return 0;
+//     // base case
+//     if (n == 1)
+//         return 1;
+//     // recursive step.
+//     return Jacobsthal(n - 1) + 2 * Jacobsthal(n - 2);
+// }
+
+int PMergeMe::Jacobsthal(int n) {
+    if (n == 0) return 0;
+    if (n == 1) return 1;
+
+    int prev2 = 0; // Jacobsthal(0)
+    int prev1 = 1; // Jacobsthal(1)
+    int current = 0;
+
+    for (int i = 2; i <= n; ++i) {
+        current = prev1 + 2 * prev2;
+        prev2 = prev1;
+        prev1 = current;
+    }
+
+    return current;
 }
+
 
 void	PMergeMe::generateJacobsthalSequence(){
 
