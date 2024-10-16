@@ -33,8 +33,8 @@ PMergeMe &				PMergeMe::operator=( PMergeMe const & rhs )
 {
 	if ( this != &rhs )
 	{
-		this->_myVector = rhs._myVector;
-		this->_myDeque = rhs._myDeque;
+		this->_myVectorPairs = rhs._myVectorPairs;
+		this->_myDequePairs = rhs._myDequePairs;
 	}
 	return *this;
 }
@@ -68,25 +68,46 @@ void	PMergeMe::initializeContainers() {
 		_unpairedElement = _initialSequence.back();
 		_initialSequence.pop_back();
 	}
-	_myVector.assign(_initialSequence.begin(), _initialSequence.end());
-	_myDeque.assign(_initialSequence.begin(), _initialSequence.end());
+	createPairs(_myVectorPairs);
+	createPairs(_myDequePairs);
 }
 
+template <typename T>
+void	PMergeMe::createPairs(T & container){
+
+	std::list<double>::iterator it = _initialSequence.begin();
+
+	while (it != _initialSequence.end()){
+		int first = *it;
+		++it;
+		if (it != _initialSequence.end()){
+			int second = *it;
+			++it;
+			container.push_back(std::make_pair(first, second));
+		}
+	}
+
+	for(size_t i = 0; i < container.size(); ++i){
+		std::cout << "Pair[" << i << "] ";
+		std::cout << container[i].first << " ";
+		std::cout << container[i].second << std::endl;
+	}
+}
 
 void PMergeMe::mergeInsertionSort() {
 
 	// Merge-insertion sort for std::vector
-	createPairs(_myVector);
-	sortPairs(_myVectorPairs);
+	
+	// sortPairs(_myVectorPairs);
 	// Condition that avoids doing unnecessary calls to mergeSort to sort 2 numbers which are already sorted after sortPairs()
-	if (_myVector.size() > 1){
-		mergeSortRecursive(_myVectorPairs, 0, _myVectorPairs.size() - 1);
-		for(size_t i = 0; i < _myVectorPairs.size(); ++i){
-		std::cout << "Pair[" << i << "] ";
-		std::cout << _myVectorPairs[i].first << " ";
-		std::cout << _myVectorPairs[i].second << std::endl;
-		}
-	}
+	// if (_myVectorPairs.size() > 1){
+	// 	mergeSortRecursive(_myVectorPairs, 0, _myVectorPairs.size() - 1);
+	// 	for(size_t i = 0; i < _myVectorPairs.size(); ++i){
+	// 	std::cout << "Pair[" << i << "] ";
+	// 	std::cout << _myVectorPairs[i].first << " ";
+	// 	std::cout << _myVectorPairs[i].second << std::endl;
+	// 	}
+	// }
 	// printContainer(_myVector);
 
 
@@ -96,22 +117,9 @@ void PMergeMe::mergeInsertionSort() {
 }
 
 //TODO: Creer cette meme fonction pour storer un dequePair
+
 template<typename T>
-void	PMergeMe::createPairs(T & container){
-
-	for (size_t i = 0; i < container.size(); i += 2){
-		_myVectorPairs.push_back(std::make_pair(container[i], container[i + 1]));
-	}
-
-	for(size_t i = 0; i < _myVectorPairs.size(); ++i){
-		std::cout << "Pair[" << i << "] ";
-		std::cout << _myVectorPairs[i].first << " ";
-		std::cout << _myVectorPairs[i].second << std::endl;
-	}
-}
-
-template<typename P>
-void	PMergeMe::sortPairs(P & container) {
+void	PMergeMe::sortPairs(T & container) {
 
 	for (size_t i = 0; i < container.size(); ++i){
 		if(container[i].first < container[i].second)
@@ -125,8 +133,8 @@ void	PMergeMe::sortPairs(P & container) {
 	}
 }
 
-template <typename P>
-void	PMergeMe::mergeSortRecursive(P& container, size_t left, size_t right)
+template <typename T>
+void	PMergeMe::mergeSortRecursive(T& container, size_t left, size_t right)
 {
 	if (left >= right)
 		return;
@@ -136,8 +144,8 @@ void	PMergeMe::mergeSortRecursive(P& container, size_t left, size_t right)
 	mergeSort(container, left, middle, right);
 }
 
-template <typename P>
-void 	PMergeMe::mergeSort(P& container, size_t left, size_t middle, size_t right)
+template <typename T>
+void 	PMergeMe::mergeSort(T& container, size_t left, size_t middle, size_t right)
 {
 	// Can I replace container.begin by 0 or leftStart
 	// container.begin() + middle + 1 = leftEnd;
@@ -278,14 +286,6 @@ void	PMergeMe::printContainer(T & container){
 		std::cout << container[i] << " ";
 	}
 	std::cout << std::endl;
-}
-
-
-bool	PMergeMe::isArraySizeOdd(){
-
-	if (_myVector.size() % 2 != 0)
-		return true;
-	return false;
 }
 
 double  stringToDouble(const std::string& s){

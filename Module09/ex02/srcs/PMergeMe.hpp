@@ -24,33 +24,25 @@ class PMergeMe
 		
 		void			mergeInsertionSort();
 		template<typename T>
-		void			createPairs(T & container);
-		template<typename P>
-		void			sortPairs(P& container);
+		void			createPairs(T& container);
+		template<typename T>
+		void			sortPairs(T& container);
+		template<typename T>
+		void			mergeSortRecursive(T& container, size_t left, size_t right);
+		template <typename T>
+		void 			mergeSort(T& container, size_t left, size_t middle, size_t right);
 
-		template<typename P>
-		void			mergeSortRecursive(P& container, size_t left, size_t right);
-		template <typename P>
-		void 			mergeSort(P &container, size_t left, size_t middle, size_t right);
-		// template<typename T>
-		// void   			mergeSortRecursive(T & container, size_t left, size_t right);
-		// template<typename T>
-		// void			mergeSort(T & container, const size_t left, size_t middle, size_t right);
 
 		void			printInitialIntSequence();
 		template <typename T>
 		void			printContainer(T & container);
 
-		bool			isArraySizeOdd();
 		
 	private:
 		std::clock_t 						_start;
-		std::vector<double>					_myVector;
 		std::vector<std::pair<int,int> > 	_myVectorPairs;
-		std::deque<double>					_myDeque;
+		std::deque<std::pair<int, int> >	_myDequePairs;
 		std::list<double>					_initialSequence;
-		std::vector<int>					_smallestElementIndexes;
-		std::vector<int>					_largestElementIndexes;
 		int									_unpairedElement;
 		// size_t					_myVectorSortTime;
 		// size_t					_myDequeSortTime;
