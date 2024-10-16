@@ -69,7 +69,7 @@ void	PMergeMe::initializeContainers() {
 	createPairs(_myVectorPairs);
 	printContainer(_myVectorPairs);
 	createPairs(_myDequePairs);
-	// printContainer(_myDequePairs);
+	printContainer(_myDequePairs);
 }
 
 template <typename T>
@@ -110,11 +110,14 @@ void PMergeMe::mergeInsertionSort() {
 
 void	PMergeMe::insertionSort(){
 
-	int index = binarySearch(_mainChain, _mainChain.size(), _pend[3]);
-	std::cout << "The index provided is: " << index << std::endl;
-	_mainChain.insert(_mainChain.begin() + index, _pend[3]);
-
-	std::cout << "Printing main chain: ";
+	for (size_t i = 0; i < _pend.size(); ++i){
+		int index = binarySearch(_mainChain, _mainChain.size(), _pend[i]);
+		_mainChain.insert(_mainChain.begin() + index, _pend[i]);
+		// for (size_t i = 0; i < _mainChain.size(); ++i)
+		// 	std::cout << _mainChain[i] << " ";
+		// std::cout << std::endl;
+	}
+	std::cout << "Printing final main chain: ";
 	for (size_t i = 0; i < _mainChain.size(); ++i)
 		std::cout << _mainChain[i] << " ";
 	std::cout << std::endl;
@@ -232,15 +235,10 @@ size_t	PMergeMe::binarySearch(std::vector<int> mainChain, size_t size, int numbe
 				break;
 			end = middle - 1;
 		}
-			
 		else
 			start = middle + 1;
 	}
 	return start;
-	// if (number < mainChain[start])
-	// 	return start; // If number is not found in binary, I my number is smaller than number found at mainChain[start], we will insert it before
-	// else
-	// 	return start + 1; // Else we will insert it after. Est-ce qu'il faut retourner end?
 }
 
 
