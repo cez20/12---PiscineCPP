@@ -100,6 +100,7 @@ void PMergeMe::mergeInsertionSort() {
 		printContainer(_myVectorPairs);
 		createMainChain();
 		createPend();
+		createJacobsthalSequence();
 	}
 
 	// MERGE INSERTION SORT FOR STD::DEQUE
@@ -178,6 +179,29 @@ void	PMergeMe::createPend(){
 	// 	std::cout << _pend[i] << " ";
 	// std::cout << std::endl;
 }
+
+int		PMergeMe::Jacobsthal(int n){
+
+	if (n == 0)
+        return 0;
+    // base case
+    if (n == 1)
+        return 1;
+    // recursive step.
+    return Jacobsthal(n - 1) + 2 * Jacobsthal(n - 2);
+}
+
+void	PMergeMe::createJacobsthalSequence(){
+
+	for(size_t i = 0; i < _pend.size(); ++i){
+		_jacobsthalSequence.push_back(Jacobsthal(i));
+	}
+
+	// for(size_t i = 0; i < _jacobsthalSequence.size(); ++i){
+	// 	std::cout << _jacobsthalSequence[i] << std::endl;
+	// }
+}
+
 
 void 	PMergeMe::printInitialIntSequence(){
 

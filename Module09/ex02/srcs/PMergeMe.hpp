@@ -34,6 +34,8 @@ class PMergeMe
 		
 		void			createMainChain();
 		void			createPend();
+		int				Jacobsthal(int n);
+		void			createJacobsthalSequence();
 
 
 		void			printInitialIntSequence();
@@ -46,6 +48,7 @@ class PMergeMe
 		std::vector<std::pair<int,int> > 	_myVectorPairs;
 		std::vector<int>					_mainChain;
 		std::vector<int>					_pend;
+		std::vector<int>					_jacobsthalSequence;
 		std::deque<std::pair<int, int> >	_myDequePairs;
 		std::list<double>					_initialSequence;
 		int									_unpairedElement;
