@@ -98,6 +98,8 @@ void PMergeMe::mergeInsertionSort() {
 		mergeSortRecursive(_myVectorPairs, 0, _myVectorPairs.size() - 1);
 		std::cout << "After MergeSorting: " << std::endl;
 		printContainer(_myVectorPairs);
+		createMainChain();
+		createPend();
 	}
 
 	// MERGE INSERTION SORT FOR STD::DEQUE
@@ -152,6 +154,29 @@ void 	PMergeMe::mergeSort(T& container, size_t left, size_t middle, size_t right
 		container[k++] = leftSubPairs[i++];
 	while (j < rightSubPairs.size())
 		container[k++] = rightSubPairs[j++];
+}
+
+void	PMergeMe::createMainChain(){
+
+	for(size_t i = 0; i < _myVectorPairs.size(); ++i){
+		_mainChain.push_back(_myVectorPairs[i].first);
+	}
+
+	// std::cout << "Printing main chain: ";
+	// for (size_t i = 0; i < _mainChain.size(); ++i)
+	// 	std::cout << _mainChain[i] << " ";
+	// std::cout << std::endl;
+}
+
+void	PMergeMe::createPend(){
+	for(size_t i = 0; i < _myVectorPairs.size(); ++i){
+		_pend.push_back(_myVectorPairs[i].second);
+	}
+
+	// std::cout << "Printing pend: ";
+	// for (size_t i = 0; i < _pend.size(); ++i)
+	// 	std::cout << _pend[i] << " ";
+	// std::cout << std::endl;
 }
 
 void 	PMergeMe::printInitialIntSequence(){

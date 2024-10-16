@@ -31,6 +31,9 @@ class PMergeMe
 		void			mergeSortRecursive(T& container, size_t left, size_t right);
 		template <typename T>
 		void 			mergeSort(T& container, size_t left, size_t middle, size_t right);
+		
+		void			createMainChain();
+		void			createPend();
 
 
 		void			printInitialIntSequence();
@@ -41,6 +44,8 @@ class PMergeMe
 	private:
 		std::clock_t 						_start;
 		std::vector<std::pair<int,int> > 	_myVectorPairs;
+		std::vector<int>					_mainChain;
+		std::vector<int>					_pend;
 		std::deque<std::pair<int, int> >	_myDequePairs;
 		std::list<double>					_initialSequence;
 		int									_unpairedElement;
