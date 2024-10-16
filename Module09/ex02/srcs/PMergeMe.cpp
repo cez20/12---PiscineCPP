@@ -1,6 +1,4 @@
 #include "PMergeMe.hpp"
-#define N_ELEM_IN_PAIR 2
-#define MAX_ARRAY_SIZE 4096
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
@@ -69,7 +67,9 @@ void	PMergeMe::initializeContainers() {
 		_initialSequence.pop_back();
 	}
 	createPairs(_myVectorPairs);
+	printContainer(_myVectorPairs);
 	createPairs(_myDequePairs);
+	// printContainer(_myDequePairs);
 }
 
 template <typename T>
@@ -86,34 +86,24 @@ void	PMergeMe::createPairs(T & container){
 			container.push_back(std::make_pair(first, second));
 		}
 	}
-
-	for(size_t i = 0; i < container.size(); ++i){
-		std::cout << "Pair[" << i << "] ";
-		std::cout << container[i].first << " ";
-		std::cout << container[i].second << std::endl;
-	}
 }
 
 void PMergeMe::mergeInsertionSort() {
 
 	// Merge-insertion sort for std::vector
-	
-	// sortPairs(_myVectorPairs);
-	// Condition that avoids doing unnecessary calls to mergeSort to sort 2 numbers which are already sorted after sortPairs()
-	// if (_myVectorPairs.size() > 1){
-	// 	mergeSortRecursive(_myVectorPairs, 0, _myVectorPairs.size() - 1);
-	// 	for(size_t i = 0; i < _myVectorPairs.size(); ++i){
-	// 	std::cout << "Pair[" << i << "] ";
-	// 	std::cout << _myVectorPairs[i].first << " ";
-	// 	std::cout << _myVectorPairs[i].second << std::endl;
-	// 	}
-	// }
+	sortPairs(_myVectorPairs);
+	std::cout << "After Pair Sorting: " << std::endl;
+	printContainer(_myVectorPairs);
+	if (_myVectorPairs.size() > 1) {
+		mergeSortRecursive(_myVectorPairs, 0, _myVectorPairs.size() - 1);
+		std::cout << "After MergeSorting: " << std::endl;
+		printContainer(_myVectorPairs);
+	}
 	// printContainer(_myVector);
 
 
 	// Merge-insertion sort for std::deque
 	// sortPairs(_myDeque);
-
 }
 
 //TODO: Creer cette meme fonction pour storer un dequePair
@@ -124,12 +114,6 @@ void	PMergeMe::sortPairs(T & container) {
 	for (size_t i = 0; i < container.size(); ++i){
 		if(container[i].first < container[i].second)
 			std::swap(container[i].first, container[i].second);
-	}
-
-	for(size_t i = 0; i < _myVectorPairs.size(); ++i){
-		std::cout << "Pair[" << i << "] ";
-		std::cout << _myVectorPairs[i].first << " ";
-		std::cout << _myVectorPairs[i].second << std::endl;
 	}
 }
 
@@ -281,11 +265,11 @@ void 	PMergeMe::printInitialIntSequence(){
 template <typename T>
 void	PMergeMe::printContainer(T & container){
 
-	std::cout << "Container content: ";
-	for (size_t i = 0; i < container.size(); ++i) {
-		std::cout << container[i] << " ";
+	for(size_t i = 0; i < container.size(); ++i){
+		std::cout << "Pair[" << i << "] ";
+		std::cout << container[i].first << " ";
+		std::cout << container[i].second << std::endl;
 	}
-	std::cout << std::endl;
 }
 
 double  stringToDouble(const std::string& s){
