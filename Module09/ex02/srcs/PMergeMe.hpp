@@ -35,7 +35,9 @@ class PMergeMe
 		void			createMainChain();
 		void			createPend();
 		int				Jacobsthal(int n);
-		void			createJacobsthalSequence();
+		void			generateJacobsthalSequence();
+		size_t			binarySearch(std::vector<int> mainChain, size_t size, int number);
+		void			insertionSort();
 
 
 		void			printInitialIntSequence();

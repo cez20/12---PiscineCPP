@@ -100,12 +100,27 @@ void PMergeMe::mergeInsertionSort() {
 		printContainer(_myVectorPairs);
 		createMainChain();
 		createPend();
-		createJacobsthalSequence();
+		generateJacobsthalSequence();
+		insertionSort();
 	}
 
 	// MERGE INSERTION SORT FOR STD::DEQUE
 	// sortPairs(_myDeque);
 }
+
+void	PMergeMe::insertionSort(){
+
+	int index = binarySearch(_mainChain, _mainChain.size(), _pend[3]);
+	std::cout << "The index provided is: " << index << std::endl;
+	_mainChain.insert(_mainChain.begin() + index, _pend[3]);
+
+	std::cout << "Printing main chain: ";
+	for (size_t i = 0; i < _mainChain.size(); ++i)
+		std::cout << _mainChain[i] << " ";
+	std::cout << std::endl;
+}
+
+
 
 //TODO: Creer cette meme fonction pour storer un dequePair
 
@@ -163,10 +178,10 @@ void	PMergeMe::createMainChain(){
 		_mainChain.push_back(_myVectorPairs[i].first);
 	}
 
-	// std::cout << "Printing main chain: ";
-	// for (size_t i = 0; i < _mainChain.size(); ++i)
-	// 	std::cout << _mainChain[i] << " ";
-	// std::cout << std::endl;
+	std::cout << "Printing main chain: ";
+	for (size_t i = 0; i < _mainChain.size(); ++i)
+		std::cout << _mainChain[i] << " ";
+	std::cout << std::endl;
 }
 
 void	PMergeMe::createPend(){
@@ -174,10 +189,10 @@ void	PMergeMe::createPend(){
 		_pend.push_back(_myVectorPairs[i].second);
 	}
 
-	// std::cout << "Printing pend: ";
-	// for (size_t i = 0; i < _pend.size(); ++i)
-	// 	std::cout << _pend[i] << " ";
-	// std::cout << std::endl;
+	std::cout << "Printing pend: ";
+	for (size_t i = 0; i < _pend.size(); ++i)
+		std::cout << _pend[i] << " ";
+	std::cout << std::endl;
 }
 
 int		PMergeMe::Jacobsthal(int n){
@@ -191,7 +206,7 @@ int		PMergeMe::Jacobsthal(int n){
     return Jacobsthal(n - 1) + 2 * Jacobsthal(n - 2);
 }
 
-void	PMergeMe::createJacobsthalSequence(){
+void	PMergeMe::generateJacobsthalSequence(){
 
 	for(size_t i = 0; i < _pend.size(); ++i){
 		_jacobsthalSequence.push_back(Jacobsthal(i));
@@ -200,6 +215,32 @@ void	PMergeMe::createJacobsthalSequence(){
 	// for(size_t i = 0; i < _jacobsthalSequence.size(); ++i){
 	// 	std::cout << _jacobsthalSequence[i] << std::endl;
 	// }
+}
+
+size_t	PMergeMe::binarySearch(std::vector<int> mainChain, size_t size, int number){
+
+	size_t start = 0;
+	size_t end = size - 1;
+
+	while (start <= end){
+
+		size_t middle = (start + end) / 2;
+		if (mainChain[middle] == number) // Returns the indexes 
+			return middle;
+		else if (number < mainChain[middle]){
+			if (middle == 0) 
+				break;
+			end = middle - 1;
+		}
+			
+		else
+			start = middle + 1;
+	}
+	return start;
+	// if (number < mainChain[start])
+	// 	return start; // If number is not found in binary, I my number is smaller than number found at mainChain[start], we will insert it before
+	// else
+	// 	return start + 1; // Else we will insert it after. Est-ce qu'il faut retourner end?
 }
 
 
