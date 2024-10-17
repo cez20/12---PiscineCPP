@@ -57,9 +57,9 @@ class PMergeMe
 		std::clock_t 						_clockStartVector;
 		std::clock_t 						_clockEndVector;
 		std::vector<std::pair<int,int> > 	_myVectorPairs;
-		std::vector<int>					_mainChain;
-		std::vector<int>					_pend;
-		std::vector<size_t>					_jacobsthalSequence;
+		std::vector<int>					_mainChainVector;
+		std::vector<int>					_pendVector;
+		std::vector<size_t>					_jacobsthalSequenceVector;
 
 		std::clock_t 						_clockStartDeque;
 		std::clock_t						_clockEndDeque;

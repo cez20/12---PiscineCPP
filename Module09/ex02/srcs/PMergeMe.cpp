@@ -107,34 +107,34 @@ void PMergeMe::mergeInsertionSort() {
 
 void	PMergeMe::insertionSort(){
 
-	// Put elements at _pend[jacobsthal_sequence_index] in main_chain
-	for (size_t i = 0; i < _jacobsthalSequence.size(); ++i){
-		if(_jacobsthalSequence[i] < _pend.size()){
-			// std::cout << "The value of _pend[_jacobsthalSequence[i]] is: " << _pend[_jacobsthalSequence[i]] << std::endl;
-			int index = binarySearch(_mainChain, _mainChain.size(), _pend[_jacobsthalSequence[i]]);
-			_mainChain.insert(_mainChain.begin() + index, _pend[_jacobsthalSequence[i]]);
-			_pend.erase(_pend.begin() + _jacobsthalSequence[i]);
+	// Put elements at _pendVector[jacobsthal_sequence_index] in main_chain
+	for (size_t i = 0; i < _jacobsthalSequenceVector.size(); ++i){
+		if(_jacobsthalSequenceVector[i] < _pendVector.size()){
+			// std::cout << "The value of _pendVector[_jacobsthalSequenceVector[i]] is: " << _pendVector[_jacobsthalSequenceVector[i]] << std::endl;
+			int index = binarySearch(_mainChainVector, _mainChainVector.size(), _pendVector[_jacobsthalSequenceVector[i]]);
+			_mainChainVector.insert(_mainChainVector.begin() + index, _pendVector[_jacobsthalSequenceVector[i]]);
+			_pendVector.erase(_pendVector.begin() + _jacobsthalSequenceVector[i]);
 		}
 	}
 	
 	//TODO: What should I do, insert all elements corresponding to jacobsthal sequence and then erase, or add elemen and erase immediately?
 	//TODO: Also, notes seems to show that we start a jacobstal index 3, so we avoid the 0, 1, 1 sequence of the beginning.
 	// TODO: Also, index[0] seems to be index 1 because it belongs to b1.
-	// Insert remaining elements of _pend
-	for (size_t i = 0; i < _pend.size(); ++i){
-		int index = binarySearch(_mainChain, _mainChain.size(), _pend[i]);
-		_mainChain.insert(_mainChain.begin() + index, _pend[i]);
+	// Insert remaining elements of _pendVector
+	for (size_t i = 0; i < _pendVector.size(); ++i){
+		int index = binarySearch(_mainChainVector, _mainChainVector.size(), _pendVector[i]);
+		_mainChainVector.insert(_mainChainVector.begin() + index, _pendVector[i]);
 	}
 
 	// Inserting unpaired elements when initial array size is odd. This 
 	//TODO: This _unpaired element is called a struggler
 	if (_unpairedElement != -1){
-		int index = binarySearch(_mainChain, _mainChain.size(), _unpairedElement);
-		_mainChain.insert(_mainChain.begin() + index, _unpairedElement);
+		int index = binarySearch(_mainChainVector, _mainChainVector.size(), _unpairedElement);
+		_mainChainVector.insert(_mainChainVector.begin() + index, _unpairedElement);
 	}
 
 	// Function to validate that content is struly sorted
-	// if (std::is_sorted(_mainChain.begin(), _mainChain.end()))
+	// if (std::is_sorted(_mainChainVector.begin(), _mainChainVector.end()))
 	// 	std::cout << "Initial Sequence is now correctly sorted" << std::endl;
 	// else
 	// 	std::cout << "Initial Sequence is NOT sorted" << std::endl;
@@ -195,23 +195,23 @@ void 	PMergeMe::mergeSort(T& container, size_t left, size_t middle, size_t right
 void	PMergeMe::createMainChain(){
 
 	for(size_t i = 0; i < _myVectorPairs.size(); ++i){
-		_mainChain.push_back(_myVectorPairs[i].first);
+		_mainChainVector.push_back(_myVectorPairs[i].first);
 	}
 
 	// std::cout << "Printing main chain: ";
-	// for (size_t i = 0; i < _mainChain.size(); ++i)
-	// 	std::cout << _mainChain[i] << " ";
+	// for (size_t i = 0; i < _mainChainVector.size(); ++i)
+	// 	std::cout << _mainChainVector[i] << " ";
 	// std::cout << std::endl;
 }
 
 void	PMergeMe::createPend(){
 	for(size_t i = 0; i < _myVectorPairs.size(); ++i){
-		_pend.push_back(_myVectorPairs[i].second);
+		_pendVector.push_back(_myVectorPairs[i].second);
 	}
 
 	// std::cout << "Printing pend: ";
-	// for (size_t i = 0; i < _pend.size(); ++i)
-	// 	std::cout << _pend[i] << " ";
+	// for (size_t i = 0; i < _pendVector.size(); ++i)
+	// 	std::cout << _pendVector[i] << " ";
 	// std::cout << std::endl;
 }
 
@@ -235,15 +235,15 @@ size_t PMergeMe::Jacobsthal(int n) {
 
 void	PMergeMe::generateJacobsthalSequence(){
 
-	// We put a condition to make sure that Jacobsthal index exists in _pend
-	for(size_t i = 0; i < _pend.size(); ++i){
-		if (Jacobsthal(i) < _pend.size())
-			_jacobsthalSequence.push_back(Jacobsthal(i));
+	// We put a condition to make sure that Jacobsthal index exists in _pendVector
+	for(size_t i = 0; i < _pendVector.size(); ++i){
+		if (Jacobsthal(i) < _pendVector.size())
+			_jacobsthalSequenceVector.push_back(Jacobsthal(i));
 	}
 
-	// for(size_t i = 0; i < _jacobsthalSequence.size(); ++i){
+	// for(size_t i = 0; i < _jacobsthalSequenceVector.size(); ++i){
 	// 	std::cout << "Jacobsthal sequence is: " << std::endl;
-	// 	std::cout << _jacobsthalSequence[i] << std::endl;
+	// 	std::cout << _jacobsthalSequenceVector[i] << std::endl;
 	// }
 }
 
@@ -283,8 +283,8 @@ void 	PMergeMe::printInitialSequence(){
 void	PMergeMe::printSortedSequence(){
 
 	std::cout << "After Sorting: ";
-	for(size_t i = 0; i < _mainChain.size(); ++i)
-		std::cout << _mainChain[i] << " ";
+	for(size_t i = 0; i < _mainChainVector.size(); ++i)
+		std::cout << _mainChainVector[i] << " ";
 	std::cout << std::endl;
 }
 
@@ -294,7 +294,7 @@ void	PMergeMe::printClock(){
 	double elapsed_microseconds = elapsed_seconds * 1000000;
 
     // Output the time in microseconds
-	std::cout << "Time to process a range of " << _mainChain.size() << " elements with std::vector: ";
+	std::cout << "Time to process a range of " << _mainChainVector.size() << " elements with std::vector: ";
     std::cout << std::fixed << std::setprecision(7) << elapsed_microseconds << " us" << std::endl;
 }
 
