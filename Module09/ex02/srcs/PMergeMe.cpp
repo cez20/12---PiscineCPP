@@ -107,7 +107,7 @@ void	PMergeMe::insertionSort(){
 	// Put elements at _pend[jacobsthal_sequence_index] in main_chain
 	for (size_t i = 0; i < _jacobsthalSequence.size(); ++i){
 		if(_jacobsthalSequence[i] < _pend.size()){
-			std::cout << "The value of _pend[_jacobsthalSequence[i]] is: " << _pend[_jacobsthalSequence[i]] << std::endl;
+			// std::cout << "The value of _pend[_jacobsthalSequence[i]] is: " << _pend[_jacobsthalSequence[i]] << std::endl;
 			int index = binarySearch(_mainChain, _mainChain.size(), _pend[_jacobsthalSequence[i]]);
 			_mainChain.insert(_mainChain.begin() + index, _pend[_jacobsthalSequence[i]]);
 			_pend.erase(_pend.begin() + _jacobsthalSequence[i]);
@@ -130,15 +130,11 @@ void	PMergeMe::insertionSort(){
 		_mainChain.insert(_mainChain.begin() + index, _unpairedElement);
 	}
 
-	std::cout << "Printing final main chain: ";
-	for (size_t i = 0; i < _mainChain.size(); ++i)
-		std::cout << _mainChain[i] << " ";
-	std::cout << std::endl;
-
-	if (std::is_sorted(_mainChain.begin(), _mainChain.end()))
-		std::cout << "Initial Sequence is now correctly sorted" << std::endl;
-	else
-		std::cout << "Initial Sequence is NOT sorted" << std::endl;
+	// Function to validate that content is struly sorted
+	// if (std::is_sorted(_mainChain.begin(), _mainChain.end()))
+	// 	std::cout << "Initial Sequence is now correctly sorted" << std::endl;
+	// else
+	// 	std::cout << "Initial Sequence is NOT sorted" << std::endl;
 }
 
 
