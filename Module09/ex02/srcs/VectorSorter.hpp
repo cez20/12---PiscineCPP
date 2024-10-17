@@ -5,9 +5,8 @@
 # include <string>
 # include <vector>
 
-class VectorSorter
+class VectorSorter: public PMergeMe<std::vector<T>>
 {
-
 	public:
 
 		VectorSorter();
@@ -18,6 +17,7 @@ class VectorSorter
 
 	private:
 
+		int									_unpairedElement;
 		std::clock_t 						_start;
 		std::clock_t 						_end;
 		std::vector<std::pair<int,int> > 	_myVectorPairs;
