@@ -54,17 +54,17 @@ class PMergeMe
 		std::list<double>					_initialSequence;
 		int									_unpairedElement;
 		
-		std::clock_t 						_clockStartV;
-		std::clock_t 						_clockEndV;
+		std::clock_t 						_clockStartVector;
+		std::clock_t 						_clockEndVector;
 		std::vector<std::pair<int,int> > 	_myVectorPairs;
 		std::vector<int>					_mainChain;
 		std::vector<int>					_pend;
 		std::vector<size_t>					_jacobsthalSequence;
 
-		// std::clock_t 						_startDeque;
+		std::clock_t 						_clockStartDeque;
+		std::clock_t						_clockEndDeque;
 		std::deque<std::pair<int, int> >	_myDequePairs;
-		// size_t					_myVectorSortTime;
-		// size_t					_myDequeSortTime;
+		
 };
 
 double  stringToDouble(const std::string& s);

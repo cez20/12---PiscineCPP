@@ -88,7 +88,7 @@ void	PMergeMe::createPairs(T & container){
 void PMergeMe::mergeInsertionSort() {
 
 	// MERGE-INSERTION SORT FOR STD::VECTOR
-	_clockStartV = std::clock();
+	_clockStartVector = std::clock();
 	createPairs(_myVectorPairs);
 	sortPairs(_myVectorPairs);
 	mergeSortRecursive(_myVectorPairs, 0, _myVectorPairs.size() - 1);
@@ -96,7 +96,7 @@ void PMergeMe::mergeInsertionSort() {
 	createPend();
 	generateJacobsthalSequence();
 	insertionSort();
-	_clockEndV = std::clock();
+	_clockEndVector = std::clock();
 
 	// MERGE INSERTION SORT FOR STD::DEQUE
 	// sortPairs(_myDeque);
@@ -287,7 +287,7 @@ void	PMergeMe::printSortedSequence(){
 
 void	PMergeMe::printClock(){
 
-	double elapsed_seconds = static_cast<double>(_clockEndV - _clockStartV) / CLOCKS_PER_SEC;
+	double elapsed_seconds = static_cast<double>(_clockEndVector - _clockStartVector) / CLOCKS_PER_SEC;
 	double elapsed_microseconds = elapsed_seconds * 1000000;
 
     // Output the time in microseconds
