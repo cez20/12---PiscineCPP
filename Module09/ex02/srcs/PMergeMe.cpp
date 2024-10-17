@@ -99,7 +99,10 @@ void PMergeMe::mergeInsertionSort() {
 	_clockEndVector = std::clock();
 
 	// MERGE INSERTION SORT FOR STD::DEQUE
-	// sortPairs(_myDeque);
+	_clockStartDeque = std::clock();
+	// createPairs(_myDequePairs);
+	// sortPairs(_myDequePairs);
+	_clockEndDeque = std::clock();
 }
 
 void	PMergeMe::insertionSort(){
