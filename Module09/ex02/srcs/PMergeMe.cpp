@@ -87,17 +87,15 @@ void	PMergeMe::createPairs(T & container){
 
 void PMergeMe::mergeInsertionSort() {
 
-	// Merge-insertion sort for std::vector
+	// MERGE-INSERTION SORT FOR STD::VECTOR
 	_clockStartV = std::clock();
 	createPairs(_myVectorPairs);
 	sortPairs(_myVectorPairs);
-	if (_myVectorPairs.size() > 1) {
-		mergeSortRecursive(_myVectorPairs, 0, _myVectorPairs.size() - 1);
-		createMainChain();
-		createPend();
-		generateJacobsthalSequence();
-		insertionSort();
-	}
+	mergeSortRecursive(_myVectorPairs, 0, _myVectorPairs.size() - 1);
+	createMainChain();
+	createPend();
+	generateJacobsthalSequence();
+	insertionSort();
 	_clockEndV = std::clock();
 
 	// MERGE INSERTION SORT FOR STD::DEQUE
