@@ -8,6 +8,7 @@
 # include <deque>
 # include <algorithm>
 # include <array>
+# include <iomanip>
 
 
 class PMergeMe
@@ -42,19 +43,26 @@ class PMergeMe
 
 		void			printInitialSequence();
 		void			printSortedSequence();
+		void			printClock();
+
+
 		template <typename T>
 		void			printContainer(T & container);
 
 		
 	private:
-		std::clock_t 						_start;
+		std::list<double>					_initialSequence;
+		int									_unpairedElement;
+		
+		std::clock_t 						_clockStartV;
+		std::clock_t 						_clockEndV;
 		std::vector<std::pair<int,int> > 	_myVectorPairs;
 		std::vector<int>					_mainChain;
 		std::vector<int>					_pend;
 		std::vector<size_t>					_jacobsthalSequence;
+
+		// std::clock_t 						_startDeque;
 		std::deque<std::pair<int, int> >	_myDequePairs;
-		std::list<double>					_initialSequence;
-		int									_unpairedElement;
 		// size_t					_myVectorSortTime;
 		// size_t					_myDequeSortTime;
 };

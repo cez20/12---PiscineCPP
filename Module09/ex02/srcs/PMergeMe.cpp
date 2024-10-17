@@ -51,7 +51,6 @@ void PMergeMe::processArguments(int argCount, char **argList){
 		if(!isValidNumberFormat(arg) || !isBelowIntMax(arg))
 			throw std::invalid_argument("Invalid argument. Either not a number, a negative number or higher than INT_MAX");
 		else{
-			_start = std::clock(); // TODO: Should I start clock here or just before starting the SortPairs which is first step in merge-insertion sort
 			_initialSequence.push_back(stringToDouble(arg));
 		}
 		i++;
@@ -66,8 +65,8 @@ void	PMergeMe::initializeContainers() {
 		_unpairedElement = _initialSequence.back();
 		_initialSequence.pop_back();
 	}
-	createPairs(_myVectorPairs);
-	createPairs(_myDequePairs);
+	// createPairs(_myVectorPairs);
+	// createPairs(_myDequePairs);
 }
 
 template <typename T>
@@ -89,6 +88,8 @@ void	PMergeMe::createPairs(T & container){
 void PMergeMe::mergeInsertionSort() {
 
 	// Merge-insertion sort for std::vector
+	_clockStartV = std::clock();
+	createPairs(_myVectorPairs);
 	sortPairs(_myVectorPairs);
 	if (_myVectorPairs.size() > 1) {
 		mergeSortRecursive(_myVectorPairs, 0, _myVectorPairs.size() - 1);
@@ -97,6 +98,7 @@ void PMergeMe::mergeInsertionSort() {
 		generateJacobsthalSequence();
 		insertionSort();
 	}
+	_clockEndV = std::clock();
 
 	// MERGE INSERTION SORT FOR STD::DEQUE
 	// sortPairs(_myDeque);
@@ -285,14 +287,14 @@ void	PMergeMe::printSortedSequence(){
 	std::cout << std::endl;
 }
 
-template <typename T>
-void	PMergeMe::printContainer(T & container){
+void	PMergeMe::printClock(){
 
-	for(size_t i = 0; i < container.size(); ++i){
-		std::cout << "Pair[" << i << "] ";
-		std::cout << container[i].first << " ";
-		std::cout << container[i].second << std::endl;
-	}
+	double elapsed_seconds = static_cast<double>(_clockEndV - _clockStartV) / CLOCKS_PER_SEC;
+	double elapsed_microseconds = elapsed_seconds * 1000000;
+
+    // Output the time in microseconds
+	std::cout << "Time to process a range of " << _mainChain.size() << " elements with std::vector: ";
+    std::cout << std::fixed << std::setprecision(7) << elapsed_microseconds << " us" << std::endl;
 }
 
 double  stringToDouble(const std::string& s){
