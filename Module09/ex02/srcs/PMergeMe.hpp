@@ -45,11 +45,6 @@ class PMergeMe
 		void			printSortedSequence();
 		void			printClock();
 
-
-		template <typename T>
-		void			printContainer(T & container);
-
-		
 	private:
 		std::list<double>					_initialSequence;
 		int									_unpairedElement;
