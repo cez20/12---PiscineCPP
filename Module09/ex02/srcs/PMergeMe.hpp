@@ -40,7 +40,8 @@ class PMergeMe
 		void			insertionSort();
 
 
-		void			printInitialIntSequence();
+		void			printInitialSequence();
+		void			printSortedSequence();
 		template <typename T>
 		void			printContainer(T & container);
 

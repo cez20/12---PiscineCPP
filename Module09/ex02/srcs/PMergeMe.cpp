@@ -67,9 +67,7 @@ void	PMergeMe::initializeContainers() {
 		_initialSequence.pop_back();
 	}
 	createPairs(_myVectorPairs);
-	printContainer(_myVectorPairs);
 	createPairs(_myDequePairs);
-	printContainer(_myDequePairs);
 }
 
 template <typename T>
@@ -92,12 +90,8 @@ void PMergeMe::mergeInsertionSort() {
 
 	// Merge-insertion sort for std::vector
 	sortPairs(_myVectorPairs);
-	std::cout << "After Pair Sorting: " << std::endl;
-	printContainer(_myVectorPairs);
 	if (_myVectorPairs.size() > 1) {
 		mergeSortRecursive(_myVectorPairs, 0, _myVectorPairs.size() - 1);
-		std::cout << "After MergeSorting: " << std::endl;
-		printContainer(_myVectorPairs);
 		createMainChain();
 		createPend();
 		generateJacobsthalSequence();
@@ -205,10 +199,10 @@ void	PMergeMe::createMainChain(){
 		_mainChain.push_back(_myVectorPairs[i].first);
 	}
 
-	std::cout << "Printing main chain: ";
-	for (size_t i = 0; i < _mainChain.size(); ++i)
-		std::cout << _mainChain[i] << " ";
-	std::cout << std::endl;
+	// std::cout << "Printing main chain: ";
+	// for (size_t i = 0; i < _mainChain.size(); ++i)
+	// 	std::cout << _mainChain[i] << " ";
+	// std::cout << std::endl;
 }
 
 void	PMergeMe::createPend(){
@@ -216,22 +210,11 @@ void	PMergeMe::createPend(){
 		_pend.push_back(_myVectorPairs[i].second);
 	}
 
-	std::cout << "Printing pend: ";
-	for (size_t i = 0; i < _pend.size(); ++i)
-		std::cout << _pend[i] << " ";
-	std::cout << std::endl;
+	// std::cout << "Printing pend: ";
+	// for (size_t i = 0; i < _pend.size(); ++i)
+	// 	std::cout << _pend[i] << " ";
+	// std::cout << std::endl;
 }
-
-// int		PMergeMe::Jacobsthal(int n){
-
-// 	if (n == 0)
-//         return 0;
-//     // base case
-//     if (n == 1)
-//         return 1;
-//     // recursive step.
-//     return Jacobsthal(n - 1) + 2 * Jacobsthal(n - 2);
-// }
 
 size_t PMergeMe::Jacobsthal(int n) {
     if (n == 0) return 0;
@@ -259,10 +242,10 @@ void	PMergeMe::generateJacobsthalSequence(){
 			_jacobsthalSequence.push_back(Jacobsthal(i));
 	}
 
-	for(size_t i = 0; i < _jacobsthalSequence.size(); ++i){
-		std::cout << "Jacobsthal sequence is: " << std::endl;
-		std::cout << _jacobsthalSequence[i] << std::endl;
-	}
+	// for(size_t i = 0; i < _jacobsthalSequence.size(); ++i){
+	// 	std::cout << "Jacobsthal sequence is: " << std::endl;
+	// 	std::cout << _jacobsthalSequence[i] << std::endl;
+	// }
 }
 
 size_t	PMergeMe::binarySearch(std::vector<int> mainChain, size_t size, int number){
@@ -287,7 +270,7 @@ size_t	PMergeMe::binarySearch(std::vector<int> mainChain, size_t size, int numbe
 }
 
 
-void 	PMergeMe::printInitialIntSequence(){
+void 	PMergeMe::printInitialSequence(){
 
 	std::list<double>::iterator it;
 
@@ -295,6 +278,14 @@ void 	PMergeMe::printInitialIntSequence(){
 	for(it = _initialSequence.begin(); it != _initialSequence.end(); ++it){
 		std::cout << *it << " ";
 	}
+	std::cout << std::endl;
+}
+
+void	PMergeMe::printSortedSequence(){
+
+	std::cout << "After Sorting: ";
+	for(size_t i = 0; i < _mainChain.size(); ++i)
+		std::cout << _mainChain[i] << " ";
 	std::cout << std::endl;
 }
 

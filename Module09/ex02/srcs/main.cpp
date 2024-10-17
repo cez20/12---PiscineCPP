@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 19:41:03 by cemenjiv          #+#    #+#             */
-/*   Updated: 2024/10/16 18:22:39 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2024/10/17 14:25:05 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@ int main(int argc, char **argv)
         //TODO: Do I need to put all function inside inside try/catch or only those that might have a mistake such as process Arguments!
         try {
             sortedList.processArguments(argc, argv);
-            sortedList.printInitialIntSequence();
+            sortedList.printInitialSequence();
             sortedList.initializeContainers();
             sortedList.mergeInsertionSort();
+            sortedList.printSortedSequence();
         } catch (std::exception & e) {
             std::cout << e.what() << std::endl;
         }
