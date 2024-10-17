@@ -110,17 +110,41 @@ void PMergeMe::mergeInsertionSort() {
 
 void	PMergeMe::insertionSort(){
 
+	// Put elements at _pend[jacobsthal_sequence_index] in main_chain
+	for (size_t i = 0; i < _jacobsthalSequence.size(); ++i){
+		if(_jacobsthalSequence[i] < _pend.size()){
+			std::cout << "The value of _pend[_jacobsthalSequence[i]] is: " << _pend[_jacobsthalSequence[i]] << std::endl;
+			int index = binarySearch(_mainChain, _mainChain.size(), _pend[_jacobsthalSequence[i]]);
+			_mainChain.insert(_mainChain.begin() + index, _pend[_jacobsthalSequence[i]]);
+			_pend.erase(_pend.begin() + _jacobsthalSequence[i]);
+		}
+	}
+	
+	//TODO: What should I do, insert all elements corresponding to jacobsthal sequence and then erase, or add elemen and erase immediately?
+	//TODO: Also, notes seems to show that we start a jacobstal index 3, so we avoid the 0, 1, 1 sequence of the beginning.
+	// TODO: Also, index[0] seems to be index 1 because it belongs to b1.
+	// Insert remaining elements of _pend
 	for (size_t i = 0; i < _pend.size(); ++i){
 		int index = binarySearch(_mainChain, _mainChain.size(), _pend[i]);
 		_mainChain.insert(_mainChain.begin() + index, _pend[i]);
-		// for (size_t i = 0; i < _mainChain.size(); ++i)
-		// 	std::cout << _mainChain[i] << " ";
-		// std::cout << std::endl;
 	}
+
+	// Inserting unpaired elements when initial array size is odd. This 
+	//TODO: This _unpaired element is called a struggler
+	if (_unpairedElement != -1){
+		int index = binarySearch(_mainChain, _mainChain.size(), _unpairedElement);
+		_mainChain.insert(_mainChain.begin() + index, _unpairedElement);
+	}
+
 	std::cout << "Printing final main chain: ";
 	for (size_t i = 0; i < _mainChain.size(); ++i)
 		std::cout << _mainChain[i] << " ";
 	std::cout << std::endl;
+
+	if (std::is_sorted(_mainChain.begin(), _mainChain.end()))
+		std::cout << "Initial Sequence is now correctly sorted" << std::endl;
+	else
+		std::cout << "Initial Sequence is NOT sorted" << std::endl;
 }
 
 
@@ -209,7 +233,7 @@ void	PMergeMe::createPend(){
 //     return Jacobsthal(n - 1) + 2 * Jacobsthal(n - 2);
 // }
 
-int PMergeMe::Jacobsthal(int n) {
+size_t PMergeMe::Jacobsthal(int n) {
     if (n == 0) return 0;
     if (n == 1) return 1;
 
@@ -229,13 +253,16 @@ int PMergeMe::Jacobsthal(int n) {
 
 void	PMergeMe::generateJacobsthalSequence(){
 
+	// We put a condition to make sure that Jacobsthal index exists in _pend
 	for(size_t i = 0; i < _pend.size(); ++i){
-		_jacobsthalSequence.push_back(Jacobsthal(i));
+		if (Jacobsthal(i) < _pend.size())
+			_jacobsthalSequence.push_back(Jacobsthal(i));
 	}
 
-	// for(size_t i = 0; i < _jacobsthalSequence.size(); ++i){
-	// 	std::cout << _jacobsthalSequence[i] << std::endl;
-	// }
+	for(size_t i = 0; i < _jacobsthalSequence.size(); ++i){
+		std::cout << "Jacobsthal sequence is: " << std::endl;
+		std::cout << _jacobsthalSequence[i] << std::endl;
+	}
 }
 
 size_t	PMergeMe::binarySearch(std::vector<int> mainChain, size_t size, int number){

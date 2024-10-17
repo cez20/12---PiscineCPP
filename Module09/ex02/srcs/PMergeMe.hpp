@@ -34,7 +34,7 @@ class PMergeMe
 		
 		void			createMainChain();
 		void			createPend();
-		int				Jacobsthal(int n);
+		size_t			Jacobsthal(int n);
 		void			generateJacobsthalSequence();
 		size_t			binarySearch(std::vector<int> mainChain, size_t size, int number);
 		void			insertionSort();
@@ -50,7 +50,7 @@ class PMergeMe
 		std::vector<std::pair<int,int> > 	_myVectorPairs;
 		std::vector<int>					_mainChain;
 		std::vector<int>					_pend;
-		std::vector<int>					_jacobsthalSequence;
+		std::vector<size_t>					_jacobsthalSequence;
 		std::deque<std::pair<int, int> >	_myDequePairs;
 		std::list<double>					_initialSequence;
 		int									_unpairedElement;
