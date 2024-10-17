@@ -20,7 +20,6 @@ class PMergeMe
 
 		PMergeMe &		operator=( PMergeMe const & rhs );
 
-		void			processArguments(int argCount, char **argList);
 		// void			initializeContainers();
 		
 		// void			mergeInsertionSort();
@@ -40,8 +39,6 @@ class PMergeMe
 		// size_t			binarySearch(std::vector<int> mainChain, size_t size, int number);
 		// void			insertionSort();
 
-
-		void			printInitialSequence();
 		void			printSortedSequence();
 		void			printClock();
 

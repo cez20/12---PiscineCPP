@@ -43,7 +43,7 @@ SequenceProcessor &				SequenceProcessor::operator=( SequenceProcessor const & r
 */
 
 
-void SequenceProcessor::processArguments(int argCount, char **argList){
+void SequenceProcessor::processUnsortedSequence(int argCount, char **argList){
 	
 	int i = 1;
 
@@ -57,6 +57,12 @@ void SequenceProcessor::processArguments(int argCount, char **argList){
 		i++;
 	}
 }
+
+std::list<double>	SequenceProcessor::getUnsortedSequence() const {
+
+	return _unsortedSequence;
+}
+
 
 void	SequenceProcessor::printUnsortedSequence(){
 

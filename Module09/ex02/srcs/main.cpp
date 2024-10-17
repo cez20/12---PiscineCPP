@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 19:41:03 by cemenjiv          #+#    #+#             */
-/*   Updated: 2024/10/17 18:14:05 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2024/10/17 18:34:58 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ int main(int argc, char **argv)
     }
     
     SequenceProcessor sequence = SequenceProcessor();
+    
     try {
-        sequence.processArguments(argc, argv);
+        sequence.processUnsortedSequence(argc, argv);
         sequence.printUnsortedSequence();
     } catch (std::exception & e) {
         std::cout << e.what() << std::endl;

@@ -15,8 +15,11 @@ class SequenceProcessor
 
 		SequenceProcessor &		operator=( SequenceProcessor const & rhs );
 
-		void			processArguments(int argCount, char **argList);
-		void			printUnsortedSequence();
+		void				processUnsortedSequence(int argCount, char **argList);
+		std::list<double>	getUnsortedSequence() const;
+		void				printUnsortedSequence();
+		
+		
 		// void			printSortedSequence();
 		// void			printSortingTimes();
 
