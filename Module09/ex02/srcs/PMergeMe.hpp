@@ -21,24 +21,24 @@ class PMergeMe
 		PMergeMe &		operator=( PMergeMe const & rhs );
 
 		void			processArguments(int argCount, char **argList);
-		void			initializeContainers();
+		// void			initializeContainers();
 		
-		void			mergeInsertionSort();
-		template<typename T>
-		void			createPairs(T& container);
-		template<typename T>
-		void			sortPairs(T& container);
-		template<typename T>
-		void			mergeSortRecursive(T& container, size_t left, size_t right);
-		template <typename T>
-		void 			mergeSort(T& container, size_t left, size_t middle, size_t right);
+		// void			mergeInsertionSort();
+		// template<typename T>
+		// void			createPairs(T& container);
+		// template<typename T>
+		// void			sortPairs(T& container);
+		// template<typename T>
+		// void			mergeSortRecursive(T& container, size_t left, size_t right);
+		// template <typename T>
+		// void 			mergeSort(T& container, size_t left, size_t middle, size_t right);
 		
-		void			createMainChain();
-		void			createPend();
-		size_t			Jacobsthal(int n);
-		void			generateJacobsthalSequence();
-		size_t			binarySearch(std::vector<int> mainChain, size_t size, int number);
-		void			insertionSort();
+		// void			createMainChain();
+		// void			createPend();
+		// size_t			Jacobsthal(int n);
+		// void			generateJacobsthalSequence();
+		// size_t			binarySearch(std::vector<int> mainChain, size_t size, int number);
+		// void			insertionSort();
 
 
 		void			printInitialSequence();

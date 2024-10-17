@@ -298,28 +298,5 @@ void	PMergeMe::printClock(){
     std::cout << std::fixed << std::setprecision(7) << elapsed_microseconds << " us" << std::endl;
 }
 
-double  stringToDouble(const std::string& s){
-    char *end;
-    
-    double num = std::strtod(s.c_str(), &end);
-    if (*end != '\0')
-        throw std::invalid_argument("Invalid number format");
-    else
-        return num; 
-}
-
-bool isValidNumberFormat (const std::string& arg){  
-    if (arg.find_first_not_of("0123456789") != std::string::npos) {
-        return false;
-    }
-    return true;;
-}
-
-bool isBelowIntMax(const std::string& arg){
-    double num = stringToDouble(arg);
-    if (num > INT_MAX)
-        return false;
-    return true;
-}
 
 /* ************************************************************************** */
