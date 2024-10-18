@@ -59,15 +59,13 @@ void PMergeMe::processArguments(int argCount, char **argList){
 
 void PMergeMe::mergeInsertionSort() {
 
-	if (_unsortedSequence.size() < 2)
-		throw std::invalid_argument("ERROR! Arguments size less than 2");
 	if (_unsortedSequence.size() % 2 == 1){
 		_unpairedElement = _unsortedSequence.back();
 		_unsortedSequence.pop_back();
 	}
-	generateJacobsthalSequence(_unsortedSequence.size()/ 2);
-	// printJacobsthalSequence();
 
+	generateJacobsthalSequence(_unsortedSequence.size()/ 2);
+\
 	// MERGE-INSERTION SORT FOR STD::VECTOR
 	_startVector = std::clock();
 	createPairs(_myVectorPairs);
