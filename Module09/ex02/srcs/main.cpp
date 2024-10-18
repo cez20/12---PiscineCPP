@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 19:41:03 by cemenjiv          #+#    #+#             */
-/*   Updated: 2024/10/17 20:02:25 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2024/10/17 22:58:05 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,16 @@ int main(int argc, char **argv)
     }
     
     SequenceProcessor sequence = SequenceProcessor();
+    VectorSorter myVector = VectorSorter();
+    // DequeSorter myDeque = DequeSorter();
     
     try {
         sequence.processUnsortedSequence(argc, argv);
         sequence.printUnsortedSequence();
         
-        VectorSorter<int> myVector;
-        // myVector.mergeInsertionSort();
+        myVector.mergeInsertionSort(sequence.getUnsortedSequence());
+        myVector.printSortedSequence();
+        myVector.printClock();
 
     } catch (std::exception & e) {
         std::cout << e.what() << std::endl;

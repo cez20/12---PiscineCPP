@@ -4,10 +4,9 @@
 # include <iostream>
 # include <string>
 # include <vector>
-# include "PMergeMe.hpp"
+# include <list>
 
-template <typename T>
-class VectorSorter: public PMergeMe<std::vector<T> >
+class VectorSorter
 {
 	public:
 
@@ -16,6 +15,22 @@ class VectorSorter: public PMergeMe<std::vector<T> >
 		~VectorSorter();
 
 		VectorSorter &		operator=( VectorSorter const & rhs );
+
+		void			mergeInsertionSort(std::list<double> unsortedSequence);
+		void			createPairs(std::list<double> unsortedSequence);
+		void			sortPairs();
+		void			mergeSortRecursive(std::vector<std::pair<int,int> >& pairs, size_t left, size_t right);
+		void 			mergeSort(std::vector<std::pair<int,int> >& container, size_t left, size_t middle, size_t right);
+		
+		void			createMainChain();
+		void			createPend();
+		size_t			Jacobsthal(int n);
+		void			generateJacobsthalSequence();
+		size_t			binarySearch(std::vector<int> mainChain, size_t size, int number);
+		void			insertionSort();
+
+		void			printSortedSequence();
+		void			printClock();
 
 	private:
 
