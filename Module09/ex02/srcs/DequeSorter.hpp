@@ -4,6 +4,8 @@
 # include <iostream>
 # include <string>
 # include <deque>
+# include <iomanip>
+# include <list>
 
 class DequeSorter
 {
@@ -15,21 +17,22 @@ class DequeSorter
 
 		DequeSorter &		operator=( DequeSorter const & rhs );
 
-		void			mergeInsertionSort();
-		// void			createPairs(T& container);
-		// void			sortPairs(T& container);
-		// void			mergeSortRecursive(T& container, size_t left, size_t right);
-		// void 		mergeSort(T& container, size_t left, size_t middle, size_t right);
+		void			mergeInsertionSort(std::list<double> unsortedSequence);
+		void			createPairs(std::list<double> unsortedSequence);
+		void			sortPairs();
+		void			mergeSortRecursive(std::deque<std::pair<int,int> >& pairs, size_t left, size_t right);
+		void 			mergeSort(std::deque<std::pair<int,int> >& container, size_t left, size_t middle, size_t right);
 		
-		// void			createMainChain();
-		// void			createPend();
-		// size_t		Jacobsthal(int n);
-		// void			generateJacobsthalSequence();
-		// size_t		binarySearch(std::vector<int> mainChain, size_t size, int number);
-		// void			insertionSort();
+		void			createMainChain();
+		void			createPend();
+		size_t			Jacobsthal(int n);
+		void			generateJacobsthalSequence();
+		size_t			binarySearch(std::deque<int> mainChain, size_t size, int number);
+		void			insertionSort();
 
-		void			printSortedSequence(T & container);
+		void			printSortedSequence();
 		void			printClock();
+		
 
 	private:
 

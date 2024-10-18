@@ -55,11 +55,11 @@ void VectorSorter::mergeInsertionSort(std::list<double> unsortedSequence) {
 	createPairs(unsortedSequence);
 	sortPairs();
 	mergeSortRecursive(_myVectorPairs, 0, _myVectorPairs.size() - 1);
-	std::cout << "After mergeSorting" << std::endl;
-	for (size_t i = 0; i < _myVectorPairs.size(); ++i){
-		std::cout << "Pair[" << i << "]: ";
-		std::cout << _myVectorPairs[i].first << " " << _myVectorPairs[i].second << std::endl;
-	}
+	// std::cout << "After mergeSorting" << std::endl;
+	// for (size_t i = 0; i < _myVectorPairs.size(); ++i){
+	// 	std::cout << "Pair[" << i << "]: ";
+	// 	std::cout << _myVectorPairs[i].first << " " << _myVectorPairs[i].second << std::endl;
+	// }
 	createMainChain();
 	createPend();
 	generateJacobsthalSequence();
@@ -87,10 +87,10 @@ void	VectorSorter::createPairs(std::list<double> unsortedSequence){
 		}
 	}
 
-	for (size_t i = 0; i < _myVectorPairs.size(); ++i){
-		std::cout << "Pair[" << i << "]: ";
-		std::cout << _myVectorPairs[i].first << " " << _myVectorPairs[i].second << std::endl;
-	}
+	// for (size_t i = 0; i < _myVectorPairs.size(); ++i){
+	// 	std::cout << "Pair[" << i << "]: ";
+	// 	std::cout << _myVectorPairs[i].first << " " << _myVectorPairs[i].second << std::endl;
+	// }
 
 }
 
@@ -103,11 +103,11 @@ void	VectorSorter::sortPairs() {
 			std::swap(_myVectorPairs[i].first, _myVectorPairs[i].second);
 	}
 
-	std::cout << "After sortPairs: " << std::endl;
-	for (size_t i = 0; i < _myVectorPairs.size(); ++i){
-		std::cout << "Pair[" << i << "]: ";
-		std::cout << _myVectorPairs[i].first << " " << _myVectorPairs[i].second << std::endl;
-	}
+	// std::cout << "After sortPairs: " << std::endl;
+	// for (size_t i = 0; i < _myVectorPairs.size(); ++i){
+	// 	std::cout << "Pair[" << i << "]: ";
+	// 	std::cout << _myVectorPairs[i].first << " " << _myVectorPairs[i].second << std::endl;
+	// }
 }
 
 // Important to put a reference here

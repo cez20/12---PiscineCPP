@@ -6,14 +6,14 @@
 #    By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/03 17:54:38 by cemenjiv          #+#    #+#              #
-#    Updated: 2024/10/17 22:02:15 by cemenjiv         ###   ########.fr        #
+#    Updated: 2024/10/17 22:58:55 by cemenjiv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= PMergeMe
 
 SRCS_DIR   		= srcs/
-SRCS_FILES		= main.cpp SequenceProcessor.cpp VectorSorter.cpp
+SRCS_FILES		= main.cpp SequenceProcessor.cpp VectorSorter.cpp DequeSorter.cpp
 SRCS 			= $(addprefix $(SRCS_DIR), $(SRCS_FILES))
 
 OBJS_DIR		= objs/
