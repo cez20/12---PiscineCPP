@@ -37,23 +37,33 @@ class PMergeMe
 		
 		template <typename T, typename U>
 		void			createMainChain(T& container, U& mainChain);
-		// void			createPend();
-		// size_t			Jacobsthal(int n);
-		// void			generateJacobsthalSequence();
-		// size_t			binarySearch(std::vector<int> mainChain, size_t size, int number);
-		// void			insertionSort();
+		template <typename T, typename U>
+		void			createPend(T& container, U& pend);
+		
+		template<typename U>
+		void			insertionSort(U& mainChain, U& pend);
 
+		size_t			Jacobsthal(int n);
+		void			generateJacobsthalSequence(size_t size);
+		
+		template <typename U>
+		int				binarySearch(U& mainChain, int number);
+
+		void			AreNumbersSorted();
 		void			printUnsortedSequence();
-
 		template <typename T>
 		void			printPairs(T& container);
 		template <typename U>
 		void			printMainChain(U& mainChain);
-		// void			printSortedSequence();
-		// void			printClock(std::clock_t start, std::clock_t end);
+		template <typename U>
+		void			printPend(U& pend);
+		void			printJacobsthalSequence();
+		void			printSortedSequence();
+		void			printSortingTimes();
 
 	private:
 		std::list<double>					_unsortedSequence;
+		std::vector<size_t>					_jacobsthalIndexes;
 		int									_unpairedElement;
 		
 		std::clock_t 						_startVector;
@@ -61,15 +71,12 @@ class PMergeMe
 		std::vector<std::pair<int,int> > 	_myVectorPairs;
 		std::vector<int>					_mainChainVector;
 		std::vector<int>					_pendVector;
-		std::vector<size_t>					_jacobsthalSequenceVector;
 
 		std::clock_t 						_startDeque;
 		std::clock_t						_endDeque;
 		std::deque<std::pair<int, int> >	_myDequePairs;
 		std::deque<int>						_mainChainDeque;
 		std::deque<int>						_pendDeque;
-		std::deque<size_t>					_jacobsthalSequenceDeque;
-		
 };
 
 double  stringToDouble(const std::string& s);

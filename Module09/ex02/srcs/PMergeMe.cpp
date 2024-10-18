@@ -65,35 +65,28 @@ void PMergeMe::mergeInsertionSort() {
 		_unpairedElement = _unsortedSequence.back();
 		_unsortedSequence.pop_back();
 	}
+	generateJacobsthalSequence(_unsortedSequence.size()/ 2);
+	// printJacobsthalSequence();
 
 	// MERGE-INSERTION SORT FOR STD::VECTOR
 	_startVector = std::clock();
 	createPairs(_myVectorPairs);
-	printPairs(_myVectorPairs);
 	sortPairs(_myVectorPairs);
-	printPairs(_myVectorPairs);
 	mergeSortRecursive(_myVectorPairs, 0, _myVectorPairs.size() - 1);
-	printPairs(_myVectorPairs);
 	createMainChain(_myVectorPairs, _mainChainVector);
-	printMainChain(_mainChainVector);
-	// createPend();
-	// generateJacobsthalSequence();
-	// insertionSort();
+	createPend(_myVectorPairs, _pendVector);
+	insertionSort(_mainChainVector, _pendVector);
 	_endVector = std::clock();
 
 	// MERGE INSERTION SORT FOR STD::DEQUE
 	_startDeque = std::clock();
 	createPairs(_myDequePairs);
-	printPairs(_myDequePairs);
 	sortPairs(_myDequePairs);
-	printPairs(_myDequePairs);
 	mergeSortRecursive(_myDequePairs, 0, _myDequePairs.size() - 1);
-	printPairs(_myDequePairs);
 	createMainChain(_myDequePairs, _mainChainDeque);
-	printMainChain(_mainChainDeque);
-	// createPend()
+	createPend(_myDequePairs, _pendDeque);
+	insertionSort(_mainChainDeque, _pendDeque);
 	_endDeque = std::clock();
-
 }
 
 template <typename T>
@@ -165,111 +158,86 @@ void	PMergeMe::createMainChain(T& container, U& mainChain){
 	for(size_t i = 0; i < container.size(); ++i){
 		mainChain.push_back(container[i].first);
 	}
-
-	// std::cout << "Printing main chain: ";
-	// for (size_t i = 0; i < _mainChainVector.size(); ++i)
-	// 	std::cout << _mainChainVector[i] << " ";
-	// std::cout << std::endl;
 }
 
-// void	PMergeMe::createPend(){
-// 	for(size_t i = 0; i < _myVectorPairs.size(); ++i){
-// 		_pendVector.push_back(_myVectorPairs[i].second);
-// 	}
+template <typename T, typename U>
+void			PMergeMe::createPend(T& container, U& pend){
+	for(size_t i = 0; i < container.size(); ++i){
+		pend.push_back(container[i].second);
+	}
+}
 
-// 	// std::cout << "Printing pend: ";
-// 	// for (size_t i = 0; i < _pendVector.size(); ++i)
-// 	// 	std::cout << _pendVector[i] << " ";
-// 	// std::cout << std::endl;
-// }
+size_t	 PMergeMe::Jacobsthal(int n) {
+    if (n == 0) return 0;
+    if (n == 1) return 1;
 
-// size_t PMergeMe::Jacobsthal(int n) {
-//     if (n == 0) return 0;
-//     if (n == 1) return 1;
+    int prev2 = 0; // Jacobsthal(0)
+    int prev1 = 1; // Jacobsthal(1)
+    int current = 0;
 
-//     int prev2 = 0; // Jacobsthal(0)
-//     int prev1 = 1; // Jacobsthal(1)
-//     int current = 0;
+    for (int i = 2; i <= n; ++i) {
+        current = prev1 + 2 * prev2;
+        prev2 = prev1;
+        prev1 = current;
+    }
 
-//     for (int i = 2; i <= n; ++i) {
-//         current = prev1 + 2 * prev2;
-//         prev2 = prev1;
-//         prev1 = current;
-//     }
+    return current;
+}
 
-//     return current;
-// }
+void	PMergeMe::generateJacobsthalSequence(size_t pendSize){
 
+	for(size_t i = 0; i < pendSize ; ++i){
+		if (Jacobsthal(i) < pendSize)
+			_jacobsthalIndexes.push_back(Jacobsthal(i));
+	}
+}
 
-// void	PMergeMe::generateJacobsthalSequence(){
+template <typename U>
+int	PMergeMe::binarySearch(U& mainChain, int number){
 
-// 	// We put a condition to make sure that Jacobsthal index exists in _pendVector
-// 	for(size_t i = 0; i < _pendVector.size(); ++i){
-// 		if (Jacobsthal(i) < _pendVector.size())
-// 			_jacobsthalSequenceVector.push_back(Jacobsthal(i));
-// 	}
+	size_t start = 0;
+	size_t end = mainChain.size() - 1;
 
-// 	// for(size_t i = 0; i < _jacobsthalSequenceVector.size(); ++i){
-// 	// 	std::cout << "Jacobsthal sequence is: " << std::endl;
-// 	// 	std::cout << _jacobsthalSequenceVector[i] << std::endl;
-// 	// }
-// }
+	while (start <= end){
 
-// size_t	PMergeMe::binarySearch(std::vector<int> mainChain, size_t size, int number){
+		size_t middle = (start + end) / 2;
+		if (mainChain[middle] == number) // Returns the indexes 
+			return middle;
+		else if (number < mainChain[middle]){
+			if (middle == 0) 
+				break;
+			end = middle - 1;
+		}
+		else
+			start = middle + 1;
+	}
+	return start;
+}
 
-// 	size_t start = 0;
-// 	size_t end = size - 1;
+template <typename U>
+void	PMergeMe::insertionSort(U& mainChain, U& pend){
 
-// 	while (start <= end){
-
-// 		size_t middle = (start + end) / 2;
-// 		if (mainChain[middle] == number) // Returns the indexes 
-// 			return middle;
-// 		else if (number < mainChain[middle]){
-// 			if (middle == 0) 
-// 				break;
-// 			end = middle - 1;
-// 		}
-// 		else
-// 			start = middle + 1;
-// 	}
-// 	return start;
-// }
-
-// void	PMergeMe::insertionSort(){
-
-// 	// Put elements at _pendVector[jacobsthal_sequence_index] in main_chain
-// 	for (size_t i = 0; i < _jacobsthalSequenceVector.size(); ++i){
-// 		if(_jacobsthalSequenceVector[i] < _pendVector.size()){
-// 			// std::cout << "The value of _pendVector[_jacobsthalSequenceVector[i]] is: " << _pendVector[_jacobsthalSequenceVector[i]] << std::endl;
-// 			int index = binarySearch(_mainChainVector, _mainChainVector.size(), _pendVector[_jacobsthalSequenceVector[i]]);
-// 			_mainChainVector.insert(_mainChainVector.begin() + index, _pendVector[_jacobsthalSequenceVector[i]]);
-// 			_pendVector.erase(_pendVector.begin() + _jacobsthalSequenceVector[i]);
-// 		}
-// 	}
+	// Put elements in pend[jacobsthal index] inside mainChain
+	for (size_t i = 0; i < _jacobsthalIndexes.size(); ++i){
+		if(_jacobsthalIndexes[i] < pend.size()){
+			int index = binarySearch(mainChain, pend[_jacobsthalIndexes[i]]);
+			mainChain.insert(mainChain.begin() + index, pend[_jacobsthalIndexes[i]]);
+			pend.erase(pend.begin() + _jacobsthalIndexes[i]);
+		}
+	}
 	
-// 	//TODO: What should I do, insert all elements corresponding to jacobsthal sequence and then erase, or add elemen and erase immediately?
-// 	//TODO: Also, notes seems to show that we start a jacobstal index 3, so we avoid the 0, 1, 1 sequence of the beginning.
-// 	// TODO: Also, index[0] seems to be index 1 because it belongs to b1.
-// 	// Insert remaining elements of _pendVector
-// 	for (size_t i = 0; i < _pendVector.size(); ++i){
-// 		int index = binarySearch(_mainChainVector, _mainChainVector.size(), _pendVector[i]);
-// 		_mainChainVector.insert(_mainChainVector.begin() + index, _pendVector[i]);
-// 	}
+	for (size_t i = 0; i < pend.size(); ++i){
+		int index = binarySearch(mainChain, pend[i]);
+		mainChain.insert(mainChain.begin() + index, pend[i]);
+	}
 
-// 	// Inserting unpaired elements when initial array size is odd. This 
-// 	//TODO: This _unpaired element is called a struggler
-// 	if (_unpairedElement != -1){
-// 		int index = binarySearch(_mainChainVector, _mainChainVector.size(), _unpairedElement);
-// 		_mainChainVector.insert(_mainChainVector.begin() + index, _unpairedElement);
-// 	}
-
-// 	// Function to validate that content is struly sorted
-// 	// if (std::is_sorted(_mainChainVector.begin(), _mainChainVector.end()))
-// 	// 	std::cout << "Initial Sequence is now correctly sorted" << std::endl;
-// 	// else
-// 	// 	std::cout << "Initial Sequence is NOT sorted" << std::endl;
-// }
+	// // Inserting unpaired elements when initial array size is odd. This 
+	// TODO: This _unpaired element is called a struggler
+	if (_unpairedElement != -1){
+		int index = binarySearch(mainChain, _unpairedElement);
+		mainChain.insert(mainChain.begin() + index, _unpairedElement);
+	}
+}
 
 void 	PMergeMe::printUnsortedSequence(){
 
@@ -292,6 +260,21 @@ void	PMergeMe::printPairs(T & container){
 	}
 }
 
+void	PMergeMe::AreNumbersSorted(){
+
+		//Function to validate that content is struly sorted
+	if (std::is_sorted(_mainChainVector.begin(), _mainChainVector.end()))
+		std::cout << "Initial Sequence is correctly sorted with std::vector" << std::endl;
+	else
+		std::cout << "Initial Sequence is NOT correctly sorted with std::vector" << std::endl;
+
+	if (std::is_sorted(_mainChainDeque.begin(), _mainChainDeque.end()))
+		std::cout << "Initial Sequence is correctly sorted with std::deque" << std::endl;
+	else
+		std::cout << "Initial Sequence is NOT correctly sorted with std::deque" << std::endl;
+}
+
+
 template <typename U>
 void	PMergeMe::printMainChain(U& mainChain){
 
@@ -301,23 +284,48 @@ void	PMergeMe::printMainChain(U& mainChain){
 	std::cout << std::endl;
 }
 
-// void	PMergeMe::printSortedSequence(){
+template <typename U>
+void	PMergeMe::printPend(U& pend){
 
-// 	std::cout << "After Sorting: ";
-// 	for(size_t i = 0; i < _mainChainVector.size(); ++i)
-// 		std::cout << _mainChainVector[i] << " ";
-// 	std::cout << std::endl;
-// }
+	std::cout << "Printing Pend: ";
+	for(size_t i = 0; i < pend.size(); ++i)
+		std::cout << pend[i] << " ";
+	std::cout << std::endl;
+}
 
-// void	PMergeMe::printClock(std::clock_t start, std::clock_t end){
+void			PMergeMe::printJacobsthalSequence(){
 
-// 	double elapsed_seconds = static_cast<double>(end - start) / CLOCKS_PER_SEC;
-// 	double elapsed_microseconds = elapsed_seconds * 1000000;
+	std::cout << "Jacobsthal indexes for current number sequence: ";
+	for(size_t i = 0; i < _jacobsthalIndexes.size(); ++i){
+		std::cout << _jacobsthalIndexes[i] << " ";
+	}
+	std::cout << std::endl;
+}
 
-//     // Output the time in microseconds
-// 	std::cout << "Time to process a range of " << _mainChainVector.size() << " elements with std::vector: ";
-//     std::cout << std::fixed << std::setprecision(7) << elapsed_microseconds << " us" << std::endl;
-// }
+void	PMergeMe::printSortedSequence(){
+
+	std::cout << "After Sorting: ";
+	for(size_t i = 0; i < _mainChainVector.size(); ++i)
+		std::cout << _mainChainVector[i] << " ";
+	std::cout << std::endl;
+}
+
+void	PMergeMe::printSortingTimes(){
+
+	double elapsed_seconds = static_cast<double>(_endVector - _startVector) / CLOCKS_PER_SEC;
+	double elapsed_microseconds = elapsed_seconds * 1000000;
+
+    // Output the time in microseconds
+	std::cout << "Time to process a range of " << _mainChainVector.size() << " elements with std::vector: ";
+    std::cout << std::fixed << std::setprecision(7) << elapsed_microseconds << " us" << std::endl;
+
+	double elapsed_seconds1 = static_cast<double>(_endDeque - _startDeque) / CLOCKS_PER_SEC;
+	double elapsed_microseconds1 = elapsed_seconds1 * 1000000;
+
+    // Output the time in microseconds
+	std::cout << "Time to process a range of " << _mainChainDeque.size() << " elements with std::deque: ";
+    std::cout << std::fixed << std::setprecision(7) << elapsed_microseconds1 << " us" << std::endl;
+}
 
 double  stringToDouble(const std::string& s){
     char *end;
