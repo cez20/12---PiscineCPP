@@ -26,8 +26,8 @@ class PMergeMe
 		template<typename T>
 		void			createPairs(T& container);
 
-		// template<typename T>
-		// void			sortPairs(T& container);
+		template<typename T>
+		void			sortPairs(T& container);
 
 		// template<typename T>
 		// void			mergeSortRecursive(T& container, size_t left, size_t right);
@@ -43,6 +43,9 @@ class PMergeMe
 		// void			insertionSort();
 
 		void			printUnsortedSequence();
+
+		template <typename T>
+		void			printPairs(T & container);
 		// void			printSortedSequence();
 		// void			printClock(std::clock_t start, std::clock_t end);
 

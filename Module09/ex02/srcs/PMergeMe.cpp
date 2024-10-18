@@ -68,8 +68,10 @@ void PMergeMe::mergeInsertionSort() {
 
 	// MERGE-INSERTION SORT FOR STD::VECTOR
 	_startVector = std::clock();
-	// createPairs(_myVectorPairs);
-	// sortPairs(_myVectorPairs);
+	createPairs(_myVectorPairs);
+	printPairs(_myVectorPairs);
+	sortPairs(_myVectorPairs);
+	printPairs(_myVectorPairs);
 	// mergeSortRecursive(_myVectorPairs, 0, _myVectorPairs.size() - 1);
 	// createMainChain();
 	// createPend();
@@ -79,73 +81,38 @@ void PMergeMe::mergeInsertionSort() {
 
 	// MERGE INSERTION SORT FOR STD::DEQUE
 	_startDeque = std::clock();
+	createPairs(_myDequePairs);
+	printPairs(_myDequePairs);
+	sortPairs(_myDequePairs);
+	printPairs(_myDequePairs);
 	_endDeque = std::clock();
 
 }
 
-// template <typename T>
-// void	PMergeMe::createPairs(T& container){
+template <typename T>
+void	PMergeMe::createPairs(T& container){
 
-// 	std::list<double>::iterator it = _initialSequence.begin();
+	std::list<double>::iterator it = _unsortedSequence.begin();
 
-// 	while (it != _initialSequence.end()){
-// 		int first = *it;
-// 		++it;
-// 		if (it != _initialSequence.end()){
-// 			int second = *it;
-// 			++it;
-// 			container.push_back(std::make_pair(first, second));
-// 		}
-// 	}
-// }
+	while (it != _unsortedSequence.end()){
+		int first = *it;
+		++it;
+		if (it != _unsortedSequence.end()){
+			int second = *it;
+			++it;
+			container.push_back(std::make_pair(first, second));
+		}
+	}
+}
 
-// void	PMergeMe::insertionSort(){
+template<typename T>
+void	PMergeMe::sortPairs(T& container) {
 
-// 	// Put elements at _pendVector[jacobsthal_sequence_index] in main_chain
-// 	for (size_t i = 0; i < _jacobsthalSequenceVector.size(); ++i){
-// 		if(_jacobsthalSequenceVector[i] < _pendVector.size()){
-// 			// std::cout << "The value of _pendVector[_jacobsthalSequenceVector[i]] is: " << _pendVector[_jacobsthalSequenceVector[i]] << std::endl;
-// 			int index = binarySearch(_mainChainVector, _mainChainVector.size(), _pendVector[_jacobsthalSequenceVector[i]]);
-// 			_mainChainVector.insert(_mainChainVector.begin() + index, _pendVector[_jacobsthalSequenceVector[i]]);
-// 			_pendVector.erase(_pendVector.begin() + _jacobsthalSequenceVector[i]);
-// 		}
-// 	}
-	
-// 	//TODO: What should I do, insert all elements corresponding to jacobsthal sequence and then erase, or add elemen and erase immediately?
-// 	//TODO: Also, notes seems to show that we start a jacobstal index 3, so we avoid the 0, 1, 1 sequence of the beginning.
-// 	// TODO: Also, index[0] seems to be index 1 because it belongs to b1.
-// 	// Insert remaining elements of _pendVector
-// 	for (size_t i = 0; i < _pendVector.size(); ++i){
-// 		int index = binarySearch(_mainChainVector, _mainChainVector.size(), _pendVector[i]);
-// 		_mainChainVector.insert(_mainChainVector.begin() + index, _pendVector[i]);
-// 	}
-
-// 	// Inserting unpaired elements when initial array size is odd. This 
-// 	//TODO: This _unpaired element is called a struggler
-// 	if (_unpairedElement != -1){
-// 		int index = binarySearch(_mainChainVector, _mainChainVector.size(), _unpairedElement);
-// 		_mainChainVector.insert(_mainChainVector.begin() + index, _unpairedElement);
-// 	}
-
-// 	// Function to validate that content is struly sorted
-// 	// if (std::is_sorted(_mainChainVector.begin(), _mainChainVector.end()))
-// 	// 	std::cout << "Initial Sequence is now correctly sorted" << std::endl;
-// 	// else
-// 	// 	std::cout << "Initial Sequence is NOT sorted" << std::endl;
-// }
-
-
-
-// //TODO: Creer cette meme fonction pour storer un dequePair
-
-// template<typename T>
-// void	PMergeMe::sortPairs(T & container) {
-
-// 	for (size_t i = 0; i < container.size(); ++i){
-// 		if(container[i].first < container[i].second)
-// 			std::swap(container[i].first, container[i].second);
-// 	}
-// }
+	for (size_t i = 0; i < container.size(); ++i){
+		if(container[i].first < container[i].second)
+			std::swap(container[i].first, container[i].second);
+	}
+}
 
 // template <typename T>
 // void	PMergeMe::mergeSortRecursive(T& container, size_t left, size_t right)
@@ -262,6 +229,40 @@ void PMergeMe::mergeInsertionSort() {
 // 	return start;
 // }
 
+// void	PMergeMe::insertionSort(){
+
+// 	// Put elements at _pendVector[jacobsthal_sequence_index] in main_chain
+// 	for (size_t i = 0; i < _jacobsthalSequenceVector.size(); ++i){
+// 		if(_jacobsthalSequenceVector[i] < _pendVector.size()){
+// 			// std::cout << "The value of _pendVector[_jacobsthalSequenceVector[i]] is: " << _pendVector[_jacobsthalSequenceVector[i]] << std::endl;
+// 			int index = binarySearch(_mainChainVector, _mainChainVector.size(), _pendVector[_jacobsthalSequenceVector[i]]);
+// 			_mainChainVector.insert(_mainChainVector.begin() + index, _pendVector[_jacobsthalSequenceVector[i]]);
+// 			_pendVector.erase(_pendVector.begin() + _jacobsthalSequenceVector[i]);
+// 		}
+// 	}
+	
+// 	//TODO: What should I do, insert all elements corresponding to jacobsthal sequence and then erase, or add elemen and erase immediately?
+// 	//TODO: Also, notes seems to show that we start a jacobstal index 3, so we avoid the 0, 1, 1 sequence of the beginning.
+// 	// TODO: Also, index[0] seems to be index 1 because it belongs to b1.
+// 	// Insert remaining elements of _pendVector
+// 	for (size_t i = 0; i < _pendVector.size(); ++i){
+// 		int index = binarySearch(_mainChainVector, _mainChainVector.size(), _pendVector[i]);
+// 		_mainChainVector.insert(_mainChainVector.begin() + index, _pendVector[i]);
+// 	}
+
+// 	// Inserting unpaired elements when initial array size is odd. This 
+// 	//TODO: This _unpaired element is called a struggler
+// 	if (_unpairedElement != -1){
+// 		int index = binarySearch(_mainChainVector, _mainChainVector.size(), _unpairedElement);
+// 		_mainChainVector.insert(_mainChainVector.begin() + index, _unpairedElement);
+// 	}
+
+// 	// Function to validate that content is struly sorted
+// 	// if (std::is_sorted(_mainChainVector.begin(), _mainChainVector.end()))
+// 	// 	std::cout << "Initial Sequence is now correctly sorted" << std::endl;
+// 	// else
+// 	// 	std::cout << "Initial Sequence is NOT sorted" << std::endl;
+// }
 
 void 	PMergeMe::printUnsortedSequence(){
 
@@ -273,6 +274,17 @@ void 	PMergeMe::printUnsortedSequence(){
 	}
 	std::cout << std::endl;
 }
+
+template <typename T>
+void	PMergeMe::printPairs(T & container){
+
+	std::cout << "Printing Pairs:" << std::endl;
+	for (size_t i = 0; i < container.size(); ++i){
+		std::cout << "Pair[" << i << "]: ";
+		std::cout << container[i].first << " " << container[i].second << std::endl;
+	}
+}
+
 
 // void	PMergeMe::printSortedSequence(){
 

@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 19:41:03 by cemenjiv          #+#    #+#             */
-/*   Updated: 2024/10/18 10:05:27 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2024/10/18 10:29:40 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int main(int argc, char **argv)
             sortedList.processArguments(argc, argv);
             sortedList.printUnsortedSequence();
             
-            // sortedList.mergeInsertionSort();
+            sortedList.mergeInsertionSort();
             // sortedList.printSortedSequence();
             
             // sortedList.printClock();
