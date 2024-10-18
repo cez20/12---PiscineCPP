@@ -23,8 +23,8 @@ class PMergeMe
 		void			processArguments(int argCount, char **argList);
 		void			mergeInsertionSort();
 
-		// template<typename T>
-		// void			createPairs(T& container);
+		template<typename T>
+		void			createPairs(T& container);
 
 		// template<typename T>
 		// void			sortPairs(T& container);
@@ -57,8 +57,8 @@ class PMergeMe
 		std::vector<int>					_pendVector;
 		std::vector<size_t>					_jacobsthalSequenceVector;
 
-		// std::clock_t 						_startDeque;
-		// std::clock_t						_endDeque;
+		std::clock_t 						_startDeque;
+		std::clock_t						_endDeque;
 		std::deque<std::pair<int, int> >	_myDequePairs;
 		std::deque<int>						_mainChainDeque;
 		std::deque<int>						_pendDeque;

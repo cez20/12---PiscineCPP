@@ -78,6 +78,8 @@ void PMergeMe::mergeInsertionSort() {
 	_endVector = std::clock();
 
 	// MERGE INSERTION SORT FOR STD::DEQUE
+	_startDeque = std::clock();
+	_endDeque = std::clock();
 
 }
 
