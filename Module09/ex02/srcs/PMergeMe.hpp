@@ -29,11 +29,11 @@ class PMergeMe
 		template<typename T>
 		void			sortPairs(T& container);
 
-		// template<typename T>
-		// void			mergeSortRecursive(T& container, size_t left, size_t right);
+		template<typename T>
+		void			mergeSortRecursive(T& container, size_t left, size_t right);
 
-		// template <typename T>
-		// void 			mergeSort(T& container, size_t left, size_t middle, size_t right);
+		template <typename T>
+		void 			mergeSort(T& container, size_t left, size_t middle, size_t right);
 		
 		// void			createMainChain();
 		// void			createPend();

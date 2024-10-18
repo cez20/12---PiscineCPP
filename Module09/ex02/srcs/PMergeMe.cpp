@@ -72,8 +72,8 @@ void PMergeMe::mergeInsertionSort() {
 	printPairs(_myVectorPairs);
 	sortPairs(_myVectorPairs);
 	printPairs(_myVectorPairs);
-	// mergeSortRecursive(_myVectorPairs, 0, _myVectorPairs.size() - 1);
-	// createMainChain();
+	mergeSortRecursive(_myVectorPairs, 0, _myVectorPairs.size() - 1);
+	printPairs(_myVectorPairs);
 	// createPend();
 	// generateJacobsthalSequence();
 	// insertionSort();
@@ -84,6 +84,8 @@ void PMergeMe::mergeInsertionSort() {
 	createPairs(_myDequePairs);
 	printPairs(_myDequePairs);
 	sortPairs(_myDequePairs);
+	printPairs(_myDequePairs);
+	mergeSortRecursive(_myDequePairs, 0, _myDequePairs.size() - 1);
 	printPairs(_myDequePairs);
 	_endDeque = std::clock();
 
@@ -114,44 +116,43 @@ void	PMergeMe::sortPairs(T& container) {
 	}
 }
 
-// template <typename T>
-// void	PMergeMe::mergeSortRecursive(T& container, size_t left, size_t right)
-// {
-// 	if (left >= right)
-// 		return;
-// 	const size_t middle = left + (right - left) / 2;
-// 	mergeSortRecursive(container, left, middle);
-// 	mergeSortRecursive(container, middle + 1, right);
-// 	mergeSort(container, left, middle, right);
-// }
+template <typename T>
+void	PMergeMe::mergeSortRecursive(T& container, size_t left, size_t right)
+{
+	if (left >= right)
+		return;
+	const size_t middle = left + (right - left) / 2;
+	mergeSortRecursive(container, left, middle);
+	mergeSortRecursive(container, middle + 1, right);
+	mergeSort(container, left, middle, right);
+}
 
-// template <typename T>
-// void 	PMergeMe::mergeSort(T& container, size_t left, size_t middle, size_t right)
-// {
-// 	std::vector<std::pair<int, int> >::iterator start = container.begin() + left;
-// 	std::vector<std::pair<int, int> >::iterator mid = container.begin() + (middle + 1);
-// 	std::vector<std::pair<int, int> >::iterator end = container.begin() + (right + 1);
+template <typename T>
+void 	PMergeMe::mergeSort(T& container, size_t left, size_t middle, size_t right)
+{
+	typename T::iterator	start = container.begin() + left;
+	typename T::iterator 	mid = container.begin() + (middle + 1);
+	typename T::iterator 	end = container.begin() + (right + 1);
 
+	std::vector<std::pair<int, int> > leftSubPairs(start, mid);
+	std::vector<std::pair<int, int> > rightSubPairs(mid, end);
 
-// 	std::vector<std::pair<int, int> > leftSubPairs(start, mid);
-// 	std::vector<std::pair<int, int> > rightSubPairs(mid, end);
+	size_t i = 0;
+	size_t j = 0;
+	size_t k = left;
 
-// 	size_t i = 0;
-// 	size_t j = 0;
-// 	size_t k = left;
-
-// 	while (i < leftSubPairs.size() && j < rightSubPairs.size())
-// 	{
-// 		if (leftSubPairs[i].first <= rightSubPairs[j].first)
-// 			container[k++] = leftSubPairs[i++];
-// 		else
-// 			container[k++] = rightSubPairs[j++];
-// 	}
-// 	while (i < leftSubPairs.size())
-// 		container[k++] = leftSubPairs[i++];
-// 	while (j < rightSubPairs.size())
-// 		container[k++] = rightSubPairs[j++];
-// }
+	while (i < leftSubPairs.size() && j < rightSubPairs.size())
+	{
+		if (leftSubPairs[i].first <= rightSubPairs[j].first)
+			container[k++] = leftSubPairs[i++];
+		else
+			container[k++] = rightSubPairs[j++];
+	}
+	while (i < leftSubPairs.size())
+		container[k++] = leftSubPairs[i++];
+	while (j < rightSubPairs.size())
+		container[k++] = rightSubPairs[j++];
+}
 
 // void	PMergeMe::createMainChain(){
 
