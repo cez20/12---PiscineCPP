@@ -21,44 +21,48 @@ class PMergeMe
 		PMergeMe &		operator=( PMergeMe const & rhs );
 
 		void			processArguments(int argCount, char **argList);
-		void			initializeContainers();
-		
 		void			mergeInsertionSort();
-		template<typename T>
-		void			createPairs(T& container);
-		template<typename T>
-		void			sortPairs(T& container);
-		template<typename T>
-		void			mergeSortRecursive(T& container, size_t left, size_t right);
-		template <typename T>
-		void 			mergeSort(T& container, size_t left, size_t middle, size_t right);
+
+		// template<typename T>
+		// void			createPairs(T& container);
+
+		// template<typename T>
+		// void			sortPairs(T& container);
+
+		// template<typename T>
+		// void			mergeSortRecursive(T& container, size_t left, size_t right);
+
+		// template <typename T>
+		// void 			mergeSort(T& container, size_t left, size_t middle, size_t right);
 		
-		void			createMainChain();
-		void			createPend();
-		size_t			Jacobsthal(int n);
-		void			generateJacobsthalSequence();
-		size_t			binarySearch(std::vector<int> mainChain, size_t size, int number);
-		void			insertionSort();
+		// void			createMainChain();
+		// void			createPend();
+		// size_t			Jacobsthal(int n);
+		// void			generateJacobsthalSequence();
+		// size_t			binarySearch(std::vector<int> mainChain, size_t size, int number);
+		// void			insertionSort();
 
-
-		void			printInitialSequence();
-		void			printSortedSequence();
-		void			printClock();
+		void			printUnsortedSequence();
+		// void			printSortedSequence();
+		// void			printClock(std::clock_t start, std::clock_t end);
 
 	private:
-		std::list<double>					_initialSequence;
+		std::list<double>					_unsortedSequence;
 		int									_unpairedElement;
 		
-		std::clock_t 						_clockStartVector;
-		std::clock_t 						_clockEndVector;
+		std::clock_t 						_startVector;
+		std::clock_t 						_endVector;
 		std::vector<std::pair<int,int> > 	_myVectorPairs;
 		std::vector<int>					_mainChainVector;
 		std::vector<int>					_pendVector;
 		std::vector<size_t>					_jacobsthalSequenceVector;
 
-		std::clock_t 						_clockStartDeque;
-		std::clock_t						_clockEndDeque;
+		// std::clock_t 						_startDeque;
+		// std::clock_t						_endDeque;
 		std::deque<std::pair<int, int> >	_myDequePairs;
+		std::deque<int>						_mainChainDeque;
+		std::deque<int>						_pendDeque;
+		std::deque<size_t>					_jacobsthalSequenceDeque;
 		
 };
 
