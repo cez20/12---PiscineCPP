@@ -74,6 +74,8 @@ void PMergeMe::mergeInsertionSort() {
 	printPairs(_myVectorPairs);
 	mergeSortRecursive(_myVectorPairs, 0, _myVectorPairs.size() - 1);
 	printPairs(_myVectorPairs);
+	createMainChain(_myVectorPairs, _mainChainVector);
+	printMainChain(_mainChainVector);
 	// createPend();
 	// generateJacobsthalSequence();
 	// insertionSort();
@@ -87,6 +89,9 @@ void PMergeMe::mergeInsertionSort() {
 	printPairs(_myDequePairs);
 	mergeSortRecursive(_myDequePairs, 0, _myDequePairs.size() - 1);
 	printPairs(_myDequePairs);
+	createMainChain(_myDequePairs, _mainChainDeque);
+	printMainChain(_mainChainDeque);
+	// createPend()
 	_endDeque = std::clock();
 
 }
@@ -154,17 +159,18 @@ void 	PMergeMe::mergeSort(T& container, size_t left, size_t middle, size_t right
 		container[k++] = rightSubPairs[j++];
 }
 
-// void	PMergeMe::createMainChain(){
+template <typename T, typename U>
+void	PMergeMe::createMainChain(T& container, U& mainChain){
 
-// 	for(size_t i = 0; i < _myVectorPairs.size(); ++i){
-// 		_mainChainVector.push_back(_myVectorPairs[i].first);
-// 	}
+	for(size_t i = 0; i < container.size(); ++i){
+		mainChain.push_back(container[i].first);
+	}
 
-// 	// std::cout << "Printing main chain: ";
-// 	// for (size_t i = 0; i < _mainChainVector.size(); ++i)
-// 	// 	std::cout << _mainChainVector[i] << " ";
-// 	// std::cout << std::endl;
-// }
+	// std::cout << "Printing main chain: ";
+	// for (size_t i = 0; i < _mainChainVector.size(); ++i)
+	// 	std::cout << _mainChainVector[i] << " ";
+	// std::cout << std::endl;
+}
 
 // void	PMergeMe::createPend(){
 // 	for(size_t i = 0; i < _myVectorPairs.size(); ++i){
@@ -286,6 +292,14 @@ void	PMergeMe::printPairs(T & container){
 	}
 }
 
+template <typename U>
+void	PMergeMe::printMainChain(U& mainChain){
+
+	std::cout << "Printing Main Chain: ";
+	for(size_t i = 0; i < mainChain.size(); ++i)
+		std::cout << mainChain[i] << " ";
+	std::cout << std::endl;
+}
 
 // void	PMergeMe::printSortedSequence(){
 

@@ -35,7 +35,8 @@ class PMergeMe
 		template <typename T>
 		void 			mergeSort(T& container, size_t left, size_t middle, size_t right);
 		
-		// void			createMainChain();
+		template <typename T, typename U>
+		void			createMainChain(T& container, U& mainChain);
 		// void			createPend();
 		// size_t			Jacobsthal(int n);
 		// void			generateJacobsthalSequence();
@@ -45,7 +46,9 @@ class PMergeMe
 		void			printUnsortedSequence();
 
 		template <typename T>
-		void			printPairs(T & container);
+		void			printPairs(T& container);
+		template <typename U>
+		void			printMainChain(U& mainChain);
 		// void			printSortedSequence();
 		// void			printClock(std::clock_t start, std::clock_t end);
 
