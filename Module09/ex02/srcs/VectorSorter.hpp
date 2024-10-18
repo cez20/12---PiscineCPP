@@ -4,8 +4,10 @@
 # include <iostream>
 # include <string>
 # include <vector>
+# include "PMergeMe.hpp"
 
-class VectorSorter: public PMergeMe<std::vector<T>>
+template <typename T>
+class VectorSorter: public PMergeMe<std::vector<T> >
 {
 	public:
 

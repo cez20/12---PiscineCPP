@@ -6,15 +6,16 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 19:41:03 by cemenjiv          #+#    #+#             */
-/*   Updated: 2024/10/17 18:34:58 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2024/10/17 20:02:25 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <list>
 #include <ctime>
-// #include "PMergeMe.hpp"
+#include "PMergeMe.hpp"
 #include "SequenceProcessor.hpp"
+#include "VectorSorter.hpp"
 
 
 int main(int argc, char **argv)
@@ -29,6 +30,10 @@ int main(int argc, char **argv)
     try {
         sequence.processUnsortedSequence(argc, argv);
         sequence.printUnsortedSequence();
+        
+        VectorSorter<int> myVector;
+        // myVector.mergeInsertionSort();
+
     } catch (std::exception & e) {
         std::cout << e.what() << std::endl;
     }

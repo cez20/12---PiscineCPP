@@ -4,12 +4,15 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-VectorContainer::VectorContainer()
+template<typename T>
+VectorSorter<T>::VectorSorter()
 {
 }
 
-VectorContainer::VectorContainer( const VectorContainer & src )
+template<typename T>
+VectorSorter<T>::VectorSorter( const VectorSorter & src )
 {
+	*this = src;
 }
 
 
@@ -17,7 +20,8 @@ VectorContainer::VectorContainer( const VectorContainer & src )
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-VectorContainer::~VectorContainer()
+template<typename T>
+VectorSorter<T>::~VectorSorter()
 {
 }
 
@@ -26,8 +30,10 @@ VectorContainer::~VectorContainer()
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-VectorContainer &				VectorContainer::operator=( VectorContainer const & rhs )
+template<typename T>
+VectorSorter<T> &				VectorSorter<T>::operator=( VectorSorter const & rhs )
 {
+	(void)rhs;
 	//if ( this != &rhs )
 	//{
 		//this->_value = rhs.getValue();

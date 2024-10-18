@@ -21,7 +21,7 @@ class PMergeMe
 
 		PMergeMe &		operator=( PMergeMe const & rhs );
 
-		// void			mergeInsertionSort();
+		void			mergeInsertionSort();
 		// void			createPairs(T& container);
 		// void			sortPairs(T& container);
 		// void			mergeSortRecursive(T& container, size_t left, size_t right);
