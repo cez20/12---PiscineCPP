@@ -61,7 +61,7 @@ class PMergeMe
 		void			printSortingTimes();
 
 	private:
-		std::list<double>					_unsortedSequence;
+		std::list<int>						_unsortedSequence;
 		std::vector<size_t>					_jacobsthalIndexes;
 		int									_unpairedElement;
 		

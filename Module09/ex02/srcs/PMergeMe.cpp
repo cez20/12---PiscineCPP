@@ -51,7 +51,7 @@ void PMergeMe::processArguments(int argCount, char **argList){
 		if(!isValidNumberFormat(arg) || !isBelowIntMax(arg))
 			throw std::invalid_argument("ERROR!Invalid argument. Either not a number, a negative number or higher than INT_MAX");
 		else{
-			_unsortedSequence.push_back(stringToDouble(arg));
+			_unsortedSequence.push_back(std::atoi(arg.c_str()));
 		}
 		i++;
 	}
@@ -92,7 +92,7 @@ void PMergeMe::mergeInsertionSort() {
 template <typename T>
 void	PMergeMe::createPairs(T& container){
 
-	std::list<double>::iterator it = _unsortedSequence.begin();
+	std::list<int>::iterator it = _unsortedSequence.begin();
 
 	while (it != _unsortedSequence.end()){
 		int first = *it;
@@ -241,7 +241,7 @@ void	PMergeMe::insertionSort(U& mainChain, U& pend){
 
 void 	PMergeMe::printUnsortedSequence(){
 
-	std::list<double>::iterator it;
+	std::list<int>::iterator it;
 
 	std::cout << "Before Sorting: ";
 	for(it = _unsortedSequence.begin(); it != _unsortedSequence.end(); ++it){
