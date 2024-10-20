@@ -49,12 +49,14 @@ void PMergeMe::processArguments(int argCount, char **argList){
 	while (i < argCount){
 		std::string arg = argList[i];
 		if(!isValidNumberFormat(arg) || !isBelowIntMax(arg))
-			throw std::invalid_argument("Invalid argument. Either not a number, a negative number or higher than INT_MAX");
+			throw std::invalid_argument("ERROR!Invalid argument. Either not a number, a negative number or higher than INT_MAX");
 		else{
 			_unsortedSequence.push_back(stringToDouble(arg));
 		}
 		i++;
 	}
+	if (_unsortedSequence.size() < 2)
+		throw std::invalid_argument("ERROR!No sorting necessary! Only one number");
 }
 
 void PMergeMe::mergeInsertionSort() {

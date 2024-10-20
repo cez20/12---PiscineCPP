@@ -10,7 +10,6 @@
 # include <array>
 # include <iomanip>
 
-
 class PMergeMe
 {
 	public:
@@ -82,7 +81,6 @@ class PMergeMe
 double  stringToDouble(const std::string& s);
 bool 	isValidNumberFormat (const std::string& arg);
 bool 	isBelowIntMax(const std::string& arg);
-
 
 
 #endif /* ******************************************************** PMERGEME_H */
