@@ -62,7 +62,7 @@ void			BitcoinExchange::parseBitcoinExchangeRate(std::ifstream & bitcoinRatesHis
             if (!isValidFloatFormat(exchangeRate) || !isFloatPositive(exchangeRate))
                 throw std::runtime_error("ERROR! Reference database(data.csv) has error in one of its exchange rate");
 
-			_exchangeRates.insert(std::make_pair(inputDate,std::atof(exchangeRate.c_str()))); //TODO: Test the std::atof 
+			_exchangeRates.insert(std::make_pair(inputDate,std::atof(exchangeRate.c_str())));
         } else {
             throw std::runtime_error("ERROR! Delimiter(comma) not found in the line: ");
         }
@@ -102,9 +102,9 @@ void            BitcoinExchange::parseBitcoinValue(std::ifstream & bitcoinValueH
                 if(it == _exchangeRates.end())
                     it = findClosestDate(targetDate);
                 if(it == _exchangeRates.end()) // TODO: This is temporary fix to fix problem of date that is lower than lowest date.  
-                    std::cout << "ERROR! Cannot find match because date provided is lower than lowest date in database" << std::endl;
+                    std::cerr << "ERROR! Cannot find match because date provided is lower than lowest date in database" << "=> " << targetDate <<  std::endl;
                 else
-                    std::cout << it->first << " => " << bitcoinValue << " = " << (std::atof(bitcoinValue.c_str()) * it->second) << std::endl; // TODO: is std::atof OK
+                    std::cout << it->first << " => " << bitcoinValue << " = " << (std::atof(bitcoinValue.c_str()) * it->second) << std::endl;
             } 
         } else {
             std::cerr << "ERROR! Delimiter | is missing or improperly formatted line" << std::endl;

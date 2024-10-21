@@ -5,7 +5,7 @@
 int main(int argc, char **argv)
 {      
     if (argc != 2){
-        std::cerr << "ERROR! Program must contain a bitcoin value database as argument!" << std::endl;
+        std::cerr << "ERROR! Program must contain only ONE bitcoin value database as argument!" << std::endl;
         return 1;
     }
     
