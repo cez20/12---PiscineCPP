@@ -103,7 +103,7 @@ void            BitcoinExchange::parseBitcoinValue(std::ifstream & bitcoinValueH
                 std::map<std::string, double>::iterator it = _exchangeRates.find(targetDate);
                 if(it == _exchangeRates.end())
                     it = findClosestDate(targetDate);
-                if(it == _exchangeRates.end()) // TODO: This is temporary fix to fix problem of date that is lower than lowest date.  
+                if(it == _exchangeRates.end()) 
                     std::cerr << "ERROR! Cannot find match because date provided is lower than lowest date in database" << "=> " << targetDate <<  std::endl;
                 else
                     std::cout << it->first << " => " << bitcoinValue << " = " << (std::atof(bitcoinValue.c_str()) * it->second) << std::endl;
@@ -131,7 +131,7 @@ std::map<std::string, double>::iterator BitcoinExchange::findClosestDate(std::st
 
         parseDateToInteger(previousDate, year, month, day);
 
-        if (year < 2009) { //TODO: Test this section 
+        if (year < 2009) {
             break;
         }
     }
