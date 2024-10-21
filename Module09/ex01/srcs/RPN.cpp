@@ -35,7 +35,7 @@ RPN &				RPN::operator=( RPN const & rhs )
 	if ( this != &rhs )
 	{
 		this->_rpnTotal = rhs._rpnTotal;
-    this->_rpnExpression = rhs._rpnExpression; //TODO: Put getter for this as it is cleaner
+    this->_rpnExpression = rhs._rpnExpression;
     this->_mystack = rhs._mystack;
 	}
 	return *this;
@@ -130,10 +130,5 @@ void RPN::calculate(int operand1, int operand2, char op){
     }
 
 }
-
-/*
-** --------------------------------- ACCESSOR ---------------------------------
-*/
-
 
 /* ************************************************************************** */
