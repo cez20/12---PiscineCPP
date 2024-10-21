@@ -24,7 +24,6 @@ PMergeMe::~PMergeMe()
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-//TODO: We need to modify this according to variables created 
 PMergeMe &				PMergeMe::operator=( PMergeMe const & rhs )
 {
 	if ( this != &rhs )
@@ -234,15 +233,21 @@ void	PMergeMe::insertionSort(U& mainChain, U& pend){
 			int index = binarySearch(mainChain, pend[_jacobsthalIndexes[i]]);
 			mainChain.insert(mainChain.begin() + index, pend[_jacobsthalIndexes[i]]);
 			pend.erase(pend.begin() + _jacobsthalIndexes[i]);
+			// Adjust jacobsthal indexes because I erase elements from _pend. 
+			for (size_t i = 0; i < _jacobsthalIndexes.size(); ++i) {
+				if ((int)_jacobsthalIndexes[i] > index) {
+					_jacobsthalIndexes[i]--; // Decrement applicable indexes
+				}
+        	}
 		}
 	}
 	
+	// Put remaining elements of pend inside main_chain 
 	for (size_t i = 0; i < pend.size(); ++i){
 		int index = binarySearch(mainChain, pend[i]);
 		mainChain.insert(mainChain.begin() + index, pend[i]);
 	}
 
-	// TODO: This _unpaired element is called a struggler
 	if (_unpairedElement != -1){
 		int index = binarySearch(mainChain, _unpairedElement);
 		mainChain.insert(mainChain.begin() + index, _unpairedElement);
