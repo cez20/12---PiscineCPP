@@ -61,6 +61,8 @@ void			BitcoinExchange::parseBitcoinExchangeRate(std::ifstream & bitcoinRatesHis
 
             if (!isValidFloatFormat(exchangeRate) || !isFloatPositive(exchangeRate))
                 throw std::runtime_error("ERROR! Reference database(data.csv) has error in one of its exchange rate");
+            if (std::atof(exchangeRate.c_str()) > INT_MAX)
+                throw std::runtime_error("ERROR! Reference database(data.csv) contains a value higher than INT_MAX");
 
 			_exchangeRates.insert(std::make_pair(inputDate,std::atof(exchangeRate.c_str())));
         } else {
