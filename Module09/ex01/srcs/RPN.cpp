@@ -50,7 +50,7 @@ void	RPN::parse(){
       if(!isExpressionDigits(_rpnExpression))
         throw std::runtime_error("ERROR! Math expressions is not only composed of digits. There is a number!");
       
-      _rpnExpression.erase(std::remove_if(_rpnExpression.begin(), _rpnExpression.end(), ::isspace), _rpnExpression.end()); //TODO: Fix the problem of ::isspace vs std::isspace
+      _rpnExpression.erase(std::remove_if(_rpnExpression.begin(), _rpnExpression.end(), ::isspace), _rpnExpression.end());
       
       if(!hasExpressionValidCharacters(_rpnExpression))
         throw std::runtime_error("ERROR! Math expression is composed of elements different than + - * / and digits!");
