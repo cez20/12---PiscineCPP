@@ -2,7 +2,6 @@
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
-//TODO: Je vais devoir initialiser mes variables initiales avec du contenu 
 PMergeMe::PMergeMe(): _unpairedElement(-1)
 {
 }
@@ -11,7 +10,6 @@ PMergeMe::PMergeMe( const PMergeMe & src )
 {
 	*this = src; 
 }
-
 
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
@@ -31,8 +29,21 @@ PMergeMe &				PMergeMe::operator=( PMergeMe const & rhs )
 {
 	if ( this != &rhs )
 	{
+		this->_unsortedSequence = rhs._unsortedSequence;
+		this->_jacobsthalIndexes = rhs._jacobsthalIndexes;
+		this->_unpairedElement = rhs._unpairedElement;
+
+		this->_startVector = rhs._startVector;
+		this->_endVector = rhs._endVector;
 		this->_myVectorPairs = rhs._myVectorPairs;
+		this->_mainChainVector = rhs._mainChainVector;
+		this->_pendVector = rhs._pendVector;
+
+		this->_startDeque = rhs._startDeque;
+		this->_endDeque = rhs._endDeque;
 		this->_myDequePairs = rhs._myDequePairs;
+		this->_mainChainDeque = rhs._mainChainDeque;
+		this->_pendDeque = rhs._pendDeque;
 	}
 	return *this;
 }
@@ -231,7 +242,6 @@ void	PMergeMe::insertionSort(U& mainChain, U& pend){
 		mainChain.insert(mainChain.begin() + index, pend[i]);
 	}
 
-	// // Inserting unpaired elements when initial array size is odd. This 
 	// TODO: This _unpaired element is called a struggler
 	if (_unpairedElement != -1){
 		int index = binarySearch(mainChain, _unpairedElement);
